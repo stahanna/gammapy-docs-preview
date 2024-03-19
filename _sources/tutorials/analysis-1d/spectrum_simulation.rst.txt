@@ -143,8 +143,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2047+gc10346aa1.d20240223 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -170,7 +170,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -273,24 +273,26 @@ In this simulation, we use the CTA-1DC IRFs shipped with Gammapy.
 
 
 
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-      warnings.warn(msg, UnitsWarning)
-    Observation
-
-            obs id            : 0 
-            tstart            : 51544.00
-            tstop             : 51544.04
-            duration          : 3600.00 s
-            pointing (icrs)   : 266.4 deg, -28.9 deg
-
-            deadtime fraction : 0.0%
-
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/spectrum_simulation.py", line 130, in <module>
+        irfs = load_irf_dict_from_file(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/irf/io.py", line 197, in load_irf_dict_from_file
+        with fits.open(filename) as hdulist:
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
+        return HDUList.fromfile(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
+        return cls._readfrom(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
+        fileobj = _File(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
+        self._open_filename(fileobj, mode, overwrite)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
+        self._file = open(self.name, IO_FITS_MODES[mode])
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits'
 
 
 
@@ -319,56 +321,6 @@ Simulate a spectra
     dataset.models = model
     dataset.fake(random_state=42)
     print(dataset)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    SpectrumDataset
-    ---------------
-
-      Name                            : obs-0 
-
-      Total counts                    : 298 
-      Total background counts         : 22.29
-      Total excess counts             : 275.71
-
-      Predicted counts                : 303.66
-      Predicted background counts     : 22.29
-      Predicted excess counts         : 281.37
-
-      Exposure min                    : 2.53e+08 m2 s
-      Exposure max                    : 1.77e+10 m2 s
-
-      Number of total bins            : 9 
-      Number of fit bins              : 9 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : -1811.58
-
-      Number of models                : 1 
-      Number of parameters            : 3
-      Number of free parameters       : 2
-
-      Component 0: SkyModel
-  
-        Name                      : source
-        Datasets names            : None
-        Spectral model type       : PowerLawSpectralModel
-        Spatial  model type       : 
-        Temporal model type       : 
-        Parameters:
-          index                         :      3.000   +/-    0.00             
-          amplitude                     :   2.50e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-          reference             (frozen):      1.000       TeV         
-  
-  
-
 
 
 
@@ -402,59 +354,6 @@ dealing with simulations based on observations of real off counts.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    SpectrumDatasetOnOff
-    --------------------
-
-      Name                            : BOpoNP3O 
-
-      Total counts                    : 315 
-      Total background counts         : 22.60
-      Total excess counts             : 292.40
-
-      Predicted counts                : 304.17
-      Predicted background counts     : 22.80
-      Predicted excess counts         : 281.37
-
-      Exposure min                    : 2.53e+08 m2 s
-      Exposure max                    : 1.77e+10 m2 s
-
-      Number of total bins            : 9 
-      Number of fit bins              : 9 
-
-      Fit statistic type              : wstat
-      Fit statistic value (-2 log(L)) : 6.11
-
-      Number of models                : 1 
-      Number of parameters            : 3
-      Number of free parameters       : 2
-
-      Component 0: SkyModel
-  
-        Name                      : source
-        Datasets names            : None
-        Spectral model type       : PowerLawSpectralModel
-        Spatial  model type       : 
-        Temporal model type       : 
-        Parameters:
-          index                         :      3.000   +/-    0.00             
-          amplitude                     :   2.50e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-          reference             (frozen):      1.000       TeV         
-  
-        Total counts_off                : 113 
-      Acceptance                      : 9 
-      Acceptance off                  : 45 
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 187-190
 
 You can see that off counts are now simulated as well. We now simulate
@@ -480,26 +379,6 @@ several spectra using the same set of observation conditions.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-     name  counts excess      sqrt_ts           background           npred        npred_background npred_signal    exposure_min   ... n_bins n_fit_bins stat_type      stat_sum     counts_off acceptance acceptance_off alpha
-                                                                                                                       m2 s       ...                                                                                         
-    ------ ------ ------ ------------------ ------------------ ----------------- ----------------- ------------ ----------------- ... ------ ---------- --------- ----------------- ---------- ---------- -------------- -----
-     obs-0    317  298.6  27.08240194504323 18.400000000000002 68.16666666666667 68.16666666666667          nan 252718170.9728747 ...      9          9     wstat  738.724590842961         92        9.0           45.0   0.2
-     obs-1    275  253.0 23.767853654872845               22.0 64.16666666666669 64.16666666666669          nan 252718170.9728747 ...      9          9     wstat  575.779512784738        110        9.0           45.0   0.2
-       ...    ...    ...                ...                ...               ...               ...          ...               ... ...    ...        ...       ...               ...        ...        ...            ...   ...
-    obs-98    301  280.6 25.687832964675007 20.400000000000002 67.16666666666667 67.16666666666667          nan 252718170.9728747 ...      9          9     wstat 664.5620099404954        102        9.0           45.0   0.2
-    obs-99    323  302.2  26.85707842376871               20.8 71.16666666666669 71.16666666666669          nan 252718170.9728747 ...      9          9     wstat 733.1576598768019        104        9.0           45.0   0.2
-    Length = 100 rows
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 207-210
 
 Before moving on to the fit let’s have a look at the simulated
@@ -519,17 +398,6 @@ observations.
     axes[2].hist(table["excess"])
     axes[2].set_xlabel("excess")
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectrum_simulation_001.png
-   :alt: spectrum simulation
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectrum_simulation_001.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -558,12 +426,6 @@ Now, we fit each simulated spectrum individually
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 242-245
 
 We take a look at the distribution of the fitted indices. This matches
@@ -585,23 +447,6 @@ very well with the spectrum that we initially injected.
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectrum_simulation_002.png
-   :alt: spectrum simulation
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectrum_simulation_002.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    index: 3.0036925550401095 += 0.08081469527291649
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 256-266
 
 Exercises
@@ -614,11 +459,6 @@ Exercises
 -  Simulate spectra with the spectral model we just defined. How much
    observation duration do you need to get back the injected parameters?
 
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 14.225 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-1d_spectrum_simulation.py:

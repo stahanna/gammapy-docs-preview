@@ -127,7 +127,24 @@ interest by name:
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/sed_fitting.py", line 84, in <module>
+        catalog_3fgl = CATALOG_REGISTRY.get_cls("3fgl")()
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/catalog/fermi.py", line 1229, in __init__
+        table = Table.read(filename, hdu="LAT_Point_Source_Catalog")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/table/connect.py", line 62, in __call__
+        out = self.registry.read(cls, *args, **kwargs)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/registry/core.py", line 203, in read
+        fileobj = ctx.__enter__()
+      File "/usr/lib64/python3.9/contextlib.py", line 119, in __enter__
+        return next(self.gen)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/utils/data.py", line 353, in get_readable_fileobj
+        fileobj = io.FileIO(name_or_obj, "r")
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/catalogs/fermi/gll_psc_v16.fit.gz'
 
 
 
@@ -154,28 +171,6 @@ attribute:
 
 
 
-
-
-
-
-.. raw:: html
-
-    <div class="output_subarea output_html rendered_html output_result">
-    <div><i>Table length=5</i>
-    <table id="table139796138843200" class="table-striped table-bordered table-condensed">
-    <thead><tr><th>e_ref</th><th>e_min</th><th>e_max</th><th>dnde</th><th>dnde_errp</th><th>dnde_errn</th><th>dnde_ul</th><th>sqrt_ts</th><th>is_ul</th></tr></thead>
-    <thead><tr><th>GeV</th><th>GeV</th><th>GeV</th><th>1 / (cm2 GeV s)</th><th>1 / (cm2 GeV s)</th><th>1 / (cm2 GeV s)</th><th>1 / (cm2 GeV s)</th><th></th><th></th></tr></thead>
-    <thead><tr><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float32</th><th>bool</th></tr></thead>
-    <tr><td>14.142</td><td>10.000</td><td>20.000</td><td>9.288e-12</td><td>2.343e-12</td><td>2.128e-12</td><td>nan</td><td>5.660</td><td>False</td></tr>
-    <tr><td>31.623</td><td>20.000</td><td>50.000</td><td>2.777e-12</td><td>6.572e-13</td><td>5.818e-13</td><td>nan</td><td>6.940</td><td>False</td></tr>
-    <tr><td>86.603</td><td>50.000</td><td>150.000</td><td>2.335e-13</td><td>1.055e-13</td><td>8.554e-14</td><td>nan</td><td>3.835</td><td>False</td></tr>
-    <tr><td>273.861</td><td>150.000</td><td>500.000</td><td>6.411e-14</td><td>2.697e-14</td><td>2.133e-14</td><td>nan</td><td>5.697</td><td>False</td></tr>
-    <tr><td>1000.000</td><td>500.000</td><td>2000.000</td><td>9.188e-21</td><td>4.034e-15</td><td>nan</td><td>8.068e-15</td><td>0.000</td><td>True</td></tr>
-    </table></div>
-    </div>
-    <br />
-    <br />
-
 .. GENERATED FROM PYTHON SOURCE LINES 109-115
 
 Power Law Fit
@@ -194,12 +189,6 @@ First we start with fitting a simple
         index=2, amplitude="1e-12 cm-2 s-1 TeV-1", reference="1 TeV"
     )
     model = SkyModel(spectral_model=pwl, name="j1507-pl")
-
-
-
-
-
-
 
 
 
@@ -223,42 +212,6 @@ and ``model`` objects:
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Datasets
-    --------
-
-    Dataset 0: 
-
-      Type       : FluxPointsDataset
-      Name       : gammacat
-      Instrument : 
-      Models     : ['j1507-pl']
-
-    Dataset 1: 
-
-      Type       : FluxPointsDataset
-      Name       : 3fgl
-      Instrument : 
-      Models     : ['j1507-pl']
-
-    Dataset 2: 
-
-      Type       : FluxPointsDataset
-      Name       : 3fhl
-      Instrument : 
-      Models     : ['j1507-pl']
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 136-138
 
 And print the result:
@@ -272,46 +225,6 @@ And print the result:
     print(result_pwl)
 
     print(model)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    OptimizeResult
-
-            backend    : minuit
-            method     : migrad
-            success    : True
-            message    : Optimization terminated successfully.
-            nfev       : 40
-            total stat : 28.29
-
-    CovarianceResult
-
-            backend    : minuit
-            method     : hesse
-            success    : True
-            message    : Hesse terminated successfully.
-
-    SkyModel
-
-      Name                      : j1507-pl
-      Datasets names            : None
-      Spectral model type       : PowerLawSpectralModel
-      Spatial  model type       : 
-      Temporal model type       : 
-      Parameters:
-        index                         :      1.985   +/-    0.03             
-        amplitude                     :   1.28e-12   +/- 1.6e-13 1 / (cm2 s TeV)
-        reference             (frozen):      1.000       TeV         
-
-
-
 
 
 
@@ -343,17 +256,6 @@ Finally we plot the data points and the best fit model:
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_sed_fitting_001.png
-   :alt: sed fitting
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_sed_fitting_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 166-173
 
 Exponential Cut-Off Powerlaw Fit
@@ -379,12 +281,6 @@ data.
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 184-187
 
 We run the fitter again by passing the flux points and the model
@@ -399,32 +295,6 @@ instance:
     datasets.models = model
     result_ecpl = fitter.run(datasets=datasets)
     print(model)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    SkyModel
-
-      Name                      : j1507-ecpl
-      Datasets names            : None
-      Spectral model type       : ExpCutoffPowerLawSpectralModel
-      Spatial  model type       : 
-      Temporal model type       : 
-      Parameters:
-        index                         :      1.894   +/-    0.05             
-        amplitude                     :   1.96e-12   +/- 3.9e-13 1 / (cm2 s TeV)
-        reference             (frozen):      1.000       TeV         
-        lambda_                       :      0.078   +/-    0.05 1 / TeV     
-        alpha                 (frozen):      1.000                   
-
-
-
 
 
 
@@ -453,17 +323,6 @@ We plot the data and best fit model:
     ax.set_xlim(energy_bounds)
     ax.legend()
     plt.show()
-
-
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_sed_fitting_002.png
-   :alt: sed fitting
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_sed_fitting_002.png
-   :class: sphx-glr-single-img
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 214-220
@@ -506,36 +365,6 @@ Finally we try to fit a
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_sed_fitting_003.png
-   :alt: sed fitting
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_sed_fitting_003.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    SkyModel
-
-      Name                      : j1507-lp
-      Datasets names            : None
-      Spectral model type       : LogParabolaSpectralModel
-      Spatial  model type       : 
-      Temporal model type       : 
-      Parameters:
-        amplitude                     :   1.88e-12   +/- 2.8e-13 1 / (cm2 s TeV)
-        reference             (frozen):      1.000       TeV         
-        alpha                         :      2.144   +/-    0.07             
-        beta                          :      0.049   +/-    0.02             
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 247-257
 
 Exercises
@@ -563,11 +392,6 @@ This was an introduction to SED fitting in Gammapy.
    multi-instrument forward-folding fit see the
    :doc:`/tutorials/analysis-3d/analysis_mwl` tutorial.
 
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 11.202 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-1d_sed_fitting.py:

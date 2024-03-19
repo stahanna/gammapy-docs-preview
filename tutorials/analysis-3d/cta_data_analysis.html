@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Multi instrument joint 3D and 1D analysis" href="analysis_mwl.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -657,8 +657,8 @@ first data challenge in August 2017.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -684,7 +684,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -713,12 +713,12 @@ here we choose three observations near the Galactic Center.</p>
 <span class="n">display</span><span class="p">(</span><span class="n">data_store</span><span class="o">.</span><span class="n">obs_table</span><span class="o">.</span><span class="n">select_obs_id</span><span class="p">(</span><span class="n">obs_id</span><span class="p">)[</span><span class="n">obs_cols</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OBS_ID      GLON_PNT           GLAT_PNT      LIVETIME
-              deg                deg            s
------- ------------------ ------------------ --------
-110380  359.9999912037958 -1.299995937905366   1764.0
-111140  358.4999833830074 1.3000020211954284   1764.0
-111159 1.5000056568267741  1.299940468335294   1764.0
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/cta_data_analysis.py&quot;</span>, line <span class="m">79</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/cta-1dc/index/gps&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py&quot;</span>, line <span class="m">173</span>, in <span class="n">from_dir</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">hdu_table_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">OSError</span>: <span class="n">File not found: gammapy-data/cta-1dc/index/gps/hdu-index.fits.gz</span>
 </pre></div>
 </div>
 </section>
@@ -748,18 +748,6 @@ analysis</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsGeom
-
-        axes       : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;]
-        shape      : (500, 400, 10)
-        ndim       : 3
-        frame      : galactic
-        projection : CAR
-        center     : 0.0 deg, 0.0 deg
-        width      : 10.0 deg x 8.0 deg
-        wcs ref    : 0.0 deg, 0.0 deg
-</pre></div>
-</div>
 </section>
 <section id="compute-images">
 <h3>Compute images<a class="headerlink" href="#compute-images" title="Link to this heading">#</a></h3>
@@ -780,14 +768,6 @@ analysis</p>
 
 <span class="n">dataset_image</span> <span class="o">=</span> <span class="n">stacked</span><span class="o">.</span><span class="n">to_image</span><span class="p">()</span>
 <span class="n">geom_image</span> <span class="o">=</span> <span class="n">dataset_image</span><span class="o">.</span><span class="n">geoms</span><span class="p">[</span><span class="s2">&quot;geom&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
-/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
-/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
 </pre></div>
 </div>
 </section>
@@ -812,7 +792,7 @@ analysis</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_cta_data_analysis_001.png" srcset="../../_images/sphx_glr_cta_data_analysis_001.png" alt="Counts map, Background map, Excess map" class = "sphx-glr-single-img"/></section>
+</section>
 </section>
 <section id="source-detection">
 <h2>Source Detection<a class="headerlink" href="#source-detection" title="Link to this heading">#</a></h2>
@@ -843,28 +823,9 @@ We search for 0.1 deg sigma gaussian sources in the dataset.</p>
 <span class="n">display</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>value   x   y      ra       dec
-                  deg       deg
------- --- --- --------- ---------
-36.125 252 197 266.42400 -29.00490
-17.969 207 202 266.85900 -28.18386
-   ... ... ...       ...       ...
-5.1491  87 226 267.78333 -25.87897
-5.0164 239 167 267.16511 -29.09348
-Length = 9 rows
-</pre></div>
-</div>
 <p>To get the position of the sources, simply</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">source_pos</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">source_pos</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
-    [(266.42399798, -29.00490483), (266.85900392, -28.18385658),
-     (267.16303044, -27.85527359), (264.79469899, -30.97749371),
-     (266.4226731 , -30.08192101), (265.94722599, -30.0643032 ),
-     (268.07454639, -26.10409446), (267.78332719, -25.87897418),
-     (267.16511148, -29.093477  )]&gt;
 </pre></div>
 </div>
 <p>Plot sources on top of significance sky image</p>
@@ -884,7 +845,7 @@ Length = 9 rows
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_cta_data_analysis_002.png" srcset="../../_images/sphx_glr_cta_data_analysis_002.png" alt="cta data analysis" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="spatial-analysis">
 <h2>Spatial analysis<a class="headerlink" href="#spatial-analysis" title="Link to this heading">#</a></h2>
 <p>See other notebooks for how to run a 3D cube or 2D image based analysis.</p>
@@ -903,7 +864,7 @@ likelihood function.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_cta_data_analysis_003.png" srcset="../../_images/sphx_glr_cta_data_analysis_003.png" alt="cta data analysis" class = "sphx-glr-single-img"/><p>Configure spectral analysis</p>
+<p>Configure spectral analysis</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">energy_axis</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_energy_bounds</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;TeV&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;energy&quot;</span><span class="p">)</span>
 <span class="n">energy_axis_true</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_energy_bounds</span><span class="p">(</span>
     <span class="mf">0.05</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;TeV&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;energy_true&quot;</span>
@@ -940,12 +901,6 @@ likelihood function.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_cta_data_analysis_004.png" srcset="../../_images/sphx_glr_cta_data_analysis_004.png" alt="cta data analysis" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/regions/shapes/circle.py:161: UserWarning: Setting the &#39;color&#39; property will override the edgecolor or facecolor properties.
-  return Circle(xy=xy, radius=radius, **mpl_kwargs)
-/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/visualization/datasets.py:84: UserWarning: Setting the &#39;color&#39; property will override the edgecolor or facecolor properties.
-  handle = Patch(**plot_kwargs)
-</pre></div>
-</div>
 <section id="model-fit">
 <h3>Model fit<a class="headerlink" href="#model-fit" title="Link to this heading">#</a></h3>
 <p>The next step is to fit a spectral model, using all data (i.e. a
@@ -963,23 +918,6 @@ likelihood function.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : minuit
-        method     : migrad
-        success    : True
-        message    : Optimization terminated successfully.
-        nfev       : 104
-        total stat : 88.36
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
-</pre></div>
-</div>
 <p>Here we can plot the predicted number of counts for each model and
 for the background in the dataset. This is especially useful when
 studying complex field with a lot a sources. There is a function
@@ -991,55 +929,12 @@ in the visualization sub-package of gammapy that does this automatically.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">stacked_dataset</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SpectrumDatasetOnOff
---------------------
-
-  Name                            : stacked
-
-  Total counts                    : 413
-  Total background counts         : 85.43
-  Total excess counts             : 327.57
-
-  Predicted counts                : 413.95
-  Predicted background counts     : 85.42
-  Predicted excess counts         : 328.53
-
-  Exposure min                    : 9.94e+07 m2 s
-  Exposure max                    : 2.46e+10 m2 s
-
-  Number of total bins            : 40
-  Number of fit bins              : 30
-
-  Fit statistic type              : wstat
-  Fit statistic value (-2 log(L)) : 34.70
-
-  Number of models                : 1
-  Number of parameters            : 3
-  Number of free parameters       : 2
-
-  Component 0: SkyModel
-
-    Name                      : source-gc
-    Datasets names            : None
-    Spectral model type       : PowerLawSpectralModel
-    Spatial  model type       :
-    Temporal model type       :
-    Parameters:
-      index                         :      2.403   +/-    0.06
-      amplitude                     :   3.28e-12   +/- 2.3e-13 1 / (cm2 s TeV)
-      reference             (frozen):      1.000       TeV
-
-    Total counts_off                : 2095
-  Acceptance                      : 30
-  Acceptance off                  : 744
-</pre></div>
-</div>
 <p>Call <a class="reference internal" href="../../api/gammapy.visualization.plot_npred_signal.html#gammapy.visualization.plot_npred_signal" title="gammapy.visualization.plot_npred_signal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_npred_signal</span></code></a> to plot the predicted counts.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_npred_signal</span><span class="p">(</span><span class="n">stacked_dataset</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_cta_data_analysis_005.png" srcset="../../_images/sphx_glr_cta_data_analysis_005.png" alt="cta data analysis" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="spectral-points">
 <h3>Spectral points<a class="headerlink" href="#spectral-points" title="Link to this heading">#</a></h3>
 <p>Finally, let’s compute spectral points. The method used is to first
@@ -1053,21 +948,7 @@ profile to compute the flux and flux error.</p>
 <span class="n">flux_points</span><span class="o">.</span><span class="n">to_table</span><span class="p">(</span><span class="n">sed_type</span><span class="o">=</span><span class="s2">&quot;dnde&quot;</span><span class="p">,</span> <span class="n">formatted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output_subarea output_html rendered_html output_result">
-<div><i>Table length=5</i>
-<table id="table139796294496656" class="table-striped table-bordered table-condensed">
-<thead><tr><th>e_ref</th><th>e_min</th><th>e_max</th><th>dnde</th><th>dnde_err</th><th>ts</th><th>sqrt_ts</th><th>npred</th><th>npred_excess</th><th>stat</th><th>stat_null</th><th>counts</th><th>success</th></tr></thead>
-<thead><tr><th>TeV</th><th>TeV</th><th>TeV</th><th>1 / (cm2 s TeV)</th><th>1 / (cm2 s TeV)</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
-<thead><tr><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64[1]</th><th>float32[1]</th><th>float64</th><th>float64</th><th>float64[1]</th><th>bool</th></tr></thead>
-<tr><td>1.375</td><td>0.946</td><td>2.000</td><td>1.447e-12</td><td>1.783e-13</td><td>152.513</td><td>12.350</td><td>105.77522448982589</td><td>83.89892</td><td>13.412</td><td>165.925</td><td>106.0</td><td>True</td></tr>
-<tr><td>2.699</td><td>2.000</td><td>3.641</td><td>3.563e-13</td><td>4.835e-14</td><td>150.654</td><td>12.274</td><td>73.02511912182847</td><td>63.13247</td><td>2.245</td><td>152.898</td><td>73.0</td><td>True</td></tr>
-<tr><td>5.295</td><td>3.641</td><td>7.700</td><td>7.332e-14</td><td>1.138e-14</td><td>121.570</td><td>11.026</td><td>53.9835920853751</td><td>47.455875</td><td>0.624</td><td>122.193</td><td>54.0</td><td>True</td></tr>
-<tr><td>11.198</td><td>7.700</td><td>16.284</td><td>6.353e-15</td><td>2.154e-15</td><td>21.789</td><td>4.668</td><td>13.188429838191043</td><td>10.660447</td><td>5.744</td><td>27.532</td><td>13.0</td><td>True</td></tr>
-<tr><td>21.971</td><td>16.284</td><td>29.645</td><td>1.109e-15</td><td>6.938e-16</td><td>6.250</td><td>2.500</td><td>4.145310538838432</td><td>3.197989</td><td>2.899</td><td>9.149</td><td>4.0</td><td>True</td></tr>
-</table></div>
-</div>
-<br />
-<br /></section>
+</section>
 <section id="plot">
 <h3>Plot<a class="headerlink" href="#plot" title="Link to this heading">#</a></h3>
 <p>Let’s plot the spectral model and points. You could do it directly, but
@@ -1078,7 +959,7 @@ for convenience we bundle the model and the flux points in a
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_cta_data_analysis_006.png" srcset="../../_images/sphx_glr_cta_data_analysis_006.png" alt="cta data analysis" class = "sphx-glr-single-img"/></section>
+</section>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
@@ -1111,7 +992,6 @@ analysis of gamma-ray astronomy.</p></li>
 using simulated 1DC data.</p></li>
 <li><p>Let us know if you have any questions or issues!</p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 41.182 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-3d-cta-data-analysis-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-3d/cta_data_analysis.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo2.svg" width="150px" /></a>

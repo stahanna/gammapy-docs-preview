@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="H.E.S.S. with Gammapy" href="../data/hess.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -648,8 +648,8 @@ determine the 1D IRFs including a containment correction.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -675,7 +675,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -715,8 +715,22 @@ degree.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/cta_sensitivity.py&quot;</span>, line <span class="m">87</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">irfs</span> <span class="o">=</span> <span class="n">load_irf_dict_from_file</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/irf/io.py&quot;</span>, line <span class="m">197</span>, in <span class="n">load_irf_dict_from_file</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits&#39;</span>
 </pre></div>
 </div>
 <p>Initiate and run the <a class="reference internal" href="../../api/gammapy.makers.SpectrumDatasetMaker.html#gammapy.makers.SpectrumDatasetMaker" title="gammapy.makers.SpectrumDatasetMaker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectrumDatasetMaker</span></code></a>.</p>
@@ -782,17 +796,6 @@ the number of signal counts. This is visible in the plot below.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">sensitivity_table</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  energy    e_ref     e_min     e_max       e2dnde     excess background criterion
-   TeV       TeV       TeV       TeV    erg / (cm2 s)
---------- --------- --------- --------- ------------- ------- ---------- ---------
-0.0356551 0.0356551      0.03 0.0423761    8.0756e-12 1642.38    32847.7       bkg
-0.0503641 0.0503641 0.0423761 0.0598579   4.33368e-12   825.3      16506       bkg
-      ...       ...       ...       ...           ...     ...        ...       ...
-  17.8699   17.8699   15.0356   21.2384   1.59254e-13      10   0.266192     gamma
-  25.2419   25.2419   21.2384        30   2.25162e-13      10   0.126585     gamma
-Length = 20 rows
-</pre></div>
-</div>
 <p>Plot the sensitivity curve</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cycler</span> <span class="kn">import</span> <span class="n">cycler</span>
 
@@ -823,7 +826,7 @@ Length = 20 rows
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_cta_sensitivity_001.png" srcset="../../_images/sphx_glr_cta_sensitivity_001.png" alt="cta sensitivity" class = "sphx-glr-single-img"/><p>We add some control plots showing the expected number of background
+<p>We add some control plots showing the expected number of background
 counts per bin and the ON region size cut (here the 68% containment
 radius of the PSF).</p>
 <p>Plot expected number of counts for signal and background.</p>
@@ -850,7 +853,7 @@ radius of the PSF).</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_cta_sensitivity_002.png" srcset="../../_images/sphx_glr_cta_sensitivity_002.png" alt="cta sensitivity" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="obtaining-an-integral-flux-sensitivity">
 <h2>Obtaining an integral flux sensitivity<a class="headerlink" href="#obtaining-an-integral-flux-sensitivity" title="Link to this heading">#</a></h2>
 <p>It is often useful to obtain the integral sensitivity above a certain
@@ -866,14 +869,6 @@ energy</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">sensitivity_table</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/scipy/optimize/_root_scalar.py:298: RuntimeWarning: Tolerance of -4.4228954720892943e-08 reached.
-  r, sol = methodc(f, x0, args=args, fprime=None, fprime2=None,
- energy   e_ref   e_min e_max     e2dnde    excess background  criterion
-  TeV      TeV     TeV   TeV  erg / (cm2 s)
--------- -------- ----- ----- ------------- ------ ---------- ------------
-0.948683 0.948683  0.03    30           nan    nan    63902.9 significance
-</pre></div>
-</div>
 <p>To get the integral flux, we convert to a <a class="reference internal" href="../../api/gammapy.estimators.FluxPoints.html#gammapy.estimators.FluxPoints" title="gammapy.estimators.FluxPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxPoints</span></code></a> object
 that does the conversion internally.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">flux_points</span> <span class="o">=</span> <span class="n">FluxPoints</span><span class="o">.</span><span class="n">from_table</span><span class="p">(</span>
@@ -883,9 +878,6 @@ that does the conversion internally.</p>
     <span class="sa">f</span><span class="s2">&quot;Integral sensitivity in </span><span class="si">{</span><span class="n">livetime</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> above </span><span class="si">{</span><span class="n">energy_axis</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> &quot;</span>
     <span class="sa">f</span><span class="s2">&quot;is </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">flux_points</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">quantity</span><span class="p">)</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Integral sensitivity in 50.00 h above 3.00e-02 TeV is nan 1 / (cm2 s)
 </pre></div>
 </div>
 </section>

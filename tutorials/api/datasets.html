@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Source catalogs" href="catalog.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -645,8 +645,8 @@ or estimator classes for modelling and fitting purposes.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -672,7 +672,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -763,7 +763,7 @@ define the binning of the IRF related maps:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset_empty</span><span class="o">.</span><span class="n">geoms</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;geom&#39;: &lt;gammapy.maps.wcs.geom.WcsGeom object at 0x7f24d2ff0d00&gt;, &#39;geom_exposure&#39;: &lt;gammapy.maps.wcs.geom.WcsGeom object at 0x7f24d0108af0&gt;, &#39;geom_psf&#39;: &lt;gammapy.maps.wcs.geom.WcsGeom object at 0x7f24d373a460&gt;, &#39;geom_edisp&#39;: &lt;gammapy.maps.wcs.geom.WcsGeom object at 0x7f24d373acd0&gt;}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;geom&#39;: &lt;gammapy.maps.wcs.geom.WcsGeom object at 0x7fed0cf38130&gt;, &#39;geom_exposure&#39;: &lt;gammapy.maps.wcs.geom.WcsGeom object at 0x7fed0c260160&gt;, &#39;geom_psf&#39;: &lt;gammapy.maps.wcs.geom.WcsGeom object at 0x7fed0c3d7640&gt;, &#39;geom_edisp&#39;: &lt;gammapy.maps.wcs.geom.WcsGeom object at 0x7fed0c3d7040&gt;}
 </pre></div>
 </div>
 <p>Another way to create a <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> is to just read an existing one
@@ -775,31 +775,22 @@ from a FITS file:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset_cta</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
-----------
-
-  Name                            : dataset-cta
-
-  Total counts                    : 104317
-  Total background counts         : 91507.70
-  Total excess counts             : 12809.30
-
-  Predicted counts                : 91507.69
-  Predicted background counts     : 91507.70
-  Predicted excess counts         : nan
-
-  Exposure min                    : 6.28e+07 m2 s
-  Exposure max                    : 1.90e+10 m2 s
-
-  Number of total bins            : 768000
-  Number of fit bins              : 691680
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : nan
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/datasets.py&quot;</span>, line <span class="m">133</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">dataset_cta</span> <span class="o">=</span> <span class="n">MapDataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/datasets/map.py&quot;</span>, line <span class="m">1556</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/cta-1dc-gc/cta-1dc-gc.fits.gz&#39;</span>
 </pre></div>
 </div>
 </section>
@@ -812,34 +803,21 @@ e.g. <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.h
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset_cta</span><span class="o">.</span><span class="n">info_dict</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: &#39;dataset-cta&#39;, &#39;counts&#39;: 104317, &#39;excess&#39;: 12809.3046875, &#39;sqrt_ts&#39;: 41.41009347393684, &#39;background&#39;: 91507.6953125, &#39;npred&#39;: 91507.68628538586, &#39;npred_background&#39;: 91507.6953125, &#39;npred_signal&#39;: nan, &#39;exposure_min&#39;: &lt;Quantity 62842028. m2 s&gt;, &#39;exposure_max&#39;: &lt;Quantity 1.90242058e+10 m2 s&gt;, &#39;livetime&#39;: &lt;Quantity 5292.00010298 s&gt;, &#39;ontime&#39;: &lt;Quantity 5400. s&gt;, &#39;counts_rate&#39;: &lt;Quantity 19.71220672 1 / s&gt;, &#39;background_rate&#39;: &lt;Quantity 17.29170324 1 / s&gt;, &#39;excess_rate&#39;: &lt;Quantity 2.42050348 1 / s&gt;, &#39;n_bins&#39;: 768000, &#39;n_fit_bins&#39;: 691680, &#39;stat_type&#39;: &#39;cash&#39;, &#39;stat_sum&#39;: nan}
-</pre></div>
-</div>
 <p>For a quick view, use</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_cta</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_001.png" srcset="../../_images/sphx_glr_datasets_001.png" alt="Counts, Excess counts, Exposure, Background" class = "sphx-glr-single-img"/><p>And access individual maps like:</p>
+<p>And access individual maps like:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">counts_image</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">sum_over_axes</span><span class="p">()</span>
 <span class="n">counts_image</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="s2">&quot;0.1 deg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_002.png" srcset="../../_images/sphx_glr_datasets_002.png" alt="datasets" class = "sphx-glr-single-img"/><p>Of course you can also access IRF related maps, e.g. the psf as
+<p>Of course you can also access IRF related maps, e.g. the psf as
 <a class="reference internal" href="../../api/gammapy.irf.PSFMap.html#gammapy.irf.PSFMap" title="gammapy.irf.PSFMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PSFMap</span></code></a>:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset_cta</span><span class="o">.</span><span class="n">psf</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsNDMap
-
-        geom  : WcsGeom
-        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;rad&#39;, &#39;energy_true&#39;]
-        shape : (16, 12, 66, 14)
-        ndim  : 4
-        unit  : 1 / sr
-        dtype : &gt;f4
 </pre></div>
 </div>
 <p>And use any method on the <a class="reference internal" href="../../api/gammapy.irf.PSFMap.html#gammapy.irf.PSFMap" title="gammapy.irf.PSFMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PSFMap</span></code></a> object:</p>
@@ -847,28 +825,15 @@ e.g. <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.h
 <span class="nb">print</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[0.08675] deg
-</pre></div>
-</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">edisp_kernel</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">edisp</span><span class="o">.</span><span class="n">get_edisp_kernel</span><span class="p">()</span>
 <span class="n">edisp_kernel</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_003.png" srcset="../../_images/sphx_glr_datasets_003.png" alt="datasets" class = "sphx-glr-single-img"/><p>The <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> typically also contains the information on the
+<p>The <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> typically also contains the information on the
 residual hadronic background, stored in <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.background" title="gammapy.datasets.MapDataset.background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">background</span></code></a> as a
 map:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset_cta</span><span class="o">.</span><span class="n">background</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsNDMap
-
-        geom  : WcsGeom
-        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;]
-        shape : (320, 240, 10)
-        ndim  : 3
-        unit  :
-        dtype : &gt;f4
 </pre></div>
 </div>
 <p>As a next step we define a minimal model on the dataset using the
@@ -885,57 +850,6 @@ Printing the dataset will now show the model components:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset_cta</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
-----------
-
-  Name                            : dataset-cta
-
-  Total counts                    : 104317
-  Total background counts         : 91507.70
-  Total excess counts             : 12809.31
-
-  Predicted counts                : 91719.65
-  Predicted background counts     : 91507.69
-  Predicted excess counts         : 211.96
-
-  Exposure min                    : 6.28e+07 m2 s
-  Exposure max                    : 1.90e+10 m2 s
-
-  Number of total bins            : 768000
-  Number of fit bins              : 691680
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : 424649.33
-
-  Number of models                : 2
-  Number of parameters            : 8
-  Number of free parameters       : 5
-
-  Component 0: SkyModel
-
-    Name                      : gc
-    Datasets names            : None
-    Spectral model type       : PowerLawSpectralModel
-    Spatial  model type       : PointSpatialModel
-    Temporal model type       :
-    Parameters:
-      index                         :      2.000   +/-    0.00
-      amplitude                     :   1.00e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-      reference             (frozen):      1.000       TeV
-      lon_0                         :      4.650   +/-    0.00 rad
-      lat_0                         :     -0.505   +/-    0.00 rad
-
-  Component 1: FoVBackgroundModel
-
-    Name                      : dataset-cta-bkg
-    Datasets names            : [&#39;dataset-cta&#39;]
-    Spectral model type       : PowerLawNormSpectralModel
-    Parameters:
-      norm                          :      1.000   +/-    0.00
-      tilt                  (frozen):      0.000
-      reference             (frozen):      1.000       TeV
-</pre></div>
-</div>
 <p>Now we can use the <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.npred" title="gammapy.datasets.MapDataset.npred"><code class="xref py py-obj docutils literal notranslate"><span class="pre">npred</span></code></a> method to get a map of the total predicted counts
 of the model:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">npred</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">npred</span><span class="p">()</span>
@@ -943,14 +857,14 @@ of the model:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_004.png" srcset="../../_images/sphx_glr_datasets_004.png" alt="datasets" class = "sphx-glr-single-img"/><p>To get the predicted counts from an individual model component we can
+<p>To get the predicted counts from an individual model component we can
 use:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">npred_source</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">npred_signal</span><span class="p">(</span><span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;gc&quot;</span><span class="p">])</span>
 <span class="n">npred_source</span><span class="o">.</span><span class="n">sum_over_axes</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_005.png" srcset="../../_images/sphx_glr_datasets_005.png" alt="datasets" class = "sphx-glr-single-img"/><p><a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.background" title="gammapy.datasets.MapDataset.background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">background</span></code></a> contains the background map computed from the
+<p><a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.background" title="gammapy.datasets.MapDataset.background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">background</span></code></a> contains the background map computed from the
 IRF. Internally it will be combined with a <a class="reference internal" href="../../api/gammapy.modeling.models.FoVBackgroundModel.html#gammapy.modeling.models.FoVBackgroundModel" title="gammapy.modeling.models.FoVBackgroundModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FoVBackgroundModel</span></code></a>, to
 allow for adjusting the background model during a fit. To get the model
 corrected background, one can use <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.npred_background" title="gammapy.datasets.MapDataset.npred_background"><code class="xref py py-obj docutils literal notranslate"><span class="pre">npred_background</span></code></a>.</p>
@@ -959,7 +873,7 @@ corrected background, one can use <a class="reference internal" href="../../api/
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_006.png" srcset="../../_images/sphx_glr_datasets_006.png" alt="datasets" class = "sphx-glr-single-img"/><section id="using-masks">
+<section id="using-masks">
 <h3>Using masks<a class="headerlink" href="#using-masks" title="Link to this heading">#</a></h3>
 <p>There are two masks that can be set on a <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a>, <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.mask_safe" title="gammapy.datasets.MapDataset.mask_safe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_safe</span></code></a> and
 <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.mask_fit" title="gammapy.datasets.MapDataset.mask_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_fit</span></code></a>.</p>
@@ -982,7 +896,7 @@ have the same <a class="reference internal" href="../../api/gammapy.maps.Map.htm
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_007.png" srcset="../../_images/sphx_glr_datasets_007.png" alt="Energy 100 GeV - 158 GeV, Energy 158 GeV - 251 GeV, Energy 251 GeV - 398 GeV, Energy 398 GeV - 631 GeV, Energy 631 GeV - 1.00 TeV, Energy 1.00 TeV - 1.58 TeV, Energy 1.58 TeV - 2.51 TeV, Energy 2.51 TeV - 3.98 TeV, Energy 3.98 TeV - 6.31 TeV, Energy 6.31 TeV - 10.00 TeV" class = "sphx-glr-single-img"/><p>In addition it is possible to define a custom <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.mask_fit" title="gammapy.datasets.MapDataset.mask_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_fit</span></code></a>:</p>
+<p>In addition it is possible to define a custom <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.mask_fit" title="gammapy.datasets.MapDataset.mask_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_fit</span></code></a>:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># To apply a mask fit - in energy and space</span>
 
 <span class="n">region</span> <span class="o">=</span> <span class="n">CircleSkyRegion</span><span class="p">(</span><span class="n">SkyCoord</span><span class="p">(</span><span class="s2">&quot;0d&quot;</span><span class="p">,</span> <span class="s2">&quot;0d&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;galactic&quot;</span><span class="p">),</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
@@ -996,7 +910,7 @@ have the same <a class="reference internal" href="../../api/gammapy.maps.Map.htm
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_008.png" srcset="../../_images/sphx_glr_datasets_008.png" alt="Energy 100 GeV - 158 GeV, Energy 158 GeV - 251 GeV, Energy 251 GeV - 398 GeV, Energy 398 GeV - 631 GeV, Energy 631 GeV - 1.00 TeV, Energy 1.00 TeV - 1.58 TeV, Energy 1.58 TeV - 2.51 TeV, Energy 2.51 TeV - 3.98 TeV, Energy 3.98 TeV - 6.31 TeV, Energy 6.31 TeV - 10.00 TeV" class = "sphx-glr-single-img"/><p>To access the energy range defined by the mask you can use:</p>
+<p>To access the energy range defined by the mask you can use:</p>
 <p>-<a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.energy_range_safe" title="gammapy.datasets.MapDataset.energy_range_safe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_range_safe</span></code></a> : energy range defined by the <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.mask_safe" title="gammapy.datasets.MapDataset.mask_safe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_safe</span></code></a>
 - <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.energy_range_fit" title="gammapy.datasets.MapDataset.energy_range_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_range_fit</span></code></a> : energy range defined by the <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.mask_fit" title="gammapy.datasets.MapDataset.mask_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_fit</span></code></a>
 - <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.energy_range" title="gammapy.datasets.MapDataset.energy_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">energy_range</span></code></a> : the final energy range used in likelihood computation</p>
@@ -1010,12 +924,12 @@ values at each spatial pixel</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_009.png" srcset="../../_images/sphx_glr_datasets_009.png" alt="datasets" class = "sphx-glr-single-img"/><p>To see the high energy threshold at each point</p>
+<p>To see the high energy threshold at each point</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">e_max</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_010.png" srcset="../../_images/sphx_glr_datasets_010.png" alt="datasets" class = "sphx-glr-single-img"/><p>Just as for <a class="reference internal" href="../../api/gammapy.maps.Map.html#gammapy.maps.Map" title="gammapy.maps.Map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map</span></code></a> objects it is possible to cutout a whole
+<p>Just as for <a class="reference internal" href="../../api/gammapy.maps.Map.html#gammapy.maps.Map" title="gammapy.maps.Map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map</span></code></a> objects it is possible to cutout a whole
 <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a>, which will perform the cutout for all maps in
 parallel.Optionally one can provide a new name to the resulting dataset:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">cutout</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">cutout</span><span class="p">(</span>
@@ -1028,7 +942,7 @@ parallel.Optionally one can provide a new name to the resulting dataset:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_011.png" srcset="../../_images/sphx_glr_datasets_011.png" alt="datasets" class = "sphx-glr-single-img"/><p>It is also possible to slice a <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> in energy:</p>
+<p>It is also possible to slice a <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> in energy:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">sliced</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">slice_by_energy</span><span class="p">(</span>
     <span class="n">energy_min</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span><span class="p">,</span> <span class="n">energy_max</span><span class="o">=</span><span class="mi">5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;slice-energy&quot;</span>
 <span class="p">)</span>
@@ -1036,13 +950,13 @@ parallel.Optionally one can provide a new name to the resulting dataset:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_012.png" srcset="../../_images/sphx_glr_datasets_012.png" alt="Energy 1.00 TeV - 1.58 TeV, Energy 1.58 TeV - 2.51 TeV, Energy 2.51 TeV - 3.98 TeV" class = "sphx-glr-single-img"/><p>The same operation will be applied to all other maps contained in the
+<p>The same operation will be applied to all other maps contained in the
 datasets such as <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.mask_fit" title="gammapy.datasets.MapDataset.mask_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_fit</span></code></a>:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">sliced</span><span class="o">.</span><span class="n">mask_fit</span><span class="o">.</span><span class="n">plot_grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_013.png" srcset="../../_images/sphx_glr_datasets_013.png" alt="Energy 1.00 TeV - 1.58 TeV, Energy 1.58 TeV - 2.51 TeV, Energy 2.51 TeV - 3.98 TeV" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="resampling-datasets">
 <h3>Resampling datasets<a class="headerlink" href="#resampling-datasets" title="Link to this heading">#</a></h3>
 <p>It can often be useful to coarsely rebin an initially computed datasets
@@ -1054,7 +968,7 @@ axes:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_014.png" srcset="../../_images/sphx_glr_datasets_014.png" alt="datasets" class = "sphx-glr-single-img"/><p>And the same down-sampling process is possible along the energy axis:</p>
+<p>And the same down-sampling process is possible along the energy axis:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">downsampled_energy</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">downsample</span><span class="p">(</span>
     <span class="n">factor</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">axis_name</span><span class="o">=</span><span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;downsampled-energy&quot;</span>
 <span class="p">)</span>
@@ -1062,86 +976,9 @@ axes:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_015.png" srcset="../../_images/sphx_glr_datasets_015.png" alt="Energy 100 GeV - 1.00 TeV, Energy 1.00 TeV - 10.00 TeV" class = "sphx-glr-single-img"/><p>In the printout one can see that the actual number of counts is
+<p>In the printout one can see that the actual number of counts is
 preserved during the down-sampling:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">downsampled_energy</span><span class="p">,</span> <span class="n">dataset_cta</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
-----------
-
-  Name                            : downsampled-energy
-
-  Total counts                    : 104317
-  Total background counts         : 91507.69
-  Total excess counts             : 12809.31
-
-  Predicted counts                : 91507.69
-  Predicted background counts     : 91507.69
-  Predicted excess counts         : nan
-
-  Exposure min                    : 6.28e+07 m2 s
-  Exposure max                    : 1.90e+10 m2 s
-
-  Number of total bins            : 153600
-  Number of fit bins              : 22608
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : nan
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
-
- MapDataset
-----------
-
-  Name                            : dataset-cta
-
-  Total counts                    : 104317
-  Total background counts         : 91507.70
-  Total excess counts             : 12809.31
-
-  Predicted counts                : 91719.65
-  Predicted background counts     : 91507.69
-  Predicted excess counts         : 211.96
-
-  Exposure min                    : 6.28e+07 m2 s
-  Exposure max                    : 1.90e+10 m2 s
-
-  Number of total bins            : 768000
-  Number of fit bins              : 67824
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : 44318.32
-
-  Number of models                : 2
-  Number of parameters            : 8
-  Number of free parameters       : 5
-
-  Component 0: SkyModel
-
-    Name                      : gc
-    Datasets names            : None
-    Spectral model type       : PowerLawSpectralModel
-    Spatial  model type       : PointSpatialModel
-    Temporal model type       :
-    Parameters:
-      index                         :      2.000   +/-    0.00
-      amplitude                     :   1.00e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-      reference             (frozen):      1.000       TeV
-      lon_0                         :      4.650   +/-    0.00 rad
-      lat_0                         :     -0.505   +/-    0.00 rad
-
-  Component 1: FoVBackgroundModel
-
-    Name                      : dataset-cta-bkg
-    Datasets names            : [&#39;dataset-cta&#39;]
-    Spectral model type       : PowerLawNormSpectralModel
-    Parameters:
-      norm                          :      1.000   +/-    0.00
-      tilt                  (frozen):      0.000
-      reference             (frozen):      1.000       TeV
 </pre></div>
 </div>
 <p>We can also resample the finer binned datasets to an arbitrary coarser
@@ -1152,14 +989,14 @@ energy binning using:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_016.png" srcset="../../_images/sphx_glr_datasets_016.png" alt="Energy 100 GeV - 251 GeV, Energy 251 GeV - 1.00 TeV, Energy 1.00 TeV - 2.51 TeV, Energy 2.51 TeV - 10.00 TeV" class = "sphx-glr-single-img"/><p>To squash the whole dataset into a single energy bin there is the
+<p>To squash the whole dataset into a single energy bin there is the
 <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset.to_image" title="gammapy.datasets.MapDataset.to_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_image()</span></code></a> convenience method:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_image</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">to_image</span><span class="p">()</span>
 <span class="n">dataset_image</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_017.png" srcset="../../_images/sphx_glr_datasets_017.png" alt="datasets" class = "sphx-glr-single-img"/></section>
+</section>
 </section>
 <section id="spectrumdataset">
 <h2>SpectrumDataset<a class="headerlink" href="#spectrumdataset" title="Link to this heading">#</a></h2>
@@ -1179,39 +1016,12 @@ correction is feasible only for circular regions.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_018.png" srcset="../../_images/sphx_glr_datasets_018.png" alt="Counts, Exposure, Energy Dispersion" class = "sphx-glr-single-img"/><p>A <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> can also be integrated over the <code class="xref py py-obj docutils literal notranslate"><span class="pre">on_region</span></code> to create
+<p>A <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> can also be integrated over the <code class="xref py py-obj docutils literal notranslate"><span class="pre">on_region</span></code> to create
 a <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> with a <a class="reference internal" href="../../api/gammapy.maps.RegionGeom.html#gammapy.maps.RegionGeom" title="gammapy.maps.RegionGeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegionGeom</span></code></a>. Complex regions can be handled
 and since the full IRFs are used, containment correction is not
 required.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">reg_dataset</span> <span class="o">=</span> <span class="n">dataset_cta</span><span class="o">.</span><span class="n">to_region_map_dataset</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;region-map-dataset&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">reg_dataset</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
-----------
-
-  Name                            : region-map-dataset
-
-  Total counts                    : 5644
-  Total background counts         : 3323.66
-  Total excess counts             : 2320.34
-
-  Predicted counts                : 3323.66
-  Predicted background counts     : 3323.66
-  Predicted excess counts         : nan
-
-  Exposure min                    : 4.66e+08 m2 s
-  Exposure max                    : 1.89e+10 m2 s
-
-  Number of total bins            : 10
-  Number of fit bins              : 6
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : nan
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
 </pre></div>
 </div>
 </section>
@@ -1229,83 +1039,17 @@ points, which can be then used in fitting.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_datasets_019.png" srcset="../../_images/sphx_glr_datasets_019.png" alt="datasets" class = "sphx-glr-single-img"/><p>The masks on <a class="reference internal" href="../../api/gammapy.datasets.FluxPointsDataset.html#gammapy.datasets.FluxPointsDataset" title="gammapy.datasets.FluxPointsDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxPointsDataset</span></code></a> are <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray</span></code></a> objects
+<p>The masks on <a class="reference internal" href="../../api/gammapy.datasets.FluxPointsDataset.html#gammapy.datasets.FluxPointsDataset" title="gammapy.datasets.FluxPointsDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxPointsDataset</span></code></a> are <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray</span></code></a> objects
 and the data is a
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxPoints</span></code> object. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_safe</span></code>,
 by default, masks the upper limit points.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fp_dataset</span><span class="o">.</span><span class="n">mask_safe</span><span class="p">)</span>  <span class="c1"># Note: the mask here is simply a numpy array</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[ True]]
-
- [[False]]
-
- [[ True]]
-
- [[False]]
-
- [[False]]
-
- [[ True]]
-
- [[False]]
-
- [[False]]]
-</pre></div>
-</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fp_dataset</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># is a `FluxPoints` object</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>FluxPoints
-----------
-
-  geom                   : RegionGeom
-  axes                   : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;]
-  shape                  : (1, 1, 24)
-  quantities             : [&#39;norm&#39;, &#39;norm_err&#39;, &#39;norm_ul&#39;]
-  ref. model             : pl
-  n_sigma                : 1
-  n_sigma_ul             : 2.0
-  sqrt_ts_threshold_ul   : 2
-  sed type init          : dnde
-</pre></div>
-</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fp_dataset</span><span class="o">.</span><span class="n">data_shape</span><span class="p">())</span>  <span class="c1"># number of data points</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(24,)
 </pre></div>
 </div>
 <p>For an example of fitting <a class="reference internal" href="../../api/gammapy.estimators.FluxPoints.html#gammapy.estimators.FluxPoints" title="gammapy.estimators.FluxPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxPoints</span></code></a>, see <a class="reference internal" href="../analysis-1d/sed_fitting.html"><span class="doc">Flux point fitting</span></a>,
@@ -1329,24 +1073,6 @@ simultaneous datasets. As an example, please see <a class="reference internal" h
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Datasets
---------
-
-Dataset 0:
-
-  Type       : MapDataset
-  Name       : dataset-empty
-  Instrument :
-  Models     :
-
-Dataset 1:
-
-  Type       : MapDataset
-  Name       : dataset-cta
-  Instrument :
-  Models     : [&#39;gc&#39;, &#39;dataset-cta-bkg&#39;]
-</pre></div>
-</div>
 <p>If all the datasets have the same type we can also print an info table,
 collecting all the information from the individual calls to
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">info_dict()</span></code>:</p>
@@ -1355,74 +1081,12 @@ collecting all the information from the individual calls to
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>  <span class="c1"># unique name of each dataset</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>     name     counts       excess            sqrt_ts        background        npred        npred_background ...    counts_rate      background_rate      excess_rate    n_bins n_fit_bins stat_type      stat_sum
-                                                                                                            ...       1 / s              1 / s              1 / s
-------------- ------ ------------------ ----------------- ------------- ----------------- ----------------- ... ------------------ ------------------ ----------------- ------ ---------- --------- ------------------
-dataset-empty      0                0.0               0.0           0.0               0.0               0.0 ...                nan                nan               nan 110000          0      cash                nan
-  dataset-cta 104317 12809.313714614138 41.41012398874433 91507.6953125 91719.64812407878 91507.68628538586 ... 19.712206721480793 17.291703237308198 2.420505189976446 768000      67824      cash 44318.324424288934
-[&#39;dataset-empty&#39;, &#39;dataset-cta&#39;]
-</pre></div>
-</div>
 <p>We can access individual datasets in <code class="xref py py-obj docutils literal notranslate"><span class="pre">Datasets</span></code> object by name:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="s2">&quot;dataset-empty&quot;</span><span class="p">])</span>  <span class="c1"># extracts the first dataset</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
-----------
-
-  Name                            : dataset-empty
-
-  Total counts                    : 0
-  Total background counts         : 0.00
-  Total excess counts             : 0.00
-
-  Predicted counts                : 0.00
-  Predicted background counts     : 0.00
-  Predicted excess counts         : nan
-
-  Exposure min                    : 0.00e+00 m2 s
-  Exposure max                    : 0.00e+00 m2 s
-
-  Number of total bins            : 110000
-  Number of fit bins              : 0
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : nan
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
-</pre></div>
-</div>
 <p>Or by index:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
-----------
-
-  Name                            : dataset-empty
-
-  Total counts                    : 0
-  Total background counts         : 0.00
-  Total excess counts             : 0.00
-
-  Predicted counts                : 0.00
-  Predicted background counts     : 0.00
-  Predicted excess counts         : nan
-
-  Exposure min                    : 0.00e+00 m2 s
-  Exposure max                    : 0.00e+00 m2 s
-
-  Number of total bins            : 110000
-  Number of fit bins              : 0
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : nan
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
 </pre></div>
 </div>
 <p>Other list type operations work as well such as:</p>
@@ -1431,15 +1095,9 @@ dataset-empty      0                0.0               0.0           0.0         
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;dataset-cta&#39;]
-</pre></div>
-</div>
 <p>Or</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spectrum_dataset</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;dataset-cta&#39;, &#39;spectrum-dataset&#39;]
 </pre></div>
 </div>
 <p>Let’s create a list of spectrum datasets to illustrate some more
@@ -1455,72 +1113,9 @@ functionality:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Datasets
---------
-
-Dataset 0:
-
-  Type       : SpectrumDatasetOnOff
-  Name       : 23523
-  Instrument :
-  Models     :
-
-Dataset 1:
-
-  Type       : SpectrumDatasetOnOff
-  Name       : 23526
-  Instrument :
-  Models     :
-
-Dataset 2:
-
-  Type       : SpectrumDatasetOnOff
-  Name       : 23559
-  Instrument :
-  Models     :
-
-Dataset 3:
-
-  Type       : SpectrumDatasetOnOff
-  Name       : 23592
-  Instrument :
-  Models     :
-</pre></div>
-</div>
 <p>Now we can stack all datasets using <a class="reference internal" href="../../api/gammapy.datasets.Datasets.html#gammapy.datasets.Datasets.stack_reduce" title="gammapy.datasets.Datasets.stack_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stack_reduce()</span></code></a>:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">stacked</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">stack_reduce</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;stacked&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stacked</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SpectrumDatasetOnOff
---------------------
-
-  Name                            : stacked
-
-  Total counts                    : 459
-  Total background counts         : 27.50
-  Total excess counts             : 431.50
-
-  Predicted counts                : 45.27
-  Predicted background counts     : 45.27
-  Predicted excess counts         : nan
-
-  Exposure min                    : 2.13e+06 m2 s
-  Exposure max                    : 2.63e+09 m2 s
-
-  Number of total bins            : 80
-  Number of fit bins              : 43
-
-  Fit statistic type              : wstat
-  Fit statistic value (-2 log(L)) : 1530.36
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
-
-  Total counts_off                : 645
-  Acceptance                      : 43
-  Acceptance off                  : 1149
 </pre></div>
 </div>
 <p>Or slice all datasets by a given energy range:</p>
@@ -1530,10 +1125,6 @@ Dataset 3:
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets_sliced</span><span class="o">.</span><span class="n">energy_ranges</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(&lt;Quantity [1.e+09, 1.e+09, 1.e+09, 1.e+09] keV&gt;, &lt;Quantity [1.e+10, 1.e+10, 1.e+10, 1.e+10] keV&gt;)
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 24.150 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-api-datasets-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/api/datasets.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo4.svg" width="150px" /></a>

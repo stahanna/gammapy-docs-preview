@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="CTA with Gammapy" href="cta.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -678,8 +678,8 @@ to 2 TeV.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -705,7 +705,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -717,22 +717,22 @@ class:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EventList
----------
-
-  Instrument       : LAT
-  Telescope        : GLAST
-  Obs. ID          :
-
-  Number of events : 697317
-  Event rate       : 0.003 1 / s
-
-  Time start       : 54682.65603222222
-  Time stop        : 57236.96833546296
-
-  Min. energy      : 1.00e+04 MeV
-  Max. energy      : 2.00e+06 MeV
-  Median energy    : 1.59e+04 MeV
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/data/fermi_lat.py&quot;</span>, line <span class="m">97</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">events</span> <span class="o">=</span> <span class="n">EventList</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/fermi_3fhl/fermi_3fhl_events_selected.fits.gz&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/event_list.py&quot;</span>, line <span class="m">121</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/fermi_3fhl/fermi_3fhl_events_selected.fits.gz&#39;</span>
 </pre></div>
 </div>
 <p>The event data is stored in a
@@ -751,36 +751,11 @@ event class, event type etc.</p>
 <span class="n">energy</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;stats&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;ENERGY&#39;, &#39;RA&#39;, &#39;DEC&#39;, &#39;L&#39;, &#39;B&#39;, &#39;THETA&#39;, &#39;PHI&#39;, &#39;ZENITH_ANGLE&#39;, &#39;EARTH_AZIMUTH_ANGLE&#39;, &#39;TIME&#39;, &#39;EVENT_ID&#39;, &#39;RUN_ID&#39;, &#39;RECON_VERSION&#39;, &#39;CALIB_VERSION&#39;, &#39;EVENT_CLASS&#39;, &#39;EVENT_TYPE&#39;, &#39;CONVERSION_TYPE&#39;, &#39;LIVETIME&#39;, &#39;DIFRSP0&#39;, &#39;DIFRSP1&#39;, &#39;DIFRSP2&#39;, &#39;DIFRSP3&#39;, &#39;DIFRSP4&#39;]
-  ENERGY       RA       DEC
-   MeV        deg       deg
----------- --------- ---------
-12856.5205 139.64438  -9.93702
- 14773.319 177.04454  60.55275
- 23273.527 110.21325 37.002018
- 41866.125 334.85287 17.577398
- 42463.074 316.86676 48.152477
-2008-08-04 15:49:26.782
-2015-07-30 11:00:41.226
-name = ENERGY
-mean = 28905.5 MeV
-std = 61051.7 MeV
-min = 10000 MeV
-max = 1.99848e+06 MeV
-n_bad = 0
-length = 697317
-</pre></div>
-</div>
 <p>As a short analysis example we will count the number of events above a
 certain minimum energy:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">e_min</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">GeV</span><span class="p">:</span>
     <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">energy</span> <span class="o">&gt;</span> <span class="n">e_min</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Events above </span><span class="si">{</span><span class="n">e_min</span><span class="si">:</span><span class="s2">4.0f</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">5.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Events above   10 GeV: 697317
-Events above  100 GeV: 23628
-Events above 1000 GeV:   544
 </pre></div>
 </div>
 </section>
@@ -814,17 +789,6 @@ geometry. We chose a TAN projection centered on position
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_001.png" srcset="../../_images/sphx_glr_fermi_lat_001.png" alt="fermi lat" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapAxis
-
-        name       : energy
-        unit       : &#39;MeV&#39;
-        nbins      : 4
-        node type  : edges
-        edges min  : 1.0e+04 MeV
-        edges max  : 2.0e+06 MeV
-        interp     : log
-</pre></div>
-</div>
 </section>
 <section id="exposure">
 <h2>Exposure<a class="headerlink" href="#exposure" title="Link to this heading">#</a></h2>
@@ -852,28 +816,6 @@ any energy axis for your exposure cube that you like.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_002.png" srcset="../../_images/sphx_glr_fermi_lat_002.png" alt="fermi lat" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>HpxGeom
-
-        axes       : [&#39;skycoord&#39;, &#39;energy_true&#39;]
-        shape      : (49152, 18)
-        ndim       : 3
-        nside      : 64
-        nested     : False
-        frame      : icrs
-        projection : HPX
-        center     : 0.0 deg, 0.0 deg
-
-MapAxis
-
-        name       : energy_true
-        unit       : &#39;MeV&#39;
-        nbins      : 18
-        node type  : center
-        center min : 1.0e+04 MeV
-        center max : 2.0e+06 MeV
-        interp     : log
-</pre></div>
-</div>
 <p>For exposure, we choose a geometry with node_type=’center’,</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">axis</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_energy_bounds</span><span class="p">(</span>
     <span class="s2">&quot;10 GeV&quot;</span><span class="p">,</span>
@@ -890,39 +832,14 @@ MapAxis
 <span class="nb">print</span><span class="p">(</span><span class="n">exposure</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsGeom
-
-        axes       : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy_true&#39;]
-        shape      : (100, 80, 24)
-        ndim       : 3
-        frame      : galactic
-        projection : TAN
-        center     : 0.0 deg, 0.0 deg
-        width      : 10.0 deg x 8.0 deg
-        wcs ref    : 0.0 deg, 0.0 deg
-
-MapAxis
-
-        name       : energy_true
-        unit       : &#39;TeV&#39;
-        nbins      : 24
-        node type  : edges
-        edges min  : 1.0e-02 TeV
-        edges max  : 2.0e+00 TeV
-        interp     : log
-</pre></div>
-</div>
 <p>Exposure is almost constant across the field of view</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">exposure</span><span class="o">.</span><span class="n">slice_by_idx</span><span class="p">({</span><span class="s2">&quot;energy_true&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_003.png" srcset="../../_images/sphx_glr_fermi_lat_003.png" alt="fermi lat" class = "sphx-glr-single-img"/><p>Exposure varies very little with energy at these high energies</p>
+<p>Exposure varies very little with energy at these high energies</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">energy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">GeV</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">exposure</span><span class="o">.</span><span class="n">get_by_coord</span><span class="p">({</span><span class="s2">&quot;skycoord&quot;</span><span class="p">:</span> <span class="n">gc_pos</span><span class="p">,</span> <span class="s2">&quot;energy_true&quot;</span><span class="p">:</span> <span class="n">energy</span><span class="p">}))</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[3.22974080e+11 3.29585273e+11 2.90605275e+11]
 </pre></div>
 </div>
 </section>
@@ -948,22 +865,12 @@ want to normalise it again.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsNDMap
-
-        geom  : WcsGeom
-        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy_true&#39;]
-        shape : (120, 64, 30)
-        ndim  : 3
-        unit  : 1 / (cm2 MeV s sr)
-        dtype : &gt;f4
-</pre></div>
-</div>
 <p>Let’s look at the map of first energy band of the cube:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">template_diffuse</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">slice_by_idx</span><span class="p">({</span><span class="s2">&quot;energy_true&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_004.png" srcset="../../_images/sphx_glr_fermi_lat_004.png" alt="fermi lat" class = "sphx-glr-single-img"/><p>Here is the spectrum at the Galactic center:</p>
+<p>Here is the spectrum at the Galactic center:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dnde</span> <span class="o">=</span> <span class="n">template_diffuse</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">to_region_nd_map</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">gc_pos</span><span class="p">)</span>
 <span class="n">dnde</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Energy (GeV)&quot;</span><span class="p">)</span>
@@ -971,7 +878,7 @@ want to normalise it again.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_005.png" srcset="../../_images/sphx_glr_fermi_lat_005.png" alt="fermi lat" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="isotropic-diffuse-background">
 <h2>Isotropic diffuse background<a class="headerlink" href="#isotropic-diffuse-background" title="Link to this heading">#</a></h2>
 <p>To load the isotropic diffuse model with Gammapy, use the
@@ -990,7 +897,7 @@ want to normalise it again.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_006.png" srcset="../../_images/sphx_glr_fermi_lat_006.png" alt="fermi lat" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="psf">
 <h2>PSF<a class="headerlink" href="#psf" title="Link to this heading">#</a></h2>
 <p>Next we will tke a look at the PSF. It was computed using <code class="xref py py-obj docutils literal notranslate"><span class="pre">gtpsf</span></code>, in
@@ -1003,16 +910,6 @@ methods to get some information about it.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">psf</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>RegionNDMap
-
-        geom  : RegionGeom
-        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;rad&#39;, &#39;energy_true&#39;]
-        shape : (1, 1, 300, 17)
-        ndim  : 4
-        unit  : 1 / sr
-        dtype : &gt;f8
-</pre></div>
-</div>
 <p>To get an idea of the size of the PSF we check how the containment radii
 of the Fermi-LAT PSF vari with energy and different containment
 fractions:</p>
@@ -1021,7 +918,7 @@ fractions:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_007.png" srcset="../../_images/sphx_glr_fermi_lat_007.png" alt="fermi lat" class = "sphx-glr-single-img"/><p>In addition we can check how the actual shape of the PSF varies with
+<p>In addition we can check how the actual shape of the PSF varies with
 energy and compare it against the mean PSF between 50 GeV and 2000 GeV:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
@@ -1038,7 +935,7 @@ energy and compare it against the mean PSF between 50 GeV and 2000 GeV:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_008.png" srcset="../../_images/sphx_glr_fermi_lat_008.png" alt="fermi lat" class = "sphx-glr-single-img"/><p>This is what the corresponding PSF kernel looks like:</p>
+<p>This is what the corresponding PSF kernel looks like:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">psf_kernel</span> <span class="o">=</span> <span class="n">psf</span><span class="o">.</span><span class="n">get_psf_kernel</span><span class="p">(</span>
     <span class="n">position</span><span class="o">=</span><span class="n">geom</span><span class="o">.</span><span class="n">center_skydir</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="n">max_radius</span><span class="o">=</span><span class="s2">&quot;1 deg&quot;</span>
 <span class="p">)</span>
@@ -1046,7 +943,7 @@ energy and compare it against the mean PSF between 50 GeV and 2000 GeV:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_009.png" srcset="../../_images/sphx_glr_fermi_lat_009.png" alt="fermi lat" class = "sphx-glr-single-img"/><section id="energy-dispersion">
+<section id="energy-dispersion">
 <h3>Energy Dispersion<a class="headerlink" href="#energy-dispersion" title="Link to this heading">#</a></h3>
 <p>For simplicity we assume a diagonal energy dispersion:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">e_true</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="s2">&quot;energy_true&quot;</span><span class="p">]</span>
@@ -1058,7 +955,7 @@ energy and compare it against the mean PSF between 50 GeV and 2000 GeV:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_010.png" srcset="../../_images/sphx_glr_fermi_lat_010.png" alt="fermi lat" class = "sphx-glr-single-img"/></section>
+</section>
 </section>
 <section id="fit">
 <h2>Fit<a class="headerlink" href="#fit" title="Link to this heading">#</a></h2>
@@ -1103,66 +1000,6 @@ background normalization free.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fermi_lat_011.png" srcset="../../_images/sphx_glr_fermi_lat_011.png" alt="fermi lat" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : minuit
-        method     : migrad
-        success    : True
-        message    : Optimization terminated successfully.
-        nfev       : 193
-        total stat : 19646.46
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
-
-Models
-
-Component 0: SkyModel
-
-  Name                      : source-gc
-  Datasets names            : None
-  Spectral model type       : PowerLawSpectralModel
-  Spatial  model type       : PointSpatialModel
-  Temporal model type       :
-  Parameters:
-    index                         :      2.776   +/-    0.12
-    amplitude                     :   5.09e-10   +/- 1.1e-10 1 / (cm2 s TeV)
-    reference             (frozen):    100.000       GeV
-    lon_0                         :     -0.025   +/-    0.00 deg
-    lat_0                         :     -0.041   +/-    0.00 deg
-
-Component 1: SkyModel
-
-  Name                      : diffuse-iem
-  Datasets names            : None
-  Spectral model type       : PowerLawNormSpectralModel
-  Spatial  model type       : TemplateSpatialModel
-  Temporal model type       :
-  Parameters:
-    norm                          :      1.048   +/-    0.01
-    tilt                  (frozen):      0.000
-    reference             (frozen):      1.000       TeV
-    lon_0                 (frozen):      0.000       deg
-    lat_0                 (frozen):     -0.062       deg
-
-Component 2: SkyModel
-
-  Name                      : fermi-diffuse-iso
-  Datasets names            : None
-  Spectral model type       : CompoundSpectralModel
-  Spatial  model type       : ConstantSpatialModel
-  Temporal model type       :
-  Parameters:
-    norm                          :      2.597   +/-    0.39
-    tilt                  (frozen):      0.000
-    reference             (frozen):      1.000       TeV
-    value                 (frozen):      1.000       1 / sr
-</pre></div>
-</div>
 </section>
 <section id="serialisation">
 <h2>Serialisation<a class="headerlink" href="#serialisation" title="Link to this heading">#</a></h2>
@@ -1175,21 +1012,6 @@ Datasets API</p>
     <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;fermi_dataset.yaml&quot;</span><span class="p">,</span> <span class="n">filename_models</span><span class="o">=</span><span class="s2">&quot;fermi_models.yaml&quot;</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets_read</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/utils/scripts.py:65: UserWarning: Checksum verification failed for fermi_dataset.yaml.
-  warnings.warn(f&quot;Checksum verification failed for {filename}.&quot;, UserWarning)
-/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/modeling/models/core.py:439: UserWarning: Checksum verification failed.
-  warnings.warn(&quot;Checksum verification failed.&quot;, UserWarning)
-Datasets
---------
-
-Dataset 0:
-
-  Type       : MapDataset
-  Name       : fermi-dataset
-  Instrument :
-  Models     : [&#39;source-gc&#39;, &#39;diffuse-iem&#39;, &#39;fermi-diffuse-iso&#39;]
 </pre></div>
 </div>
 </section>
@@ -1217,7 +1039,6 @@ works well (e.g. by re-computing results from 3FHL or other published
 analysis results), or to extend the Gammapy capabilities (e.g. to work
 with energy-dependent multi-resolution maps and PSF), that would be very
 welcome!</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.095 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-data-fermi-lat-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/data/fermi_lat.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo5.svg" width="150px" /></a>

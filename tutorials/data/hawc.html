@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Fermi-LAT with Gammapy" href="fermi_lat.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -650,8 +650,8 @@ observatory, such as H.E.S.S. or CTA.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -677,7 +677,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 <p>Chose which estimator we will use</p>
@@ -712,24 +712,26 @@ the same FITS file, and can be accesses through the choice of the hdu index.</p>
 <span class="n">hdu_table</span> <span class="o">=</span> <span class="n">HDUIndexTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data_path</span> <span class="o">+</span> <span class="n">hdu_filename</span><span class="p">,</span> <span class="n">hdu</span><span class="o">=</span><span class="n">fHit</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/data/hawc.py&quot;</span>, line <span class="m">92</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">obs_table</span> <span class="o">=</span> <span class="n">ObservationTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data_path</span> <span class="o">+</span> <span class="n">obs_filename</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/obs_table.py&quot;</span>, line <span class="m">32</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">make_path</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/table/connect.py&quot;</span>, line <span class="m">62</span>, in <span class="n">__call__</span>
+<span class="w">    </span><span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/registry/core.py&quot;</span>, line <span class="m">203</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+  File <span class="nb">&quot;/usr/lib64/python3.9/contextlib.py&quot;</span>, line <span class="m">119</span>, in <span class="n">__enter__</span>
+<span class="w">    </span><span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/utils/data.py&quot;</span>, line <span class="m">353</span>, in <span class="n">get_readable_fileobj</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/hawc/crab_events_pass4/obs-index-table-NN-Crab.fits.gz&#39;</span>
+</pre></div>
+</div>
 <p>From the tables, we can create a Datastore</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="p">(</span><span class="n">hdu_table</span><span class="o">=</span><span class="n">hdu_table</span><span class="p">,</span> <span class="n">obs_table</span><span class="o">=</span><span class="n">obs_table</span><span class="p">)</span>
 
 <span class="n">data_store</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Data store:
-HDU index table:
-BASE_DIR: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hawc/crab_events_pass4
-Rows: 6
-OBS_ID: 103000133 -- 103000133
-HDU_TYPE: [&#39;aeff&#39;, &#39;bkg&#39;, &#39;edisp&#39;, &#39;events&#39;, &#39;gti&#39;, &#39;psf&#39;]
-HDU_CLASS: [&#39;edisp_kernel_map&#39;, &#39;events&#39;, &#39;gti&#39;, &#39;map&#39;, &#39;psf_map_reco&#39;]
-
-
-Observation table:
-Observatory name: &#39;N/A&#39;
-Number of observations: 1
 </pre></div>
 </div>
 <p>There is only one observation</p>
@@ -741,29 +743,29 @@ Number of observations: 1
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_hawc_001.png" srcset="../../_images/sphx_glr_hawc_001.png" alt="hawc" class = "sphx-glr-single-img"/><p>Peek the energy dispersion</p>
+<p>Peek the energy dispersion</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">edisp</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_hawc_002.png" srcset="../../_images/sphx_glr_hawc_002.png" alt="hawc" class = "sphx-glr-single-img"/><p>Peek the psf</p>
+<p>Peek the psf</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">psf</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_hawc_003.png" srcset="../../_images/sphx_glr_hawc_003.png" alt="Exposure, Containment radius at 1 TeV, Containment radius at center of map, PSF at center of map" class = "sphx-glr-single-img"/><p>Peek the background for one transit</p>
+<p>Peek the background for one transit</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">obs</span><span class="o">.</span><span class="n">bkg</span><span class="o">.</span><span class="n">reduce_over_axes</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_hawc_004.png" srcset="../../_images/sphx_glr_hawc_004.png" alt="hawc" class = "sphx-glr-single-img"/><p>Peek the effective exposure for one transit</p>
+<p>Peek the effective exposure for one transit</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">obs</span><span class="o">.</span><span class="n">aeff</span><span class="o">.</span><span class="n">reduce_over_axes</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_hawc_005.png" srcset="../../_images/sphx_glr_hawc_005.png" alt="hawc" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="data-reduction-into-a-mapdataset">
 <h2>Data reduction into a MapDataset<a class="headerlink" href="#data-reduction-into-a-mapdataset" title="Link to this heading">#</a></h2>
 <p>We will now produce a MapDataset using the data from one of the
@@ -841,7 +843,7 @@ included this quantity as a map</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_hawc_006.png" srcset="../../_images/sphx_glr_hawc_006.png" alt="Counts, Excess counts, Exposure, Background" class = "sphx-glr-single-img"/><p>And make significance maps to check that the Crab is visible</p>
+<p>And make significance maps to check that the Crab is visible</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">excess_estimator</span> <span class="o">=</span> <span class="n">ExcessMapEstimator</span><span class="p">(</span>
     <span class="n">correlation_radius</span><span class="o">=</span><span class="s2">&quot;0.2 deg&quot;</span><span class="p">,</span> <span class="n">selection_optional</span><span class="o">=</span><span class="p">[],</span> <span class="n">energy_edges</span><span class="o">=</span><span class="n">energy_axis</span><span class="o">.</span><span class="n">edges</span>
 <span class="p">)</span>
@@ -853,7 +855,7 @@ included this quantity as a map</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_hawc_007.png" srcset="../../_images/sphx_glr_hawc_007.png" alt="Energy 1.00 TeV - 1.78 TeV, Energy 1.78 TeV - 3.16 TeV, Energy 3.16 TeV - 5.62 TeV, Energy 5.62 TeV - 10.00 TeV, Energy 10.00 TeV - 17.8 TeV, Energy 17.8 TeV - 31.6 TeV, Energy 31.6 TeV - 56.2 TeV, Energy 56.2 TeV - 100.0 TeV, Energy 100.0 TeV - 177 TeV, Energy 177 TeV - 316 TeV" class = "sphx-glr-single-img"/><p>Combining all energies</p>
+<p>Combining all energies</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">excess_estimator_integrated</span> <span class="o">=</span> <span class="n">ExcessMapEstimator</span><span class="p">(</span>
     <span class="n">correlation_radius</span><span class="o">=</span><span class="s2">&quot;0.2 deg&quot;</span><span class="p">,</span> <span class="n">selection_optional</span><span class="o">=</span><span class="p">[]</span>
 <span class="p">)</span>
@@ -863,7 +865,7 @@ included this quantity as a map</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_hawc_008.png" srcset="../../_images/sphx_glr_hawc_008.png" alt="hawc" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -877,7 +879,6 @@ release and fit a model to the result.</p></li>
 <p>Now you know how to access and work with HAWC data. All other
 tutorials and documentation concerning 3D analysis and MapDatasets
 can be used from this step.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.460 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-data-hawc-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/data/hawc.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo5.svg" width="150px" /></a>

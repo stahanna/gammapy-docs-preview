@@ -107,8 +107,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2047+gc10346aa1.d20240223 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -134,7 +134,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -204,7 +204,30 @@ the model and fit range to the resulting dataset.
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/fitting.py", line 84, in <module>
+        dataset = SpectrumDatasetOnOff.read(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/datasets/spectrum.py", line 328, in read
+        return reader.read()
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/datasets/io.py", line 450, in read
+        kwargs = self.read_pha(self.filename, checksum=self.checksum)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/datasets/io.py", line 356, in read_pha
+        with fits.open(filename, memmap=False, checksum=checksum) as hdulist:
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
+        return HDUList.fromfile(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
+        return cls._readfrom(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
+        fileobj = _File(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
+        self._open_filename(fileobj, mode, overwrite)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
+        self._file = open(self.name, IO_FITS_MODES[mode])
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/joint-crab/spectra/hess/pha_obs23523.fits'
 
 
 
@@ -228,12 +251,6 @@ First let’s create a `Fit` instance:
         "backend": "scipy",
     }
     fit_scipy = Fit(store_trace=True, optimize_opts=scipy_opts)
-
-
-
-
-
-
 
 
 
@@ -262,12 +279,6 @@ pre-fit with alternative optimization methods.
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 135-142
 
 | For the “sherpa” backend you can choose the optimization algorithm
@@ -285,12 +296,6 @@ pre-fit with alternative optimization methods.
     sherpa_opts = {"method": "simplex", "ftol": 1e-3, "maxfev": int(1e4)}
     fit_sherpa = Fit(store_trace=True, backend="sherpa", optimize_opts=sherpa_opts)
     results_simplex = fit_sherpa.run(datasets)
-
-
-
-
-
-
 
 
 
@@ -323,12 +328,6 @@ you should run the final fit with strategy 2.
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 174-182
 
 Fit quality assessment
@@ -348,33 +347,6 @@ Refer to the automatically-generated results dictionary:
     print(result_scipy)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    OptimizeResult
-
-            backend    : scipy
-            method     : L-BFGS-B
-            success    : True
-            message    : CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH
-            nfev       : 60
-            total stat : 30.35
-
-    CovarianceResult
-
-            backend    : minuit
-            method     : hesse
-            success    : True
-            message    : Hesse terminated successfully.
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 186-189
 
 .. code-block:: Python
@@ -383,60 +355,12 @@ Refer to the automatically-generated results dictionary:
     print(results_simplex)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    OptimizeResult
-
-            backend    : sherpa
-            method     : simplex
-            success    : True
-            message    : Optimization terminated successfully
-            nfev       : 135
-            total stat : 30.35
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 190-194
 
 .. code-block:: Python
 
 
     print(result_minuit)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    OptimizeResult
-
-            backend    : minuit
-            method     : migrad
-            success    : True
-            message    : Optimization terminated successfully.
-            nfev       : 37
-            total stat : 30.35
-
-    CovarianceResult
-
-            backend    : minuit
-            method     : hesse
-            success    : True
-            message    : Hesse terminated successfully.
-
-
 
 
 
@@ -455,43 +379,6 @@ to check the convergence
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    ┌─────────────────────────────────────────────────────────────────────────┐
-    │                                Migrad                                   │
-    ├──────────────────────────────────┬──────────────────────────────────────┤
-    │ FCN = 30.35                      │              Nfcn = 37               │
-    │ EDM = 3.42e-08 (Goal: 2e-06)     │            time = 0.1 sec            │
-    ├──────────────────────────────────┼──────────────────────────────────────┤
-    │          Valid Minimum           │   Below EDM threshold (goal x 10)    │
-    ├──────────────────────────────────┼──────────────────────────────────────┤
-    │      No parameters at limit      │           Below call limit           │
-    ├──────────────────────────────────┼──────────────────────────────────────┤
-    │             Hesse ok             │         Covariance accurate          │
-    └──────────────────────────────────┴──────────────────────────────────────┘
-    ┌───┬───────────────────┬───────────┬───────────┬────────────┬────────────┬─────────┬─────────┬───────┐
-    │   │ Name              │   Value   │ Hesse Err │ Minos Err- │ Minos Err+ │ Limit-  │ Limit+  │ Fixed │
-    ├───┼───────────────────┼───────────┼───────────┼────────────┼────────────┼─────────┼─────────┼───────┤
-    │ 0 │ par_000_amplitude │    3.8    │    0.4    │            │            │         │         │       │
-    │ 1 │ par_001_alpha     │   2.20    │   0.26    │            │            │    1    │    3    │       │
-    │ 2 │ par_002_beta      │    2.3    │    1.4    │            │            │         │         │       │
-    └───┴───────────────────┴───────────┴───────────┴────────────┴────────────┴─────────┴─────────┴───────┘
-    ┌───────────────────┬───────────────────────────────────────────────────────┐
-    │                   │ par_000_amplitude     par_001_alpha      par_002_beta │
-    ├───────────────────┼───────────────────────────────────────────────────────┤
-    │ par_000_amplitude │             0.126              0.05             -0.12 │
-    │     par_001_alpha │              0.05            0.0689             -0.33 │
-    │      par_002_beta │             -0.12             -0.33              1.95 │
-    └───────────────────┴───────────────────────────────────────────────────────┘
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 203-206
 
 Check the trace of the fit e.g.  in case the fit did not converge
@@ -504,26 +391,6 @@ properly
 
 
     display(result_minuit.trace)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-        total_stat     crab.spectral.amplitude crab.spectral.alpha  crab.spectral.beta
-    ------------------ ----------------------- ------------------- -------------------
-    30.349530550391602   3.812242557070182e-11  2.1957469344402147 0.22648271617458565
-    30.349724605711856  3.8157940469070564e-11  2.1957469344402147 0.22648271617458565
-                   ...                     ...                 ...                 ...
-    30.349535814793757   3.812925789368485e-11  2.1959874285483485 0.22648882286143687
-    30.349537158475616   3.812925789368485e-11   2.195755391681058  0.2266262324806286
-    30.349559366772695  3.8122169660679106e-11  2.1959874285483485  0.2266262324806286
-    Length = 37 rows
-
 
 
 
@@ -541,23 +408,6 @@ for all parameters are reasonable, and no fitted parameter value is “too close
 
 
     display(result_minuit.models.to_parameters_table())
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    model type    name     value         unit        error      min       max    frozen is_norm link prior
-    ----- ---- --------- ---------- -------------- --------- --------- --------- ------ ------- ---- -----
-     crab      amplitude 3.8122e-11 cm-2 s-1 TeV-1 3.546e-12       nan       nan  False    True           
-     crab      reference 1.0000e+00            TeV 0.000e+00       nan       nan   True   False           
-     crab          alpha 2.1958e+00                2.626e-01 1.000e+00 3.000e+00  False   False           
-     crab           beta 2.2649e-01                1.397e-01       nan       nan  False   False           
-
 
 
 
@@ -593,17 +443,6 @@ fit statistic profile can be changed on the
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_fitting_001.png
-   :alt: crab.spectral.amplitude:  3.8e-11 +- 3.5e-12, crab.spectral.alpha:  2.2e+00 +- 2.6e-01, crab.spectral.beta:  2.3e-01 +- 1.4e-01
-   :srcset: /tutorials/api/images/sphx_glr_fitting_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 246-251
 
 Inspect model residuals. Those can always be accessed using
@@ -629,21 +468,6 @@ You can access it directly with:
     print(result_minuit.models.covariance)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    [[ 1.25743552e-23  0.00000000e+00  4.54676840e-13 -1.17016488e-13]
-     [ 0.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00]
-     [ 4.54676840e-13  0.00000000e+00  6.89492164e-02 -3.31139089e-02]
-     [-1.17016488e-13  0.00000000e+00 -3.31139089e-02  1.95024553e-02]]
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 264-266
 
 And you can plot the total parameter correlation as well:
@@ -666,23 +490,6 @@ And you can plot the total parameter correlation as well:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_fitting_002.png
-   :alt: fitting
-   :srcset: /tutorials/api/images/sphx_glr_fitting_002.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    0.2625818280340766
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 279-282
 
 As an example, this step is needed to produce a butterfly plot showing
@@ -698,17 +505,6 @@ the envelope of the model taking into account parameter uncertainties.
     crab_spectrum.plot(energy_bounds=energy_bounds, energy_power=2)
     ax = crab_spectrum.plot_error(energy_bounds=energy_bounds, energy_power=2)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_fitting_003.png
-   :alt: fitting
-   :srcset: /tutorials/api/images/sphx_glr_fitting_003.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -785,12 +581,6 @@ parameter and confidence levels (expressed in terms of sigma):
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 356-358
 
 Now we can compute few contours.
@@ -808,12 +598,6 @@ Now we can compute few contours.
         npoints=10,
         sigmas=sigmas,
     )
-
-
-
-
-
-
 
 
 
@@ -857,12 +641,6 @@ plotting nicer.
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 404-406
 
 Finally we produce the confidence contours figures.
@@ -891,17 +669,6 @@ Finally we produce the confidence contours figures.
         ax.set_ylabel(ylabel)
     plt.legend()
     plt.tight_layout()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_fitting_004.png
-   :alt: fitting
-   :srcset: /tutorials/api/images/sphx_glr_fitting_004.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -950,12 +717,6 @@ parameter space:
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 466-472
 
 Then we run the algorithm, by choosing `reoptimize=False` for the sake
@@ -980,12 +741,6 @@ computing confidence contours, but is expected to be time consuming.
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 483-488
 
 In order to easily inspect the results, we can convert the
@@ -1007,12 +762,6 @@ minimum):
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 497-500
 
 Notice that, as explained before, :math:`1\sigma` contour obtained this
@@ -1027,12 +776,6 @@ way will not contain 68% of the probability, but rather
     # Compute the corresponding statistical significance surface
     # p_value = 1 - st.chi2(df=1).cdf(TS)
     # gaussian_sigmas = st.norm.isf(p_value / 2).T
-
-
-
-
-
-
 
 
 
@@ -1064,17 +807,6 @@ Finally, we can plot the surface values together with contours:
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_fitting_005.png
-   :alt: fitting
-   :srcset: /tutorials/api/images/sphx_glr_fitting_005.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 528-532
 
 Note that, if computed with `reoptimize=True`, this plot would be
@@ -1091,11 +823,6 @@ of the contours is not well defined. That’s why we advise to always
 choose a parameter space that contains the contours you’re interested
 in.
 
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 24.345 seconds)
 
 
 .. _sphx_glr_download_tutorials_api_fitting.py:

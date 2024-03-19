@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -67,7 +67,7 @@
     <link rel="prev" title="Spectral analysis with the HLI" href="spectral_analysis_hli.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -727,8 +727,8 @@ a 1D likelihood fit, exactly as illustrated in the previous example.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -754,7 +754,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -766,6 +766,14 @@ Gammapy environment variables:
 <span class="n">observations</span> <span class="o">=</span> <span class="n">data_store</span><span class="o">.</span><span class="n">get_observations</span><span class="p">(</span><span class="n">required_irf</span><span class="o">=</span><span class="s2">&quot;point-like&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/spectral_analysis_rad_max.py&quot;</span>, line <span class="m">150</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/magic/rad_max/data&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py&quot;</span>, line <span class="m">173</span>, in <span class="n">from_dir</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">hdu_table_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">OSError</span>: <span class="n">File not found: gammapy-data/magic/rad_max/data/hdu-index.fits.gz</span>
+</pre></div>
+</div>
 <p>A <code class="xref py py-obj docutils literal notranslate"><span class="pre">RadMax2D</span></code> attribute, containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">RAD_MAX_2D</span></code> table, is
 automatically loaded in the observation. As we can see from the IRF
 component axes, the table has a single offset value and 28 estimated
@@ -774,23 +782,13 @@ energy values.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">rad_max</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>RadMax2D
---------
-
-  axes  : [&#39;energy&#39;, &#39;offset&#39;]
-  shape : (20, 1)
-  ndim  : 2
-  unit  : deg
-  dtype : &gt;f4
-</pre></div>
-</div>
 <p>We can also plot the rad max value against the energy:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">rad_max</span><span class="o">.</span><span class="n">plot_rad_max_vs_energy</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectral_analysis_rad_max_001.png" srcset="../../_images/sphx_glr_spectral_analysis_rad_max_001.png" alt="spectral analysis rad max" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="define-the-on-region">
 <h2>Define the ON region<a class="headerlink" href="#define-the-on-region" title="Link to this heading">#</a></h2>
 <p>To use the <code class="xref py py-obj docutils literal notranslate"><span class="pre">RAD_MAX_2D</span></code> values to define the sizes of the ON and OFF
@@ -861,10 +859,6 @@ map:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectral_analysis_rad_max_002.png" srcset="../../_images/sphx_glr_spectral_analysis_rad_max_002.png" alt="spectral analysis rad max" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/visualization/datasets.py:84: UserWarning: Setting the &#39;color&#39; property will override the edgecolor or facecolor properties.
-  handle = Patch(**plot_kwargs)
-</pre></div>
-</div>
 </section>
 <section id="fit-spectrum">
 <h2>Fit spectrum<a class="headerlink" href="#fit-spectrum" title="Link to this heading">#</a></h2>
@@ -896,10 +890,6 @@ map:</p>
 <span class="n">best_fit_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/numpy/core/fromnumeric.py:88: RuntimeWarning: overflow encountered in reduce
-  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
-</pre></div>
-</div>
 </section>
 <section id="fit-quality-and-model-residuals">
 <h2>Fit quality and model residuals<a class="headerlink" href="#fit-quality-and-model-residuals" title="Link to this heading">#</a></h2>
@@ -907,33 +897,8 @@ map:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : minuit
-        method     : migrad
-        success    : True
-        message    : Optimization terminated successfully.
-        nfev       : 213
-        total stat : 23.98
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
-</pre></div>
-</div>
 <p>and check the best-fit parameters</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">datasets</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">to_parameters_table</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>model type    name     value         unit        error   min max frozen is_norm link prior
------ ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
- crab      amplitude 4.2903e-11 cm-2 s-1 TeV-1 3.443e-12 nan nan  False    True
- crab      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
- crab          alpha 2.5819e+00                1.088e-01 nan nan  False   False
- crab           beta 1.9580e-01                6.591e-02 nan nan  False   False
 </pre></div>
 </div>
 <p>A simple way to inspect the model residuals is using the function
@@ -943,7 +908,7 @@ CovarianceResult
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectral_analysis_rad_max_003.png" srcset="../../_images/sphx_glr_spectral_analysis_rad_max_003.png" alt="spectral analysis rad max" class = "sphx-glr-single-img"/><p>For more ways of assessing fit quality, please refer to the dedicated
+<p>For more ways of assessing fit quality, please refer to the dedicated
 <a class="reference internal" href="../api/fitting.html"><span class="doc">Fitting</span></a> tutorial.</p>
 </section>
 <section id="compare-against-the-literature">
@@ -973,7 +938,7 @@ MAGIC</a>.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectral_analysis_rad_max_004.png" srcset="../../_images/sphx_glr_spectral_analysis_rad_max_004.png" alt="spectral analysis rad max" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="dataset-simulations">
 <h2>Dataset simulations<a class="headerlink" href="#dataset-simulations" title="Link to this heading">#</a></h2>
 <p>A common way to check if a fit is biased is to simulate multiple datasets with
@@ -998,14 +963,6 @@ provide a good distribution of the background.</p>
 
 
 <span class="c1"># sphinx_gallery_thumbnail_number = 4</span>
-</pre></div>
-</div>
-<img src="../../_images/sphx_glr_spectral_analysis_rad_max_005.png" srcset="../../_images/sphx_glr_spectral_analysis_rad_max_005.png" alt="Counts, Exposure, Energy Dispersion" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  model   type    name     value         unit        error   min max frozen is_norm link prior
---------- ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-simulated      amplitude 4.2405e-11 cm-2 s-1 TeV-1 3.361e-12 nan nan  False    True
-simulated      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
-simulated          alpha 2.5481e+00                9.465e-02 nan nan  False   False
-simulated           beta 1.5622e-01                5.745e-02 nan nan  False   False
 </pre></div>
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-1d-spectral-analysis-rad-max-py">

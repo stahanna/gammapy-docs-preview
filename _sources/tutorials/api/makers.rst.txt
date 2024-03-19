@@ -99,8 +99,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2047+gc10346aa1.d20240223 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -126,7 +126,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -175,7 +175,7 @@ object. This is illustrated in the following example:
     MapDataset
     ----------
 
-      Name                            : iDSj4Ybb 
+      Name                            : 1r3g-3Qz 
 
       Total counts                    : 0 
       Total background counts         : 0.00
@@ -332,44 +332,16 @@ observational data using the `~gammapy.makers.MapDatasetMaker`:
 
 
 
-
-.. image-sg:: /tutorials/api/images/sphx_glr_makers_001.png
-   :alt: makers
-   :srcset: /tutorials/api/images/sphx_glr_makers_001.png
-   :class: sphx-glr-single-img
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    MapDataset
-    ----------
-
-      Name                            : q8hvn5Xh 
-
-      Total counts                    : 2016 
-      Total background counts         : 1866.72
-      Total excess counts             : 149.28
-
-      Predicted counts                : 1866.72
-      Predicted background counts     : 1866.72
-      Predicted excess counts         : nan
-
-      Exposure min                    : 1.19e+02 m2 s
-      Exposure max                    : 1.09e+09 m2 s
-
-      Number of total bins            : 110000 
-      Number of fit bins              : 110000 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/makers.py", line 101, in <module>
+        data_store = DataStore.from_dir("$GAMMAPY_DATA/hess-dl3-dr1")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
+        raise OSError(f"File not found: {hdu_table_filename}")
+    OSError: File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz
 
 
 
@@ -435,31 +407,6 @@ Multiple methods can be combined. Here is an example :
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_makers_002.png
-   :alt: makers
-   :srcset: /tutorials/api/images/sphx_glr_makers_002.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    WcsNDMap
-
-            geom  : WcsGeom 
-            axes  : ['lon', 'lat', 'energy']
-            shape : (100, 100, 11)
-            ndim  : 3
-            unit  : 
-            dtype : bool
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 168-200
 
 The `~gammapy.makers.SafeMaskMaker` does not modify any data, but only defines the
@@ -505,12 +452,6 @@ exclusion masks see the :doc:`mask maps </tutorials/api/mask_maps>` notebook.
 
     fov_bkg_maker = FoVBackgroundMaker(method="scale", exclusion_mask=exclusion_mask)
     dataset = fov_bkg_maker.run(dataset)
-
-
-
-
-
-
 
 
 
@@ -588,44 +529,6 @@ dataset per observation is stacked into a larger map.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    MapDataset
-    ----------
-
-      Name                            : 3Su-qjVQ 
-
-      Total counts                    : 7972 
-      Total background counts         : 7555.42
-      Total excess counts             : 416.58
-
-      Predicted counts                : 7555.42
-      Predicted background counts     : 7555.42
-      Predicted excess counts         : nan
-
-      Exposure min                    : 1.04e+06 m2 s
-      Exposure max                    : 3.22e+09 m2 s
-
-      Number of total bins            : 687500 
-      Number of fit bins              : 687214 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 276-294
 
 To maintain good performance it is always recommended to do a cutout of
@@ -657,49 +560,6 @@ allow to use multiple processes on run.
     datasets_maker = DatasetsMaker(makers, stack_datasets=False, n_jobs=1)
     datasets = datasets_maker.run(global_dataset, observations)
     print(datasets)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Datasets
-    --------
-
-    Dataset 0: 
-
-      Type       : MapDataset
-      Name       : aDx7SKNY
-      Instrument : HESS
-      Models     : ['aDx7SKNY-bkg']
-
-    Dataset 1: 
-
-      Type       : MapDataset
-      Name       : cSvYRVpb
-      Instrument : HESS
-      Models     : ['cSvYRVpb-bkg']
-
-    Dataset 2: 
-
-      Type       : MapDataset
-      Name       : rB1Ol-Zn
-      Instrument : HESS
-      Models     : ['rB1Ol-Zn-bkg']
-
-    Dataset 3: 
-
-      Type       : MapDataset
-      Name       : WD9oK85g
-      Instrument : HESS
-      Models     : ['WD9oK85g-bkg']
-
-
-
 
 
 
@@ -754,49 +614,6 @@ Here is an example of data reduction loop to create
     print(datasets)
 
     plt.show()
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Datasets
-    --------
-
-    Dataset 0: 
-
-      Type       : SpectrumDatasetOnOff
-      Name       : obs-23523
-      Instrument : HESS
-      Models     : 
-
-    Dataset 1: 
-
-      Type       : SpectrumDatasetOnOff
-      Name       : obs-23592
-      Instrument : HESS
-      Models     : 
-
-    Dataset 2: 
-
-      Type       : SpectrumDatasetOnOff
-      Name       : obs-23526
-      Instrument : HESS
-      Models     : 
-
-    Dataset 3: 
-
-      Type       : SpectrumDatasetOnOff
-      Name       : obs-23559
-      Instrument : HESS
-      Models     : 
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 349-356
@@ -857,23 +674,6 @@ as shown below
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_makers_003.png
-   :alt: Total observation time
-   :srcset: /tutorials/api/images/sphx_glr_makers_003.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    No. of observations:  17
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 400-404
 
 As the acceptance of IACT cameras vary within the field of
@@ -904,17 +704,6 @@ number of hours.
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_makers_004.png
-   :alt: Energy_true 100 GeV - 1.00 TeV, Energy_true 1.00 TeV - 10.00 TeV
-   :srcset: /tutorials/api/images/sphx_glr_makers_004.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 423-425
 
 To get the value of the observation time at a particular position,
@@ -938,27 +727,6 @@ use `get_by_coord`
     print(
         f"Effective livetime at {energy_axis_true.center[1]}: {effective_times_src[1]} * {effective_livetime.unit}"
     )
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Time spent on position <SkyCoord (ICRS): (ra, dec) in deg
-        (228.32, -59.08)>
-    Total observation time: [7.250185]* h
-    Effective livetime at 0.31622776601683794 TeV: 7.249965667724609 * h
-    Effective livetime at 3.162277660168379 TeV: 7.234359264373779 * h
-
-
-
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 33.608 seconds)
 
 
 .. _sphx_glr_download_tutorials_api_makers.py:

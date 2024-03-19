@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Spectral analysis" href="spectral_analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -679,8 +679,8 @@ and run the different analysis steps</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -706,7 +706,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -759,7 +759,7 @@ with any text editor of your choice.</p>
         datasets_file: null
         models_file: null
     observations:
-        datastore: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hess-dl3-dr1
+        datastore: gammapy-data/hess-dl3-dr1
         obs_ids: []
         obs_file: null
         obs_cone: {frame: icrs, lon: 83.633 deg, lat: 22.014 deg, radius: 5.0 deg}
@@ -854,7 +854,7 @@ background normalisation. For this tutorial, we use the following one
         datasets_file: null
         models_file: null
     observations:
-        datastore: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hess-dl3-dr1
+        datastore: gammapy-data/hess-dl3-dr1
         obs_ids: []
         obs_file: null
         obs_cone: {frame: icrs, lon: 83.633 deg, lat: 22.014 deg, radius: 5.0 deg}
@@ -876,7 +876,7 @@ background normalisation. For this tutorial, we use the following one
         map_selection: [counts, exposure, background, psf, edisp]
         background:
             method: reflected
-            exclusion: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/joint-crab/exclusion/exclusion_mask_crab.fits.gz
+            exclusion: gammapy-data/joint-crab/exclusion/exclusion_mask_crab.fits.gz
             parameters: {}
         safe_mask:
             methods: [aeff-default, aeff-max]
@@ -919,12 +919,19 @@ configuration.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">analysis</span><span class="o">.</span><span class="n">get_observations</span><span class="p">()</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/spectral_analysis_hli.py&quot;</span>, line <span class="m">222</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">analysis</span><span class="o">.</span><span class="n">get_observations</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/analysis/core.py&quot;</span>, line <span class="m">141</span>, in <span class="n">get_observations</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_set_data_store</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/analysis/core.py&quot;</span>, line <span class="m">100</span>, in <span class="n">_set_data_store</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datastore not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">Datastore not found: gammapy-data/hess-dl3-dr1</span>
+</pre></div>
+</div>
 <p>The observations are now available on the <code class="xref py py-obj docutils literal notranslate"><span class="pre">Analysis</span></code> object. The
 selection corresponds to the following ids:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">observations</span><span class="o">.</span><span class="n">ids</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;23523&#39;, &#39;23526&#39;, &#39;23559&#39;, &#39;23592&#39;]
 </pre></div>
 </div>
 <p>To see how to explore observations, please refer to the following
@@ -946,37 +953,6 @@ unique entry of the datasets:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SpectrumDatasetOnOff
---------------------
-
-  Name                            : stacked
-
-  Total counts                    : 427
-  Total background counts         : 25.86
-  Total excess counts             : 401.14
-
-  Predicted counts                : 43.14
-  Predicted background counts     : 43.14
-  Predicted excess counts         : nan
-
-  Exposure min                    : 2.90e+07 m2 s
-  Exposure max                    : 2.64e+09 m2 s
-
-  Number of total bins            : 20
-  Number of fit bins              : 18
-
-  Fit statistic type              : wstat
-  Fit statistic value (-2 log(L)) : 1396.10
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
-
-  Total counts_off                : 581
-  Acceptance                      : 18
-  Acceptance off                  : 450
-</pre></div>
-</div>
 <p>As you can see the dataset uses WStat with the background computed with
 the Reflected Background method during the data reduction, but no source
 model has been set yet.</p>
@@ -989,9 +965,6 @@ dataset and can be printed:</p>
     <span class="sa">f</span><span class="s2">&quot;Tobs=</span><span class="si">{</span><span class="n">info_table</span><span class="p">[</span><span class="s1">&#39;livetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> Excess=</span><span class="si">{</span><span class="n">info_table</span><span class="p">[</span><span class="s1">&#39;excess&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> </span><span class="se">\</span>
 <span class="s2">Significance=</span><span class="si">{</span><span class="n">info_table</span><span class="p">[</span><span class="s1">&#39;sqrt_ts&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Tobs=1.8 h Excess=401.1 Significance=37.04
 </pre></div>
 </div>
 </section>
@@ -1047,21 +1020,6 @@ object. Here is a pre-defined YAML configuration file created for this
 <span class="nb">print</span><span class="p">(</span><span class="n">model_1d</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Models
-
-Component 0: SkyModel
-
-  Name                      : crab
-  Datasets names            : None
-  Spectral model type       : PowerLawSpectralModel
-  Spatial  model type       :
-  Temporal model type       :
-  Parameters:
-    index                         :      2.600   +/-    0.00
-    amplitude                     :   5.00e-11   +/- 0.0e+00 1 / (cm2 s TeV)
-    reference             (frozen):      1.000       TeV
-</pre></div>
-</div>
 <p>Or from a yaml file, e.g.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># model_1d = Models.read(&quot;model-1d.yaml&quot;)</span>
 <span class="c1"># print(model_1d)</span>
@@ -1091,29 +1049,6 @@ object.</p>
 <span class="n">display</span><span class="p">(</span><span class="n">model_1d</span><span class="o">.</span><span class="n">to_parameters_table</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : minuit
-        method     : migrad
-        success    : True
-        message    : Optimization terminated successfully.
-        nfev       : 37
-        total stat : 10.29
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
-
-model type    name     value         unit        error   min max frozen is_norm link prior
------ ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
- crab          index 2.6768e+00                1.035e-01 nan nan  False   False
- crab      amplitude 4.6795e-11 cm-2 s-1 TeV-1 4.679e-12 nan nan  False    True
- crab      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
-</pre></div>
-</div>
 <p>To check the fit is correct, we compute the excess spectrum with the
 predicted counts.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ax_spectrum</span><span class="p">,</span> <span class="n">ax_residuals</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">()</span>
@@ -1124,7 +1059,7 @@ predicted counts.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectral_analysis_hli_001.png" srcset="../../_images/sphx_glr_spectral_analysis_hli_001.png" alt="spectral analysis hli" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="serialisation-of-the-fit-result">
 <h3>Serialisation of the fit result<a class="headerlink" href="#serialisation-of-the-fit-result" title="Link to this heading">#</a></h3>
 <p>This is how we can write the model back to file again:</p>
@@ -1133,29 +1068,6 @@ predicted counts.</p>
 
 <span class="k">with</span> <span class="n">filename</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>components:
--   name: crab
-    type: SkyModel
-    spectral:
-        type: PowerLawSpectralModel
-        parameters:
-        -   name: index
-            value: 2.6768369901788422
-            error: 0.10350021262006437
-        -   name: amplitude
-            value: 4.679478012795579e-11
-            unit: cm-2 s-1 TeV-1
-            error: 4.678683942000057e-12
-        -   name: reference
-            value: 1.0
-            unit: TeV
-covariance: model-best-fit_covariance.dat
-metadata:
-    creator: Gammapy 1.2.dev2047+gc10346aa1.d20240223
-    date: &#39;2024-02-23T09:56:08.863260&#39;
-    origin: null
 </pre></div>
 </div>
 </section>
@@ -1171,17 +1083,6 @@ metadata:
 <span class="n">display</span><span class="p">(</span><span class="n">crab_fp_table</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>e_ref  e_min  e_max        dnde          dnde_err       dnde_errp       dnde_errn        dnde_ul        ts   sqrt_ts       npred        npred_excess  stat stat_null is_ul counts success   norm_scan        stat_scan
- TeV    TeV    TeV   1 / (cm2 s TeV) 1 / (cm2 s TeV) 1 / (cm2 s TeV) 1 / (cm2 s TeV) 1 / (cm2 s TeV)
------- ------ ------ --------------- --------------- --------------- --------------- --------------- ------- ------- ------------------ ------------ ----- --------- ----- ------ ------- -------------- ------------------
- 1.134  0.924  1.392       2.835e-11       4.025e-12       4.206e-12       3.848e-12       3.713e-11 186.317  13.650  55.99956565621718      52.7632 0.000   186.317 False   56.0    True 0.200 .. 5.000  61.061 .. 323.310
- 1.708  1.392  2.096       1.193e-11       1.255e-12       1.297e-12       1.215e-12       1.461e-11 332.322  18.230  102.0465690863332     96.13059 0.718   333.040 False  102.0    True 0.200 .. 5.000 137.686 .. 402.694
-   ...    ...    ...             ...             ...             ...             ...             ...     ...     ...                ...          ...   ...       ...   ...    ...     ...            ...                ...
-10.779  8.784 13.228       9.692e-14       3.167e-14       3.499e-14       2.864e-14       1.739e-13  33.004   5.745 10.956513049912036    10.141874 0.117    33.120 False   11.0    True 0.200 .. 5.000   15.247 .. 34.090
-16.233 13.228 19.921       1.523e-14       1.034e-14       1.239e-14       8.463e-15       4.443e-14   6.003   2.450  2.954099038469418    2.5607193 0.608     6.611 False    3.0    True 0.200 .. 5.000    2.084 .. 28.509
-Length = 8 rows
-</pre></div>
-</div>
 <p>Let’s plot the flux points with their likelihood profile</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_sed</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">crab_fp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_sed</span><span class="p">,</span> <span class="n">sed_type</span><span class="o">=</span><span class="s2">&quot;e2dnde&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">)</span>
@@ -1191,7 +1092,7 @@ Length = 8 rows
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectral_analysis_hli_002.png" srcset="../../_images/sphx_glr_spectral_analysis_hli_002.png" alt="spectral analysis hli" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="serialisation-of-the-results">
 <h3>Serialisation of the results<a class="headerlink" href="#serialisation-of-the-results" title="Link to this heading">#</a></h3>
 <p>The flux points can be exported to a fits table following the format
@@ -1213,14 +1114,13 @@ flux points:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectral_analysis_hli_003.png" srcset="../../_images/sphx_glr_spectral_analysis_hli_003.png" alt="spectral analysis hli" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="whats-next">
 <h2>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading">#</a></h2>
 <p>You can look at the same analysis without the high level interface in
 <a class="reference internal" href="spectral_analysis.html"><span class="doc">Spectral analysis</span></a></p>
 <p>As we can store the best model fit, you can overlay the fit results of
 both methods on a unique plot.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.106 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-1d-spectral-analysis-hli-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-1d/spectral_analysis_hli.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.svg" width="150px" /></a>

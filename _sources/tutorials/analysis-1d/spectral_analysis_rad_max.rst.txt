@@ -206,8 +206,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2047+gc10346aa1.d20240223 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -233,7 +233,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -259,7 +259,16 @@ We load the two MAGIC observations of the Crab Nebula containing the
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/spectral_analysis_rad_max.py", line 150, in <module>
+        data_store = DataStore.from_dir("$GAMMAPY_DATA/magic/rad_max/data")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
+        raise OSError(f"File not found: {hdu_table_filename}")
+    OSError: File not found: gammapy-data/magic/rad_max/data/hdu-index.fits.gz
 
 
 
@@ -282,26 +291,6 @@ energy values.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    RadMax2D
-    --------
-
-      axes  : ['energy', 'offset']
-      shape : (20, 1)
-      ndim  : 2
-      unit  : deg
-      dtype : >f4
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 166-168
 
 We can also plot the rad max value against the energy:
@@ -315,17 +304,6 @@ We can also plot the rad max value against the energy:
     fig, ax = plt.subplots()
     rad_max.plot_rad_max_vs_energy(ax=ax)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_001.png
-   :alt: spectral analysis rad max
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_001.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -346,12 +324,6 @@ a `~regions.PointSkyRegion`:
 
     target_position = SkyCoord(ra=83.63, dec=22.01, unit="deg", frame="icrs")
     on_region = PointSkyRegion(target_position)
-
-
-
-
-
-
 
 
 
@@ -380,12 +352,6 @@ We begin with the configuration of the dataset maker classes:
     geom = RegionGeom.create(region=on_region, axes=[energy_axis])
 
     dataset_empty = SpectrumDataset.create(geom=geom, energy_axis_true=energy_axis_true)
-
-
-
-
-
-
 
 
 
@@ -419,12 +385,6 @@ the number of OFF regions to be considered.
     safe_mask_masker = SafeMaskMaker(methods=["aeff-default"])
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 232-247
 
 .. code-block:: Python
@@ -445,12 +405,6 @@ the number of OFF regions to be considered.
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 248-251
 
 Now we can plot the off regions and target positions on top of the counts
@@ -466,24 +420,6 @@ map:
     geom.plot_region(ax=ax, kwargs_point={"color": "k", "marker": "*"})
     plot_spectrum_datasets_off_regions(ax=ax, datasets=datasets)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_002.png
-   :alt: spectral analysis rad max
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_002.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/visualization/datasets.py:84: UserWarning: Setting the 'color' property will override the edgecolor or facecolor properties.
-      handle = Patch(**plot_kwargs)
-
 
 
 
@@ -526,19 +462,6 @@ Fit spectrum
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/numpy/core/fromnumeric.py:88: RuntimeWarning: overflow encountered in reduce
-      return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 291-294
 
 Fit quality and model residuals
@@ -559,33 +482,6 @@ We can access the results dictionary to see if the fit converged:
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    OptimizeResult
-
-            backend    : minuit
-            method     : migrad
-            success    : True
-            message    : Optimization terminated successfully.
-            nfev       : 213
-            total stat : 23.98
-
-    CovarianceResult
-
-            backend    : minuit
-            method     : hesse
-            success    : True
-            message    : Hesse terminated successfully.
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 304-306
 
 and check the best-fit parameters
@@ -597,23 +493,6 @@ and check the best-fit parameters
 
 
     display(datasets.models.to_parameters_table())
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    model type    name     value         unit        error   min max frozen is_norm link prior
-    ----- ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-     crab      amplitude 4.2903e-11 cm-2 s-1 TeV-1 3.443e-12 nan nan  False    True           
-     crab      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
-     crab          alpha 2.5819e+00                1.088e-01 nan nan  False   False           
-     crab           beta 1.9580e-01                6.591e-02 nan nan  False   False           
-
 
 
 
@@ -630,17 +509,6 @@ A simple way to inspect the model residuals is using the function
     ax_spectrum, ax_residuals = datasets[0].plot_fit()
     ax_spectrum.set_ylim(0.1, 120)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_003.png
-   :alt: spectral analysis rad max
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_003.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -687,17 +555,6 @@ MAGIC <https://ui.adsabs.harvard.edu/abs/2015JHEAp...5...30A/abstract>`__.
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_004.png
-   :alt: spectral analysis rad max
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_004.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 356-364
 
 Dataset simulations
@@ -732,28 +589,6 @@ provide a good distribution of the background.
 
 
     # sphinx_gallery_thumbnail_number = 4
-
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_005.png
-   :alt: Counts, Exposure, Energy Dispersion
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_rad_max_005.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-      model   type    name     value         unit        error   min max frozen is_norm link prior
-    --------- ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-    simulated      amplitude 4.2405e-11 cm-2 s-1 TeV-1 3.361e-12 nan nan  False    True           
-    simulated      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
-    simulated          alpha 2.5481e+00                9.465e-02 nan nan  False   False           
-    simulated           beta 1.5622e-01                5.745e-02 nan nan  False   False           
-
-
-
 
 
 .. _sphx_glr_download_tutorials_analysis-1d_spectral_analysis_rad_max.py:

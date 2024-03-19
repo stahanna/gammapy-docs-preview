@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Point source sensitivity" href="cta_sensitivity.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -705,8 +705,8 @@ intermediate level API.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -732,7 +732,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -746,6 +746,14 @@ source.</p>
 <span class="c1"># other_ids=[20421, 20422, 20517, 20518, 20519, 20521, 20898, 20899, 20900]</span>
 
 <span class="n">observations</span> <span class="o">=</span> <span class="n">datastore</span><span class="o">.</span><span class="n">get_observations</span><span class="p">(</span><span class="n">obs_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/extended_source_spectral_analysis.py&quot;</span>, line <span class="m">120</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">datastore</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/hess-dl3-dr1/&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py&quot;</span>, line <span class="m">173</span>, in <span class="n">from_dir</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">hdu_table_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">OSError</span>: <span class="n">File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz</span>
 </pre></div>
 </div>
 </section>
@@ -838,17 +846,6 @@ list.</p>
 <span class="n">display</span><span class="p">(</span><span class="n">datasets</span><span class="o">.</span><span class="n">meta_table</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   NAME           TYPE         TELESCOP OBS_ID OBS_MODE      RA_PNT          DEC_PNT           AZ_PNT      ...     TSTART         TSTOP      MJDREFI MJDREFF TIMESYS      GEOLON             GEOLAT            ALTITUDE
-                                                              deg              deg              deg        ...
---------- -------------------- -------- ------ -------- --------------- ----------------- ---------------- ... -------------- -------------- ------- ------- ------- ---------------- ------------------- ------------------
-obs-20326 SpectrumDatasetOnOff     HESS  20326 POINTING 259.29851667325  -39.762222222222 154.819427628119 ... 4588882341.184 4588882341.184       0     0.0      tt 16.5002222222222 -23.271777777777796 1834.9999999997835
-obs-20327 SpectrumDatasetOnOff     HESS  20327 POINTING 257.47731666009  -39.762222222222 173.028202492518 ... 4588884173.184 4588884173.184       0     0.0      tt 16.5002222222222 -23.271777777777796 1834.9999999997835
-obs-20349 SpectrumDatasetOnOff     HESS  20349 POINTING 259.29851667325  -39.762222222222 186.677648995064 ... 4588971568.184 4588971568.184       0     0.0      tt 16.5002222222222 -23.271777777777796 1834.9999999997835
-obs-20350 SpectrumDatasetOnOff     HESS  20350 POINTING 257.47731666009  -39.762222222222 204.898657132136 ... 4588973394.184 4588973394.184       0     0.0      tt 16.5002222222222 -23.271777777777796 1834.9999999997835
-obs-20396 SpectrumDatasetOnOff     HESS  20396 POINTING 258.38791666667 -39.0622222341429 190.619535249774 ... 4589144259.184 4589144259.184       0     0.0      tt 16.5002222222222 -23.271777777777796 1834.9999999997835
-obs-20397 SpectrumDatasetOnOff     HESS  20397 POINTING 258.38791666667 -40.4622222103011 207.881881671519 ... 4589146072.184 4589146072.184       0     0.0      tt 16.5002222222222 -23.271777777777796 1834.9999999997835
-</pre></div>
-</div>
 </section>
 <section id="explore-the-results">
 <h2>Explore the results<a class="headerlink" href="#explore-the-results" title="Link to this heading">#</a></h2>
@@ -857,7 +854,7 @@ obs-20397 SpectrumDatasetOnOff     HESS  20397 POINTING 258.38791666667 -40.4622
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_extended_source_spectral_analysis_001.png" srcset="../../_images/sphx_glr_extended_source_spectral_analysis_001.png" alt="Counts, Exposure, Energy Dispersion" class = "sphx-glr-single-img"/><section id="cumulative-excess-and-significance">
+<section id="cumulative-excess-and-significance">
 <h3>Cumulative excess and significance<a class="headerlink" href="#cumulative-excess-and-significance" title="Link to this heading">#</a></h3>
 <p>Finally, we can look at cumulative significance and number of excesses.
 This is done with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">info_table</span></code> method of
@@ -865,17 +862,6 @@ This is done with the <code class="xref py py-obj docutils literal notranslate">
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">info_table</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">info_table</span><span class="p">(</span><span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">info_table</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  name  counts      excess          sqrt_ts          background          npred         npred_background  npred_signal ... n_bins n_fit_bins stat_type      stat_sum      counts_off acceptance   acceptance_off         alpha
-                                                                                                                      ...
-------- ------ --------------- ------------------ ---------------- ------------------ ------------------ ------------ ... ------ ---------- --------- ------------------ ---------- ---------- ----------------- -------------------
-stacked   1216           170.5  4.159464335903116           1045.5 1102.3333333333333 1102.3333333333333          nan ...     10          9     wstat 43.268001616017976       2091        9.0              18.0                 0.5
-stacked   2339           270.5 4.7224642932844345           2068.5  2158.666666666667  2158.666666666667          nan ...     10          9     wstat   72.2340282463571       4137        9.0              18.0                 0.5
-stacked   3521           480.5  6.880790051412004           3040.5 3200.6666666666665 3200.6666666666665          nan ...     10          9     wstat 121.08402714166992       6081        9.0              18.0                 0.5
-stacked   4684           653.0   8.11478193157773           4031.0  4248.666666666668  4248.666666666668          nan ...     10          9     wstat 159.53811351624236       8062        9.0              18.0                 0.5
-stacked   5895 874.66650390625   9.86991117540032 5020.33349609375  5293.754465997458  5293.754465997458          nan ...     10          9     wstat 214.86274893609067      11030        9.0 19.77358627319336 0.45515263080596924
-stacked   6985 993.16650390625  10.25111342275998 5991.83349609375  6305.481315567763  6305.481315567763          nan ...     10          9     wstat 238.19703760222595      12973        9.0 19.48602294921875  0.4618695378303528
 </pre></div>
 </div>
 <p>And make the corresponding plots</p>
@@ -903,7 +889,7 @@ stacked   6985 993.16650390625  10.25111342275998 5991.83349609375  6305.4813155
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_extended_source_spectral_analysis_002.png" srcset="../../_images/sphx_glr_extended_source_spectral_analysis_002.png" alt="Excess, Sqrt(TS)" class = "sphx-glr-single-img"/></section>
+</section>
 </section>
 <section id="perform-spectral-model-fitting">
 <h2>Perform spectral model fitting<a class="headerlink" href="#perform-spectral-model-fitting" title="Link to this heading">#</a></h2>
@@ -924,34 +910,10 @@ every dataset in the <a class="reference internal" href="../../api/gammapy.datas
 <span class="nb">print</span><span class="p">(</span><span class="n">result_joint</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : minuit
-        method     : migrad
-        success    : True
-        message    : Optimization terminated successfully.
-        nfev       : 38
-        total stat : 52.79
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
-</pre></div>
-</div>
 <section id="explore-the-fit-results">
 <h3>Explore the fit results<a class="headerlink" href="#explore-the-fit-results" title="Link to this heading">#</a></h3>
 <p>First the fitted parameters values and their errors.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">datasets</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">to_parameters_table</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span> model   type    name     value         unit        error   min max frozen is_norm link prior
--------- ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-RXJ 1713          index 2.1102e+00                6.129e-02 nan nan  False   False
-RXJ 1713      amplitude 1.3576e-11 cm-2 s-1 TeV-1 9.757e-13 nan nan  False    True
-RXJ 1713      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
 </pre></div>
 </div>
 <p>Then plot the fit result to compare measured and expected counts. Rather
@@ -969,7 +931,7 @@ and plot the fit result on the result.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_extended_source_spectral_analysis_003.png" srcset="../../_images/sphx_glr_extended_source_spectral_analysis_003.png" alt="extended source spectral analysis" class = "sphx-glr-single-img"/><div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-1d-extended-source-spectral-analysis-py">
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-1d-extended-source-spectral-analysis-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-1d/extended_source_spectral_analysis.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.svg" width="150px" /></a>
 </div>

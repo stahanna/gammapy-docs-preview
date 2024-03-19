@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35ce1f52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="3D detailed analysis" href="analysis_3d.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 Feb 2024"/>
+    <meta name="docbuild:last-update" content="18 Mar 2024"/>
   </head>
   
   
@@ -664,8 +664,8 @@ data with energy between 300 Gev and 300 TeV.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2047+gc10346aa1.d20240223
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
+        version                : 1.2.dev2051+gbdbe6fea3.d20240318
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -691,7 +691,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -707,10 +707,14 @@ Fermi-LAT dataset and the Crab model.</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>datasets:
-- name: Fermi-LAT
-  type: MapDataset
-  filename: Fermi-LAT-3FHL_data_Fermi-LAT.fits
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/analysis_mwl.py&quot;</span>, line <span class="m">85</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  File <span class="nb">&quot;/usr/lib64/python3.9/pathlib.py&quot;</span>, line <span class="m">1252</span>, in <span class="n">open</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">buffering</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">newline</span><span class="p">,</span>
+  File <span class="nb">&quot;/usr/lib64/python3.9/pathlib.py&quot;</span>, line <span class="m">1120</span>, in <span class="n">_opener</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/fermi-3fhl-crab/Fermi-LAT-3FHL_datasets.yaml&#39;</span>
 </pre></div>
 </div>
 <p>We used as model a point source with a log-parabola spectrum. The
@@ -723,87 +727,6 @@ range (fixing the source position).</p>
 
 <span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>components:
--   name: Crab Nebula
-    type: SkyModel
-    spectral:
-        type: LogParabolaSpectralModel
-        parameters:
-        -   name: amplitude
-            value: 0.018182745349064267
-            unit: cm-2 s-1 TeV-1
-            min: .nan
-            max: .nan
-            frozen: false
-            error: 0.003026327991562108
-        -   name: reference
-            value: 5.054833602905273e-05
-            unit: TeV
-            min: .nan
-            max: .nan
-            frozen: true
-            error: 0.0
-        -   name: alpha
-            value: 1.652368617859867
-            unit: &#39;&#39;
-            min: .nan
-            max: .nan
-            frozen: false
-            error: 0.05762513693893088
-        -   name: beta
-            value: 0.03921700077803329
-            unit: &#39;&#39;
-            min: .nan
-            max: .nan
-            frozen: false
-            error: 0.00521472221220211
-    spatial:
-        type: PointSpatialModel
-        frame: icrs
-        parameters:
-        -   name: lon_0
-            value: 83.63310241699219
-            unit: deg
-            min: .nan
-            max: .nan
-            frozen: true
-            error: 0.0
-        -   name: lat_0
-            value: 22.019899368286133
-            unit: deg
-            min: -90.0
-            max: 90.0
-            frozen: true
-            error: 0.0
--   type: FoVBackgroundModel
-    datasets_names:
-    - Fermi-LAT
-    spectral:
-        type: PowerLawNormSpectralModel
-        parameters:
-        -   name: norm
-            value: 1.3004625872247901
-            unit: &#39;&#39;
-            min: 0.0
-            max: .nan
-            frozen: false
-            error: 0.07512322002655547
-        -   name: tilt
-            value: 0.0
-            unit: &#39;&#39;
-            min: .nan
-            max: .nan
-            frozen: true
-            error: 0.0
-        -   name: reference
-            value: 1.0
-            unit: TeV
-            min: .nan
-            max: .nan
-            frozen: true
-            error: 0.0
 </pre></div>
 </div>
 </section>
@@ -822,54 +745,8 @@ range (fixing the source position).</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/utils/scripts.py:65: UserWarning: Checksum verification failed for /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/fermi-3fhl-crab/Fermi-LAT-3FHL_datasets.yaml.
-  warnings.warn(f&quot;Checksum verification failed for {filename}.&quot;, UserWarning)
-Models
-
-Component 0: SkyModel
-
-  Name                      : Crab Nebula
-  Datasets names            : None
-  Spectral model type       : LogParabolaSpectralModel
-  Spatial  model type       : PointSpatialModel
-  Temporal model type       :
-  Parameters:
-    amplitude                     :   1.82e-02   +/- 3.0e-03 1 / (cm2 s TeV)
-    reference             (frozen):      0.000       TeV
-    alpha                         :      1.652   +/-    0.06
-    beta                          :      0.039   +/-    0.01
-    lon_0                 (frozen):     83.633       deg
-    lat_0                 (frozen):     22.020       deg
-
-Component 1: FoVBackgroundModel
-
-  Name                      : Fermi-LAT-bkg
-  Datasets names            : [&#39;Fermi-LAT&#39;]
-  Spectral model type       : PowerLawNormSpectralModel
-  Parameters:
-    norm                          :      1.300   +/-    0.08
-    tilt                  (frozen):      0.000
-    reference             (frozen):      1.000       TeV
-</pre></div>
-</div>
 <p>We get the Crab model in order to share it with the other datasets</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="s2">&quot;Crab Nebula&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SkyModel
-
-  Name                      : Crab Nebula
-  Datasets names            : None
-  Spectral model type       : LogParabolaSpectralModel
-  Spatial  model type       : PointSpatialModel
-  Temporal model type       :
-  Parameters:
-    amplitude                     :   1.82e-02   +/- 3.0e-03 1 / (cm2 s TeV)
-    reference             (frozen):      0.000       TeV
-    alpha                         :      1.652   +/-    0.06
-    beta                          :      0.039   +/-    0.01
-    lon_0                 (frozen):     83.633       deg
-    lat_0                 (frozen):     22.020       deg
 </pre></div>
 </div>
 </section>
@@ -895,24 +772,6 @@ is added to the dataset.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Datasets
---------
-
-Dataset 0:
-
-  Type       : MapDataset
-  Name       : Fermi-LAT
-  Instrument :
-  Models     :
-
-Dataset 1:
-
-  Type       : SpectrumDatasetOnOff
-  Name       : HESS
-  Instrument :
-  Models     :
-</pre></div>
-</div>
 </section>
 <section id="hawc-1d-dataset-for-flux-point-fitting">
 <h3>HAWC: 1D dataset for flux point fitting<a class="headerlink" href="#hawc-1d-dataset-for-flux-point-fitting" title="Link to this heading">#</a></h3>
@@ -930,31 +789,6 @@ a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Fl
 <span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dataset_hawc</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Datasets
---------
-
-Dataset 0:
-
-  Type       : MapDataset
-  Name       : Fermi-LAT
-  Instrument :
-  Models     :
-
-Dataset 1:
-
-  Type       : SpectrumDatasetOnOff
-  Name       : HESS
-  Instrument :
-  Models     :
-
-Dataset 2:
-
-  Type       : FluxPointsDataset
-  Name       : HAWC
-  Instrument :
-  Models     :
 </pre></div>
 </div>
 </section>
@@ -978,33 +812,6 @@ from these files.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/utils/scripts.py:65: UserWarning: Checksum verification failed for crab-3datasets/crab_10GeV_100TeV_datasets.yaml.
-  warnings.warn(f&quot;Checksum verification failed for {filename}.&quot;, UserWarning)
-Datasets
---------
-
-Dataset 0:
-
-  Type       : MapDataset
-  Name       : Fermi-LAT
-  Instrument :
-  Models     : [&#39;Crab Nebula&#39;, &#39;Fermi-LAT-bkg&#39;]
-
-Dataset 1:
-
-  Type       : SpectrumDatasetOnOff
-  Name       : HESS
-  Instrument :
-  Models     : [&#39;Crab Nebula&#39;]
-
-Dataset 2:
-
-  Type       : FluxPointsDataset
-  Name       : HAWC
-  Instrument :
-  Models     : [&#39;Crab Nebula&#39;]
-</pre></div>
-</div>
 </section>
 <section id="joint-analysis">
 <h2>Joint analysis<a class="headerlink" href="#joint-analysis" title="Link to this heading">#</a></h2>
@@ -1015,36 +822,9 @@ each instrument</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">results_joint</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : minuit
-        method     : migrad
-        success    : True
-        message    : Optimization terminated successfully.
-        nfev       : 302
-        total stat : -12697.22
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
-</pre></div>
-</div>
 <p>Let’s display only the parameters of the Crab spectral model</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">crab_spec</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="s2">&quot;Crab Nebula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">spectral_model</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">crab_spec</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>LogParabolaSpectralModel
-
-type    name     value         unit        error   min max frozen is_norm link prior
----- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-     amplitude 3.9741e-03 cm-2 s-1 TeV-1 3.125e-04 nan nan  False    True
-     reference 5.0548e-05            TeV 0.000e+00 nan nan   True   False
-         alpha 1.2634e+00                1.707e-02 nan nan  False   False
-          beta 6.1321e-02                9.448e-04 nan nan  False   False
 </pre></div>
 </div>
 <p>We can compute flux points for Fermi-LAT and HESS datasets in order plot
@@ -1085,7 +865,6 @@ instrument.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_analysis_mwl_001.png" srcset="../../_images/sphx_glr_analysis_mwl_001.png" alt="analysis mwl" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.628 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-3d-analysis-mwl-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-3d/analysis_mwl.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo2.svg" width="150px" /></a>

@@ -106,8 +106,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2047+gc10346aa1.d20240223 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -133,7 +133,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -377,18 +377,20 @@ For more info see https://arxiv.org/pdf/1012.4515.pdf
 
 
 
-
-.. image-sg:: /tutorials/api/images/sphx_glr_astro_dark_matter_004.png
-   :alt: m$_{\mathrm{DM}}$ = 0.01 TeV, m$_{\mathrm{DM}}$ = 0.1 TeV, m$_{\mathrm{DM}}$ = 1.0 TeV, m$_{\mathrm{DM}}$ = 10.0 TeV
-   :srcset: /tutorials/api/images/sphx_glr_astro_dark_matter_004.png
-   :class: sphx-glr-single-img
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    ['eL', 'eR', 'e', 'muL', 'muR', 'mu', 'tauL', 'tauR', 'tau', 'q', 'c', 'b', 't', 'WL', 'WT', 'W', 'ZL', 'ZT', 'Z', 'g', 'gamma', 'h', 'nu_e', 'nu_mu', 'nu_tau', 'V->e', 'V->mu', 'V->tau']
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/astro_dark_matter.py", line 185, in <module>
+        fluxes = PrimaryFlux(mDM="1 TeV", channel="eL")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/astro/darkmatter/spectra.py", line 80, in __init__
+        raise FileNotFoundError(
+    FileNotFoundError: 
+
+    File not found: $GAMMAPY_DATA/dark_matter_spectra/AtProduction_gammas.dat
+    You may download the dataset needed with the following command:
+    gammapy download datasets --src dark_matter_spectra
 
 
 
@@ -424,17 +426,6 @@ Finally flux maps can be produced like this:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_astro_dark_matter_005.png
-   :alt: Flux [1 / (cm2 s)]  m$_{DM}$=10.0 TeV, channel=Z
-   :srcset: /tutorials/api/images/sphx_glr_astro_dark_matter_005.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 237-242
 
 Flux maps for decay
@@ -465,20 +456,9 @@ Finally flux maps for decay can be produced like this:
     plt.show()
 
 
-
-.. image-sg:: /tutorials/api/images/sphx_glr_astro_dark_matter_006.png
-   :alt: Flux [1 / (cm2 s)]  m$_{DM}$=10.0 TeV, channel=Z
-   :srcset: /tutorials/api/images/sphx_glr_astro_dark_matter_006.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 48.088 seconds)
+   **Total running time of the script:** (0 minutes 45.985 seconds)
 
 
 .. _sphx_glr_download_tutorials_api_astro_dark_matter.py:

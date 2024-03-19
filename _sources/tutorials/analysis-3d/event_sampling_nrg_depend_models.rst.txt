@@ -125,8 +125,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2047+gc10346aa1.d20240223 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -152,7 +152,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -488,7 +488,26 @@ is passed to the dataset.
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/event_sampling_nrg_depend_models.py", line 269, in <module>
+        irfs = load_irf_dict_from_file(path / irf_filename)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/irf/io.py", line 197, in load_irf_dict_from_file
+        with fits.open(filename) as hdulist:
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
+        return HDUList.fromfile(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
+        return cls._readfrom(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
+        fileobj = _File(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
+        self._open_filename(fileobj, mode, overwrite)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
+        self._file = open(self.name, IO_FITS_MODES[mode])
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/cta-caldb/Prod5-South-20deg-AverageAz-14MSTs37SSTs.180000s-v0.1.fits.gz'
 
 
 
@@ -513,12 +532,6 @@ is passed to the dataset.
     )
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 297-312
 
 .. code-block:: Python
@@ -536,43 +549,6 @@ is passed to the dataset.
     dataset.models = models
 
     print(dataset.models)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    DatasetModels
-
-    Component 0: SkyModel
-
-      Name                      : test-source
-      Datasets names            : None
-      Spectral model type       : ConstantSpectralModel
-      Spatial  model type       : PointSpatialModel
-      Temporal model type       : LightCurveTemplateTemporalModel
-      Parameters:
-        const                         :      1.000   +/-    0.00 1 / (cm2 s TeV)
-        lon_0                         :    100.000   +/-    0.00 deg         
-        lat_0                         :     30.000   +/-    0.00 deg         
-        t_ref                 (frozen):  51544.000       d           
-
-    Component 1: FoVBackgroundModel
-
-      Name                      : my-dataset-bkg
-      Datasets names            : ['my-dataset']
-      Spectral model type       : PowerLawNormSpectralModel
-      Parameters:
-        norm                          :      1.000   +/-    0.00             
-        tilt                  (frozen):      0.000                   
-        reference             (frozen):      1.000       TeV         
-
-
-
 
 
 
@@ -597,12 +573,6 @@ time. Here we adopt an `oversample_energy_factor` of 10:
     events = sampler.run(dataset, observation)
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 327-329
 
 Let's inspect the simulated events in the source region:
@@ -624,17 +594,6 @@ Let's inspect the simulated events in the source region:
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_event_sampling_nrg_depend_models_003.png
-   :alt: event sampling nrg depend models
-   :srcset: /tutorials/analysis-3d/images/sphx_glr_event_sampling_nrg_depend_models_003.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 341-343
 
 Let's inspect the simulated events as a function of time:
@@ -653,17 +612,6 @@ Let's inspect the simulated events as a function of time:
 
     plt.legend()
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_event_sampling_nrg_depend_models_004.png
-   :alt: event sampling nrg depend models
-   :srcset: /tutorials/analysis-3d/images/sphx_glr_event_sampling_nrg_depend_models_004.png
-   :class: sphx-glr-single-img
-
-
 
 
 

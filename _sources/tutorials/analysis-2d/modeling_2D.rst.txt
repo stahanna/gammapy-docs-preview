@@ -125,8 +125,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2047+gc10346aa1.d20240223 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -152,7 +152,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -242,7 +242,7 @@ analysis as *3D*, and define the geometry of the analysis.
             datasets_file: null
             models_file: null
         observations:
-            datastore: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/cta-1dc/index/gps
+            datastore: gammapy-data/cta-1dc/index/gps
             obs_ids: [110380, 111140, 111159]
             obs_file: null
             obs_cone: {frame: null, lon: null, lat: null, radius: null}
@@ -316,45 +316,18 @@ We now use the config file and create a single `MapDataset` containing
 
 
 
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-      warnings.warn(msg, UnitsWarning)
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-      warnings.warn(msg, UnitsWarning)
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-      warnings.warn(msg, UnitsWarning)
-    MapDataset
-    ----------
-
-      Name                            : stacked 
-
-      Total counts                    : 85625 
-      Total background counts         : 85624.99
-      Total excess counts             : 0.01
-
-      Predicted counts                : 85625.00
-      Predicted background counts     : 85624.99
-      Predicted excess counts         : nan
-
-      Exposure min                    : 8.46e+08 m2 s
-      Exposure max                    : 2.14e+10 m2 s
-
-      Number of total bins            : 120000 
-      Number of fit bins              : 96602 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-2d/modeling_2D.py", line 122, in <module>
+        analysis.get_observations()
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/analysis/core.py", line 141, in get_observations
+        self._set_data_store()
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/analysis/core.py", line 100, in _set_data_store
+        raise FileNotFoundError(f"Datastore not found: {path}")
+    FileNotFoundError: Datastore not found: gammapy-data/cta-1dc/index/gps
 
 
 
@@ -380,44 +353,6 @@ about them presently.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    WcsNDMap
-
-            geom  : WcsGeom 
-            axes  : ['lon', 'lat', 'energy']
-            shape : (400, 300, 1)
-            ndim  : 3
-            unit  : 
-            dtype : float32
-
-    WcsNDMap
-
-            geom  : WcsGeom 
-            axes  : ['lon', 'lat', 'energy']
-            shape : (400, 300, 1)
-            ndim  : 3
-            unit  : 
-            dtype : float32
-
-    WcsNDMap
-
-            geom  : WcsGeom 
-            axes  : ['lon', 'lat', 'energy_true']
-            shape : (400, 300, 16)
-            ndim  : 3
-            unit  : m2 s
-            dtype : float32
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 143-145
 
 We can have a quick look of these maps in the following way:
@@ -430,17 +365,6 @@ We can have a quick look of these maps in the following way:
 
     analysis.datasets["stacked"].counts.reduce_over_axes().plot(vmax=10, add_cbar=True)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/analysis-2d/images/sphx_glr_modeling_2D_001.png
-   :alt: modeling 2D
-   :srcset: /tutorials/analysis-2d/images/sphx_glr_modeling_2D_001.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -498,12 +422,6 @@ it:
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 198-200
 
 We will freeze the parameters of the background
@@ -521,31 +439,6 @@ We will freeze the parameters of the background
 
     # To see the best fit values along with the errors
     display(analysis.models.to_parameters_table())
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-       model    type    name     value      unit     error   min max frozen is_norm link prior
-    ----------- ---- --------- ---------- -------- --------- --- --- ------ ------- ---- -----
-           GC-1      amplitude 4.1496e-11 cm-2 s-1 2.223e-12 nan nan  False    True           
-           GC-1          index 2.0000e+00          0.000e+00 nan nan   True   False           
-            ...  ...       ...        ...      ...       ... ... ...    ...     ...  ...   ...
-    stacked-bkg           norm 9.9445e-01          3.411e-03 nan nan  False    True           
-    stacked-bkg           tilt 0.0000e+00          0.000e+00 nan nan   True   False           
-    stacked-bkg      reference 1.0000e+00      TeV 0.000e+00 nan nan   True   False           
-    Length = 9 rows
-
-
-
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 12.816 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-2d_modeling_2D.py:

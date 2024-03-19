@@ -102,7 +102,16 @@ The `~gammapy.data.ObservationTable` is then filtered using the `select_observat
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/observation_clustering.py", line 55, in <module>
+        data_store = DataStore.from_dir("$GAMMAPY_DATA/hess-dl3-dr1")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
+        raise OSError(f"File not found: {hdu_table_filename}")
+    OSError: File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz
 
 
 
@@ -121,12 +130,6 @@ We can now retrieve the relevant observations by passing their obs_id to the
 
     obs_ids = selected_obs_table["OBS_ID"]
     observations = data_store.get_observations(obs_ids)
-
-
-
-
-
-
 
 
 
@@ -149,19 +152,6 @@ if there is a sensible way to group the observations.
 
     print(f"{np.min(obs_zenith):.2f} < zenith angle < {np.max(obs_zenith):.2f}")
     print(f"{np.min(obs_muoneff):.2f} < muon efficiency < {np.max(obs_muoneff):.2f}")
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    7.23 deg < zenith angle < 50.42 deg
-    0.97 < muon efficiency < 1.03
-
 
 
 
@@ -196,18 +186,6 @@ be adjusted according to each specific science case.
     print(grouped_observations)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    {'group_high_zenith': <gammapy.data.observations.Observations object at 0x7f24d32f0640>, 'group_low_zenith': <gammapy.data.observations.Observations object at 0x7f24d1f0a640>}
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 118-120
 
 The results for each group of observations is shown visually below.
@@ -237,17 +215,6 @@ The results for each group of observations is shown visually below.
     ax.set_xlabel("Zenith angle (deg)")
     ax.axvline(median_zenith.value, ls="--", color="black")
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_observation_clustering_001.png
-   :alt: observation clustering
-   :srcset: /tutorials/api/images/sphx_glr_observation_clustering_001.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -292,26 +259,6 @@ In this example, the irf features are computed for the `edisp-res` and
     print(features_irfs)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-         edisp-res      obs_id      psf-radius    
-                                       deg        
-    ------------------- ------ -------------------
-    0.36834038301420235  33787 0.14149953611195087
-    0.33983555538460375  33788 0.11553325504064559
-                    ...    ...                 ...
-     0.2838535883996668  47828 0.08795162606984375
-    0.26866373301881097  47829 0.08328557573258877
-    Length = 21 rows
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 178-181
 
 Compute standardized features by removing the mean and scaling to unit
@@ -325,26 +272,6 @@ variance:
 
     scaled_features_irfs = standard_scaler(features_irfs)
     print(scaled_features_irfs)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-         edisp-res       obs_id      psf-radius    
-    -------------------- ------ -------------------
-      2.3885947175689557  33787   3.053212009682775
-      1.4351637481047337  33788   1.363472509034498
-                     ...    ...                 ...
-     0.06334488877417843  47827 0.09907043184188653
-    -0.43732401953008965  47828 -0.4313847458879893
-     -0.9453950989269179  47829 -0.7350250533013533
-    Length = 21 rows
-
 
 
 
@@ -367,26 +294,6 @@ a dictionary here.
 
     features = hierarchical_clustering(scaled_features_irfs, fcluster_kwargs={"t": 2})
     print(features)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-         edisp-res       obs_id      psf-radius     labels
-    -------------------- ------ ------------------- ------
-      2.3885947175689557  33787   3.053212009682775      1
-      1.4351637481047337  33788   1.363472509034498      1
-                     ...    ...                 ...    ...
-     0.06334488877417843  47827 0.09907043184188653      2
-    -0.43732401953008965  47828 -0.4313847458879893      2
-     -0.9453950989269179  47829 -0.7350250533013533      2
-    Length = 21 rows
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 201-204
@@ -425,23 +332,6 @@ Finally, ``observations.group_by_label`` creates a dictionary containing ``t``
     )
     ax.legend()
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_observation_clustering_002.png
-   :alt: observation clustering
-   :srcset: /tutorials/api/images/sphx_glr_observation_clustering_002.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    {'group_1': <gammapy.data.observations.Observations object at 0x7f24d3743760>, 'group_2': <gammapy.data.observations.Observations object at 0x7f24d3a70100>}
-
 
 
 
