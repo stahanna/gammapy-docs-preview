@@ -30,25 +30,10 @@ dataset.
 .. GENERATED FROM PYTHON SOURCE LINES 11-34
 
 
-.. rst-class:: sphx-glr-script-out
-
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/scripts/survey_map.py", line 33, in <module>
-        main()
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/scripts/survey_map.py", line 19, in main
-        data_store = DataStore.from_dir("$GAMMAPY_DATA/hess-dl3-dr1")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
-        raise OSError(f"File not found: {hdu_table_filename}")
-    OSError: File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz
 
 
 
 
-
-
-|
 
 .. code-block:: Python
 

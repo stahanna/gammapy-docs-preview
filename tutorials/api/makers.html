@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Using Gammapy IRFs" href="irfs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="18 Mar 2024"/>
+    <meta name="docbuild:last-update" content="26 Mar 2024"/>
   </head>
   
   
@@ -642,8 +642,8 @@ and energy dispersion on the chosen analysis geometry.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2051+gbdbe6fea3.d20240318
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
+        version                : 1.2.dev2052+g4293df132.d20240326
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -664,12 +664,12 @@ Other packages:
         naima                  : 0.10.0
         emcee                  : 3.1.4
         corner                 : 2.2.2
-        ray                    : 2.9.3
+        ray                    : 2.10.0
 
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : ./gammapy-data
+        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
 </pre></div>
 </div>
 </section>
@@ -697,7 +697,7 @@ object. This is illustrated in the following example:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
 ----------
 
-  Name                            : 1r3g-3Qz
+  Name                            : Di8IV_w6
 
   Total counts                    : 0
   Total background counts         : 0.00
@@ -803,12 +803,31 @@ observational data using the <a class="reference internal" href="../../api/gamma
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/makers.py&quot;</span>, line <span class="m">101</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/hess-dl3-dr1&quot;</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py&quot;</span>, line <span class="m">173</span>, in <span class="n">from_dir</span>
-<span class="w">    </span><span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">hdu_table_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="gr">OSError</span>: <span class="n">File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz</span>
+<img src="../../_images/sphx_glr_makers_001.png" srcset="../../_images/sphx_glr_makers_001.png" alt="makers" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
+----------
+
+  Name                            : iJRixyIx
+
+  Total counts                    : 2016
+  Total background counts         : 1866.72
+  Total excess counts             : 149.28
+
+  Predicted counts                : 1866.72
+  Predicted background counts     : 1866.72
+  Predicted excess counts         : nan
+
+  Exposure min                    : 1.19e+02 m2 s
+  Exposure max                    : 1.09e+09 m2 s
+
+  Number of total bins            : 110000
+  Number of fit bins              : 110000
+
+  Fit statistic type              : cash
+  Fit statistic value (-2 log(L)) : nan
+
+  Number of models                : 0
+  Number of parameters            : 0
+  Number of free parameters       : 0
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="../../api/gammapy.makers.MapDatasetMaker.html#gammapy.makers.MapDatasetMaker" title="gammapy.makers.MapDatasetMaker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDatasetMaker</span></code></a> fills the corresponding <code class="xref py py-obj docutils literal notranslate"><span class="pre">counts</span></code>,
@@ -858,6 +877,16 @@ apply it to reconstructed energy, effectively neglecting the energy dispersion.<
 
 <span class="n">dataset</span><span class="o">.</span><span class="n">mask_safe</span><span class="o">.</span><span class="n">sum_over_axes</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_makers_002.png" srcset="../../_images/sphx_glr_makers_002.png" alt="makers" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsNDMap
+
+        geom  : WcsGeom
+        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;]
+        shape : (100, 100, 11)
+        ndim  : 3
+        unit  :
+        dtype : bool
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="../../api/gammapy.makers.SafeMaskMaker.html#gammapy.makers.SafeMaskMaker" title="gammapy.makers.SafeMaskMaker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SafeMaskMaker</span></code></a> does not modify any data, but only defines the
@@ -954,6 +983,33 @@ dataset per observation is stacked into a larger map.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">stacked</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
+----------
+
+  Name                            : LSwd6oQR
+
+  Total counts                    : 7972
+  Total background counts         : 7555.42
+  Total excess counts             : 416.58
+
+  Predicted counts                : 7555.42
+  Predicted background counts     : 7555.42
+  Predicted excess counts         : nan
+
+  Exposure min                    : 1.04e+06 m2 s
+  Exposure max                    : 3.22e+09 m2 s
+
+  Number of total bins            : 687500
+  Number of fit bins              : 687214
+
+  Fit statistic type              : cash
+  Fit statistic value (-2 log(L)) : nan
+
+  Number of models                : 0
+  Number of parameters            : 0
+  Number of free parameters       : 0
+</pre></div>
+</div>
 <p>To maintain good performance it is always recommended to do a cutout of
 the <code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code> as shown above. In case you want to increase the
 offset-cut later, you can also choose a larger width of the cutout than
@@ -974,6 +1030,38 @@ allow to use multiple processes on run.</p>
 <span class="n">datasets_maker</span> <span class="o">=</span> <span class="n">DatasetsMaker</span><span class="p">(</span><span class="n">makers</span><span class="p">,</span> <span class="n">stack_datasets</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">datasets</span> <span class="o">=</span> <span class="n">datasets_maker</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">global_dataset</span><span class="p">,</span> <span class="n">observations</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Datasets
+--------
+
+Dataset 0:
+
+  Type       : MapDataset
+  Name       : TB_aSekZ
+  Instrument : HESS
+  Models     : [&#39;TB_aSekZ-bkg&#39;]
+
+Dataset 1:
+
+  Type       : MapDataset
+  Name       : hk32h5AJ
+  Instrument : HESS
+  Models     : [&#39;hk32h5AJ-bkg&#39;]
+
+Dataset 2:
+
+  Type       : MapDataset
+  Name       : QmRrHkTG
+  Instrument : HESS
+  Models     : [&#39;QmRrHkTG-bkg&#39;]
+
+Dataset 3:
+
+  Type       : MapDataset
+  Name       : 5IrjTMsW
+  Instrument : HESS
+  Models     : [&#39;5IrjTMsW-bkg&#39;]
 </pre></div>
 </div>
 </section>
@@ -1016,6 +1104,38 @@ single fixed offset, which is recommended only for point-sources.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Datasets
+--------
+
+Dataset 0:
+
+  Type       : SpectrumDatasetOnOff
+  Name       : obs-23523
+  Instrument : HESS
+  Models     :
+
+Dataset 1:
+
+  Type       : SpectrumDatasetOnOff
+  Name       : obs-23592
+  Instrument : HESS
+  Models     :
+
+Dataset 2:
+
+  Type       : SpectrumDatasetOnOff
+  Name       : obs-23526
+  Instrument : HESS
+  Models     :
+
+Dataset 3:
+
+  Type       : SpectrumDatasetOnOff
+  Name       : obs-23559
+  Instrument : HESS
+  Models     :
 </pre></div>
 </div>
 <section id="observation-duration-and-effective-livetime">
@@ -1067,6 +1187,9 @@ as shown below</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img src="../../_images/sphx_glr_makers_003.png" srcset="../../_images/sphx_glr_makers_003.png" alt="Total observation time" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>No. of observations:  17
+</pre></div>
+</div>
 <p>As the acceptance of IACT cameras vary within the field of
 view, it can also be interesting to plot the on-axis equivalent
 number of hours.</p>
@@ -1088,7 +1211,7 @@ number of hours.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>To get the value of the observation time at a particular position,
+<img src="../../_images/sphx_glr_makers_004.png" srcset="../../_images/sphx_glr_makers_004.png" alt="Energy_true 100 GeV - 1.00 TeV, Energy_true 1.00 TeV - 10.00 TeV" class = "sphx-glr-single-img"/><p>To get the value of the observation time at a particular position,
 use <code class="xref py py-obj docutils literal notranslate"><span class="pre">get_by_coord</span></code></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obs_time_src</span> <span class="o">=</span> <span class="n">total_obstime</span><span class="o">.</span><span class="n">get_by_coord</span><span class="p">(</span><span class="n">source_pos</span><span class="p">)</span>
 <span class="n">effective_times_src</span> <span class="o">=</span> <span class="n">effective_livetime</span><span class="o">.</span><span class="n">get_by_coord</span><span class="p">(</span>
@@ -1105,6 +1228,14 @@ use <code class="xref py py-obj docutils literal notranslate"><span class="pre">
 <span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Time spent on position &lt;SkyCoord (ICRS): (ra, dec) in deg
+    (228.32, -59.08)&gt;
+Total observation time: [7.250185]* h
+Effective livetime at 0.31622776601683794 TeV: 7.249965667724609 * h
+Effective livetime at 3.162277660168379 TeV: 7.234359264373779 * h
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.792 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-api-makers-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/api/makers.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo4.svg" width="150px" /></a>

@@ -95,8 +95,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -117,12 +117,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -1198,7 +1198,7 @@ generated:
 
  .. code-block:: none
 
-    87Jc-eb1
+    Avb3Dg9x
 
 
 
@@ -1384,28 +1384,27 @@ existing FITS file:
 
 
 
+
+
 .. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
+ .. code-block:: none
 
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/models.py", line 466, in <module>
-        diffuse_cube = TemplateSpatialModel.read(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/modeling/models/spatial.py", line 1443, in read
-        m = Map.read(filename, **kwargs)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/maps/core.py", line 254, in read
-        with fits.open(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
-        return HDUList.fromfile(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
-        return cls._readfrom(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
-        fileobj = _File(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
-        self._open_filename(fileobj, mode, overwrite)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
-        self._file = open(self.name, IO_FITS_MODES[mode])
-    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/fermi-3fhl-gc/gll_iem_v06_gc.fits.gz'
+    SkyModel
+
+      Name                      : 4fcSklBd
+      Datasets names            : None
+      Spectral model type       : PowerLawNormSpectralModel
+      Spatial  model type       : TemplateSpatialModel
+      Temporal model type       : 
+      Parameters:
+        norm                          :      1.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+        lon_0                 (frozen):      0.000       deg         
+        lat_0                 (frozen):     -0.062       deg         
+
+
 
 
 
@@ -1450,6 +1449,26 @@ point), eg:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    type    name     value         unit        error      min       max    frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --------- --------- ------ ------- ---- -----
+             index 3.0000e+00                0.000e+00 1.000e+00 5.000e+00  False   False           
+         amplitude 2.7000e-12 cm-2 s-1 TeV-1 0.000e+00       nan       nan  False    True           
+     ...       ...        ...            ...       ...       ...       ...    ...     ...  ...   ...
+               phi 0.0000e+00            deg 0.000e+00       nan       nan   True   False           
+             t_ref 5.9240e+04              d 0.000e+00       nan       nan  False   False           
+             sigma 2.0000e+00              d 0.000e+00       nan       nan  False   False           
+    Length = 10 rows
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 507-510
 
 You can use the interactive boxes to choose model parameters by name,
@@ -1478,6 +1497,53 @@ multiple model components, Gammapy has a `~gammapy.modeling.models.Models` class
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Models
+
+    Component 0: SkyModel
+
+      Name                      : my-source
+      Datasets names            : None
+      Spectral model type       : PowerLawSpectralModel
+      Spatial  model type       : GaussianSpatialModel
+      Temporal model type       : GaussianTemporalModel
+      Parameters:
+        index                         :      3.000   +/-    0.00             
+        amplitude                     :   2.70e-12   +/- 0.0e+00 1 / (cm2 s TeV)
+        reference             (frozen):      1.000       TeV         
+        lon_0                         :      0.000   +/-    0.00 deg         
+        lat_0                         :      0.000   +/-    0.00 deg         
+        sigma                         :      0.200   +/-    0.00 deg         
+        e                     (frozen):      0.000                   
+        phi                   (frozen):      0.000       deg         
+        t_ref                         :  59240.000   +/-    0.00 d           
+        sigma                         :      2.000   +/-    0.00 d           
+
+    Component 1: SkyModel
+
+      Name                      : 4fcSklBd
+      Datasets names            : None
+      Spectral model type       : PowerLawNormSpectralModel
+      Spatial  model type       : TemplateSpatialModel
+      Temporal model type       : 
+      Parameters:
+        norm                          :      1.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+        lon_0                 (frozen):      0.000       deg         
+        lat_0                 (frozen):     -0.062       deg         
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 528-530
 
 Individual model components in the list can be accessed by their name:
@@ -1489,6 +1555,37 @@ Individual model components in the list can be accessed by their name:
 
 
     print(models["my-source"])
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    SkyModel
+
+      Name                      : my-source
+      Datasets names            : None
+      Spectral model type       : PowerLawSpectralModel
+      Spatial  model type       : GaussianSpatialModel
+      Temporal model type       : GaussianTemporalModel
+      Parameters:
+        index                         :      3.000   +/-    0.00             
+        amplitude                     :   2.70e-12   +/- 0.0e+00 1 / (cm2 s TeV)
+        reference             (frozen):      1.000       TeV         
+        lon_0                         :      0.000   +/-    0.00 deg         
+        lat_0                         :      0.000   +/-    0.00 deg         
+        sigma                         :      0.200   +/-    0.00 deg         
+        e                     (frozen):      0.000                   
+        phi                   (frozen):      0.000       deg         
+        t_ref                         :  59240.000   +/-    0.00 d           
+        sigma                         :      2.000   +/-    0.00 d           
+
+
+
 
 
 
@@ -1506,6 +1603,18 @@ To see which models are available you can use the ``.names`` attribute:
 
 
     print(models.names)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    ['my-source', '4fcSklBd']
+
 
 
 
@@ -1532,6 +1641,12 @@ methods:
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 561-564
 
 This list of models can be also serialised to a custom YAML based
@@ -1545,6 +1660,134 @@ format:
 
     models_yaml = models.to_yaml()
     print(models_yaml)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    components:
+    -   name: my-source
+        type: SkyModel
+        spectral:
+            type: PowerLawSpectralModel
+            parameters:
+            -   name: index
+                value: 3.0
+                min: 1.0
+                max: 5.0
+            -   name: amplitude
+                value: 2.7e-12
+                unit: cm-2 s-1 TeV-1
+            -   name: reference
+                value: 1.0
+                unit: TeV
+        spatial:
+            type: GaussianSpatialModel
+            frame: galactic
+            parameters:
+            -   name: lon_0
+                value: 0.0
+                unit: deg
+            -   name: lat_0
+                value: 0.0
+                unit: deg
+            -   name: sigma
+                value: 0.2
+                unit: deg
+            -   name: e
+                value: 0.0
+            -   name: phi
+                value: 0.0
+                unit: deg
+        temporal:
+            type: GaussianTemporalModel
+            parameters:
+            -   name: t_ref
+                value: 59240.0
+                unit: d
+            -   name: sigma
+                value: 2.0
+                unit: d
+            scale: utc
+    -   name: 4fcSklBd
+        type: SkyModel
+        spectral:
+            type: PowerLawNormSpectralModel
+            parameters:
+            -   name: norm
+                value: 1.0
+            -   name: tilt
+                value: 0.0
+            -   name: reference
+                value: 1.0
+                unit: TeV
+        spatial:
+            type: TemplateSpatialModel
+            frame: galactic
+            parameters:
+            -   name: lon_0
+                value: 0.0
+                unit: deg
+            -   name: lat_0
+                value: -0.0625
+                unit: deg
+            filename: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/fermi-3fhl-gc/gll_iem_v06_gc.fits.gz
+            normalize: false
+            unit: 1 / (cm2 MeV s sr)
+    -   name: my-source-copy
+        type: SkyModel
+        spectral:
+            type: PowerLawSpectralModel
+            parameters:
+            -   name: index
+                value: 3.0
+                min: 1.0
+                max: 5.0
+            -   name: amplitude
+                value: 2.7e-12
+                unit: cm-2 s-1 TeV-1
+            -   name: reference
+                value: 1.0
+                unit: TeV
+        spatial:
+            type: GaussianSpatialModel
+            frame: galactic
+            parameters:
+            -   name: lon_0
+                value: 0.0
+                unit: deg
+            -   name: lat_0
+                value: 0.0
+                unit: deg
+            -   name: sigma
+                value: 0.2
+                unit: deg
+            -   name: e
+                value: 0.0
+            -   name: phi
+                value: 0.0
+                unit: deg
+        temporal:
+            type: GaussianTemporalModel
+            parameters:
+            -   name: t_ref
+                value: 59240.0
+                unit: d
+            -   name: sigma
+                value: 2.0
+                unit: d
+            scale: utc
+    metadata:
+        creator: Gammapy 1.2.dev2052+g4293df132.d20240326
+        date: '2024-03-26T14:29:04.941515'
+        origin: null
+
+
 
 
 
@@ -1572,6 +1815,12 @@ you can use:
     models.write("models.yaml", overwrite=True)
 
     models_read = Models.read("models.yaml")
+
+
+
+
+
+
 
 
 
@@ -1605,6 +1854,19 @@ amplitudes:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Parameter(name='index', value=2.3, factor=2.3, scale=1.0, unit=Unit(dimensionless), min=1.0, max=5.0, frozen=False, prior=None, id=0x7f3058293b50)
+    Parameter(name='index', value=2.3, factor=2.3, scale=1.0, unit=Unit(dimensionless), min=1.0, max=5.0, frozen=False, prior=None, id=0x7f3058293b50)
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 613-616
 
 In the YAML files the shared parameter is flagged by the additional
@@ -1619,6 +1881,55 @@ In the YAML files the shared parameter is flagged by the additional
     models = Models([SkyModel(pwl, name="source1"), SkyModel(pwl2, name="source2")])
     models_yaml = models.to_yaml()
     print(models_yaml)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    components:
+    -   name: source1
+        type: SkyModel
+        spectral:
+            type: PowerLawSpectralModel
+            parameters:
+            -   name: index
+                value: 2.3
+                min: 1.0
+                max: 5.0
+                link: index@RHsAks20
+            -   name: amplitude
+                value: 2.7e-12
+                unit: cm-2 s-1 TeV-1
+            -   name: reference
+                value: 1.0
+                unit: TeV
+    -   name: source2
+        type: SkyModel
+        spectral:
+            type: PowerLawSpectralModel
+            parameters:
+            -   name: index
+                value: 2.3
+                min: 1.0
+                max: 5.0
+                link: index@RHsAks20
+            -   name: amplitude
+                value: 1.0e-12
+                unit: cm-2 s-1 TeV-1
+            -   name: reference
+                value: 1.0
+                unit: TeV
+    metadata:
+        creator: Gammapy 1.2.dev2052+g4293df132.d20240326
+        date: '2024-03-26T14:29:05.322129'
+        origin: null
+
+
 
 
 
@@ -1690,6 +2001,12 @@ fixed width). First we define the new custom model class that we name
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 684-692
 
 It is good practice to also implement a docstring for the model,
@@ -1716,6 +2033,32 @@ This model can now be used as any other spectral model in Gammapy:
 
 
 
+
+
+.. image-sg:: /tutorials/api/images/sphx_glr_models_008.png
+   :alt: models
+   :srcset: /tutorials/api/images/sphx_glr_models_008.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    MyCustomSpectralModel
+
+    type    name     value         unit        error      min    max frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --------- --- ------ ------- ---- -----
+         amplitude 1.0000e-12 cm-2 s-1 TeV-1 0.000e+00 0.000e+00 nan  False    True           
+             index 2.0000e+00                0.000e+00 0.000e+00 nan  False   False           
+         reference 1.0000e+00            TeV 0.000e+00       nan nan   True   False           
+              mean 3.0000e+00            TeV 0.000e+00 0.000e+00 nan  False   False           
+             width 1.0000e-01            TeV 0.000e+00 0.000e+00 nan   True   False           
+    1.1442739329466718e-12 1 / (cm2 s)
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 703-707
 
 As a next step we can also register the custom model in the
@@ -1735,6 +2078,12 @@ serialization:
     models.write("my-custom-models.yaml", overwrite=True)
 
     # !cat my-custom-models.yaml
+
+
+
+
+
+
 
 
 
@@ -1831,6 +2180,12 @@ models.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 804-810
 
 Serialisation of this model can be achieved as explained in the previous
@@ -1850,6 +2205,18 @@ analysis. Note that this is still a `~gammapy.modeling.models.SpatialModel` and 
     sky_model = SkyModel(spatial_model=spatial_model, spectral_model=spectral_model)
 
     print(spatial_model.evaluation_radius)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    None
+
 
 
 
@@ -1873,6 +2240,17 @@ To visualise it, we evaluate it on a 3D geom.
     plt.show()
 
 
+
+
+.. image-sg:: /tutorials/api/images/sphx_glr_models_009.png
+   :alt: Energy_true 100 GeV - 464 GeV, Energy_true 464 GeV - 2.15 TeV, Energy_true 2.15 TeV - 10.00 TeV
+   :srcset: /tutorials/api/images/sphx_glr_models_009.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 832-838
 
 For computational purposes, it is useful to specify a
@@ -1892,6 +2270,12 @@ following function inside the above class:
     def evaluation_radius(self):
         """Evaluation radius (`~astropy.coordinates.Angle`)."""
         return 5 * np.max([self.sigma_1TeV.value, self.sigma_10TeV.value]) * u.deg
+
+
+
+
+
+
 
 
 .. _sphx_glr_download_tutorials_api_models.py:

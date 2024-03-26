@@ -137,8 +137,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -159,12 +159,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -199,26 +199,7 @@ to:
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/starting/overview.py", line 104, in <module>
-        gc_3fhl = Map.read("$GAMMAPY_DATA/fermi-3fhl-gc/fermi-3fhl-gc-counts.fits.gz")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/maps/core.py", line 254, in read
-        with fits.open(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
-        return HDUList.fromfile(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
-        return cls._readfrom(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
-        fileobj = _File(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
-        self._open_filename(fileobj, mode, overwrite)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
-        self._file = open(self.name, IO_FITS_MODES[mode])
-    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/fermi-3fhl-gc/fermi-3fhl-gc-counts.fits.gz'
 
 
 
@@ -234,6 +215,26 @@ The image is a `~gammapy.maps.WcsNDMap` object:
 
 
     print(gc_3fhl)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    WcsNDMap
+
+            geom  : WcsGeom 
+            axes  : ['lon', 'lat']
+            shape : (400, 200)
+            ndim  : 2
+            unit  : 
+            dtype : >i8
+
+
 
 
 
@@ -254,6 +255,28 @@ The ``geom`` attribute is a `~gammapy.maps.WcsGeom` object:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    WcsGeom
+
+            axes       : ['lon', 'lat']
+            shape      : (400, 200)
+            ndim       : 2
+            frame      : galactic
+            projection : CAR
+            center     : 0.0 deg, 0.0 deg
+            width      : 20.0 deg x 10.0 deg
+            wcs ref    : 0.0 deg, 0.0 deg
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 125-127
 
 Let’s take a closer look a the ``.data`` attribute:
@@ -265,6 +288,24 @@ Let’s take a closer look a the ``.data`` attribute:
 
 
     print(gc_3fhl.data)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [[0 0 0 ... 0 0 0]
+     [0 0 0 ... 0 0 0]
+     [0 0 0 ... 0 0 0]
+     ...
+     [0 0 0 ... 0 0 1]
+     [0 0 0 ... 0 0 0]
+     [0 0 0 ... 0 0 1]]
+
 
 
 
@@ -280,6 +321,18 @@ which means you can apply any known numpy method to it:
 
 
     print(f"Total number of counts in the image: {gc_3fhl.data.sum():.0f}")
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Total number of counts in the image: 32684
+
 
 
 
@@ -303,6 +356,17 @@ and defines some defaults for nicer plots (e.g. the colormap ‘afmhot’):
 
 
 
+
+
+.. image-sg:: /tutorials/starting/images/sphx_glr_overview_001.png
+   :alt: overview
+   :srcset: /tutorials/starting/images/sphx_glr_overview_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 153-156
 
 To make the structures in the image more visible we will smooth the data
@@ -317,6 +381,17 @@ using a Gaussian kernel.
     gc_3fhl_smoothed = gc_3fhl.smooth(kernel="gauss", width=0.2 * u.deg)
     gc_3fhl_smoothed.plot(stretch="sqrt")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/starting/images/sphx_glr_overview_002.png
+   :alt: overview
+   :srcset: /tutorials/starting/images/sphx_glr_overview_002.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -339,6 +414,17 @@ cutout map:
     gc_3fhl_cutout = gc_3fhl_smoothed.cutout(center, 9 * u.deg)
     gc_3fhl_cutout.plot(stretch="sqrt")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/starting/images/sphx_glr_overview_003.png
+   :alt: overview
+   :srcset: /tutorials/starting/images/sphx_glr_overview_003.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -382,6 +468,12 @@ Let’s start with the import from the `~gammapy.data` submodule:
     from gammapy.data import EventList
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 211-214
 
 Very similar to the sky map class an event list can be created, by
@@ -394,6 +486,12 @@ passing a filename to the `~gammapy.data.EventList.read()` method:
 
 
     events_3fhl = EventList.read("$GAMMAPY_DATA/fermi-3fhl-gc/fermi-3fhl-gc-events.fits.gz")
+
+
+
+
+
+
 
 
 
@@ -413,6 +511,26 @@ object. It can be accessed with ``.table`` attribute:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+      ENERGY      RA       DEC         L          B        THETA      PHI    ZENITH_ANGLE ... CONVERSION_TYPE      LIVETIME      DIFRSP0 DIFRSP1 DIFRSP2 DIFRSP3 DIFRSP4
+       MeV       deg       deg        deg        deg        deg       deg        deg      ...                         s                                                 
+    --------- --------- ---------- --------- ----------- --------- --------- ------------ ... --------------- ------------------ ------- ------- ------- ------- -------
+    12186.642 260.45935 -33.553337 353.36273   1.7538676 71.977325 125.50694     59.22307 ...               0 238.57837238907814     0.0     0.0     0.0     0.0     0.0
+    25496.598 261.37506 -34.395004 353.09607   0.6520652  42.49406 278.49347    41.092773 ...               1 176.16850754618645     0.0     0.0     0.0     0.0     0.0
+          ...       ...        ...       ...         ...       ...       ...          ... ...             ...                ...     ...     ...     ...     ...     ...
+    18465.783 266.39728 -29.105953 359.85202 -0.08294058  55.97552 135.87787    18.909636 ...               0  70.72638684511185     0.0     0.0     0.0     0.0     0.0
+     14457.25 262.72217 -34.388405  353.7184 -0.26906812 45.683174 237.74162    25.728264 ...               0  147.4274787902832     0.0     0.0     0.0     0.0     0.0
+    Length = 32843 rows
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 228-231
 
 You can do *len* over event_3fhl.table to find the total number of
@@ -428,6 +546,18 @@ events.
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    32843
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 236-238
 
 And we can access any other attribute of the ``Table`` object as well:
@@ -439,6 +569,18 @@ And we can access any other attribute of the ``Table`` object as well:
 
 
     print(events_3fhl.table.colnames)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    ['ENERGY', 'RA', 'DEC', 'L', 'B', 'THETA', 'PHI', 'ZENITH_ANGLE', 'EARTH_AZIMUTH_ANGLE', 'TIME', 'EVENT_ID', 'RUN_ID', 'RECON_VERSION', 'CALIB_VERSION', 'EVENT_CLASS', 'EVENT_TYPE', 'CONVERSION_TYPE', 'LIVETIME', 'DIFRSP0', 'DIFRSP1', 'DIFRSP2', 'DIFRSP3', 'DIFRSP4']
+
 
 
 
@@ -462,6 +604,18 @@ objects:
     print(events_3fhl.energy.to("GeV"))
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [12.186643 25.4966   15.621499 ... 32.095707 18.465784 14.457251] GeV
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 256-259
 
 .. code-block:: Python
@@ -470,11 +624,39 @@ objects:
     # events_3fhl.radec
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    <SkyCoord (Galactic): (l, b) in deg
+        [(353.36228879,  1.75408483), (353.09562941,  0.6522806 ),
+         (353.05628243,  2.44528685), ..., (359.10295505, -0.1359316 ),
+         (359.85157506, -0.08269984), (353.71795506, -0.26883694)]>
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 260-263
 
 .. code-block:: Python
 
     print(events_3fhl.time)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [54682.82946153 54682.89243456 54682.89709472 ... 57236.75267735
+     57233.37455141 57233.44802852]
+
 
 
 
@@ -501,6 +683,18 @@ within a radius of 0.5 deg around the vela position:
 
     # and show highest energy photon
     print("highest energy photon: ", events_gc_3fhl.energy[-1].to("GeV"))
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    highest energy photon:  1917.85925 GeV
+
 
 
 
@@ -539,6 +733,12 @@ Let’s start with importing the 3FHL catalog object from the
     from gammapy.catalog import SourceCatalog3FHL
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 311-314
 
 First we initialize the Fermi-LAT 3FHL catalog and directly take a look
@@ -552,6 +752,26 @@ at the ``.table`` attribute:
 
     fermi_3fhl = SourceCatalog3FHL()
     print(fermi_3fhl.table)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+       Source_Name     RAJ2000  DEJ2000    GLON     GLAT   Conf_95_SemiMajor ...           ASSOC2           ASSOC_PROB_BAY ASSOC_PROB_LR Redshift     NuPeak_obs    
+                         deg      deg      deg      deg           deg        ...                                                                          Hz        
+    ------------------ -------- -------- -------- -------- ----------------- ... -------------------------- -------------- ------------- -------- ------------------
+    3FHL J0001.2-0748    0.3107  -7.8075  89.0094 -67.3118            0.0424 ...                                    0.9974        0.9721       --  306196370000000.0
+    3FHL J0001.9-4155    0.4849 -41.9303 334.1216 -72.0697            0.1018 ...                                    0.9960        0.0000       -- 6309576500000000.0
+                   ...      ...      ...      ...      ...               ... ...                        ...            ...           ...      ...                ...
+    3FHL J2359.1-3038  359.7760 -30.6397  12.7909 -78.0268            0.0231 ...                                    0.9999        0.9975   0.1650       2.818388e+17
+    3FHL J2359.3-2049  359.8293 -20.8256  58.0522 -76.5411            0.0722 ...                                    0.9894        0.9906   0.0960 4073799600000000.0
+    Length = 1556 rows
+
 
 
 
@@ -580,6 +800,24 @@ find the top 5 most significant sources:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+       Source_Name               ASSOC1                     ASSOC2            CLASS  Signif_Avg
+    ------------------ -------------------------- -------------------------- ------- ----------
+    3FHL J0534.5+2201  Crab Nebula                                           PWN        168.641
+    3FHL J1104.4+3812  Mkn 421                                               BLL        144.406
+    3FHL J0835.3-4510  PSR J0835-4510             Vela X field               PSR        138.801
+    3FHL J0633.9+1746  PSR J0633+1746                                        PSR         99.734
+    3FHL J1555.7+1111  PG 1553+113                                           BLL         94.411
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 338-342
 
 If you are interested in the data of an individual source you can access
@@ -597,6 +835,18 @@ source name that is defined in the catalog:
     # or use any alias source name that is defined in the catalog
     mkn_421_3fhl = fermi_3fhl["Mkn 421"]
     print(mkn_421_3fhl.data["Signif_Avg"])
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    144.40611
+
 
 
 
@@ -644,6 +894,24 @@ As a first example we will start with the Crab Nebula:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    PowerLawSpectralModel
+
+    type    name     value         unit        error   min max frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+             index 2.2202e+00                2.498e-02 nan nan  False   False           
+         amplitude 1.7132e-10 cm-2 GeV-1 s-1 3.389e-12 nan nan  False    True           
+         reference 2.2726e+01            GeV 0.000e+00 nan nan   True   False           
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 388-395
 
 The ``crab_3fhl_spec`` is an instance of the
@@ -664,6 +932,17 @@ Let’s plot the spectral model in the energy range between 10 GeV and
 
 
 
+
+
+.. image-sg:: /tutorials/starting/images/sphx_glr_overview_004.png
+   :alt: overview
+   :srcset: /tutorials/starting/images/sphx_glr_overview_004.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 401-407
 
 We assign the return axes object to variable called ``ax_crab_3fhl``,
@@ -679,6 +958,18 @@ like normal Python function and convert to the desired units:
 
 
     print(crab_3fhl_spec(100 * u.GeV).to("cm-2 s-1 GeV-1"))
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    6.3848912826152664e-12 1 / (cm2 GeV s)
+
 
 
 
@@ -701,6 +992,18 @@ Next we can compute the integral flux of the Crab between 10 GeV and
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    8.67457342435522e-09 1 / (cm2 s)
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 424-427
 
 We can easily convince ourself, that it corresponds to the value given
@@ -713,6 +1016,18 @@ in the Fermi-LAT 3FHL catalog:
 
 
     print(crab_3fhl.data["Flux"])
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    8.658909145253801e-09 1 / (cm2 s)
+
 
 
 
@@ -734,6 +1049,18 @@ In addition we can compute the energy flux between 10 GeV and 2000 GeV:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    5.311489174710791e-10 erg / (cm2 s)
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 443-445
 
 Next we will access the flux points data of the Crab:
@@ -745,6 +1072,30 @@ Next we will access the flux points data of the Crab:
 
 
     print(crab_3fhl.flux_points)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    FluxPoints
+    ----------
+
+      geom                   : RegionGeom
+      axes                   : ['lon', 'lat', 'energy']
+      shape                  : (1, 1, 5)
+      quantities             : ['norm', 'norm_errp', 'norm_errn', 'norm_ul', 'sqrt_ts', 'is_ul']
+      ref. model             : pl
+      n_sigma                : 1
+      n_sigma_ul             : 2
+      sqrt_ts_threshold_ul   : 1
+      sed type init          : flux
+
+
 
 
 
@@ -767,6 +1118,25 @@ the ``.table`` attribute:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+     e_ref    e_min   e_max         dnde         dnde_errp       dnde_errn        dnde_ul     sqrt_ts is_ul
+      GeV      GeV     GeV    1 / (cm2 GeV s) 1 / (cm2 GeV s) 1 / (cm2 GeV s) 1 / (cm2 GeV s)              
+    -------- ------- -------- --------------- --------------- --------------- --------------- ------- -----
+      14.142  10.000   20.000       5.120e-10       1.321e-11       1.321e-11             nan 125.157 False
+      31.623  20.000   50.000       7.359e-11       2.842e-12       2.842e-12             nan  88.715 False
+      86.603  50.000  150.000       9.024e-12       5.367e-13       5.367e-13             nan  59.087 False
+     273.861 150.000  500.000       7.660e-13       8.707e-14       8.097e-14             nan  33.076 False
+    1000.000 500.000 2000.000       4.291e-14       1.086e-14       9.393e-15             nan  15.573 False
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 462-466
 
 Finally let’s combine spectral model and flux points in a single plot
@@ -782,6 +1152,17 @@ distribution:
     ax = crab_3fhl_spec.plot(energy_bounds=[10, 2000] * u.GeV, sed_type="e2dnde")
     crab_3fhl.flux_points.plot(ax=ax, sed_type="e2dnde")
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/starting/images/sphx_glr_overview_005.png
+   :alt: overview
+   :srcset: /tutorials/starting/images/sphx_glr_overview_005.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 472-478

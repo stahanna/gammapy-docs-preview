@@ -174,8 +174,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -196,12 +196,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -242,26 +242,7 @@ Let’s start with some initial settings:
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/event_sampling.py", line 147, in <module>
-        irfs = load_irf_dict_from_file(path / irf_filename)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/irf/io.py", line 197, in load_irf_dict_from_file
-        with fits.open(filename) as hdulist:
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
-        return HDUList.fromfile(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
-        return cls._readfrom(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
-        fileobj = _File(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
-        self._open_filename(fileobj, mode, overwrite)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
-        self._file = open(self.name, IO_FITS_MODES[mode])
-    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/cta-caldb/Prod5-South-20deg-AverageAz-14MSTs37SSTs.180000s-v0.1.fits.gz'
 
 
 
@@ -284,6 +265,27 @@ Now you can create the observation:
         location=location,
     )
     print(observation)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Observation
+
+            obs id            : 1001 
+            tstart            : 51544.00
+            tstop             : 51544.04
+            duration          : 3600.00 s
+            pointing (icrs)   : 266.4 deg, -28.9 deg
+
+            deadtime fraction : 0.0%
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 163-185
@@ -331,6 +333,12 @@ with pixels of 0.02 deg.
     )
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 201-206
 
 In the following, the dataset is created by selecting the effective
@@ -354,6 +362,12 @@ function. We put it into the `evt_sampling` sub-folder:
 
     Path("event_sampling").mkdir(exist_ok=True)
     dataset.write("./event_sampling/dataset.fits", overwrite=True)
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 221-228
@@ -393,6 +407,12 @@ save the model into a yaml file.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 251-257
 
 Sampling the source and background events
@@ -409,6 +429,44 @@ want to event-sample to the `~gammapy.datasets.Dataset` container:
 
     dataset.models = models
     print(dataset.models)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    DatasetModels
+
+    Component 0: SkyModel
+
+      Name                      : point-pwl
+      Datasets names            : None
+      Spectral model type       : PowerLawSpectralModel
+      Spatial  model type       : PointSpatialModel
+      Temporal model type       : 
+      Parameters:
+        index                         :      2.000   +/-    0.00             
+        amplitude                     :   1.00e-12   +/- 0.0e+00 1 / (cm2 s TeV)
+        reference             (frozen):      1.000       TeV         
+        lon_0                         :      0.000   +/-    0.00 deg         
+        lat_0                         :      0.500   +/-    0.00 deg         
+
+    Component 1: FoVBackgroundModel
+
+      Name                      : my-dataset-bkg
+      Datasets names            : ['my-dataset']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 262-270
@@ -430,6 +488,12 @@ data information.
     events = sampler.run(dataset, observation)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 276-283
 
 The output of the event-sampler is an event list with coordinates,
@@ -449,6 +513,19 @@ Source and background events are flagged by the MC_ID identifier (where
     print(f"Background events: {(events.table['MC_ID'] == 0).sum()}")
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Source events: 138
+    Background events: 15319
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 288-290
 
 We can inspect the properties of the simulated events as follows:
@@ -461,6 +538,17 @@ We can inspect the properties of the simulated events as follows:
 
     events.select_offset([0, 1] * u.deg).peek()
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_event_sampling_001.png
+   :alt: event sampling
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_event_sampling_001.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 295-299
@@ -476,6 +564,12 @@ the SkyModel object. You can change it with the following commands:
 
 
     events.table.meta["OBJECT"] = dataset.models[0].name
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 303-306
@@ -494,6 +588,19 @@ use of `fits` library in `astropy`:
     hdu_gti = fits.BinTableHDU(dataset.gti.table, name="GTI")
     hdu_all = fits.HDUList([primary_hdu, hdu_evt, hdu_gti])
     hdu_all.writeto("./event_sampling/events_0001.fits", overwrite=True)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/table.py:374: AstropyDeprecationWarning: The following keywords are now recognized as special column-related attributes and should be set via the Column objects: TCTYPn, TCUNIn. In future, these values will be dropped from manually specified headers automatically and replaced with values generated based on the Column objects.
+      warnings.warn(
+
 
 
 
@@ -520,6 +627,12 @@ First of all, let’s create a lightcurve:
 
     times = t_ref + livetime * np.linspace(0, 1, 100)
     expdecay_model = ExpDecayTemporalModel(t_ref=t_ref.mjd * u.d, t0=t0)
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 333-338
@@ -559,6 +672,12 @@ let’s boost the flux of the simulated source of an order of magnitude:
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 362-365
 
 For simplicity, we use the same dataset defined for the previous
@@ -572,6 +691,46 @@ example:
 
     dataset.models = models
     print(dataset.models)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    DatasetModels
+
+    Component 0: SkyModel
+
+      Name                      : point-pwl
+      Datasets names            : None
+      Spectral model type       : PowerLawSpectralModel
+      Spatial  model type       : PointSpatialModel
+      Temporal model type       : ExpDecayTemporalModel
+      Parameters:
+        index                         :      2.000   +/-    0.00             
+        amplitude                     :   2.00e-11   +/- 0.0e+00 1 / (cm2 s TeV)
+        reference             (frozen):      1.000       TeV         
+        lon_0                         :      0.000   +/-    0.00 deg         
+        lat_0                         :      0.500   +/-    0.00 deg         
+        t0                            :   2800.000   +/-    0.00 s           
+        t_ref                 (frozen):  51544.001       d           
+
+    Component 1: FoVBackgroundModel
+
+      Name                      : my-dataset-bkg
+      Datasets names            : ['my-dataset']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 370-372
@@ -588,6 +747,19 @@ And now, let’s simulate the variable source:
 
     print(f"Source events: {(events.table['MC_ID'] == 1).sum()}")
     print(f"Background events: {(events.table['MC_ID'] == 0).sum()}")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Source events: 1523
+    Background events: 15246
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 381-385
@@ -610,6 +782,12 @@ into a given `SkyRegion` of a `~gammapy.data.EventList` object:
     src_events = events.select_region(on_region)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 394-396
 
 Then we can have a quick look to the data with the `peek` function:
@@ -622,6 +800,17 @@ Then we can have a quick look to the data with the `peek` function:
 
     src_events.peek()
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_event_sampling_002.png
+   :alt: event sampling
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_event_sampling_002.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 401-404
@@ -670,6 +859,44 @@ look at the event’s properties:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    DatasetModels
+
+    Component 0: SkyModel
+
+      Name                      : template-model
+      Datasets names            : None
+      Spectral model type       : PowerLawNormSpectralModel
+      Spatial  model type       : TemplateSpatialModel
+      Temporal model type       : 
+      Parameters:
+        norm                          :      5.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+        lon_0                 (frozen):      0.000       deg         
+        lat_0                 (frozen):     -0.062       deg         
+
+    Component 1: FoVBackgroundModel
+
+      Name                      : my-dataset-bkg
+      Datasets names            : ['my-dataset']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 439-445
 
 .. code-block:: Python
@@ -679,6 +906,17 @@ look at the event’s properties:
 
     events.select_offset([0, 1] * u.deg).peek()
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_event_sampling_003.png
+   :alt: event sampling
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_event_sampling_003.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 446-457
@@ -702,6 +940,12 @@ observation:
 
     tstarts = Time("2020-01-01 00:00:00") + [1, 5, 7] * u.hr
     livetimes = [1, 1, 1] * u.hr
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 462-486
@@ -733,6 +977,29 @@ observation:
         events.table.write(path, overwrite=True)
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/utils/random/inverse_cdf.py:36: RuntimeWarning: invalid value encountered in divide
+      pdf = pdf.ravel() / pdf.sum()
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/quantity.py:673: RuntimeWarning: invalid value encountered in divide
+      result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/utils/random/inverse_cdf.py:36: RuntimeWarning: invalid value encountered in divide
+      pdf = pdf.ravel() / pdf.sum()
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/quantity.py:673: RuntimeWarning: invalid value encountered in divide
+      result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/utils/random/inverse_cdf.py:36: RuntimeWarning: invalid value encountered in divide
+      pdf = pdf.ravel() / pdf.sum()
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/quantity.py:673: RuntimeWarning: invalid value encountered in divide
+      result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 487-490
 
 You can now load the event list and the corresponding IRFs with
@@ -748,6 +1015,23 @@ You can now load the event list and the corresponding IRFs with
     events_paths = list(path.rglob("events*.fits"))
     data_store = DataStore.from_events_files(events_paths, irf_paths)
     display(data_store.obs_table)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    OBS_ID    TSTART      TSTOP          ONTIME           LIVETIME     DEADC ... MJDREFI MJDREFF TIMEUNIT TIMESYS TIMEREF
+                s           s              s                 s               ...                                         
+    ------ ----------- ----------- ----------------- ----------------- ----- ... ------- ------- -------- ------- -------
+         0 631155605.0 631159205.0 3600.000000000006 3600.000000000006   1.0 ...   51544     0.0        s     utc   LOCAL
+         1 631170005.0 631173605.0 3600.000000000002 3600.000000000002   1.0 ...   51544     0.0        s     utc   LOCAL
+         2 631177205.0 631180805.0 3599.999999999997 3599.999999999997   1.0 ...   51544     0.0        s     utc   LOCAL
+
 
 
 
@@ -768,6 +1052,17 @@ analysis following the instructions in the
     plt.show()
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_event_sampling_004.png
+   :alt: Effective area, Background rate, Energy dispersion, Point spread function, Events
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_event_sampling_004.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 508-516
 
 Exercises
@@ -778,6 +1073,11 @@ Exercises
 -  Change the spatial model and the spectrum of the simulated Sky model;
 -  Include a temporal model in the simulation
 
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 32.107 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-3d_event_sampling.py:

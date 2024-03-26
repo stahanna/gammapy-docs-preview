@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Sample a source with energy-dependent temporal evolution" href="event_sampling_nrg_depend_models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="18 Mar 2024"/>
+    <meta name="docbuild:last-update" content="26 Mar 2024"/>
   </head>
   
   
@@ -658,8 +658,8 @@ run the flux profile extraction using the <a class="reference internal" href="..
 
 Gammapy package:
 
-        version                : 1.2.dev2051+gbdbe6fea3.d20240318
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
+        version                : 1.2.dev2052+g4293df132.d20240326
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -680,12 +680,12 @@ Other packages:
         naima                  : 0.10.0
         emcee                  : 3.1.4
         corner                 : 2.2.2
-        ray                    : 2.9.3
+        ray                    : 2.10.0
 
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : ./gammapy-data
+        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
 </pre></div>
 </div>
 </section>
@@ -696,33 +696,25 @@ Gammapy environment variables:
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/flux_profiles.py&quot;</span>, line <span class="m">73</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">MapDataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/datasets/map.py&quot;</span>, line <span class="m">1556</span>, in <span class="n">read</span>
-<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
-<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
-<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
-<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
-<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/fermi-3fhl-gc/fermi-3fhl-gc.fits.gz&#39;</span>
-</pre></div>
-</div>
 <p>This is what the counts image we will work with looks like:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">counts_image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">sum_over_axes</span><span class="p">()</span>
 <span class="n">counts_image</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="s2">&quot;0.1 deg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stretch</span><span class="o">=</span><span class="s2">&quot;sqrt&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>There are 400x200 pixels in the dataset and 11 energy bins between 10
+<img src="../../_images/sphx_glr_flux_profiles_001.png" srcset="../../_images/sphx_glr_flux_profiles_001.png" alt="flux profiles" class = "sphx-glr-single-img"/><p>There are 400x200 pixels in the dataset and 11 energy bins between 10
 GeV and 2 TeV:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsNDMap
+
+        geom  : WcsGeom
+        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;]
+        shape : (400, 200, 11)
+        ndim  : 3
+        unit  :
+        dtype : &gt;i4
 </pre></div>
 </div>
 </section>
@@ -754,6 +746,10 @@ the counts image:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img src="../../_images/sphx_glr_flux_profiles_002.png" srcset="../../_images/sphx_glr_flux_profiles_002.png" alt="flux profiles" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/regions/shapes/rectangle.py:207: UserWarning: Setting the &#39;color&#39; property will override the edgecolor or facecolor properties.
+  return Rectangle(xy=xy, width=width, height=height,
+</pre></div>
+</div>
 <p>Next we create the <a class="reference internal" href="../../api/gammapy.estimators.FluxProfileEstimator.html#gammapy.estimators.FluxProfileEstimator" title="gammapy.estimators.FluxProfileEstimator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxProfileEstimator</span></code></a>. For the estimation of the
 flux profile we assume a spectral model with a power-law shape and an
 index of 2.3</p>
@@ -769,6 +765,24 @@ index of 2.3</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">flux_profile_estimator</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>FluxProfileEstimator
+--------------------
+
+  energy_edges           : [  10. 2000.] GeV
+  fit                    : &lt;gammapy.modeling.fit.Fit object at 0x7f304031f8e0&gt;
+  n_jobs                 : None
+  n_sigma                : 1
+  n_sigma_ul             : 2
+  norm                   : Parameter(name=&#39;norm&#39;, value=1.0, factor=1.0, scale=1.0, unit=Unit(dimensionless), min=nan, max=nan, frozen=False, prior=None, id=0x7f304031f100)
+  null_value             : 0
+  parallel_backend       : None
+  reoptimize             : False
+  selection_optional     : [&#39;ul&#39;]
+  source                 : 0
+  spectrum               : PowerLawSpectralModel
+  sum_over_energy_groups : False
+</pre></div>
+</div>
 </section>
 <section id="run-estimation">
 <h3>Run Estimation<a class="headerlink" href="#run-estimation" title="Link to this heading">#</a></h3>
@@ -776,6 +790,20 @@ index of 2.3</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">flux_profile_estimator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">datasets</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>FluxPoints
+----------
+
+  geom                   : RegionGeom
+  axes                   : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;, &#39;projected-distance&#39;]
+  shape                  : (1, 1, 1, 51)
+  quantities             : [&#39;norm&#39;, &#39;norm_err&#39;, &#39;norm_ul&#39;, &#39;ts&#39;, &#39;npred&#39;, &#39;npred_excess&#39;, &#39;stat&#39;, &#39;stat_null&#39;, &#39;counts&#39;, &#39;success&#39;]
+  ref. model             : pl
+  n_sigma                : 1
+  n_sigma_ul             : 2
+  sqrt_ts_threshold_ul   : 2
+  sed type init          : likelihood
 </pre></div>
 </div>
 <p>We can see the flux profile is represented by a <a class="reference internal" href="../../api/gammapy.estimators.FluxPoints.html#gammapy.estimators.FluxPoints" title="gammapy.estimators.FluxPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxPoints</span></code></a> object
@@ -790,7 +818,7 @@ profile is measured along. The <code class="xref py py-obj docutils literal notr
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Based on the spectral model we specified above we can also plot in any
+<img src="../../_images/sphx_glr_flux_profiles_003.png" srcset="../../_images/sphx_glr_flux_profiles_003.png" alt="flux profiles" class = "sphx-glr-single-img"/><p>Based on the spectral model we specified above we can also plot in any
 other sed type, e.g. energy flux and define a different threshold when
 to plot upper limits:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span><span class="o">.</span><span class="n">sqrt_ts_threshold_ul</span> <span class="o">=</span> <span class="mi">2</span>
@@ -801,7 +829,7 @@ to plot upper limits:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>We can also plot any other quantity of interest, that is defined on the
+<img src="../../_images/sphx_glr_flux_profiles_004.png" srcset="../../_images/sphx_glr_flux_profiles_004.png" alt="flux profiles" class = "sphx-glr-single-img"/><p>We can also plot any other quantity of interest, that is defined on the
 <a class="reference internal" href="../../api/gammapy.estimators.FluxPoints.html#gammapy.estimators.FluxPoints" title="gammapy.estimators.FluxPoints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxPoints</span></code></a> result object. E.g. the predicted total counts,
 background counts and excess counts:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">quantities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;npred&quot;</span><span class="p">,</span> <span class="s2">&quot;npred_excess&quot;</span><span class="p">,</span> <span class="s2">&quot;npred_background&quot;</span><span class="p">]</span>
@@ -815,7 +843,7 @@ background counts and excess counts:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_flux_profiles_005.png" srcset="../../_images/sphx_glr_flux_profiles_005.png" alt="flux profiles" class = "sphx-glr-single-img"/></section>
 <section id="serialisation-and-i-o">
 <h3>Serialisation and I/O<a class="headerlink" href="#serialisation-and-i-o" title="Link to this heading">#</a></h3>
 <p>The profile can be serialised using <a class="reference internal" href="../../api/gammapy.estimators.FluxPoints.html#gammapy.estimators.FluxPoints.write" title="gammapy.estimators.FluxPoints.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>, given a
@@ -834,10 +862,21 @@ specific format:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The profile can be serialised to a <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v6.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> object
+<img src="../../_images/sphx_glr_flux_profiles_006.png" srcset="../../_images/sphx_glr_flux_profiles_006.png" alt="flux profiles" class = "sphx-glr-single-img"/><p>The profile can be serialised to a <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v6.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Table</span></code></a> object
 using:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">to_table</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;profile&quot;</span><span class="p">,</span> <span class="n">formatted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>       x_min              x_max              x_ref           e_ref        e_min         e_max         ref_dnde    ... npred_excess  stat stat_null is_ul counts success
+        deg                deg                deg             keV          keV           keV      1 / (cm2 s TeV) ...
+------------------- ------------------ ------------------ ------------ ------------ ------------- --------------- ... ------------ ----- --------- ----- ------ -------
+-0.1960784313725492 0.1960784313725492                0.0 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+ 0.1960784313725492 0.5882352941176467  0.392156862745098 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+                ...                ...                ...          ...          ...           ...             ... ...          ...   ...       ...   ...    ...     ...
+ 19.019607843137262  19.41176470588239 19.215686274509828 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+  19.41176470588239 19.803921568627494 19.607843137254942 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+Length = 51 rows
 </pre></div>
 </div>
 <p>No we can also estimate a radial profile starting from the Galactic
@@ -857,6 +896,10 @@ center:</p>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">gc_image</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="s2">&quot;0.1 deg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stretch</span><span class="o">=</span><span class="s2">&quot;sqrt&quot;</span><span class="p">)</span>
 <span class="n">geom</span><span class="o">.</span><span class="n">plot_region</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_flux_profiles_007.png" srcset="../../_images/sphx_glr_flux_profiles_007.png" alt="flux profiles" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/regions/core/compound.py:160: UserWarning: Setting the &#39;color&#39; property will override the edgecolor or facecolor properties.
+  patch = mpatches.PathPatch(path, **mpl_kwargs)
 </pre></div>
 </div>
 <p>This time we define two energy bins and include the fit statistic
@@ -882,7 +925,7 @@ profile in the computation:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>However because of the powerlaw spectrum the flux at high energies is
+<img src="../../_images/sphx_glr_flux_profiles_008.png" srcset="../../_images/sphx_glr_flux_profiles_008.png" alt="flux profiles" class = "sphx-glr-single-img"/><p>However because of the powerlaw spectrum the flux at high energies is
 much lower. To extract the profile at high energies only we can use:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">profile_high</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">slice_by_idx</span><span class="p">({</span><span class="s2">&quot;energy&quot;</span><span class="p">:</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)})</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -898,6 +941,7 @@ much lower. To extract the profile at high energies only we can use:</p>
 <span class="c1"># sphinx_gallery_thumbnail_number = 2</span>
 </pre></div>
 </div>
+<img src="../../_images/sphx_glr_flux_profiles_009.png" srcset="../../_images/sphx_glr_flux_profiles_009.png" alt="flux profiles" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 38.044 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-3d-flux-profiles-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-3d/flux_profiles.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo2.svg" width="150px" /></a>

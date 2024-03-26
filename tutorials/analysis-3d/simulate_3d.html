@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Flux Profile Estimation" href="flux_profiles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="18 Mar 2024"/>
+    <meta name="docbuild:last-update" content="26 Mar 2024"/>
   </head>
   
   
@@ -710,22 +710,36 @@ the dataset and fake the count data.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/simulate_3d.py&quot;</span>, line <span class="m">89</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">irfs</span> <span class="o">=</span> <span class="n">load_irf_dict_from_file</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/irf/io.py&quot;</span>, line <span class="m">197</span>, in <span class="n">load_irf_dict_from_file</span>
-<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
-<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
-<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
-<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
-<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits&#39;</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+  warnings.warn(msg, UnitsWarning)
+Models
+
+Component 0: SkyModel
+
+  Name                      : model-simu
+  Datasets names            : None
+  Spectral model type       : PowerLawSpectralModel
+  Spatial  model type       : GaussianSpatialModel
+  Temporal model type       :
+  Parameters:
+    index                         :      3.000   +/-    0.00
+    amplitude                     :   1.00e-11   +/- 0.0e+00 1 / (cm2 s TeV)
+    reference             (frozen):      1.000       TeV
+    lon_0                         :      0.200   +/-    0.00 deg
+    lat_0                         :      0.100   +/-    0.00 deg
+    sigma                         :      0.300   +/-    0.00 deg
+    e                     (frozen):      0.000
+    phi                   (frozen):      0.000       deg
+
+Component 1: FoVBackgroundModel
+
+  Name                      : dataset-simu-bkg
+  Datasets names            : [&#39;dataset-simu&#39;]
+  Spectral model type       : PowerLawNormSpectralModel
+  Parameters:
+    norm                          :      1.000   +/-    0.00
+    tilt                  (frozen):      0.000
+    reference             (frozen):      1.000       TeV
 </pre></div>
 </div>
 <p>Now, comes the main part of dataset simulation. We create an in-memory
@@ -756,6 +770,97 @@ the <code class="xref py py-obj docutils literal notranslate"><span class="pre">
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Observation
+
+        obs id            : 0
+        tstart            : 51544.00
+        tstop             : 51544.08
+        duration          : 7200.00 s
+        pointing (icrs)   : 266.4 deg, -28.9 deg
+
+        deadtime fraction : 0.0%
+
+MapDataset
+----------
+
+  Name                            : dataset-simu
+
+  Total counts                    : 0
+  Total background counts         : 161250.95
+  Total excess counts             : -161250.95
+
+  Predicted counts                : 161250.95
+  Predicted background counts     : 161250.95
+  Predicted excess counts         : nan
+
+  Exposure min                    : 4.08e+02 m2 s
+  Exposure max                    : 3.58e+10 m2 s
+
+  Number of total bins            : 810000
+  Number of fit bins              : 804492
+
+  Fit statistic type              : cash
+  Fit statistic value (-2 log(L)) : nan
+
+  Number of models                : 0
+  Number of parameters            : 0
+  Number of free parameters       : 0
+
+
+MapDataset
+----------
+
+  Name                            : dataset-simu
+
+  Total counts                    : 170006
+  Total background counts         : 161250.95
+  Total excess counts             : 8755.05
+
+  Predicted counts                : 169871.61
+  Predicted background counts     : 161250.95
+  Predicted excess counts         : 8620.66
+
+  Exposure min                    : 4.08e+02 m2 s
+  Exposure max                    : 3.58e+10 m2 s
+
+  Number of total bins            : 810000
+  Number of fit bins              : 804492
+
+  Fit statistic type              : cash
+  Fit statistic value (-2 log(L)) : 562850.33
+
+  Number of models                : 2
+  Number of parameters            : 11
+  Number of free parameters       : 6
+
+  Component 0: SkyModel
+
+    Name                      : model-simu
+    Datasets names            : None
+    Spectral model type       : PowerLawSpectralModel
+    Spatial  model type       : GaussianSpatialModel
+    Temporal model type       :
+    Parameters:
+      index                         :      3.000   +/-    0.00
+      amplitude                     :   1.00e-11   +/- 0.0e+00 1 / (cm2 s TeV)
+      reference             (frozen):      1.000       TeV
+      lon_0                         :      0.200   +/-    0.00 deg
+      lat_0                         :      0.100   +/-    0.00 deg
+      sigma                         :      0.300   +/-    0.00 deg
+      e                     (frozen):      0.000
+      phi                   (frozen):      0.000       deg
+
+  Component 1: FoVBackgroundModel
+
+    Name                      : dataset-simu-bkg
+    Datasets names            : [&#39;dataset-simu&#39;]
+    Spectral model type       : PowerLawNormSpectralModel
+    Parameters:
+      norm                          :      1.000   +/-    0.00
+      tilt                  (frozen):      0.000
+      reference             (frozen):      1.000       TeV
+</pre></div>
+</div>
 <p>Now use this dataset as you would in all standard analysis. You can plot
 the maps, or proceed with your custom analysis. In the next section, we
 show the standard 3D fitting as in <a class="reference internal" href="analysis_3d.html"><span class="doc">3D detailed analysis</span></a>
@@ -763,6 +868,9 @@ tutorial.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># To plot, eg, counts:</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="mf">0.05</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stretch</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_simulate_3d_001.png" srcset="../../_images/sphx_glr_simulate_3d_001.png" alt="simulate 3d" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>interactive(children=(SelectionSlider(continuous_update=False, description=&#39;Select energy:&#39;, layout=Layout(width=&#39;50%&#39;), options=(&#39;100 GeV - 167 GeV&#39;, &#39;167 GeV - 278 GeV&#39;, &#39;278 GeV - 464 GeV&#39;, &#39;464 GeV - 774 GeV&#39;, &#39;774 GeV - 1.29 TeV&#39;, &#39;1.29 TeV - 2.15 TeV&#39;, &#39;2.15 TeV - 3.59 TeV&#39;, &#39;3.59 TeV - 5.99 TeV&#39;, &#39;5.99 TeV - 10.00 TeV&#39;), style=SliderStyle(description_width=&#39;initial&#39;), value=&#39;100 GeV - 167 GeV&#39;), RadioButtons(description=&#39;Select stretch:&#39;, options=(&#39;linear&#39;, &#39;sqrt&#39;, &#39;log&#39;), style=DescriptionStyle(description_width=&#39;initial&#39;), value=&#39;linear&#39;), Output()), _dom_classes=(&#39;widget-interact&#39;,))
 </pre></div>
 </div>
 </section>
@@ -782,6 +890,36 @@ the reconstructed parameters.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>DatasetModels
+
+Component 0: SkyModel
+
+  Name                      : model-simu
+  Datasets names            : None
+  Spectral model type       : PowerLawSpectralModel
+  Spatial  model type       : GaussianSpatialModel
+  Temporal model type       :
+  Parameters:
+    index                         :      3.000   +/-    0.00
+    amplitude                     :   1.00e-11   +/- 0.0e+00 1 / (cm2 s TeV)
+    reference             (frozen):      1.000       TeV
+    lon_0                         :      0.200   +/-    0.00 deg
+    lat_0                         :      0.100   +/-    0.00 deg
+    sigma                         :      0.300   +/-    0.00 deg
+    e                     (frozen):      0.000
+    phi                   (frozen):      0.000       deg
+
+Component 1: FoVBackgroundModel
+
+  Name                      : dataset-simu-bkg
+  Datasets names            : [&#39;dataset-simu&#39;]
+  Spectral model type       : PowerLawNormSpectralModel
+  Parameters:
+    norm                  (frozen):      1.000
+    tilt                  (frozen):      0.000
+    reference             (frozen):      1.000       TeV
+</pre></div>
+</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">Fit</span><span class="p">(</span><span class="n">optimize_opts</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;print_level&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">datasets</span><span class="o">=</span><span class="p">[</span><span class="n">dataset</span><span class="p">])</span>
 
@@ -789,7 +927,7 @@ the reconstructed parameters.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Compare the injected and fitted models:</p>
+<img src="../../_images/sphx_glr_simulate_3d_002.png" srcset="../../_images/sphx_glr_simulate_3d_002.png" alt="simulate 3d" class = "sphx-glr-single-img"/><p>Compare the injected and fitted models:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
     <span class="s2">&quot;True model: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
     <span class="n">model_simu</span><span class="p">,</span>
@@ -798,10 +936,61 @@ the reconstructed parameters.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True model:
+ SkyModel
+
+  Name                      : model-simu
+  Datasets names            : None
+  Spectral model type       : PowerLawSpectralModel
+  Spatial  model type       : GaussianSpatialModel
+  Temporal model type       :
+  Parameters:
+    index                         :      3.000   +/-    0.00
+    amplitude                     :   1.00e-11   +/- 0.0e+00 1 / (cm2 s TeV)
+    reference             (frozen):      1.000       TeV
+    lon_0                         :      0.200   +/-    0.00 deg
+    lat_0                         :      0.100   +/-    0.00 deg
+    sigma                         :      0.300   +/-    0.00 deg
+    e                     (frozen):      0.000
+    phi                   (frozen):      0.000       deg
+
+
+
+ Fitted model:
+ SkyModel
+
+  Name                      : model-simu
+  Datasets names            : None
+  Spectral model type       : PowerLawSpectralModel
+  Spatial  model type       : GaussianSpatialModel
+  Temporal model type       :
+  Parameters:
+    index                         :      2.998   +/-    0.02
+    amplitude                     :   1.00e-11   +/- 3.3e-13 1 / (cm2 s TeV)
+    reference             (frozen):      1.000       TeV
+    lon_0                         :      0.204   +/-    0.01 deg
+    lat_0                         :      0.095   +/-    0.01 deg
+    sigma                         :      0.298   +/-    0.00 deg
+    e                     (frozen):      0.000
+    phi                   (frozen):      0.000       deg
+</pre></div>
+</div>
 <p>Get the errors on the fitted parameters from the parameter table</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">to_table</span><span class="p">())</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>type    name     value         unit        error   min max frozen is_norm link prior
+---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+         index 2.9980e+00                1.969e-02 nan nan  False   False
+     amplitude 1.0004e-11 cm-2 s-1 TeV-1 3.317e-13 nan nan  False    True
+ ...       ...        ...            ...       ... ... ...    ...     ...  ...   ...
+          norm 1.0000e+00                0.000e+00 nan nan   True    True
+          tilt 0.0000e+00                0.000e+00 nan nan   True   False
+     reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
+Length = 11 rows
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 23.426 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-3d-simulate-3d-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-3d/simulate_3d.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo2.svg" width="150px" /></a>

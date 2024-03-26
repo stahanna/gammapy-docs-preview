@@ -119,8 +119,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -141,12 +141,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -190,16 +190,18 @@ here we choose three observations near the Galactic Center.
 
 
 
+
+
 .. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
+ .. code-block:: none
 
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/cta_data_analysis.py", line 79, in <module>
-        data_store = DataStore.from_dir("$GAMMAPY_DATA/cta-1dc/index/gps")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
-        raise OSError(f"File not found: {hdu_table_filename}")
-    OSError: File not found: gammapy-data/cta-1dc/index/gps/hdu-index.fits.gz
+    OBS_ID      GLON_PNT           GLAT_PNT      LIVETIME
+                  deg                deg            s    
+    ------ ------------------ ------------------ --------
+    110380  359.9999912037958 -1.299995937905366   1764.0
+    111140  358.4999833830074 1.3000020211954284   1764.0
+    111159 1.5000056568267741  1.299940468335294   1764.0
 
 
 
@@ -242,6 +244,28 @@ analysis
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    WcsGeom
+
+            axes       : ['lon', 'lat', 'energy']
+            shape      : (500, 400, 10)
+            ndim       : 3
+            frame      : galactic
+            projection : CAR
+            center     : 0.0 deg, 0.0 deg
+            width      : 10.0 deg x 8.0 deg
+            wcs ref    : 0.0 deg, 0.0 deg
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 130-133
 
 Compute images
@@ -269,6 +293,23 @@ Compute images
 
     dataset_image = stacked.to_image()
     geom_image = dataset_image.geoms["geom"]
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 154-159
@@ -303,6 +344,17 @@ Let’s have a quick look at the images we computed …
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_001.png
+   :alt: Counts map, Background map, Excess map
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 179-186
 
 Source Detection
@@ -332,6 +384,12 @@ We search for 0.1 deg sigma gaussian sources in the dataset.
     )
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 201-210
 
 .. code-block:: Python
@@ -346,6 +404,26 @@ We search for 0.1 deg sigma gaussian sources in the dataset.
     display(sources)
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    value   x   y      ra       dec   
+                      deg       deg   
+    ------ --- --- --------- ---------
+    36.125 252 197 266.42400 -29.00490
+    17.969 207 202 266.85900 -28.18386
+       ... ... ...       ...       ...
+    5.1491  87 226 267.78333 -25.87897
+    5.0164 239 167 267.16511 -29.09348
+    Length = 9 rows
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 211-213
 
 To get the position of the sources, simply
@@ -357,6 +435,23 @@ To get the position of the sources, simply
 
     source_pos = SkyCoord(sources["ra"], sources["dec"])
     print(source_pos)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    <SkyCoord (ICRS): (ra, dec) in deg
+        [(266.42399798, -29.00490483), (266.85900392, -28.18385658),
+         (267.16303044, -27.85527359), (264.79469899, -30.97749371),
+         (266.4226731 , -30.08192101), (265.94722599, -30.0643032 ),
+         (268.07454639, -26.10409446), (267.78332719, -25.87897418),
+         (267.16511148, -29.093477  )]>
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 217-219
@@ -382,6 +477,17 @@ Plot sources on top of significance sky image
         lw=1.5,
     )
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_002.png
+   :alt: cta data analysis
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_002.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -417,6 +523,17 @@ likelihood function.
     plt.show()
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_003.png
+   :alt: cta data analysis
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_003.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 261-262
 
 Configure spectral analysis
@@ -441,6 +558,12 @@ Configure spectral analysis
     safe_mask_masker = SafeMaskMaker(methods=["aeff-max"], aeff_percent=10)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 278-279
 
 Run data reduction
@@ -460,6 +583,12 @@ Run data reduction
         datasets.append(dataset_on_off)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 292-293
 
 Plot results
@@ -475,6 +604,26 @@ Plot results
     on_region.to_pixel(ax.wcs).plot(ax=ax, edgecolor="white")
     plot_spectrum_datasets_off_regions(datasets, ax=ax)
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_004.png
+   :alt: cta data analysis
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_004.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/regions/shapes/circle.py:161: UserWarning: Setting the 'color' property will override the edgecolor or facecolor properties.
+      return Circle(xy=xy, radius=radius, **mpl_kwargs)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/visualization/datasets.py:84: UserWarning: Setting the 'color' property will override the edgecolor or facecolor properties.
+      handle = Patch(**plot_kwargs)
+
 
 
 
@@ -505,6 +654,33 @@ The next step is to fit a spectral model, using all data (i.e. a
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    OptimizeResult
+
+            backend    : minuit
+            method     : migrad
+            success    : True
+            message    : Optimization terminated successfully.
+            nfev       : 104
+            total stat : 88.36
+
+    CovarianceResult
+
+            backend    : minuit
+            method     : hesse
+            success    : True
+            message    : Hesse terminated successfully.
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 325-331
 
 Here we can plot the predicted number of counts for each model and
@@ -527,6 +703,59 @@ First we need to stack our datasets.
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    SpectrumDatasetOnOff
+    --------------------
+
+      Name                            : stacked 
+
+      Total counts                    : 413 
+      Total background counts         : 85.43
+      Total excess counts             : 327.57
+
+      Predicted counts                : 413.95
+      Predicted background counts     : 85.42
+      Predicted excess counts         : 328.53
+
+      Exposure min                    : 9.94e+07 m2 s
+      Exposure max                    : 2.46e+10 m2 s
+
+      Number of total bins            : 40 
+      Number of fit bins              : 30 
+
+      Fit statistic type              : wstat
+      Fit statistic value (-2 log(L)) : 34.70
+
+      Number of models                : 1 
+      Number of parameters            : 3
+      Number of free parameters       : 2
+
+      Component 0: SkyModel
+  
+        Name                      : source-gc
+        Datasets names            : None
+        Spectral model type       : PowerLawSpectralModel
+        Spatial  model type       : 
+        Temporal model type       : 
+        Parameters:
+          index                         :      2.403   +/-    0.06             
+          amplitude                     :   3.28e-12   +/- 2.3e-13 1 / (cm2 s TeV)
+          reference             (frozen):      1.000       TeV         
+  
+        Total counts_off                : 2095 
+      Acceptance                      : 30 
+      Acceptance off                  : 744 
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 340-342
 
 Call `~gammapy.visualization.plot_npred_signal` to plot the predicted counts.
@@ -540,6 +769,17 @@ Call `~gammapy.visualization.plot_npred_signal` to plot the predicted counts.
 
     plot_npred_signal(stacked_dataset)
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_005.png
+   :alt: cta data analysis
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_005.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -568,6 +808,28 @@ profile to compute the flux and flux error.
 
 
 
+
+
+
+
+.. raw:: html
+
+    <div class="output_subarea output_html rendered_html output_result">
+    <div><i>Table length=5</i>
+    <table id="table139845663748352" class="table-striped table-bordered table-condensed">
+    <thead><tr><th>e_ref</th><th>e_min</th><th>e_max</th><th>dnde</th><th>dnde_err</th><th>ts</th><th>sqrt_ts</th><th>npred</th><th>npred_excess</th><th>stat</th><th>stat_null</th><th>counts</th><th>success</th></tr></thead>
+    <thead><tr><th>TeV</th><th>TeV</th><th>TeV</th><th>1 / (cm2 s TeV)</th><th>1 / (cm2 s TeV)</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
+    <thead><tr><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64[1]</th><th>float32[1]</th><th>float64</th><th>float64</th><th>float64[1]</th><th>bool</th></tr></thead>
+    <tr><td>1.375</td><td>0.946</td><td>2.000</td><td>1.447e-12</td><td>1.783e-13</td><td>152.513</td><td>12.350</td><td>105.77522448982589</td><td>83.89892</td><td>13.412</td><td>165.925</td><td>106.0</td><td>True</td></tr>
+    <tr><td>2.699</td><td>2.000</td><td>3.641</td><td>3.563e-13</td><td>4.835e-14</td><td>150.654</td><td>12.274</td><td>73.02511912182847</td><td>63.13247</td><td>2.245</td><td>152.898</td><td>73.0</td><td>True</td></tr>
+    <tr><td>5.295</td><td>3.641</td><td>7.700</td><td>7.332e-14</td><td>1.138e-14</td><td>121.570</td><td>11.026</td><td>53.9835920853751</td><td>47.455875</td><td>0.624</td><td>122.193</td><td>54.0</td><td>True</td></tr>
+    <tr><td>11.198</td><td>7.700</td><td>16.284</td><td>6.353e-15</td><td>2.154e-15</td><td>21.789</td><td>4.668</td><td>13.188429838191043</td><td>10.660447</td><td>5.744</td><td>27.532</td><td>13.0</td><td>True</td></tr>
+    <tr><td>21.971</td><td>16.284</td><td>29.645</td><td>1.109e-15</td><td>6.938e-16</td><td>6.250</td><td>2.500</td><td>4.145310538838432</td><td>3.197989</td><td>2.899</td><td>9.149</td><td>4.0</td><td>True</td></tr>
+    </table></div>
+    </div>
+    <br />
+    <br />
+
 .. GENERATED FROM PYTHON SOURCE LINES 367-374
 
 Plot
@@ -586,6 +848,17 @@ for convenience we bundle the model and the flux points in a
     flux_points_dataset = FluxPointsDataset(data=flux_points, models=model)
     flux_points_dataset.plot_fit()
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_006.png
+   :alt: cta data analysis
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_cta_data_analysis_006.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -618,6 +891,12 @@ Exercises
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 403-410
 
 What next?
@@ -627,6 +906,11 @@ What next?
    using simulated 1DC data.
 -  Let us know if you have any questions or issues!
 
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 42.662 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-3d_cta_data_analysis.py:

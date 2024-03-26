@@ -149,8 +149,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -171,12 +171,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -200,16 +200,7 @@ We first set the datastore.
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/light_curve_flare.py", line 105, in <module>
-        data_store = DataStore.from_dir("$GAMMAPY_DATA/hess-dl3-dr1/")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
-        raise OSError(f"File not found: {hdu_table_filename}")
-    OSError: File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz
 
 
 
@@ -238,6 +229,18 @@ Now we select observations within 2 degrees of PKS 2155-304.
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Number of selected observations : 21
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 126-132
 
 Define time intervals
@@ -258,6 +261,18 @@ We create the list of time intervals. Each time interval is an
     times = t0 + np.arange(n_time_bins) * duration
     time_intervals = [Time([tstart, tstop]) for tstart, tstop in zip(times[:-1], times[1:])]
     print(time_intervals[0].mjd)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [53945.85416667 53945.86111111]
+
 
 
 
@@ -283,6 +298,27 @@ intersection of the GTIs and time interval.
     # check that observations have been filtered
     print(f"Number of observations after time filtering: {len(short_observations)}\n")
     print(short_observations[1].gti)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Number of observations after time filtering: 44
+
+    GTI info:
+    - Number of GTIs: 1
+    - Duration: 599.9999999999978 s
+    - Start: 207520865.18400002 s MET
+    - Start: 2006-07-29T20:40:00.000 (time standard: UTC)
+    - Stop: 207521465.184 s MET
+    - Stop: 2006-07-29T20:50:00.000 (time standard: UTC)
+
+
 
 
 
@@ -337,6 +373,12 @@ spectral extraction regions for H.E.S.S. analyses.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 204-210
 
 Creation of the data reduction makers
@@ -356,6 +398,12 @@ geometry.
     )
     bkg_maker = ReflectedRegionsBackgroundMaker()
     safe_mask_masker = SafeMaskMaker(methods=["aeff-max"], aeff_percent=10)
+
+
+
+
+
+
 
 
 
@@ -381,6 +429,12 @@ Now we perform the actual data reduction in the ``time_intervals``.
         dataset_on_off = bkg_maker.run(dataset, obs)
         dataset_on_off = safe_mask_masker.run(dataset_on_off, obs)
         datasets.append(dataset_on_off)
+
+
+
+
+
+
 
 
 
@@ -412,6 +466,12 @@ Here we use only a spectral model in the
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 260-265
 
 Assign to model to all datasets
@@ -426,6 +486,12 @@ We assign each dataset its spectral model
 
 
     datasets.models = sky_model
+
+
+
+
+
+
 
 
 
@@ -456,6 +522,12 @@ dealing with a large flare.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 290-295
 
 We can now perform the light curve extraction itself. To compare with
@@ -472,6 +544,12 @@ we select the 0.7-20 TeV range.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 301-303
 
 Finally we plot the result for the 1D lightcurve:
@@ -484,6 +562,17 @@ Finally we plot the result for the 1D lightcurve:
     plt.figure(figsize=(8, 6))
     lc_1d.plot(marker="o")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_flare_001.png
+   :alt: light curve flare
+   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_flare_001.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -507,6 +596,38 @@ Here, we rebin 4 adjacent bins together, to get 30 min bins
     lc_new.plot(ax=ax, label="rebinned")
     plt.legend()
     plt.show()
+
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_flare_002.png
+   :alt: light curve flare
+   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_flare_002.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    TimeMapAxis
+    -----------
+
+      name           : time      
+      nbins          : 12        
+      reference time : 2006-07-29 20:31:05.184
+      scale          : tt        
+      time min.      : 2006-07-29 20:31:05.184
+      time max.      : 2006-07-30 02:11:05.184
+      total time     : 5.6666666666583865 h
+
+
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (1 minutes 9.103 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-time_light_curve_flare.py:

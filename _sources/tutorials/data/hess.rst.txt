@@ -111,8 +111,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -133,12 +133,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -170,16 +170,25 @@ Create and get info on the data store
 
 
 
+
+
 .. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
+ .. code-block:: none
 
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/data/hess.py", line 73, in <module>
-        data_store = DataStore.from_dir("$GAMMAPY_DATA/hess-dl3-dr1")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
-        raise OSError(f"File not found: {hdu_table_filename}")
-    OSError: File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz
+    Data store:
+    HDU index table:
+    BASE_DIR: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hess-dl3-dr1
+    Rows: 630
+    OBS_ID: 20136 -- 47829
+    HDU_TYPE: ['aeff', 'bkg', 'edisp', 'events', 'gti', 'psf']
+    HDU_CLASS: ['aeff_2d', 'bkg_3d', 'edisp_2d', 'events', 'gti', 'psf_table']
+
+
+    Observation table:
+    Observatory name: 'N/A'
+    Number of observations: 105
+
 
 
 
@@ -196,6 +205,22 @@ Preview an excerpt from the observation table
     display(data_store.obs_table[:2][["OBS_ID", "DATE-OBS", "RA_PNT", "DEC_PNT", "OBJECT"]])
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    OBS_ID  DATE-OBS   RA_PNT   DEC_PNT    OBJECT 
+                        deg       deg             
+    ------ ---------- -------- ---------- --------
+     20136 2004-03-26 228.6125 -58.771667 MSH15-52
+     20137 2004-03-26 228.6125 -59.771667 MSH15-52
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 83-84
 
 Get a single observation
@@ -206,6 +231,12 @@ Get a single observation
 
 
     obs = data_store.obs(23523)
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 88-89
@@ -220,6 +251,17 @@ Select and peek events
     obs.events.select_offset([0, 2.5] * u.deg).peek()
 
 
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_hess_001.png
+   :alt: hess
+   :srcset: /tutorials/data/images/sphx_glr_hess_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 93-94
 
 Peek the effective area
@@ -230,6 +272,24 @@ Peek the effective area
 
 
     obs.aeff.peek()
+
+
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_hess_002.png
+   :alt: hess
+   :srcset: /tutorials/data/images/sphx_glr_hess_002.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/quantity.py:673: RuntimeWarning: invalid value encountered in divide
+      result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 98-99
@@ -244,6 +304,17 @@ Peek the energy dispersion
     obs.edisp.peek()
 
 
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_hess_003.png
+   :alt: hess
+   :srcset: /tutorials/data/images/sphx_glr_hess_003.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 103-104
 
 Peek the psf
@@ -253,6 +324,17 @@ Peek the psf
 .. code-block:: Python
 
     obs.psf.peek()
+
+
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_hess_004.png
+   :alt: hess
+   :srcset: /tutorials/data/images/sphx_glr_hess_004.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 107-108
@@ -265,6 +347,17 @@ Peek the background rate
 
     obs.bkg.to_2d().plot()
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_hess_005.png
+   :alt: hess
+   :srcset: /tutorials/data/images/sphx_glr_hess_005.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 112-118
@@ -294,6 +387,17 @@ As a quick look plot it can be helpful to plot the quadratic offset
     plt.figure(figsize=(10, 5))
     plot_theta_squared_table(theta2_table)
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_hess_006.png
+   :alt: hess
+   :srcset: /tutorials/data/images/sphx_glr_hess_006.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 134-142

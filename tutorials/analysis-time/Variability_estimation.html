@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="3D map simulation" href="../analysis-3d/simulate_3d.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="18 Mar 2024"/>
+    <meta name="docbuild:last-update" content="26 Mar 2024"/>
   </head>
   
   
@@ -642,24 +642,8 @@ approach which utilises the change points in Bayesian blocks as indicators of va
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/Variability_estimation.py&quot;</span>, line <span class="m">57</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">lc_1d</span> <span class="o">=</span> <span class="n">FluxPoints</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/estimators/points/core.py&quot;</span>, line <span class="m">212</span>, in <span class="n">read</span>
-<span class="w">    </span><span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/table/connect.py&quot;</span>, line <span class="m">62</span>, in <span class="n">__call__</span>
-<span class="w">    </span><span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/registry/core.py&quot;</span>, line <span class="m">219</span>, in <span class="n">read</span>
-<span class="w">    </span><span class="n">data</span> <span class="o">=</span> <span class="n">reader</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/ascii/connect.py&quot;</span>, line <span class="m">19</span>, in <span class="n">io_read</span>
-<span class="w">    </span><span class="k">return</span> <span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/ascii/ui.py&quot;</span>, line <span class="m">426</span>, in <span class="n">read</span>
-<span class="w">    </span><span class="n">dat</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/ascii/core.py&quot;</span>, line <span class="m">1414</span>, in <span class="n">read</span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">lines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputter</span><span class="o">.</span><span class="n">get_lines</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="n">newline</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/ascii/core.py&quot;</span>, line <span class="m">357</span>, in <span class="n">get_lines</span>
-<span class="w">    </span><span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="gr">TypeError</span>: <span class="n">Input &quot;table&quot; must be a string (filename or data) or an iterable</span>
+<img src="../../_images/sphx_glr_Variability_estimation_001.png" srcset="../../_images/sphx_glr_Variability_estimation_001.png" alt="Variability estimation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/erfa/core.py:154: ErfaWarning: ERFA function &quot;utctai&quot; yielded 1 of &quot;dubious year (Note 3)&quot;
+  warnings.warn(&#39;ERFA function &quot;{}&quot; yielded {}&#39;.format(func_name, wmsg),
 </pre></div>
 </div>
 </section>
@@ -696,6 +680,9 @@ This estimator requires fully Gaussian errors.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">amplitude_maximum_significance</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[[12.41584318]]]
+</pre></div>
+</div>
 <p>There are other methods based on the peak-to-trough difference to assess the variability in a lightcurve.
 Here we present as example the relative variability amplitude as presented in
 <a class="reference external" href="https://iopscience.iop.org/article/10.1086/497430">Kovalev et al., 2004</a>:</p>
@@ -712,6 +699,9 @@ Here we present as example the relative variability amplitude as presented in
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">relative_variability_significance</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[[19.6131198]]]
 </pre></div>
 </div>
 <p>The variability amplitude as presented in <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/1996A%26A...305...42H/abstract">Heidt &amp; Wagner, 1996</a> is:</p>
@@ -737,6 +727,9 @@ Here we present as example the relative variability amplitude as presented in
 <span class="nb">print</span><span class="p">(</span><span class="n">variability_amplitude_significance</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[[6.12524759]]]
+</pre></div>
+</div>
 </section>
 <section id="fractional-excess-variance-point-to-point-fractional-variance-and-doubling-halving-time">
 <h2>Fractional excess variance, point-to-point fractional variance and doubling/halving time<a class="headerlink" href="#fractional-excess-variance-point-to-point-fractional-variance-and-doubling-halving-time" title="Link to this heading">#</a></h2>
@@ -749,6 +742,12 @@ The excess variance computation is implemented in <a class="reference internal" 
 <span class="nb">print</span><span class="p">(</span><span class="n">fvar_table</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>    min_energy         max_energy           fvar             fvar_err         significance
+       TeV                TeV
+------------------ ----------------- ----------------- ------------------- -----------------
+0.5915030546513256 6.184989894219833 0.562641723647666 0.01700709888238013 33.08275723795432
+</pre></div>
+</div>
 <p>A similar estimator is the point-to-point fractional variance, as defined by
 <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2002ApJ...568..610E/abstract">Edelson et al., 2002</a>,
 which samples the lightcurve on smaller time granularity.
@@ -758,11 +757,23 @@ of the presence of very short timescale variability.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">fpp_table</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>    min_energy         max_energy            fpp               fpp_err          significance
+       TeV                TeV
+------------------ ----------------- ------------------- ------------------- ------------------
+0.5915030546513256 6.184989894219833 0.26686926334170474 0.01744292342018872 15.299572033482987
+</pre></div>
+</div>
 <p>The characteristic doubling and halving time of the light curve, as introduced by
 <a class="reference external" href="https://durham-repository.worktribe.com/output/1478453/">Brown, 2013</a>, can also be computed.
 This provides information on the shape of the variability feature, in particular how quickly it rises and falls.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dtime_table</span> <span class="o">=</span> <span class="n">compute_lightcurve_doublingtime</span><span class="p">(</span><span class="n">lc_1d</span><span class="p">,</span> <span class="n">flux_quantity</span><span class="o">=</span><span class="s2">&quot;flux&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dtime_table</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>    min_energy         max_energy       doublingtime      doubling_err      doubling_coord     halvingtime       halving_err      halving_coord
+       TeV                TeV                s                 s                                    s                 s
+------------------ ----------------- ----------------- ------------------ ----------------- ----------------- ----------------- -----------------
+0.5915030546513256 6.184989894219833 716.8519094661347 30.047617174704822 53945.99690027777 776.3378886513015 20.93582792770181 53946.00384472222
 </pre></div>
 </div>
 </section>
@@ -789,6 +800,9 @@ i.e. the number of internal bin edges: if at least one change point is identifie
 <span class="nb">print</span><span class="p">(</span><span class="n">ncp</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
 <p>We can rebin the lightcurve to compute the one expected with bayesian edges
 First, we adjust the first and last bins of the bayesian_edges to coincide
 with the original light curve start and end points.</p>
@@ -806,6 +820,14 @@ with the original light curve start and end points.</p>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">lc_1d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;original&quot;</span><span class="p">)</span>
 <span class="n">resample</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;rebinned&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/Variability_estimation.py&quot;</span>, line <span class="m">212</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">resample</span> <span class="o">=</span> <span class="n">lc_1d</span><span class="o">.</span><span class="n">resample_axis</span><span class="p">(</span><span class="n">axis_new</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/estimators/points/core.py&quot;</span>, line <span class="m">843</span>, in <span class="n">resample_axis</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Stat profiles not present, rebinning is not possible&quot;</span><span class="p">)</span>
+<span class="gr">ValueError</span>: <span class="n">Stat profiles not present, rebinning is not possible</span>
 </pre></div>
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-time-variability-estimation-py">

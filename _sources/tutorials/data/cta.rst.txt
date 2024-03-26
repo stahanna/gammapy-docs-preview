@@ -131,8 +131,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -153,12 +153,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -260,16 +260,25 @@ You can use the `~gammapy.data.DataStore` to load via the index files
 
 
 
+
+
 .. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
+ .. code-block:: none
 
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/data/cta.py", line 138, in <module>
-        data_store = DataStore.from_dir("$GAMMAPY_DATA/cta-1dc/index/gps")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
-        raise OSError(f"File not found: {hdu_table_filename}")
-    OSError: File not found: gammapy-data/cta-1dc/index/gps/hdu-index.fits.gz
+    Data store:
+    HDU index table:
+    BASE_DIR: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/cta-1dc/index/gps
+    Rows: 24
+    OBS_ID: 110380 -- 111630
+    HDU_TYPE: ['aeff', 'bkg', 'edisp', 'events', 'gti', 'psf']
+    HDU_CLASS: ['aeff_2d', 'bkg_3d', 'edisp_2d', 'events', 'gti', 'psf_3gauss']
+
+
+    Observation table:
+    Observatory name: 'CTA first data challenge (1DC)'
+    Number of observations: 4
+
 
 
 
@@ -295,6 +304,40 @@ event files.
 
     observation = data_store.obs(110380)
     print(observation)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Data store:
+    HDU index table:
+    BASE_DIR: .
+    Rows: 24
+    OBS_ID: 110380 -- 111630
+    HDU_TYPE: ['aeff', 'bkg', 'edisp', 'events', 'gti', 'psf']
+    HDU_CLASS: ['aeff_2d', 'bkg_3d', 'edisp_2d', 'events', 'gti', 'psf_3gauss']
+
+
+    Observation table:
+    Observatory name: 'N/A'
+    Number of observations: 4
+
+    Observation
+
+            obs id            : 110380 
+            tstart            : 59235.50
+            tstop             : 59235.52
+            duration          : 1800.00 s
+            pointing (icrs)   : 267.7 deg, -29.6 deg
+
+            deadtime fraction : 2.0%
+
+
 
 
 
@@ -330,6 +373,12 @@ Events can be accessed from the observation object like:
     events = observation.events
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 185-187
 
 Or read directly from an event file:
@@ -345,6 +394,12 @@ Or read directly from an event file:
     )
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 193-195
 
 Here we print the data from the first 5 events listed in the table:
@@ -356,6 +411,25 @@ Here we print the data from the first 5 events listed in the table:
 
 
     display(events.table[:5])
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    EVENT_ID        TIME           RA        DEC        ENERGY      DETX       DETY    MC_ID
+                     s            deg        deg         TeV        deg        deg          
+    -------- ----------------- ---------- ---------- ----------- ---------- ---------- -----
+           1 664502403.0454683  -92.63541 -30.514854  0.03902182 -0.9077294 -0.2727693     2
+           2 664502405.2579999  -92.64103 -28.262728 0.030796371  1.3443842 -0.2838398     2
+           3 664502408.8205513  -93.20372 -28.599625  0.04009629  1.0049409 -0.7769775     2
+           4 664502409.0143764  -94.03383 -29.269627 0.039580025 0.32684833  -1.496021     2
+           5 664502414.8090746 -93.330505 -30.319725  0.03035851  -0.716062 -0.8733348     2
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 199-201
@@ -370,6 +444,17 @@ And show a summary plot:
 
     events.peek()
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_cta_001.png
+   :alt: cta
+   :srcset: /tutorials/data/images/sphx_glr_cta_001.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 206-236
@@ -420,6 +505,29 @@ Notes:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    EffectiveAreaTable2D
+    --------------------
+
+      axes  : ['energy_true', 'offset']
+      shape : (42, 6)
+      ndim  : 2
+      unit  : m2
+      dtype : >f4
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+    {'aeff': <gammapy.irf.effective_area.EffectiveAreaTable2D object at 0x7f30476b5850>, 'psf': <gammapy.irf.psf.parametric.EnergyDependentMultiGaussPSF object at 0x7f3047374880>, 'edisp': <gammapy.irf.edisp.core.EnergyDispersion2D object at 0x7f304734b2b0>, 'bkg': <gammapy.irf.background.Background3D object at 0x7f30583ef190>}
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 247-250
 
 Effective area
@@ -443,6 +551,32 @@ Effective area
 
 
 
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_cta_002.png
+   :alt: cta
+   :srcset: /tutorials/data/images/sphx_glr_cta_002.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    EffectiveAreaTable2D
+    --------------------
+
+      axes  : ['energy_true', 'offset']
+      shape : (42, 6)
+      ndim  : 2
+      unit  : m2
+      dtype : >f4
+
+    3.783587001383003 km2
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 263-266
 
 Energy dispersion
@@ -456,6 +590,17 @@ Energy dispersion
 
     irfs["edisp"].peek()
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_cta_003.png
+   :alt: cta
+   :srcset: /tutorials/data/images/sphx_glr_cta_003.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -475,6 +620,17 @@ Point spread function
 
 
 
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_cta_004.png
+   :alt: cta
+   :srcset: /tutorials/data/images/sphx_glr_cta_004.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 281-283
 
 This is how for analysis you could slice out the PSF
@@ -488,6 +644,17 @@ at a given field of view offset
         offset=[1] * u.deg, fraction=[0.68, 0.8, 0.95]
     )
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_cta_005.png
+   :alt: cta
+   :srcset: /tutorials/data/images/sphx_glr_cta_005.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 289-294
@@ -510,6 +677,23 @@ The background is given as a rate in units `MeV-1 s-1 sr-1`.
 
 
 
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_cta_006.png
+   :alt: cta
+   :srcset: /tutorials/data/images/sphx_glr_cta_006.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    1.2053315944536949e-05 1 / (MeV s sr)
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 302-304
 
 To visualise the background at particular energies:
@@ -524,6 +708,17 @@ To visualise the background at particular energies:
         ["100 GeV", "500 GeV", "1 TeV", "3 TeV", "10 TeV", "100 TeV"]
     )
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/data/images/sphx_glr_cta_007.png
+   :alt: 100 GeV, 500 GeV, 1 TeV, 3 TeV, 10 TeV, 100 TeV
+   :srcset: /tutorials/data/images/sphx_glr_cta_007.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 311-329
@@ -580,6 +775,12 @@ understands.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 358-369
 
 CTA performance files
@@ -610,6 +811,12 @@ remove the # to uncomment.
 
     # irfs2 = load_irf_dict_from_file("caldb/data/cta/prod3b-v2/bcf/South_z40_50h/irf_file.fits")
     # irfs2["aeff"].plot_energy_dependence()
+
+
+
+
+
+
 
 
 
@@ -644,6 +851,12 @@ Exercises
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 408-420
 
 Next steps
@@ -658,6 +871,11 @@ Next steps
    :doc:`/tutorials/analysis-1d/spectrum_simulation`
    or :doc:`/tutorials/analysis-1d/cta_sensitivity`.
 
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 10.363 seconds)
 
 
 .. _sphx_glr_download_tutorials_data_cta.py:

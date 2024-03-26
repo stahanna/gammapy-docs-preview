@@ -131,8 +131,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -153,12 +153,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -279,18 +279,7 @@ Run the 3D data reduction
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/light_curve.py", line 144, in <module>
-        analysis_3d.get_observations()
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/analysis/core.py", line 141, in get_observations
-        self._set_data_store()
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/analysis/core.py", line 100, in _set_data_store
-        raise FileNotFoundError(f"Datastore not found: {path}")
-    FileNotFoundError: Datastore not found: gammapy-data/hess-dl3-dr1
 
 
 
@@ -326,6 +315,12 @@ we use predefined values instead.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 173-175
 
 We assign them the model to be fitted to each dataset
@@ -338,6 +333,12 @@ We assign them the model to be fitted to each dataset
 
     models = Models([sky_model])
     analysis_3d.set_models(models)
+
+
+
+
+
+
 
 
 
@@ -378,6 +379,12 @@ Here one dataset equals to one observing run.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 211-213
 
 The lightcurve `~gammapy.estimators.FluxPoints` object `lc_3d` contains a table which we can explore.
@@ -403,6 +410,29 @@ The lightcurve `~gammapy.estimators.FluxPoints` object `lc_3d` contains a table 
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_001.png
+   :alt: light curve
+   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_001.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+         time_min           time_max           e_min              e_max                flux                 flux_err       
+                                                TeV                TeV             1 / (cm2 s)            1 / (cm2 s)      
+    ------------------ ----------------- ------------------ ----------------- ---------------------- ----------------------
+     53343.92234009259 53343.94186555556 1.1914571614494367 9.999999999999998 2.0351680826001858e-11  2.119377722423651e-12
+     53343.95421509259 53343.97369425926 1.1914571614494367 9.999999999999998 2.0610287368316848e-11 2.1407799553923287e-12
+     53345.96198129629 53345.98149518518 1.1914571614494367 9.999999999999998 2.1762888545418004e-11  2.787223475724869e-12
+    53347.913196574074 53347.93271046296 1.1914571614494367 9.999999999999998 2.5058049616535325e-11 2.9128688198989787e-12
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 229-232
 
 Running the light curve extraction in 1D
@@ -424,6 +454,12 @@ Building the 1D analysis configuration
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 243-249
 
 Definition of the data selection
@@ -439,6 +475,12 @@ Here we use the Crab runs from the
 
 
     conf_1d.observations.obs_ids = [23523, 23526, 23559, 23592]
+
+
+
+
+
+
 
 
 
@@ -474,6 +516,12 @@ Definition of the dataset geometry
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 279-282
 
 Run the 1D data reduction
@@ -488,6 +536,12 @@ Run the 1D data reduction
     analysis_1d = Analysis(conf_1d)
     analysis_1d.get_observations()
     analysis_1d.get_datasets()
+
+
+
+
+
+
 
 
 
@@ -517,6 +571,12 @@ we use predefined values instead.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 308-311
 
 We assign the model to be fitted to each dataset. We can use the same
@@ -530,6 +590,12 @@ We assign the model to be fitted to each dataset. We can use the same
 
     models = Models([sky_model])
     analysis_1d.set_models(models)
+
+
+
+
+
+
 
 
 
@@ -552,6 +618,25 @@ Extracting the light curve
     print(lc_1d.geom.axes.names)
 
     display(lc_1d.to_table(sed_type="flux", format="lightcurve"))
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    ['energy', 'time']
+         time_min           time_max           e_ref              e_min              e_max       ...         stat            stat_null        counts   success
+                                                TeV                TeV                TeV        ...                                                          
+    ------------------ ----------------- ------------------ ------------------ ----------------- ... ------------------- ----------------- ----------- -------
+     53343.92234009259 53343.94186555556 3.4517490659800814 1.1914571614494367 9.999999999999998 ...  -344.4671903802652 9325.469623460165  nan .. nan    True
+     53343.95421509259 53343.97369425926 3.4517490659800814 1.1914571614494367 9.999999999999998 ...  -290.3078440324916 8174.177077353973 71.0 .. nan    True
+     53345.96198129629 53345.98149518518 3.4517490659800814 1.1914571614494367 9.999999999999998 ... -194.37024721988715 5871.591985141586  nan .. nan    True
+    53347.913196574074 53347.93271046296 3.4517490659800814 1.1914571614494367 9.999999999999998 ... -226.71637961887058  6792.62602202654 nan .. 59.0    True
+
 
 
 
@@ -580,6 +665,17 @@ figure:
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_002.png
+   :alt: light curve
+   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 350-356
 
 Night-wise LC estimation
@@ -599,6 +695,12 @@ intervals that cover the three nights.
         Time([53345.5, 53346.5], format="mjd", scale="utc"),
         Time([53347.5, 53348.5], format="mjd", scale="utc"),
     ]
+
+
+
+
+
+
 
 
 
@@ -637,6 +739,17 @@ is performed for each group.
     plt.show()
 
 
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_003.png
+   :alt: light curve
+   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_003.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 393-402
 
 What next?
@@ -648,6 +761,11 @@ easily extend the light curve estimation approach presented above to any
 time binning. This is demonstrated in the :doc:`/tutorials/analysis-time/light_curve_flare`
 tutorial. which shows the extraction of the lightcurve of an AGN flare.
 
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 14.502 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-time_light_curve.py:

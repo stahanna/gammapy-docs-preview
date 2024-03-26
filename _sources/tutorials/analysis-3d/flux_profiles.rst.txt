@@ -132,8 +132,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -154,12 +154,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -183,26 +183,7 @@ Read and Introduce Data
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/flux_profiles.py", line 73, in <module>
-        dataset = MapDataset.read(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/datasets/map.py", line 1556, in read
-        with fits.open(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
-        return HDUList.fromfile(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
-        return cls._readfrom(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
-        fileobj = _File(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
-        self._open_filename(fileobj, mode, overwrite)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
-        self._file = open(self.name, IO_FITS_MODES[mode])
-    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/fermi-3fhl-gc/fermi-3fhl-gc.fits.gz'
 
 
 
@@ -222,6 +203,17 @@ This is what the counts image we will work with looks like:
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_001.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 87-90
 
 There are 400x200 pixels in the dataset and 11 energy bins between 10
@@ -234,6 +226,26 @@ GeV and 2 TeV:
 
 
     print(dataset.counts)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    WcsNDMap
+
+            geom  : WcsGeom 
+            axes  : ['lon', 'lat', 'energy']
+            shape : (400, 200, 11)
+            ndim  : 3
+            unit  : 
+            dtype : >i4
+
+
 
 
 
@@ -269,6 +281,12 @@ effects on the region definition:
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 120-123
 
 We can use the `~gammapy.maps.RegionGeom` object to illustrate the regions on top of
@@ -284,6 +302,24 @@ the counts image:
     ax = counts_image.smooth("0.1 deg").plot(stretch="sqrt")
     geom.plot_region(ax=ax, color="w")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_002.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_002.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/regions/shapes/rectangle.py:207: UserWarning: Setting the 'color' property will override the edgecolor or facecolor properties.
+      return Rectangle(xy=xy, width=width, height=height,
+
 
 
 
@@ -308,6 +344,12 @@ index of 2.3
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 145-147
 
 We can see the full configuration by printing the estimator object:
@@ -319,6 +361,34 @@ We can see the full configuration by printing the estimator object:
 
 
     print(flux_profile_estimator)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    FluxProfileEstimator
+    --------------------
+
+      energy_edges           : [  10. 2000.] GeV
+      fit                    : <gammapy.modeling.fit.Fit object at 0x7f304031f8e0>
+      n_jobs                 : None
+      n_sigma                : 1
+      n_sigma_ul             : 2
+      norm                   : Parameter(name='norm', value=1.0, factor=1.0, scale=1.0, unit=Unit(dimensionless), min=nan, max=nan, frozen=False, prior=None, id=0x7f304031f100)
+      null_value             : 0
+      parallel_backend       : None
+      reoptimize             : False
+      selection_optional     : ['ul']
+      source                 : 0
+      spectrum               : PowerLawSpectralModel
+      sum_over_energy_groups : False
+
+
 
 
 
@@ -337,6 +407,30 @@ Now we can run the profile estimation and explore the results:
     profile = flux_profile_estimator.run(datasets=dataset)
 
     print(profile)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    FluxPoints
+    ----------
+
+      geom                   : RegionGeom
+      axes                   : ['lon', 'lat', 'energy', 'projected-distance']
+      shape                  : (1, 1, 1, 51)
+      quantities             : ['norm', 'norm_err', 'norm_ul', 'ts', 'npred', 'npred_excess', 'stat', 'stat_null', 'counts', 'success']
+      ref. model             : pl
+      n_sigma                : 1
+      n_sigma_ul             : 2
+      sqrt_ts_threshold_ul   : 2
+      sed type init          : likelihood
+
+
 
 
 
@@ -362,6 +456,17 @@ Let us directly plot the result using `~gammapy.estimators.FluxPoints.plot`:
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_003.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_003.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 180-184
 
 Based on the spectral model we specified above we can also plot in any
@@ -380,6 +485,17 @@ to plot upper limits:
     ax = profile.plot(sed_type="eflux")
     ax.set_yscale("linear")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_004.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_004.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -404,6 +520,17 @@ background counts and excess counts:
 
     ax.set_ylabel("Counts")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_005.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_005.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -436,6 +563,17 @@ specific format:
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_006.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_006.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 233-236
 
 The profile can be serialised to a `~astropy.table.Table` object
@@ -449,6 +587,26 @@ using:
 
     table = profile.to_table(format="profile", formatted=True)
     display(table)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+           x_min              x_max              x_ref           e_ref        e_min         e_max         ref_dnde    ... npred_excess  stat stat_null is_ul counts success
+            deg                deg                deg             keV          keV           keV      1 / (cm2 s TeV) ...                                                  
+    ------------------- ------------------ ------------------ ------------ ------------ ------------- --------------- ... ------------ ----- --------- ----- ------ -------
+    -0.1960784313725492 0.1960784313725492                0.0 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+     0.1960784313725492 0.5882352941176467  0.392156862745098 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+                    ...                ...                ...          ...          ...           ...             ... ...          ...   ...       ...   ...    ...     ...
+     19.019607843137262  19.41176470588239 19.215686274509828 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+      19.41176470588239 19.803921568627494 19.607843137254942 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+    Length = 51 rows
+
 
 
 
@@ -471,6 +629,12 @@ center:
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 254-256
 
 Again we first illustrate the regions:
@@ -487,6 +651,24 @@ Again we first illustrate the regions:
     ax = gc_image.smooth("0.1 deg").plot(stretch="sqrt")
     geom.plot_region(ax=ax, color="w")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_007.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_007.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/regions/core/compound.py:160: UserWarning: Setting the 'color' property will override the edgecolor or facecolor properties.
+      patch = mpatches.PathPatch(path, **mpl_kwargs)
+
 
 
 
@@ -507,6 +689,12 @@ profile in the computation:
         selection_optional=["ul", "scan"],
     )
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 276-277
 
 The configuration of the fit statistic profile is done throught the norm parameter:
@@ -516,6 +704,12 @@ The configuration of the fit statistic profile is done throught the norm paramet
 .. code-block:: Python
 
     flux_profile_estimator.norm.scan_values = np.linspace(-1, 5, 11)
+
+
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 280-281
@@ -528,6 +722,12 @@ Now we can run the estimator,
 
 
     profile = flux_profile_estimator.run(datasets=dataset)
+
+
+
+
+
+
 
 
 
@@ -546,6 +746,17 @@ and plot the result:
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_008.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_008.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 294-297
 
 However because of the powerlaw spectrum the flux at high energies is
@@ -559,6 +770,12 @@ much lower. To extract the profile at high energies only we can use:
 
     profile_high = profile.slice_by_idx({"energy": slice(1, 2)})
     plt.show()
+
+
+
+
+
+
 
 
 
@@ -579,6 +796,22 @@ And now plot the points together with the likelihood profiles:
     plt.show()
 
     # sphinx_gallery_thumbnail_number = 2
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_009.png
+   :alt: flux profiles
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_flux_profiles_009.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 38.044 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-3d_flux_profiles.py:

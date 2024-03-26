@@ -168,8 +168,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -190,12 +190,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -261,26 +261,14 @@ Since we use spectrum datasets here, we will use a `~gammapy.maps.RegionGeom`.
 
 
 
+
+
 .. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
+ .. code-block:: none
 
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/light_curve_simulation.py", line 123, in <module>
-        irfs = load_irf_dict_from_file(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/irf/io.py", line 197, in load_irf_dict_from_file
-        with fits.open(filename) as hdulist:
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
-        return HDUList.fromfile(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
-        return cls._readfrom(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
-        fileobj = _File(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
-        self._open_filename(fileobj, mode, overwrite)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
-        self._file = open(self.name, IO_FITS_MODES[mode])
-    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits'
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
 
 
 
@@ -316,6 +304,24 @@ symmetrical sky position from which background can be estimated.
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    type    name     value         unit        error   min max frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+             index 3.0000e+00                0.000e+00 nan nan  False   False           
+         amplitude 1.0000e-11 cm-2 s-1 TeV-1 0.000e+00 nan nan  False    True           
+         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
+                t0 6.0000e+00              h 0.000e+00 nan nan  False   False           
+             t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False           
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 168-171
 
 Now, define the start and observation livetime wrt to the reference
@@ -331,6 +337,12 @@ time, ``gti_t0``
 
     tstart = gti_t0 + [1, 2, 3, 5, 8, 10, 20, 22, 23, 24] * u.h
     lvtm = [55, 25, 26, 40, 40, 50, 40, 52, 43, 47] * u.min
+
+
+
+
+
+
 
 
 
@@ -371,6 +383,12 @@ Now perform the simulations
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 209-212
 
 The reduced datasets have been successfully simulated. Let’s take a
@@ -383,6 +401,26 @@ quick look into our datasets.
 
 
     display(datasets.info_table())
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+       name   counts       excess            sqrt_ts          background           npred        ...     excess_rate      n_bins n_fit_bins stat_type       stat_sum     
+                                                                                                ...        1 / s                                                        
+    --------- ------ ------------------ ----------------- ------------------ ------------------ ... -------------------- ------ ---------- --------- -------------------
+    dataset-0    773  752.6812310184489  64.1881633666638  20.31876898155109  825.9404270586008 ...  0.22808522152074226      9          9      cash  -6090.989306856417
+    dataset-1    339 329.76419591747674 42.22850026556307  9.235804082523256 332.14961268131975 ...  0.21984279727831718      9          9      cash -2094.2682668129723
+          ...    ...                ...               ...                ...                ... ...                  ...    ...        ...       ...                 ...
+    dataset-8     42 26.114416978060042 5.425938492392995 15.885583021939956  32.24990028797198 ... 0.010121867045759705      9          9      cash  -87.72096531074276
+    dataset-9     26  8.636688324856333 1.928976834781756 17.363311675143667 32.421834962476595 ... 0.003062655434346218      9          9      cash  -40.56306619681104
+    Length = 10 rows
+
 
 
 
@@ -413,6 +451,12 @@ extract the lightcurve in 3 energy bins.
     datasets.models = model_fit
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 237-252
 
 .. code-block:: Python
@@ -430,6 +474,17 @@ extract the lightcurve in 3 energy bins.
     )
     lc_1d.plot(ax=ax, marker="o", axis_name="time", sed_type="flux")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_simulation_001.png
+   :alt: light curve simulation
+   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_simulation_001.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -465,6 +520,12 @@ and fit it with a spectral and temporal model
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 278-282
 
 We will fit the amplitude, spectral index and the decay time scale. Note
@@ -495,6 +556,47 @@ that ``t_ref`` should be fixed by default for the
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    FluxPointsDataset
+    -----------------
+
+      Name                            : dataset_lc 
+
+      Number of total flux points     : 30 
+      Number of fit bins              : 24 
+
+      Fit statistic type              : chi2
+      Fit statistic value (-2 log(L)) : 1414.44
+
+      Number of models                : 1 
+      Number of parameters            : 5
+      Number of free parameters       : 3
+
+      Component 0: SkyModel
+  
+        Name                      : model-test
+        Datasets names            : None
+        Spectral model type       : PowerLawSpectralModel
+        Spatial  model type       : 
+        Temporal model type       : ExpDecayTemporalModel
+        Parameters:
+          index                         :      2.000   +/-    0.00             
+          amplitude                     :   1.00e-12   +/- 0.0e+00 1 / (cm2 s TeV)
+          reference             (frozen):      1.000       TeV         
+          t0                            :     10.000   +/-    0.00 h           
+          t_ref                 (frozen):  58909.000       d           
+  
+  
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 301-302
 
 Fit the dataset
@@ -506,6 +608,24 @@ Fit the dataset
     fit = Fit()
     result = fit.run(dataset_fp)
     display(result.parameters.to_table())
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    type    name     value         unit        error   min max frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+             index 2.9574e+00                2.782e-02 nan nan  False   False           
+         amplitude 9.6570e-12 cm-2 s-1 TeV-1 3.367e-13 nan nan  False    True           
+         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
+                t0 5.9887e+00              h 2.384e-01 nan nan  False   False           
+             t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False           
+
 
 
 
@@ -521,6 +641,23 @@ temporal model in relative units for one particular energy range
 
 
     dataset_fp.plot_spectrum(axis_name="time")
+
+
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_simulation_002.png
+   :alt: light curve simulation
+   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_simulation_002.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    <Axes: xlabel='Time [iso]', ylabel='Norm / A.U.'>
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 315-325
@@ -558,6 +695,24 @@ fitting in Gammapy, see the :doc:`/tutorials/analysis-3d/analysis_3d`.
     datasets.models = model2
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    type    name     value         unit        error   min max frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+             index 2.0000e+00                0.000e+00 nan nan  False   False           
+         amplitude 1.0000e-12 cm-2 s-1 TeV-1 0.000e+00 nan nan  False    True           
+         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
+                t0 1.0000e+01              h 0.000e+00 nan nan  False   False           
+             t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False           
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 343-344
 
 Perform a joint fit
@@ -570,6 +725,24 @@ Perform a joint fit
     result = fit.run(datasets=datasets)
 
     display(result.parameters.to_table())
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    type    name     value         unit        error   min max frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+             index 2.9485e+00                3.174e-02 nan nan  False   False           
+         amplitude 9.8686e-12 cm-2 s-1 TeV-1 3.468e-13 nan nan  False    True           
+         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
+                t0 5.9243e+00              h 2.103e-01 nan nan  False   False           
+             t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False           
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 350-353
@@ -589,6 +762,11 @@ Exercises
    Use a combination of a Gaussian and Exponential flare profiles.
 3. Do a joint fitting of the datasets.
 
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 38.585 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-time_light_curve_simulation.py:

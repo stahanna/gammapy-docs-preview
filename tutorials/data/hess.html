@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="HAWC with Gammapy" href="hawc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="18 Mar 2024"/>
+    <meta name="docbuild:last-update" content="26 Mar 2024"/>
   </head>
   
   
@@ -651,8 +651,8 @@ release 1.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2051+gbdbe6fea3.d20240318
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
+        version                : 1.2.dev2052+g4293df132.d20240326
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -673,12 +673,12 @@ Other packages:
         naima                  : 0.10.0
         emcee                  : 3.1.4
         corner                 : 2.2.2
-        ray                    : 2.9.3
+        ray                    : 2.10.0
 
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : ./gammapy-data
+        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
 </pre></div>
 </div>
 <p>A useful way to organize the relevant files are the index tables. The
@@ -694,16 +694,29 @@ the directory in which they can be found, in this case
 <span class="n">data_store</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/data/hess.py&quot;</span>, line <span class="m">73</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/hess-dl3-dr1&quot;</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py&quot;</span>, line <span class="m">173</span>, in <span class="n">from_dir</span>
-<span class="w">    </span><span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">hdu_table_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="gr">OSError</span>: <span class="n">File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Data store:
+HDU index table:
+BASE_DIR: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hess-dl3-dr1
+Rows: 630
+OBS_ID: 20136 -- 47829
+HDU_TYPE: [&#39;aeff&#39;, &#39;bkg&#39;, &#39;edisp&#39;, &#39;events&#39;, &#39;gti&#39;, &#39;psf&#39;]
+HDU_CLASS: [&#39;aeff_2d&#39;, &#39;bkg_3d&#39;, &#39;edisp_2d&#39;, &#39;events&#39;, &#39;gti&#39;, &#39;psf_table&#39;]
+
+
+Observation table:
+Observatory name: &#39;N/A&#39;
+Number of observations: 105
 </pre></div>
 </div>
 <p>Preview an excerpt from the observation table</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">data_store</span><span class="o">.</span><span class="n">obs_table</span><span class="p">[:</span><span class="mi">2</span><span class="p">][[</span><span class="s2">&quot;OBS_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;DATE-OBS&quot;</span><span class="p">,</span> <span class="s2">&quot;RA_PNT&quot;</span><span class="p">,</span> <span class="s2">&quot;DEC_PNT&quot;</span><span class="p">,</span> <span class="s2">&quot;OBJECT&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OBS_ID  DATE-OBS   RA_PNT   DEC_PNT    OBJECT
+                    deg       deg
+------ ---------- -------- ---------- --------
+ 20136 2004-03-26 228.6125 -58.771667 MSH15-52
+ 20137 2004-03-26 228.6125 -59.771667 MSH15-52
 </pre></div>
 </div>
 <p>Get a single observation</p>
@@ -714,24 +727,28 @@ the directory in which they can be found, in this case
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">select_offset</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Peek the effective area</p>
+<img src="../../_images/sphx_glr_hess_001.png" srcset="../../_images/sphx_glr_hess_001.png" alt="hess" class = "sphx-glr-single-img"/><p>Peek the effective area</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">aeff</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_hess_002.png" srcset="../../_images/sphx_glr_hess_002.png" alt="hess" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/quantity.py:673: RuntimeWarning: invalid value encountered in divide
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
 </pre></div>
 </div>
 <p>Peek the energy dispersion</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">edisp</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Peek the psf</p>
+<img src="../../_images/sphx_glr_hess_003.png" srcset="../../_images/sphx_glr_hess_003.png" alt="hess" class = "sphx-glr-single-img"/><p>Peek the psf</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">psf</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Peek the background rate</p>
+<img src="../../_images/sphx_glr_hess_004.png" srcset="../../_images/sphx_glr_hess_004.png" alt="hess" class = "sphx-glr-single-img"/><p>Peek the background rate</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span><span class="o">.</span><span class="n">bkg</span><span class="o">.</span><span class="n">to_2d</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_hess_005.png" srcset="../../_images/sphx_glr_hess_005.png" alt="hess" class = "sphx-glr-single-img"/></section>
 <section id="theta-squared-event-distribution">
 <h2>Theta squared event distribution<a class="headerlink" href="#theta-squared-event-distribution" title="Link to this heading">#</a></h2>
 <p>As a quick look plot it can be helpful to plot the quadratic offset
@@ -751,7 +768,7 @@ the directory in which they can be found, in this case
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_hess_006.png" srcset="../../_images/sphx_glr_hess_006.png" alt="hess" class = "sphx-glr-single-img"/></section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ul class="simple">

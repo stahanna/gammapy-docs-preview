@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3127364f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Maps" href="maps.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="18 Mar 2024"/>
+    <meta name="docbuild:last-update" content="26 Mar 2024"/>
   </head>
   
   
@@ -697,8 +697,8 @@ we show how to work with masks in general:</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2051+gbdbe6fea3.d20240318
-        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy
+        version                : 1.2.dev2052+g4293df132.d20240326
+        path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
 Other packages:
@@ -719,12 +719,12 @@ Other packages:
         naima                  : 0.10.0
         emcee                  : 3.1.4
         corner                 : 2.2.2
-        ray                    : 2.9.3
+        ray                    : 2.10.0
 
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : ./gammapy-data
+        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
 </pre></div>
 </div>
 </section>
@@ -742,25 +742,12 @@ used in the 3FHL catalog. The dataset is already in the form of a
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="s2">&quot;Fermi-LAT&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/mask_maps.py&quot;</span>, line <span class="m">129</span>, in <span class="n">&lt;module&gt;</span>
-<span class="w">    </span><span class="n">datasets</span> <span class="o">=</span> <span class="n">Datasets</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/datasets/core.py&quot;</span>, line <span class="m">406</span>, in <span class="n">read</span>
-<span class="w">    </span><span class="n">data_list</span> <span class="o">=</span> <span class="n">read_yaml</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">checksum</span><span class="o">=</span><span class="n">checksum</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/utils/scripts.py&quot;</span>, line <span class="m">58</span>, in <span class="n">read_yaml</span>
-<span class="w">    </span><span class="n">text</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
-  File <span class="nb">&quot;/usr/lib64/python3.9/pathlib.py&quot;</span>, line <span class="m">1266</span>, in <span class="n">read_text</span>
-<span class="w">    </span><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-  File <span class="nb">&quot;/usr/lib64/python3.9/pathlib.py&quot;</span>, line <span class="m">1252</span>, in <span class="n">open</span>
-<span class="w">    </span><span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">buffering</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">newline</span><span class="p">,</span>
-  File <span class="nb">&quot;/usr/lib64/python3.9/pathlib.py&quot;</span>, line <span class="m">1120</span>, in <span class="n">_opener</span>
-<span class="w">    </span><span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/fermi-3fhl-crab/Fermi-LAT-3FHL_datasets.yaml&#39;</span>
-</pre></div>
-</div>
 <p>We can check the default energy range of the dataset. In the absence of
 a <code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_fit</span></code> it is equal to the safe energy range.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fit range : </span><span class="si">{</span><span class="n">dataset</span><span class="o">.</span><span class="n">energy_range</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fit range : (&lt;gammapy.maps.wcs.ndmap.WcsNDMap object at 0x7f3058051880&gt;, &lt;gammapy.maps.wcs.ndmap.WcsNDMap object at 0x7f30580517f0&gt;)
 </pre></div>
 </div>
 <section id="create-a-mask-in-energy">
@@ -777,6 +764,9 @@ a <code class="xref py py-obj docutils literal notranslate"><span class="pre">ma
 edges closest to requested range provide the actual fit range.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">mask_fit</span> <span class="o">=</span> <span class="n">mask_energy</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fit range : </span><span class="si">{</span><span class="n">dataset</span><span class="o">.</span><span class="n">energy_range</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fit range : (&lt;gammapy.maps.wcs.ndmap.WcsNDMap object at 0x7f3058051790&gt;, &lt;gammapy.maps.wcs.ndmap.WcsNDMap object at 0x7f304606d520&gt;)
 </pre></div>
 </div>
 </section>
@@ -807,7 +797,7 @@ operator</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_mask_maps_001.png" srcset="../../_images/sphx_glr_mask_maps_001.png" alt="Energy 10.00 GeV - 28.9 GeV, Energy 28.9 GeV - 83.3 GeV, Energy 83.3 GeV - 240 GeV, Energy 240 GeV - 693 GeV, Energy 693 GeV - 2.00 TeV" class = "sphx-glr-single-img"/></section>
 <section id="creating-a-mask-manually">
 <h3>Creating a mask manually<a class="headerlink" href="#creating-a-mask-manually" title="Link to this heading">#</a></h3>
 <p>If you are more familiar with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">Geom</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">Map</span></code> API, you can also
@@ -858,6 +848,11 @@ We also add another region with a different shape as en example.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">regions</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;RectangleSkyRegion(center=&lt;SkyCoord (Galactic): (l, b) in deg
+    (185., -4.)&gt;, width=1.0 deg, height=0.5 deg, angle=45.0 deg)&gt;, &lt;CircleSkyRegion(center=&lt;SkyCoord (ICRS): (ra, dec) in deg
+    (83.633083, 22.0145)&gt;, radius=0.3 deg)&gt;]
+</pre></div>
+</div>
 <p>Equivalently the regions can be read from a ds9 file, this time using
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">Regions.read</span></code>.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># regions = Regions.read(&#39;ds9.reg&#39;, format=&quot;ds9&quot;)</span>
@@ -873,7 +868,7 @@ putting all pixels inside the regions to False.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_mask_maps_002.png" srcset="../../_images/sphx_glr_mask_maps_002.png" alt="mask maps" class = "sphx-glr-single-img"/></section>
 </section>
 <section id="create-the-mask-from-a-catalog-of-sources">
 <h3>Create the mask from a catalog of sources<a class="headerlink" href="#create-the-mask-from-a-catalog-of-sources" title="Link to this heading">#</a></h3>
@@ -902,7 +897,7 @@ to account for the larger size.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_mask_maps_003.png" srcset="../../_images/sphx_glr_mask_maps_003.png" alt="mask maps" class = "sphx-glr-single-img"/></section>
 <section id="create-the-mask-from-statistically-significant-pixels-in-a-dataset">
 <h3>Create the mask from statistically significant pixels in a dataset<a class="headerlink" href="#create-the-mask-from-statistically-significant-pixels-in-a-dataset" title="Link to this heading">#</a></h3>
 <p>Here we want to determine an exclusion from the data directly. We will
@@ -930,7 +925,7 @@ them.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This method frequently yields isolated pixels or weakly significant
+<img src="../../_images/sphx_glr_mask_maps_004.png" srcset="../../_images/sphx_glr_mask_maps_004.png" alt="mask maps" class = "sphx-glr-single-img"/><p>This method frequently yields isolated pixels or weakly significant
 features if one places the threshold too low.</p>
 <p>To overcome this issue, one can use
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_hysteresis_threshold</span></code> . This filter allows to
@@ -952,19 +947,19 @@ might need to install it.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>AND condition is represented by <code class="xref py py-obj docutils literal notranslate"><span class="pre">&amp;</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">*</span></code> operators :</p>
+<img src="../../_images/sphx_glr_mask_maps_005.png" srcset="../../_images/sphx_glr_mask_maps_005.png" alt="mask maps" class = "sphx-glr-single-img"/><p>AND condition is represented by <code class="xref py py-obj docutils literal notranslate"><span class="pre">&amp;</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">*</span></code> operators :</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">mask_map</span> <span class="o">&amp;=</span> <span class="n">mask_map_catalog</span>
 <span class="n">mask_map</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The NOT operator is represented by <code class="xref py py-obj docutils literal notranslate"></code> symbol:</p>
+<img src="../../_images/sphx_glr_mask_maps_006.png" srcset="../../_images/sphx_glr_mask_maps_006.png" alt="mask maps" class = "sphx-glr-single-img"/><p>The NOT operator is represented by <code class="xref py py-obj docutils literal notranslate"></code> symbol:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">significance_mask_inv</span> <span class="o">=</span> <span class="o">~</span><span class="n">significance_mask</span>
 <span class="n">significance_mask_inv</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_mask_maps_007.png" srcset="../../_images/sphx_glr_mask_maps_007.png" alt="mask maps" class = "sphx-glr-single-img"/></section>
 <section id="mask-modifications">
 <h2>Mask modifications<a class="headerlink" href="#mask-modifications" title="Link to this heading">#</a></h2>
 <section id="mask-dilation-and-erosion">
@@ -983,7 +978,7 @@ might need to install it.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_mask_maps_008.png" srcset="../../_images/sphx_glr_mask_maps_008.png" alt="mask maps" class = "sphx-glr-single-img"/></section>
 <section id="boundary-mask">
 <h3>Boundary mask<a class="headerlink" href="#boundary-mask" title="Link to this heading">#</a></h3>
 <p>In the following example we use the Fermi dataset previously loaded and
@@ -1003,7 +998,7 @@ method of the psf object and the mask is created using the
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
+<img src="../../_images/sphx_glr_mask_maps_009.png" srcset="../../_images/sphx_glr_mask_maps_009.png" alt="mask maps" class = "sphx-glr-single-img"/></section>
 </section>
 <section id="reading-and-writing-masks">
 <h2>Reading and writing masks<a class="headerlink" href="#reading-and-writing-masks" title="Link to this heading">#</a></h2>

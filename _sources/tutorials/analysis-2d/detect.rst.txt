@@ -124,8 +124,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -146,12 +146,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -199,26 +199,16 @@ We first read the relevant maps:
 
 
 
+
+
 .. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
+ .. code-block:: none
 
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-2d/detect.py", line 80, in <module>
-        counts = Map.read("$GAMMAPY_DATA/fermi-3fhl-gc/fermi-3fhl-gc-counts-cube.fits.gz")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/maps/core.py", line 254, in read
-        with fits.open(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
-        return HDUList.fromfile(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
-        return cls._readfrom(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
-        fileobj = _File(
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
-        self._open_filename(fileobj, mode, overwrite)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
-        self._file = open(self.name, IO_FITS_MODES[mode])
-    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/fermi-3fhl-gc/fermi-3fhl-gc-counts-cube.fits.gz'
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/wcs/wcs.py:803: FITSFixedWarning: 'datfix' made the change 'Set DATEREF to '2001-01-01T00:01:04.184' from MJDREF.
+    Set MJD-OBS to 54682,655283 from DATE-OBS.
+    Set MJD-END to 57236,967546 from DATE-END'.
+      warnings.warn(
 
 
 
@@ -248,6 +238,17 @@ significance expected, values below are clipped.
     plt.figure(figsize=(9, 5))
     images["flux"].plot(add_cbar=True, stretch="asinh")
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-2d/images/sphx_glr_detect_001.png
+   :alt: detect
+   :srcset: /tutorials/analysis-2d/images/sphx_glr_detect_001.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -282,6 +283,12 @@ existence of a source. Here, we use a point source.
     model = SkyModel(spatial_model=spatial_model, spectral_model=spectral_model)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 155-163
 
 .. code-block:: Python
@@ -292,6 +299,12 @@ existence of a source. Here, we use a point source.
         energy_edges=[10, 500] * u.GeV,
     )
     maps = estimator.run(dataset)
+
+
+
+
+
+
 
 
 
@@ -320,6 +333,17 @@ Plot resulting images
     maps["niter"].plot(ax=ax3, add_cbar=True)
     ax3.set_title("Iteration map")
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/analysis-2d/images/sphx_glr_detect_002.png
+   :alt: Significance map, Flux map, Iteration map
+   :srcset: /tutorials/analysis-2d/images/sphx_glr_detect_002.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 184-193
@@ -363,6 +387,31 @@ between peaks (smallest possible value and default is 1 pixel).
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-2d/images/sphx_glr_detect_003.png
+   :alt: detect
+   :srcset: /tutorials/analysis-2d/images/sphx_glr_detect_003.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    value   x   y      ra       dec   
+                      deg       deg   
+    ------ --- --- --------- ---------
+    32.206 200  99 266.41449 -28.97054
+    27.836  52  60 272.43197 -23.54282
+       ... ... ...       ...       ...
+    5.0674 156 132 266.12148 -26.23306
+    5.0447  93  80 270.37773 -24.84233
+    Length = 18 rows
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 218-220
 
 We can also utilise `~gammapy.estimators.utils.find_peaks_in_flux_map`
@@ -375,6 +424,26 @@ to display various parameters from the FluxMaps
 
     sources_flux_map = find_peaks_in_flux_map(maps, threshold=5, min_distance="0.25 deg")
     display(sources_flux_map)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+     x   y      ra       dec        ts        norm   niter norm_err   npred    npred_excess    stat    stat_null  success     flux      flux_err 
+               deg       deg                                                                                              1 / (cm2 s) 1 / (cm2 s)
+    --- --- --------- --------- ---------- --------- ----- -------- ---------- ------------ ---------- ---------- ------- ----------- -----------
+     93  80 270.37773 -24.84233   25.44943   8.33358   8.0  2.39518  290.82501     27.10638  815.17168  840.62111    True   8.167e-11   2.347e-11
+    156 132 266.12148 -26.23306   25.67872   6.04366   8.0  1.90985  155.90546     19.75677  666.91579  692.59451    True   5.923e-11   1.872e-11
+    ... ...       ...       ...        ...       ...   ...      ...        ...          ...        ...        ...     ...         ...         ...
+     52  60 272.43197 -23.54282  774.86986  61.46368   7.0  4.79466  318.65403    199.24023  317.55008 1092.41995    True   6.023e-10   4.699e-11
+    200  99 266.41449 -28.97054 1037.22768 145.26419   7.0  8.10751 1096.80480    476.81872 -899.92481  137.30287    True   1.424e-09   7.945e-11
+    Length = 18 rows
+
 
 
 
@@ -411,6 +480,11 @@ Here’s some suggestions what to do next:
    :doc:`/tutorials/analysis-3d/analysis_3d`,
    :doc:`/tutorials/analysis-3d/analysis_mwl` notebooks for some hints)
 
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 28.002 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-2d_detect.py:

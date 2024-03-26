@@ -207,8 +207,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -229,12 +229,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -264,16 +264,7 @@ and PSF for containment correction.
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/spectral_analysis.py", line 155, in <module>
-        datastore = DataStore.from_dir("$GAMMAPY_DATA/hess-dl3-dr1/")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
-        raise OSError(f"File not found: {hdu_table_filename}")
-    OSError: File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz
 
 
 
@@ -296,6 +287,12 @@ region. In the simplest case this is just a
     target_position = SkyCoord(ra=83.63, dec=22.01, unit="deg", frame="icrs")
     on_region_radius = Angle("0.11 deg")
     on_region = CircleSkyRegion(center=target_position, radius=on_region_radius)
+
+
+
+
+
+
 
 
 
@@ -335,6 +332,17 @@ and GLAT = -8.708 deg.
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_001.png
+   :alt: spectral analysis
+   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 204-209
 
 Run data reduction chain
@@ -365,6 +373,12 @@ We begin with the configuration of the maker classes:
     safe_mask_masker = SafeMaskMaker(methods=["aeff-max"], aeff_percent=10)
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 227-237
 
 .. code-block:: Python
@@ -378,6 +392,49 @@ We begin with the configuration of the maker classes:
         datasets.append(dataset_on_off)
 
     print(datasets)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Datasets
+    --------
+
+    Dataset 0: 
+
+      Type       : SpectrumDatasetOnOff
+      Name       : 23523
+      Instrument : HESS
+      Models     : 
+
+    Dataset 1: 
+
+      Type       : SpectrumDatasetOnOff
+      Name       : 23526
+      Instrument : HESS
+      Models     : 
+
+    Dataset 2: 
+
+      Type       : SpectrumDatasetOnOff
+      Name       : 23559
+      Instrument : HESS
+      Models     : 
+
+    Dataset 3: 
+
+      Type       : SpectrumDatasetOnOff
+      Name       : 23592
+      Instrument : HESS
+      Models     : 
+
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 238-241
@@ -399,6 +456,26 @@ Plot off regions
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_002.png
+   :alt: spectral analysis
+   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_002.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/regions/shapes/circle.py:161: UserWarning: Setting the 'color' property will override the edgecolor or facecolor properties.
+      return Circle(xy=xy, radius=radius, **mpl_kwargs)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/visualization/datasets.py:84: UserWarning: Setting the 'color' property will override the edgecolor or facecolor properties.
+      handle = Patch(**plot_kwargs)
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 250-256
 
 Source statistic
@@ -416,6 +493,24 @@ region.
     info_table = datasets.info_table(cumulative=True)
 
     display(info_table)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+      name  counts       excess           sqrt_ts           background     ...      stat_sum      counts_off acceptance   acceptance_off          alpha       
+                                                                           ...                                                                                
+    ------- ------ ----------------- ------------------ ------------------ ... ------------------ ---------- ---------- ------------------ -------------------
+    stacked    149            139.25 20.449683569684264               9.75 ... 433.53724605923685        117       18.0              216.0  0.0833333358168602
+    stacked    303            280.75 28.446255766130005 22.250001907348633 ...  823.6909484036685        267       19.0 227.99996948242188  0.0833333432674408
+    stacked    439 408.7743835449219  36.17588855633589 30.225610733032227 ... 1325.2637060766635        594       19.0  373.3919677734375 0.05088486522436142
+    stacked    550  512.135498046875  40.90086300803344 37.864498138427734 ... 1701.2360965968026        869       19.0 436.05487060546875 0.04357249662280083
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 262-263
@@ -453,6 +548,17 @@ And make the corresponding plots
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_003.png
+   :alt: Excess, Sqrt(TS)
+   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_003.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 290-295
 
 Finally you can write the extracted datasets to disk using the OGIP
@@ -474,6 +580,12 @@ for details):
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 304-306
 
 If you want to read back the datasets from disk you can use:
@@ -489,6 +601,12 @@ If you want to read back the datasets from disk you can use:
     for obs_id in obs_ids:
         filename = path / f"obs_{obs_id}.fits.gz"
         datasets.append(SpectrumDatasetOnOff.read(filename))
+
+
+
+
+
+
 
 
 
@@ -526,6 +644,12 @@ show how the global fit matches one of the individual observations.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 342-345
 
 Fit quality and model residuals
@@ -546,6 +670,33 @@ We can access the results dictionary to see if the fit converged:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    OptimizeResult
+
+            backend    : minuit
+            method     : migrad
+            success    : True
+            message    : Optimization terminated successfully.
+            nfev       : 244
+            total stat : 86.12
+
+    CovarianceResult
+
+            backend    : minuit
+            method     : hesse
+            success    : True
+            message    : Hesse terminated successfully.
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 355-357
 
 and check the best-fit parameters
@@ -557,6 +708,24 @@ and check the best-fit parameters
 
 
     display(result_joint.models.to_parameters_table())
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    model type    name     value         unit        error   min max frozen is_norm link prior
+    ----- ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+     crab          index 2.2727e+00                1.566e-01 nan nan  False   False           
+     crab      amplitude 4.7913e-11 cm-2 s-1 TeV-1 3.600e-12 nan nan  False    True           
+     crab      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
+     crab        lambda_ 1.2097e-01          TeV-1 5.382e-02 nan nan  False   False           
+     crab          alpha 1.0000e+00                0.000e+00 nan nan   True   False           
+
 
 
 
@@ -575,6 +744,17 @@ A simple way to inspect the model residuals is using the function
     ax_spectrum.set_ylim(0.1, 40)
     datasets[0].plot_masks(ax=ax_spectrum)
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_004.png
+   :alt: spectral analysis
+   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_004.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -606,6 +786,12 @@ To do so we first stack the individual datasets, only for obtaining the energies
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 394-398
 
 Now we create an instance of the
@@ -625,6 +811,12 @@ the energy binning:
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 406-408
 
 Here is a the table of the resulting flux points:
@@ -636,6 +828,26 @@ Here is a the table of the resulting flux points:
 
 
     display(flux_points.to_table(sed_type="dnde", formatted=True))
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    e_ref  e_min  e_max        dnde          dnde_err       dnde_errp       dnde_errn    ...  stat  stat_null is_ul    counts    success   norm_scan        stat_scan     
+     TeV    TeV    TeV   1 / (cm2 s TeV) 1 / (cm2 s TeV) 1 / (cm2 s TeV) 1 / (cm2 s TeV) ...                                                                              
+    ------ ------ ------ --------------- --------------- --------------- --------------- ... ------ --------- ----- ------------ ------- -------------- ------------------
+     0.659  0.590  0.737       1.132e-10       1.632e-11       1.702e-11       1.564e-11 ...  0.366   140.184 False   0.0 .. 0.0    True 0.200 .. 5.000  62.683 .. 252.535
+     0.823  0.737  0.920       6.950e-11       7.224e-12       7.462e-12       7.000e-12 ...  8.252   326.560 False 30.0 .. 25.0    True 0.200 .. 5.000 140.739 .. 451.124
+       ...    ...    ...             ...             ...             ...             ... ...    ...       ...   ...          ...     ...            ...                ...
+     9.454  8.462 10.564       1.190e-13       5.279e-14       5.981e-14       4.659e-14 ...  4.483    18.617 False   1.0 .. 4.0    True 0.200 .. 5.000   12.081 .. 21.493
+    20.556 10.564 40.000       4.123e-15       1.838e-15       2.073e-15       1.617e-15 ... 16.789    28.455 False   1.0 .. 0.0    True 0.200 .. 5.000   22.913 .. 43.864
+    Length = 14 rows
+
 
 
 
@@ -657,6 +869,17 @@ plotting of upper limits we choose a threshold of TS < 4.
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_005.png
+   :alt: spectral analysis
+   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_005.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 424-427
 
 The final plot with the best fit model, flux points and residuals can be
@@ -671,6 +894,17 @@ quickly made like this:
     flux_points_dataset = FluxPointsDataset(data=flux_points, models=model_best_joint)
     flux_points_dataset.plot_fit()
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_006.png
+   :alt: spectral analysis
+   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_006.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -690,6 +924,12 @@ individual datasets:
 
 
     dataset_stacked = Datasets(datasets).stack_reduce()
+
+
+
+
+
+
 
 
 
@@ -715,6 +955,33 @@ object:
     print(result_stacked)
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    OptimizeResult
+
+            backend    : minuit
+            method     : migrad
+            success    : True
+            message    : Optimization terminated successfully.
+            nfev       : 54
+            total stat : 8.16
+
+    CovarianceResult
+
+            backend    : minuit
+            method     : hesse
+            success    : True
+            message    : Hesse terminated successfully.
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 461-462
 
 And display the parameter table
@@ -727,6 +994,31 @@ And display the parameter table
     display(model_best_joint.parameters.to_table())
 
     display(model_best_stacked.parameters.to_table())
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    type    name     value         unit        error   min max frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+             index 2.2727e+00                1.566e-01 nan nan  False   False           
+         amplitude 4.7913e-11 cm-2 s-1 TeV-1 3.600e-12 nan nan  False    True           
+         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
+           lambda_ 1.2097e-01          TeV-1 5.382e-02 nan nan  False   False           
+             alpha 1.0000e+00                0.000e+00 nan nan   True   False           
+    type    name     value         unit        error   min max frozen is_norm link prior
+    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+             index 2.2785e+00                1.563e-01 nan nan  False   False           
+         amplitude 4.7800e-11 cm-2 s-1 TeV-1 3.566e-12 nan nan  False    True           
+         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
+           lambda_ 1.1830e-01          TeV-1 5.329e-02 nan nan  False   False           
+             alpha 1.0000e+00                0.000e+00 nan nan   True   False           
+
 
 
 
@@ -770,6 +1062,17 @@ published Crab Nebula Spectrum for reference. This is available in
     # sphinx_gallery_thumbnail_number = 5
 
 
+
+
+.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_007.png
+   :alt: spectral analysis
+   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectral_analysis_007.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 502-517
 
 Exercises
@@ -801,6 +1104,11 @@ extraction region, one has to use a different approach explained in
 the :doc:`/tutorials/analysis-1d/extended_source_spectral_analysis`
 tutorial.
 
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 27.718 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-1d_spectral_analysis.py:

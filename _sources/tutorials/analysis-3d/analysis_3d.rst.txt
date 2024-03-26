@@ -98,8 +98,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -120,12 +120,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -200,7 +200,7 @@ the analysis, we will programmatically build a config file from scratch.
             datasets_file: null
             models_file: null
         observations:
-            datastore: $GAMMAPY_DATA/hess-dl3-dr1
+            datastore: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hess-dl3-dr1
             obs_ids: []
             obs_file: null
             obs_cone: {frame: null, lon: null, lat: null, radius: null}
@@ -254,7 +254,7 @@ the analysis, we will programmatically build a config file from scratch.
             datasets_file: null
             models_file: null
         observations:
-            datastore: gammapy-data/cta-1dc/index/gps
+            datastore: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/cta-1dc/index/gps
             obs_ids: [110380, 111140, 111159]
             obs_file: null
             obs_cone: {frame: null, lon: null, lat: null, radius: null}
@@ -384,18 +384,18 @@ select observations:
 
 
 
+
+
 .. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
+ .. code-block:: none
 
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/analysis_3d.py", line 134, in <module>
-        analysis_stacked.get_observations()
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/analysis/core.py", line 141, in get_observations
-        self._set_data_store()
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/analysis/core.py", line 100, in _set_data_store
-        raise FileNotFoundError(f"Datastore not found: {path}")
-    FileNotFoundError: Datastore not found: gammapy-data/cta-1dc/index/gps
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
 
 
 
@@ -414,6 +414,44 @@ We have one final dataset, which we can print and explore
     print(dataset_stacked)
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    MapDataset
+    ----------
+
+      Name                            : stacked 
+
+      Total counts                    : 121241 
+      Total background counts         : 108043.52
+      Total excess counts             : 13197.48
+
+      Predicted counts                : 108043.52
+      Predicted background counts     : 108043.52
+      Predicted excess counts         : nan
+
+      Exposure min                    : 6.28e+07 m2 s
+      Exposure max                    : 1.90e+10 m2 s
+
+      Number of total bins            : 2000000 
+      Number of fit bins              : 1411180 
+
+      Fit statistic type              : cash
+      Fit statistic value (-2 log(L)) : nan
+
+      Number of models                : 0 
+      Number of parameters            : 0
+      Number of free parameters       : 0
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 148-150
 
 To plot a smooth counts map
@@ -426,6 +464,23 @@ To plot a smooth counts map
 
     dataset_stacked.counts.smooth(0.02 * u.deg).plot_interactive(add_cbar=True)
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_001.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_001.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+            interactive(children=(SelectionSlider(continuous_update=False, description='Select energy:', layout=Layout(width='50%'), options=('100 GeV - 158 GeV', '158 GeV - 251 GeV', '251 GeV - 398 GeV', '398 GeV - 631 GeV', '631 GeV - 1.00 TeV', '1.00 TeV - 1.58 TeV', '1.58 TeV - 2.51 TeV', '2.51 TeV - 3.98 TeV', '3.98 TeV - 6.31 TeV', '6.31 TeV - 10.00 TeV'), style=SliderStyle(description_width='initial'), value='100 GeV - 158 GeV'), RadioButtons(description='Select stretch:', index=1, options=('linear', 'sqrt', 'log'), style=DescriptionStyle(description_width='initial'), value='sqrt'), Output()), _dom_classes=('widget-interact',))
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 155-157
@@ -442,6 +497,23 @@ And the background map
     plt.show()
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_002.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_002.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+            interactive(children=(SelectionSlider(continuous_update=False, description='Select energy:', layout=Layout(width='50%'), options=('100 GeV - 158 GeV', '158 GeV - 251 GeV', '251 GeV - 398 GeV', '398 GeV - 631 GeV', '631 GeV - 1.00 TeV', '1.00 TeV - 1.58 TeV', '1.58 TeV - 2.51 TeV', '2.51 TeV - 3.98 TeV', '3.98 TeV - 6.31 TeV', '6.31 TeV - 10.00 TeV'), style=SliderStyle(description_width='initial'), value='100 GeV - 158 GeV'), RadioButtons(description='Select stretch:', index=1, options=('linear', 'sqrt', 'log'), style=DescriptionStyle(description_width='initial'), value='sqrt'), Output()), _dom_classes=('widget-interact',))
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 162-164
 
 We can quickly check the PSF
@@ -454,6 +526,17 @@ We can quickly check the PSF
 
     dataset_stacked.psf.peek()
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_003.png
+   :alt: Exposure, Containment radius at 1 TeV, Containment radius at center of map, PSF at center of map
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_003.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 169-171
@@ -470,6 +553,17 @@ And the energy dispersion in the center of the map
     plt.show()
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_004.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_004.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 176-178
 
 You can also get an excess image with a few lines of code:
@@ -483,6 +577,17 @@ You can also get an excess image with a few lines of code:
     excess = dataset_stacked.excess.sum_over_axes()
     excess.smooth("0.06 deg").plot(stretch="sqrt", add_cbar=True)
     plt.show()
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_005.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_005.png
+   :class: sphx-glr-single-img
+
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 184-193
@@ -543,12 +648,24 @@ please checkout the dedicated :doc:`/tutorials/api/mask_maps` tutorial.
     dataset_stacked.models = models_stacked
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 235-239
 
 .. code-block:: Python
 
     fit = Fit(optimize_opts={"print_level": 1})
     result = fit.run(datasets=[dataset_stacked])
+
+
+
+
+
+
 
 
 
@@ -572,6 +689,33 @@ We can access the results dictionary to see if the fit converged:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    OptimizeResult
+
+            backend    : minuit
+            method     : migrad
+            success    : True
+            message    : Optimization terminated successfully.
+            nfev       : 185
+            total stat : 180458.16
+
+    CovarianceResult
+
+            backend    : minuit
+            method     : hesse
+            success    : True
+            message    : Hesse terminated successfully.
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 253-255
 
 Check best-fit parameters and error estimates:
@@ -583,6 +727,26 @@ Check best-fit parameters and error estimates:
 
 
     display(models_stacked.to_parameters_table())
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+       model    type    name     value         unit        error   min max frozen is_norm link prior
+    ----------- ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
+      gc-source          index 2.4144e+00                1.523e-01 nan nan  False   False           
+      gc-source      amplitude 2.6623e-12 cm-2 s-1 TeV-1 3.104e-13 nan nan  False    True           
+            ...  ...       ...        ...            ...       ... ... ...    ...     ...  ...   ...
+    stacked-bkg           norm 1.3481e+00                9.315e-03 nan nan  False    True           
+    stacked-bkg           tilt 0.0000e+00                0.000e+00 nan nan   True   False           
+    stacked-bkg      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
+    Length = 10 rows
+
 
 
 
@@ -604,6 +768,17 @@ plot):
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_006.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_006.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 271-274
 
 The more general function `~MapDataset.plot_residuals()` can also
@@ -621,6 +796,17 @@ extract and display spectral residuals in a region:
         kwargs_spectral=dict(region=region),
     )
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_007.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_007.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -655,6 +841,17 @@ A more accurate way to inspect spatial residuals is the following:
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_008.png
+   :alt: Energy 100 GeV - 1.00 TeV, Energy 1.00 TeV - 10.00 TeV
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_008.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 308-310
 
 Distribution of residuals significance in the full map geometry:
@@ -676,6 +873,17 @@ Distribution of residuals significance in the full map geometry:
     )
 
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_009.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_009.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -721,6 +929,48 @@ Data reduction
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
+      warnings.warn(msg, UnitsWarning)
+    Datasets
+    --------
+
+    Dataset 0: 
+
+      Type       : MapDataset
+      Name       : XwpS-GMA
+      Instrument : CTA
+      Models     : 
+
+    Dataset 1: 
+
+      Type       : MapDataset
+      Name       : KkgHnftC
+      Instrument : CTA
+      Models     : 
+
+    Dataset 2: 
+
+      Type       : MapDataset
+      Name       : LHyHlidl
+      Instrument : CTA
+      Models     : 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 362-364
 
 You can access each one by name or by index, eg:
@@ -732,6 +982,44 @@ You can access each one by name or by index, eg:
 
 
     print(analysis_joint.datasets[0])
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    MapDataset
+    ----------
+
+      Name                            : XwpS-GMA 
+
+      Total counts                    : 40481 
+      Total background counts         : 36014.51
+      Total excess counts             : 4466.49
+
+      Predicted counts                : 36014.51
+      Predicted background counts     : 36014.51
+      Predicted excess counts         : nan
+
+      Exposure min                    : 6.28e+07 m2 s
+      Exposure max                    : 6.68e+09 m2 s
+
+      Number of total bins            : 1085000 
+      Number of fit bins              : 693940 
+
+      Fit statistic type              : cash
+      Fit statistic value (-2 log(L)) : nan
+
+      Number of models                : 0 
+      Number of parameters            : 0
+      Number of free parameters       : 0
+
+
+
 
 
 
@@ -765,12 +1053,84 @@ map, omit the region argument.
     analysis_joint.datasets.models = models_joint
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+      name   counts       excess            sqrt_ts           background           npred        ...    excess_rate      n_bins n_fit_bins stat_type stat_sum
+                                                                                                ...       1 / s                                             
+    -------- ------ ------------------ ------------------ ------------------ ------------------ ... ------------------ ------- ---------- --------- --------
+    XwpS-GMA  40481 4466.4930435940405 23.072802026431084  36014.50695640596  36014.50695640596 ... 2.5320254856461073 1085000     693940      cash      nan
+    KkgHnftC  40525  4510.505523195905  23.29577828821109 36014.494476804095 36014.494476804095 ... 2.5569758704224212 1085000     693940      cash      nan
+    LHyHlidl  40235  4220.480554966147  21.82496424955487  36014.51944503385  36014.51944503385 ... 2.3925626263259874 1085000     693940      cash      nan
+    Models
+
+    Component 0: SkyModel
+
+      Name                      : source-joint
+      Datasets names            : None
+      Spectral model type       : ExpCutoffPowerLawSpectralModel
+      Spatial  model type       : PointSpatialModel
+      Temporal model type       : 
+      Parameters:
+        index                         :      2.414   +/-    0.15             
+        amplitude                     :   2.66e-12   +/- 3.1e-13 1 / (cm2 s TeV)
+        reference             (frozen):      1.000       TeV         
+        lambda_                       :     -0.013   +/-    0.07 1 / TeV     
+        alpha                 (frozen):      1.000                   
+        lon_0                         :     -0.048   +/-    0.00 deg         
+        lat_0                         :     -0.053   +/-    0.00 deg         
+
+    Component 1: FoVBackgroundModel
+
+      Name                      : XwpS-GMA-bkg
+      Datasets names            : ['XwpS-GMA']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+    Component 2: FoVBackgroundModel
+
+      Name                      : KkgHnftC-bkg
+      Datasets names            : ['KkgHnftC']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+    Component 3: FoVBackgroundModel
+
+      Name                      : LHyHlidl-bkg
+      Datasets names            : ['LHyHlidl']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.000   +/-    0.00             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 392-396
 
 .. code-block:: Python
 
     fit_joint = Fit()
     result_joint = fit_joint.run(datasets=analysis_joint.datasets)
+
+
+
+
+
+
 
 
 
@@ -794,6 +1154,33 @@ We can access the results dictionary to see if the fit converged:
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    OptimizeResult
+
+            backend    : minuit
+            method     : migrad
+            success    : True
+            message    : Optimization terminated successfully.
+            nfev       : 244
+            total stat : 748259.32
+
+    CovarianceResult
+
+            backend    : minuit
+            method     : hesse
+            success    : True
+            message    : Hesse terminated successfully.
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 410-412
 
 Check best-fit parameters and error estimates:
@@ -805,6 +1192,66 @@ Check best-fit parameters and error estimates:
 
 
     print(models_joint)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Models
+
+    Component 0: SkyModel
+
+      Name                      : source-joint
+      Datasets names            : None
+      Spectral model type       : ExpCutoffPowerLawSpectralModel
+      Spatial  model type       : PointSpatialModel
+      Temporal model type       : 
+      Parameters:
+        index                         :      2.272   +/-    0.08             
+        amplitude                     :   2.84e-12   +/- 3.1e-13 1 / (cm2 s TeV)
+        reference             (frozen):      1.000       TeV         
+        lambda_                       :      0.039   +/-    0.05 1 / TeV     
+        alpha                 (frozen):      1.000                   
+        lon_0                         :     -0.049   +/-    0.00 deg         
+        lat_0                         :     -0.053   +/-    0.00 deg         
+
+    Component 1: FoVBackgroundModel
+
+      Name                      : XwpS-GMA-bkg
+      Datasets names            : ['XwpS-GMA']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.118   +/-    0.01             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+    Component 2: FoVBackgroundModel
+
+      Name                      : KkgHnftC-bkg
+      Datasets names            : ['KkgHnftC']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.119   +/-    0.01             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+    Component 3: FoVBackgroundModel
+
+      Name                      : LHyHlidl-bkg
+      Datasets names            : ['LHyHlidl']
+      Spectral model type       : PowerLawNormSpectralModel
+      Parameters:
+        norm                          :      1.111   +/-    0.01             
+        tilt                  (frozen):      0.000                   
+        reference             (frozen):      1.000       TeV         
+
+
+
 
 
 
@@ -827,6 +1274,23 @@ Or, look at a stacked residual map.
 
     plt.figure()
     stacked.plot_residuals_spatial(vmin=-1, vmax=1)
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_010.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_010.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    <WCSAxes: >
 
 
 
@@ -866,6 +1330,17 @@ fit:
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_011.png
+   :alt: analysis 3d
+   :srcset: /tutorials/analysis-3d/images/sphx_glr_analysis_3d_011.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 461-470
 
 Summary
@@ -893,6 +1368,11 @@ Exercises
 -  Perform modeling in more details - Add diffuse component, get flux
    points.
 
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (1 minutes 18.248 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-3d_analysis_3d.py:

@@ -118,8 +118,8 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2051+gbdbe6fea3.d20240318 
-            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy 
+            version                : 1.2.dev2052+g4293df132.d20240326 
+            path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
     Other packages:
@@ -140,12 +140,12 @@ Check setup
             naima                  : 0.10.0     
             emcee                  : 3.1.4      
             corner                 : 2.2.2      
-            ray                    : 2.9.3      
+            ray                    : 2.10.0     
 
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : ./gammapy-data 
+            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
 
 
 
@@ -166,16 +166,7 @@ Load the data store (which is a subset of CTA-DC1 data):
 
 
 
-.. rst-class:: sphx-glr-script-out
 
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/pulsar_analysis.py", line 71, in <module>
-        data_store = DataStore.from_dir("$GAMMAPY_DATA/cta-1dc/index/gps")
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib64/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
-        raise OSError(f"File not found: {hdu_table_filename}")
-    OSError: File not found: gammapy-data/cta-1dc/index/gps/hdu-index.fits.gz
 
 
 
@@ -193,6 +184,36 @@ Define observation ID and print events:
     id_obs_vela = [111630]
     obs_list_vela = data_store.get_observations(id_obs_vela)
     print(obs_list_vela[0].events)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    EventList
+    ---------
+
+      Instrument       : None
+      Telescope        : CTA
+      Obs. ID          : 111630
+
+      Number of events : 101430
+      Event rate       : 56.350 1 / s
+
+      Time start       : 59300.833333333336
+      Time stop        : 59300.854166666664
+
+      Min. energy      : 3.00e-02 TeV
+      Max. energy      : 1.52e+02 TeV
+      Median energy    : 1.00e-01 TeV
+
+      Max. offset      : 5.0 deg
+
+
 
 
 
@@ -217,6 +238,36 @@ around the pulsar position.
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    EventList
+    ---------
+
+      Instrument       : None
+      Telescope        : CTA
+      Obs. ID          : 111630
+
+      Number of events : 843
+      Event rate       : 0.468 1 / s
+
+      Time start       : 59300.833333333336
+      Time stop        : 59300.854166666664
+
+      Min. energy      : 3.00e-02 TeV
+      Max. energy      : 4.33e+01 TeV
+      Median energy    : 1.07e-01 TeV
+
+      Max. offset      : 1.7 deg
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 98-99
 
 Let’s load the phases of the selected events in a dedicated array.
@@ -231,6 +282,26 @@ Let’s load the phases of the selected events in a dedicated array.
 
     # Let's take a look at the first 10 phases
     display(phases[:10])
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+      PHASE   
+    ----------
+    0.81847286
+    0.45646095
+           ...
+    0.51095676
+     0.5606985
+     0.2505703
+    Length = 10 rows
+
 
 
 
@@ -280,6 +351,17 @@ bin, etc).
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_001.png
+   :alt: Phasogram with angular cut of 0.2 deg
+   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 147-149
 
 Now let’s add some fancy additions to our phasogram: a patch on the ON-
@@ -301,6 +383,18 @@ and OFF-phase regions and one for the background level.
 
     # error on the background estimation
     bkg_err = np.sqrt(count_bkg) / nbins / (off_phase_range[1] - off_phase_range[0])
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Number of Off events: 234
+
+
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 163-164
@@ -360,6 +454,17 @@ Let's redo the same plot for the basis
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_002.png
+   :alt: Phasogram with angular cut of 0.2 deg
+   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 213-217
 
 Make a Li&Ma test over the events
@@ -395,6 +500,20 @@ Another thing that we want to do is to compute a Li&Ma test between the on-phase
 
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Number of excess counts: 44.00000000000003
+    TS: 15.211770556359625
+    Significance: 3.900226987799508
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 241-243
 
 Phase-resolved map
@@ -425,6 +544,12 @@ the OFF-phase zone (0.3).
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 264-265
 
 Let’s create an ON-map and an OFF-map:
@@ -451,6 +576,12 @@ Let’s create an ON-map and an OFF-map:
         map_dataset = safe_mask_maker.run(map_dataset, obs)
         map_dataset_on_off = phase_bkg_maker.run(map_dataset, obs)
         map_datasets.append(map_dataset_on_off)
+
+
+
+
+
+
 
 
 
@@ -486,6 +617,17 @@ If one wants to plot the counts-OFF instead, `~background` should be replaced by
 
 
 
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_003.png
+   :alt: Counts, Background
+   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_003.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 311-312
 
 Finally, we can run an `~gammapy.estimators.ExcessMapEstimator` to compute the excess and significance maps.
@@ -514,6 +656,17 @@ Finally, we can run an `~gammapy.estimators.ExcessMapEstimator` to compute the e
     ax2.set_title("Significance")
 
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_004.png
+   :alt: Excess counts, Significance
+   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_004.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -565,6 +718,12 @@ has been created as shown above.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 376-377
 
 Now let’s take a look at the datasets we just created:
@@ -576,6 +735,17 @@ Now let’s take a look at the datasets we just created:
 
     spectrum_datasets[0].peek()
     plt.show()
+
+
+
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_005.png
+   :alt: Counts, Exposure, Energy Dispersion
+   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_005.png
+   :class: sphx-glr-single-img
+
+
 
 
 
@@ -607,6 +777,33 @@ below.
     joint_result = joint_fit.run(datasets=spectrum_datasets)
 
     print(joint_result)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    OptimizeResult
+
+            backend    : minuit
+            method     : migrad
+            success    : True
+            message    : Optimization terminated successfully.
+            nfev       : 101
+            total stat : 7.07
+
+    CovarianceResult
+
+            backend    : minuit
+            method     : hesse
+            success    : True
+            message    : Hesse terminated successfully.
+
+
 
 
 
@@ -643,6 +840,12 @@ points by fitting the norm of the global model in energy bands.
 
 
 
+
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 433-434
 
 Now we can plot.
@@ -671,12 +874,28 @@ Now we can plot.
     plt.show()
 
 
+
+
+.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_006.png
+   :alt: pulsar analysis
+   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_006.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 .. GENERATED FROM PYTHON SOURCE LINES 454-458
 
 This tutorial suffers a bit from the lack of statistics: there were 9
 Vela observations in the CTA DC1 while there is only one here. When done
 on the 9 observations, the spectral analysis is much better agreement
 between the input model and the gammapy fit.
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 13.360 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-time_pulsar_analysis.py:

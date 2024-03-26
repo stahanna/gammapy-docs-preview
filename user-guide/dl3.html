@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3127364f" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3bfb4bc8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Gammapy analysis workflow and package structure" href="package.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="18 Mar 2024"/>
+    <meta name="docbuild:last-update" content="26 Mar 2024"/>
   </head>
   
   
@@ -652,6 +652,10 @@ There are two tables:</p>
 <span class="n">events</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>(<a class="reference download internal" download="" href="../_downloads/53fc5db0ffa4f02ce6557ba4ff15d482/dl3-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/47281c236a722bd521b2333f444ebd18/dl3-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/432ee3a608125ae95df2e8d950f07716/dl3-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/dl3-1.png" class="plot-directive" src="../_images/dl3-1.png" />
+</figure>
 <p>Events can be selected based on any of their properties, with dedicated functions existing
 for energy, time, offset from pointing position and the selection of events in a particular region
 of the sky.</p>
@@ -748,6 +752,12 @@ same FITS file according to the format specifications. To avoid writing IRFs alo
 </div><div class="sphx-glr-thumbcontainer" tooltip="This notebook shows how to sample events of sources whose model evolves in energy and time."><img alt="" src="../_images/sphx_glr_event_sampling_nrg_depend_models_thumb.png" />
 <p><a class="reference internal" href="../tutorials/analysis-3d/event_sampling_nrg_depend_models.html#sphx-glr-tutorials-analysis-3d-event-sampling-nrg-depend-models-py"><span class="std std-ref">Sample a source with energy-dependent temporal evolution</span></a></p>
   <div class="sphx-glr-thumbnail-title">Sample a source with energy-dependent temporal evolution</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Produce a phasogram, phased-resolved maps and spectra for pulsar analysis.   Introduction -----..."><img alt="" src="../_images/sphx_glr_pulsar_analysis_thumb.png" />
+<p><a class="reference internal" href="../tutorials/analysis-time/pulsar_analysis.html#sphx-glr-tutorials-analysis-time-pulsar-analysis-py"><span class="std std-ref">Pulsar analysis</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pulsar analysis</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A thorough tutorial to work with WCS maps."><img alt="" src="../_images/sphx_glr_maps_thumb.png" />
+<p><a class="reference internal" href="../tutorials/api/maps.html#sphx-glr-tutorials-api-maps-py"><span class="std std-ref">Maps</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Maps</div>
 </div></div></section>
 <section id="examples-using-gammapy-data-datastore">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">gammapy.data.DataStore</span></code><a class="headerlink" href="#examples-using-gammapy-data-datastore" title="Link to this heading">#</a></h3>
@@ -760,15 +770,33 @@ same FITS file according to the format specifications. To avoid writing IRFs alo
 </div><div class="sphx-glr-thumbcontainer" tooltip="HAWC is an array of water Cherenkov detectors located in Mexico that detects gamma-rays in the ..."><img alt="" src="../_images/sphx_glr_hawc_thumb.png" />
 <p><a class="reference internal" href="../tutorials/data/hawc.html#sphx-glr-tutorials-data-hawc-py"><span class="std std-ref">HAWC with Gammapy</span></a></p>
   <div class="sphx-glr-thumbnail-title">HAWC with Gammapy</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="H.E.S.S. is an array of gamma-ray telescopes located in Namibia. Gammapy is regularly used and ..."><img alt="" src="../_images/sphx_glr_hess_thumb.png" />
+<p><a class="reference internal" href="../tutorials/data/hess.html#sphx-glr-tutorials-data-hess-py"><span class="std std-ref">H.E.S.S. with Gammapy</span></a></p>
+  <div class="sphx-glr-thumbnail-title">H.E.S.S. with Gammapy</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Perform a spectral analysis of an extended source."><img alt="" src="../_images/sphx_glr_extended_source_spectral_analysis_thumb.png" />
+<p><a class="reference internal" href="../tutorials/analysis-1d/extended_source_spectral_analysis.html#sphx-glr-tutorials-analysis-1d-extended-source-spectral-analysis-py"><span class="std std-ref">Spectral analysis of extended sources</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Spectral analysis of extended sources</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Perform a full region based on-off spectral analysis and fit the resulting datasets."><img alt="" src="../_images/sphx_glr_spectral_analysis_thumb.png" />
 <p><a class="reference internal" href="../tutorials/analysis-1d/spectral_analysis.html#sphx-glr-tutorials-analysis-1d-spectral-analysis-py"><span class="std std-ref">Spectral analysis</span></a></p>
   <div class="sphx-glr-thumbnail-title">Spectral analysis</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Perform a point like spectral analysis with energy dependent offset cut."><img alt="" src="../_images/sphx_glr_spectral_analysis_rad_max_thumb.png" />
+<p><a class="reference internal" href="../tutorials/analysis-1d/spectral_analysis_rad_max.html#sphx-glr-tutorials-analysis-1d-spectral-analysis-rad-max-py"><span class="std std-ref">Spectral analysis with energy-dependent directional cuts</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Spectral analysis with energy-dependent directional cuts</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Detect sources, produce a sky image and a spectrum using CTA-1DC data."><img alt="" src="../_images/sphx_glr_cta_data_analysis_thumb.png" />
 <p><a class="reference internal" href="../tutorials/analysis-3d/cta_data_analysis.html#sphx-glr-tutorials-analysis-3d-cta-data-analysis-py"><span class="std std-ref">Basic image exploration and fitting</span></a></p>
   <div class="sphx-glr-thumbnail-title">Basic image exploration and fitting</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Learn to sampling events from a given sky model and IRFs."><img alt="" src="../_images/sphx_glr_event_sampling_thumb.png" />
+<p><a class="reference internal" href="../tutorials/analysis-3d/event_sampling.html#sphx-glr-tutorials-analysis-3d-event-sampling-py"><span class="std std-ref">Event sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Event sampling</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Compute the light curve of a PKS 2155-304 flare on 10 minutes time intervals."><img alt="" src="../_images/sphx_glr_light_curve_flare_thumb.png" />
 <p><a class="reference internal" href="../tutorials/analysis-time/light_curve_flare.html#sphx-glr-tutorials-analysis-time-light-curve-flare-py"><span class="std std-ref">Light curves for flares</span></a></p>
   <div class="sphx-glr-thumbnail-title">Light curves for flares</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Produce a phasogram, phased-resolved maps and spectra for pulsar analysis.   Introduction -----..."><img alt="" src="../_images/sphx_glr_pulsar_analysis_thumb.png" />
+<p><a class="reference internal" href="../tutorials/analysis-time/pulsar_analysis.html#sphx-glr-tutorials-analysis-time-pulsar-analysis-py"><span class="std std-ref">Pulsar analysis</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pulsar analysis</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Data reduction: from observations to binned datasets"><img alt="" src="../_images/sphx_glr_makers_thumb.png" />
+<p><a class="reference internal" href="../tutorials/api/makers.html#sphx-glr-tutorials-api-makers-py"><span class="std std-ref">Makers - Data reduction</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Makers - Data reduction</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Clustering observations into specific groups."><img alt="" src="../_images/sphx_glr_observation_clustering_thumb.png" />
 <p><a class="reference internal" href="../tutorials/api/observation_clustering.html#sphx-glr-tutorials-api-observation-clustering-py"><span class="std std-ref">Observational clustering</span></a></p>
   <div class="sphx-glr-thumbnail-title">Observational clustering</div>
