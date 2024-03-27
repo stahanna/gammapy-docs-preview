@@ -151,7 +151,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2052+g4293df132.d20240326 
+            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -992,8 +992,8 @@ This is how we can write the model back to file again:
                 unit: TeV
     covariance: model-best-fit_covariance.dat
     metadata:
-        creator: Gammapy 1.2.dev2052+g4293df132.d20240326
-        date: '2024-03-26T14:18:15.495891'
+        creator: Gammapy 1.2.dev2053+g9bd66a5b0.d20240327
+        date: '2024-03-27T13:56:23.439245'
         origin: null
 
 
@@ -1037,10 +1037,12 @@ Running the estimation
     ------ ------ ------ --------------- --------------- --------------- --------------- ... ----- --------- ----- ------ ------- -------------- ------------------
      1.134  0.924  1.392       2.835e-11       4.025e-12       4.206e-12       3.848e-12 ... 0.000   186.317 False   56.0    True 0.200 .. 5.000  61.061 .. 323.310
      1.708  1.392  2.096       1.193e-11       1.255e-12       1.297e-12       1.215e-12 ... 0.718   333.040 False  102.0    True 0.200 .. 5.000 137.686 .. 402.694
-       ...    ...    ...             ...             ...             ...             ... ...   ...       ...   ...    ...     ...            ...                ...
+     2.572  2.096  3.156       4.325e-12       5.410e-13       5.626e-13       5.199e-13 ... 0.329   245.811 False   71.0    True 0.200 .. 5.000 105.216 .. 245.371
+     3.873  3.156  4.753       1.002e-12       1.965e-13       2.084e-13       1.850e-13 ... 1.663    84.415 False   31.0    True 0.200 .. 5.000  30.617 .. 190.044
+     5.833  4.753  7.158       4.655e-13       1.001e-13       1.070e-13       9.338e-14 ... 0.725    89.316 False   24.0    True 0.200 .. 5.000   35.669 .. 89.296
+     7.929  7.158  8.784       1.527e-13       6.872e-14       7.833e-14       5.976e-14 ... 0.000    15.993 False    6.0    True 0.200 .. 5.000    5.680 .. 33.974
     10.779  8.784 13.228       9.692e-14       3.167e-14       3.499e-14       2.864e-14 ... 0.117    33.120 False   11.0    True 0.200 .. 5.000   15.247 .. 34.090
     16.233 13.228 19.921       1.523e-14       1.034e-14       1.239e-14       8.463e-15 ... 0.608     6.611 False    3.0    True 0.200 .. 5.000    2.084 .. 28.509
-    Length = 8 rows
 
 
 
@@ -1149,7 +1151,7 @@ both methods on a unique plot.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 14.919 seconds)
+   **Total running time of the script:** (0 minutes 18.739 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-1d_spectral_analysis_hli.py:

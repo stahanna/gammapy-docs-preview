@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -67,7 +67,7 @@
     <link rel="prev" title="Modelling" href="model_management.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 Mar 2024"/>
+    <meta name="docbuild:last-update" content="27 Mar 2024"/>
   </head>
   
   
@@ -636,7 +636,7 @@ data.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2052+g4293df132.d20240326
+        version                : 1.2.dev2053+g9bd66a5b0.d20240327
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -1129,7 +1129,7 @@ generated:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">model_without_name</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Avb3Dg9x
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OHqFVzyM
 </pre></div>
 </div>
 <p>The individual components of the source model can be accessed using
@@ -1217,7 +1217,7 @@ existing FITS file:</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SkyModel
 
-  Name                      : 4fcSklBd
+  Name                      : 4F82vKVr
   Datasets names            : None
   Spectral model type       : PowerLawNormSpectralModel
   Spatial  model type       : TemplateSpatialModel
@@ -1256,15 +1256,18 @@ point), eg:</p>
 <span class="n">display</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">to_table</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>type    name     value         unit        error      min       max    frozen is_norm link prior
----- --------- ---------- -------------- --------- --------- --------- ------ ------- ---- -----
-         index 3.0000e+00                0.000e+00 1.000e+00 5.000e+00  False   False
-     amplitude 2.7000e-12 cm-2 s-1 TeV-1 0.000e+00       nan       nan  False    True
- ...       ...        ...            ...       ...       ...       ...    ...     ...  ...   ...
-           phi 0.0000e+00            deg 0.000e+00       nan       nan   True   False
-         t_ref 5.9240e+04              d 0.000e+00       nan       nan  False   False
-         sigma 2.0000e+00              d 0.000e+00       nan       nan  False   False
-Length = 10 rows
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>type    name     value         unit        error      min        max    frozen is_norm link prior
+---- --------- ---------- -------------- --------- ---------- --------- ------ ------- ---- -----
+         index 3.0000e+00                0.000e+00  1.000e+00 5.000e+00  False   False
+     amplitude 2.7000e-12 cm-2 s-1 TeV-1 0.000e+00        nan       nan  False    True
+     reference 1.0000e+00            TeV 0.000e+00        nan       nan   True   False
+         lon_0 0.0000e+00            deg 0.000e+00        nan       nan  False   False
+         lat_0 0.0000e+00            deg 0.000e+00 -9.000e+01 9.000e+01  False   False
+         sigma 2.0000e-01            deg 0.000e+00  0.000e+00       nan  False   False
+             e 0.0000e+00                0.000e+00  0.000e+00 1.000e+00   True   False
+           phi 0.0000e+00            deg 0.000e+00        nan       nan   True   False
+         t_ref 5.9240e+04              d 0.000e+00        nan       nan  False   False
+         sigma 2.0000e+00              d 0.000e+00        nan       nan  False   False
 </pre></div>
 </div>
 <p>You can use the interactive boxes to choose model parameters by name,
@@ -1304,7 +1307,7 @@ Component 0: SkyModel
 
 Component 1: SkyModel
 
-  Name                      : 4fcSklBd
+  Name                      : 4F82vKVr
   Datasets names            : None
   Spectral model type       : PowerLawNormSpectralModel
   Spatial  model type       : TemplateSpatialModel
@@ -1347,7 +1350,7 @@ have a unique name, otherwise an error will be thrown.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;my-source&#39;, &#39;4fcSklBd&#39;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;my-source&#39;, &#39;4F82vKVr&#39;]
 </pre></div>
 </div>
 <p>Note that a <a class="reference internal" href="../../api/gammapy.modeling.models.SkyModel.html#gammapy.modeling.models.SkyModel" title="gammapy.modeling.models.SkyModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SkyModel</span></code></a> object can be evaluated for a given longitude,
@@ -1412,7 +1415,7 @@ format:</p>
             value: 2.0
             unit: d
         scale: utc
--   name: 4fcSklBd
+-   name: 4F82vKVr
     type: SkyModel
     spectral:
         type: PowerLawNormSpectralModel
@@ -1481,8 +1484,8 @@ format:</p>
             unit: d
         scale: utc
 metadata:
-    creator: Gammapy 1.2.dev2052+g4293df132.d20240326
-    date: &#39;2024-03-26T14:29:04.941515&#39;
+    creator: Gammapy 1.2.dev2053+g9bd66a5b0.d20240327
+    date: &#39;2024-03-27T14:08:25.607452&#39;
     origin: null
 </pre></div>
 </div>
@@ -1521,8 +1524,8 @@ amplitudes:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">pwl2</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dimensionless), min=1.0, max=5.0, frozen=False, prior=None, id=0x7f3058293b50)
-Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dimensionless), min=1.0, max=5.0, frozen=False, prior=None, id=0x7f3058293b50)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dimensionless), min=1.0, max=5.0, frozen=False, prior=None, id=0x7ff1baff9280)
+Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dimensionless), min=1.0, max=5.0, frozen=False, prior=None, id=0x7ff1baff9280)
 </pre></div>
 </div>
 <p>In the YAML files the shared parameter is flagged by the additional
@@ -1542,7 +1545,7 @@ Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dime
             value: 2.3
             min: 1.0
             max: 5.0
-            link: index@RHsAks20
+            link: index@jcUUmb9q
         -   name: amplitude
             value: 2.7e-12
             unit: cm-2 s-1 TeV-1
@@ -1558,7 +1561,7 @@ Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dime
             value: 2.3
             min: 1.0
             max: 5.0
-            link: index@RHsAks20
+            link: index@jcUUmb9q
         -   name: amplitude
             value: 1.0e-12
             unit: cm-2 s-1 TeV-1
@@ -1566,8 +1569,8 @@ Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dime
             value: 1.0
             unit: TeV
 metadata:
-    creator: Gammapy 1.2.dev2052+g4293df132.d20240326
-    date: &#39;2024-03-26T14:29:05.322129&#39;
+    creator: Gammapy 1.2.dev2053+g9bd66a5b0.d20240327
+    date: &#39;2024-03-27T14:08:25.942462&#39;
     origin: null
 </pre></div>
 </div>

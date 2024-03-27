@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Sample a source with energy-dependent temporal evolution" href="event_sampling_nrg_depend_models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 Mar 2024"/>
+    <meta name="docbuild:last-update" content="27 Mar 2024"/>
   </head>
   
   
@@ -658,7 +658,7 @@ run the flux profile extraction using the <a class="reference internal" href="..
 
 Gammapy package:
 
-        version                : 1.2.dev2052+g4293df132.d20240326
+        version                : 1.2.dev2053+g9bd66a5b0.d20240327
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -769,11 +769,11 @@ index of 2.3</p>
 --------------------
 
   energy_edges           : [  10. 2000.] GeV
-  fit                    : &lt;gammapy.modeling.fit.Fit object at 0x7f304031f8e0&gt;
+  fit                    : &lt;gammapy.modeling.fit.Fit object at 0x7ff1b2224f70&gt;
   n_jobs                 : None
   n_sigma                : 1
   n_sigma_ul             : 2
-  norm                   : Parameter(name=&#39;norm&#39;, value=1.0, factor=1.0, scale=1.0, unit=Unit(dimensionless), min=nan, max=nan, frozen=False, prior=None, id=0x7f304031f100)
+  norm                   : Parameter(name=&#39;norm&#39;, value=1.0, factor=1.0, scale=1.0, unit=Unit(dimensionless), min=nan, max=nan, frozen=False, prior=None, id=0x7ff1b2224f10)
   null_value             : 0
   parallel_backend       : None
   reoptimize             : False
@@ -868,14 +868,19 @@ using:</p>
 <span class="n">display</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>       x_min              x_max              x_ref           e_ref        e_min         e_max         ref_dnde    ... npred_excess  stat stat_null is_ul counts success
-        deg                deg                deg             keV          keV           keV      1 / (cm2 s TeV) ...
-------------------- ------------------ ------------------ ------------ ------------ ------------- --------------- ... ------------ ----- --------- ----- ------ -------
--0.1960784313725492 0.1960784313725492                0.0 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
- 0.1960784313725492 0.5882352941176467  0.392156862745098 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
-                ...                ...                ...          ...          ...           ...             ... ...          ...   ...       ...   ...    ...     ...
- 19.019607843137262  19.41176470588239 19.215686274509828 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
-  19.41176470588239 19.803921568627494 19.607843137254942 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>       x_min              x_max              x_ref           e_ref        e_min         e_max     ... npred_excess    stat   stat_null is_ul counts success
+        deg                deg                deg             keV          keV           keV      ...
+------------------- ------------------ ------------------ ------------ ------------ ------------- ... ------------ --------- --------- ----- ------ -------
+-0.1960784313725492 0.1960784313725492                0.0 70710678.119 10000000.000 500000000.000 ...          0.0     0.000     0.000 False    0.0   False
+ 0.1960784313725492 0.5882352941176467  0.392156862745098 70710678.119 10000000.000 500000000.000 ...          0.0     0.000     0.000 False    0.0   False
+ 0.5882352941176467 0.9803921568627443 0.7843137254901955 70710678.119 10000000.000 500000000.000 ...    17.448364  -818.848  -816.789  True  163.0    True
+ 0.9803921568627443 1.3725490196078436  1.176470588235294 70710678.119 10000000.000 500000000.000 ...    192.60901 -3013.446 -2892.855 False  448.0    True
+                ...                ...                ...          ...          ...           ... ...          ...       ...       ...   ...    ...     ...
+ 17.843137254902004 18.235294117647083 18.039215686274545 70710678.119 10000000.000 500000000.000 ...      62.1283 -2803.387 -2792.682 False  410.0    True
+ 18.235294117647083  18.62745098039216  18.43137254901962 70710678.119 10000000.000 500000000.000 ...    32.074463 -2186.572 -2183.230  True  336.0    True
+  18.62745098039216 19.019607843137262  18.82352941176471 70710678.119 10000000.000 500000000.000 ...     0.995932  -877.032  -877.027  True  172.0    True
+ 19.019607843137262  19.41176470588239 19.215686274509828 70710678.119 10000000.000 500000000.000 ...          0.0     0.000     0.000 False    0.0   False
+  19.41176470588239 19.803921568627494 19.607843137254942 70710678.119 10000000.000 500000000.000 ...          0.0     0.000     0.000 False    0.0   False
 Length = 51 rows
 </pre></div>
 </div>
@@ -941,7 +946,7 @@ much lower. To extract the profile at high energies only we can use:</p>
 <span class="c1"># sphinx_gallery_thumbnail_number = 2</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_flux_profiles_009.png" srcset="../../_images/sphx_glr_flux_profiles_009.png" alt="flux profiles" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 38.044 seconds)</p>
+<img src="../../_images/sphx_glr_flux_profiles_009.png" srcset="../../_images/sphx_glr_flux_profiles_009.png" alt="flux profiles" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 40.533 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-3d-flux-profiles-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-3d/flux_profiles.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo2.svg" width="150px" /></a>

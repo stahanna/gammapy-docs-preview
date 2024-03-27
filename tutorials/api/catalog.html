@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Dark matter spatial and spectral models" href="astro_dark_matter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 Mar 2024"/>
+    <meta name="docbuild:last-update" content="27 Mar 2024"/>
   </head>
   
   
@@ -658,7 +658,7 @@ catalog and source that does not have that information will return
 
 Gammapy package:
 
-        version                : 1.2.dev2052+g4293df132.d20240326
+        version                : 1.2.dev2053+g9bd66a5b0.d20240327
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -1409,15 +1409,17 @@ accessed via the properties <a class="reference internal" href="../../api/gammap
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flux_points</span><span class="o">.</span><span class="n">to_table</span><span class="p">(</span><span class="n">sed_type</span><span class="o">=</span><span class="s2">&quot;flux&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>      e_ref              e_min              e_max                 flux               flux_errp              flux_errn          flux_ul    sqrt_ts  is_ul
-       MeV                MeV                MeV              1 / (cm2 s)           1 / (cm2 s)            1 / (cm2 s)       1 / (cm2 s)
------------------- ------------------ ------------------ --------------------- ---------------------- ---------------------- ----------- --------- -----
- 70.71067811865471  49.99999999999999  99.99999999999994  9.14942077656633e-08 2.0020129554154664e-08 2.4634269735201997e-08         nan 3.1173775 False
- 173.2050807568876  99.99999999999994 299.99999999999994 6.248653505736002e-08  2.618919081598392e-09  2.618919081598392e-09         nan 25.332525 False
-               ...                ...                ...                   ...                    ...                    ...         ...       ...   ...
-54772.255750516626  30000.00000000001 100000.00000000003 5.272075553897082e-10  3.076848845151581e-11  3.076848845151581e-11         nan  62.05227 False
-316227.76601683814 100000.00000000003  999999.9999999995 1.301858759683583e-10 1.6008963252267527e-11 1.4845421766884748e-11         nan 31.402712 False
-Length = 8 rows
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>      e_ref              e_min              e_max                 flux                flux_errp              flux_errn          flux_ul    sqrt_ts  is_ul
+       MeV                MeV                MeV              1 / (cm2 s)            1 / (cm2 s)            1 / (cm2 s)       1 / (cm2 s)
+------------------ ------------------ ------------------ ---------------------- ---------------------- ---------------------- ----------- --------- -----
+ 70.71067811865471  49.99999999999999  99.99999999999994   9.14942077656633e-08 2.0020129554154664e-08 2.4634269735201997e-08         nan 3.1173775 False
+ 173.2050807568876  99.99999999999994 299.99999999999994  6.248653505736002e-08  2.618919081598392e-09  2.618919081598392e-09         nan 25.332525 False
+ 547.7225575051659 299.99999999999994  999.9999999999999 3.1293740931914726e-08  5.322103868721229e-10  5.322103868721229e-10         nan  97.62258 False
+1732.0508075688763  999.9999999999999 2999.9999999999977  1.191381748810727e-08 1.8458379269503666e-10 1.8458379269503666e-10         nan 141.84529 False
+ 5477.225575051656 2999.9999999999977   9999.99999999999 5.0006918606015915e-09 1.0364670233187213e-10 1.0364670233187213e-10         nan 135.62503 False
+17320.508075688766   9999.99999999999  30000.00000000001   1.63059143964972e-09  5.588339513362684e-11  5.588339513362684e-11         nan 97.068245 False
+54772.255750516626  30000.00000000001 100000.00000000003  5.272075553897082e-10  3.076848845151581e-11  3.076848845151581e-11         nan  62.05227 False
+316227.76601683814 100000.00000000003  999999.9999999995  1.301858759683583e-10 1.6008963252267527e-11 1.4845421766884748e-11         nan 31.402712 False
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">flux_points</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sed_type</span><span class="o">=</span><span class="s2">&quot;e2dnde&quot;</span><span class="p">)</span>
@@ -1457,7 +1459,12 @@ via the <code class="xref py py-obj docutils literal notranslate"><span class="p
 ------------------ ------------------ ------------------ ----------------- ----------------- ... ---------------------- --------- --------- -----
  54682.65603794185 55045.301668796295 3872.9833462074166 49.99999999999999 299999.9999999999 ...  9.596482186680078e-08 949.22565 30.809505 False
 55045.301668796295  55410.57944657407 3872.9833462074166 49.99999999999999 299999.9999999999 ...  4.507823447852388e-08 199.32794 14.118355 False
+ 55410.57944657407  55775.85722435185 3872.9833462074166 49.99999999999999 299999.9999999999 ...  2.132702192625402e-08 43.714382 6.6116853 False
+ 55775.85722435185  56141.13500212963 3872.9833462074166 49.99999999999999 299999.9999999999 ... 2.6217163551223166e-08  71.11343  8.432878 False
                ...                ...                ...               ...               ... ...                    ...       ...       ...   ...
+57967.523891018514 58332.801668796295 3872.9833462074166 49.99999999999999 299999.9999999999 ... 3.1021048840784715e-08  95.40191   9.76739 False
+58332.801668796295  58698.07944657407 3872.9833462074166 49.99999999999999 299999.9999999999 ...  1.481021527638404e-08 20.239058  4.498784 False
+ 58698.07944657407  59063.35722435185 3872.9833462074166 49.99999999999999 299999.9999999999 ...  1.775946856241717e-08  28.80993 5.3674884 False
  59063.35722435185  59428.63500212963 3872.9833462074166 49.99999999999999 299999.9999999999 ... 1.1620944206924833e-08  8.175628 2.8593054 False
  59428.63500212963 59793.912779907405 3872.9833462074166 49.99999999999999 299999.9999999999 ... 1.8986414218602476e-08 39.039032  6.248122 False
 Length = 14 rows
@@ -1636,7 +1643,7 @@ info(info=&#39;all&#39;) method of gammapy.catalog.hess.SourceCatalogObjectHGPS 
   HESS J1514-591                 PSR              B1509-58   0.026891
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.088 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.884 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-api-catalog-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/api/catalog.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo4.svg" width="150px" /></a>

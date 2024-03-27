@@ -143,7 +143,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2052+g4293df132.d20240326 
+            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -412,14 +412,14 @@ dealing with simulations based on observations of real off counts.
     SpectrumDatasetOnOff
     --------------------
 
-      Name                            : 8HaAmID_ 
+      Name                            : d0CE1jt1 
 
-      Total counts                    : 295 
-      Total background counts         : 20.40
-      Total excess counts             : 274.60
+      Total counts                    : 310 
+      Total background counts         : 22.20
+      Total excess counts             : 287.80
 
-      Predicted counts                : 301.74
-      Predicted background counts     : 20.37
+      Predicted counts                : 303.69
+      Predicted background counts     : 22.32
       Predicted excess counts         : 281.37
 
       Exposure min                    : 2.53e+08 m2 s
@@ -429,7 +429,7 @@ dealing with simulations based on observations of real off counts.
       Number of fit bins              : 9 
 
       Fit statistic type              : wstat
-      Fit statistic value (-2 log(L)) : 7.66
+      Fit statistic value (-2 log(L)) : 13.34
 
       Number of models                : 1 
       Number of parameters            : 3
@@ -447,7 +447,7 @@ dealing with simulations based on observations of real off counts.
           amplitude                     :   2.50e-12   +/- 0.0e+00 1 / (cm2 s TeV)
           reference             (frozen):      1.000       TeV         
   
-        Total counts_off                : 102 
+        Total counts_off                : 111 
       Acceptance                      : 9 
       Acceptance off                  : 45 
 
@@ -487,14 +487,19 @@ several spectra using the same set of observation conditions.
 
  .. code-block:: none
 
-     name  counts excess      sqrt_ts           background           npred       ... stat_type      stat_sum     counts_off acceptance acceptance_off alpha
-                                                                                 ...                                                                       
-    ------ ------ ------ ------------------ ------------------ ----------------- ... --------- ----------------- ---------- ---------- -------------- -----
-     obs-0    317  298.6  27.08240194504323 18.400000000000002 68.16666666666667 ...     wstat  738.724590842961         92        9.0           45.0   0.2
-     obs-1    275  253.0 23.767853654872845               22.0 64.16666666666669 ...     wstat  575.779512784738        110        9.0           45.0   0.2
-       ...    ...    ...                ...                ...               ... ...       ...               ...        ...        ...            ...   ...
-    obs-98    301  280.6 25.687832964675007 20.400000000000002 67.16666666666667 ...     wstat 664.5620099404954        102        9.0           45.0   0.2
-    obs-99    323  302.2  26.85707842376871               20.8 71.16666666666669 ...     wstat 733.1576598768019        104        9.0           45.0   0.2
+     name  counts excess      sqrt_ts           background           npred       ...      stat_sum     counts_off acceptance   acceptance_off         alpha       
+                                                                                 ...                                                                              
+    ------ ------ ------ ------------------ ------------------ ----------------- ... ----------------- ---------- ---------- ----------------- -------------------
+     obs-0    317  298.6  27.08240194504323 18.400000000000002 68.16666666666667 ...  738.724590842961         92        9.0              45.0                 0.2
+     obs-1    275  253.0 23.767853654872845               22.0 64.16666666666669 ...  575.779512784738        110        9.0              45.0                 0.2
+     obs-2    293  272.4 25.171105554046544               20.6              66.0 ... 645.4993824075302        103        9.0              45.0                 0.2
+     obs-3    280  257.6 23.982951737405354               22.4 65.33333333333334 ...  585.924154698587        112        9.0 45.00000000000001 0.19999999999999998
+       ...    ...    ...                ...                ...               ... ...               ...        ...        ...               ...                 ...
+    obs-95    305  280.6 25.030731260493152 24.400000000000006 71.16666666666667 ... 643.2846879404796        122        9.0 44.99999999999999 0.20000000000000004
+    obs-96    301  277.4  24.96984596942142               23.6 69.83333333333334 ... 626.7396842428624        118        9.0              45.0                 0.2
+    obs-97    290  271.2 25.417982194454844               18.8 64.00000000000001 ... 650.9762484493857         94        9.0              45.0                 0.2
+    obs-98    301  280.6 25.687832964675007 20.400000000000002 67.16666666666667 ... 664.5620099404954        102        9.0              45.0                 0.2
+    obs-99    323  302.2  26.85707842376871               20.8 71.16666666666669 ... 733.1576598768019        104        9.0              45.0                 0.2
     Length = 100 rows
 
 
@@ -618,7 +623,7 @@ Exercises
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 13.601 seconds)
+   **Total running time of the script:** (0 minutes 15.878 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-1d_spectrum_simulation.py:

@@ -98,7 +98,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2052+g4293df132.d20240326 
+            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -737,15 +737,18 @@ Check best-fit parameters and error estimates:
 
  .. code-block:: none
 
-       model    type    name     value         unit        error   min max frozen is_norm link prior
-    ----------- ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-      gc-source          index 2.4144e+00                1.523e-01 nan nan  False   False           
-      gc-source      amplitude 2.6623e-12 cm-2 s-1 TeV-1 3.104e-13 nan nan  False    True           
-            ...  ...       ...        ...            ...       ... ... ...    ...     ...  ...   ...
-    stacked-bkg           norm 1.3481e+00                9.315e-03 nan nan  False    True           
-    stacked-bkg           tilt 0.0000e+00                0.000e+00 nan nan   True   False           
-    stacked-bkg      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
-    Length = 10 rows
+       model    type    name      value         unit        error      min        max    frozen is_norm link prior
+    ----------- ---- --------- ----------- -------------- --------- ---------- --------- ------ ------- ---- -----
+      gc-source          index  2.4144e+00                1.523e-01        nan       nan  False   False           
+      gc-source      amplitude  2.6623e-12 cm-2 s-1 TeV-1 3.104e-13        nan       nan  False    True           
+      gc-source      reference  1.0000e+00            TeV 0.000e+00        nan       nan   True   False           
+      gc-source        lambda_ -1.3395e-02          TeV-1 6.840e-02        nan       nan  False   False           
+      gc-source          alpha  1.0000e+00                0.000e+00        nan       nan   True   False           
+      gc-source          lon_0 -4.8069e-02            deg 2.281e-03        nan       nan  False   False           
+      gc-source          lat_0 -5.2610e-02            deg 2.258e-03 -9.000e+01 9.000e+01  False   False           
+    stacked-bkg           norm  1.3481e+00                9.315e-03        nan       nan  False    True           
+    stacked-bkg           tilt  0.0000e+00                0.000e+00        nan       nan   True   False           
+    stacked-bkg      reference  1.0000e+00            TeV 0.000e+00        nan       nan   True   False           
 
 
 
@@ -948,21 +951,21 @@ Data reduction
     Dataset 0: 
 
       Type       : MapDataset
-      Name       : XwpS-GMA
+      Name       : w2jzjiYX
       Instrument : CTA
       Models     : 
 
     Dataset 1: 
 
       Type       : MapDataset
-      Name       : KkgHnftC
+      Name       : yTAdFQEi
       Instrument : CTA
       Models     : 
 
     Dataset 2: 
 
       Type       : MapDataset
-      Name       : LHyHlidl
+      Name       : cCe9eVwO
       Instrument : CTA
       Models     : 
 
@@ -995,7 +998,7 @@ You can access each one by name or by index, eg:
     MapDataset
     ----------
 
-      Name                            : XwpS-GMA 
+      Name                            : w2jzjiYX 
 
       Total counts                    : 40481 
       Total background counts         : 36014.51
@@ -1063,9 +1066,9 @@ map, omit the region argument.
       name   counts       excess            sqrt_ts           background           npred        ...    excess_rate      n_bins n_fit_bins stat_type stat_sum
                                                                                                 ...       1 / s                                             
     -------- ------ ------------------ ------------------ ------------------ ------------------ ... ------------------ ------- ---------- --------- --------
-    XwpS-GMA  40481 4466.4930435940405 23.072802026431084  36014.50695640596  36014.50695640596 ... 2.5320254856461073 1085000     693940      cash      nan
-    KkgHnftC  40525  4510.505523195905  23.29577828821109 36014.494476804095 36014.494476804095 ... 2.5569758704224212 1085000     693940      cash      nan
-    LHyHlidl  40235  4220.480554966147  21.82496424955487  36014.51944503385  36014.51944503385 ... 2.3925626263259874 1085000     693940      cash      nan
+    w2jzjiYX  40481 4466.4930435940405 23.072802026431084  36014.50695640596  36014.50695640596 ... 2.5320254856461073 1085000     693940      cash      nan
+    yTAdFQEi  40525  4510.505523195905  23.29577828821109 36014.494476804095 36014.494476804095 ... 2.5569758704224212 1085000     693940      cash      nan
+    cCe9eVwO  40235  4220.480554966147  21.82496424955487  36014.51944503385  36014.51944503385 ... 2.3925626263259874 1085000     693940      cash      nan
     Models
 
     Component 0: SkyModel
@@ -1086,8 +1089,8 @@ map, omit the region argument.
 
     Component 1: FoVBackgroundModel
 
-      Name                      : XwpS-GMA-bkg
-      Datasets names            : ['XwpS-GMA']
+      Name                      : w2jzjiYX-bkg
+      Datasets names            : ['w2jzjiYX']
       Spectral model type       : PowerLawNormSpectralModel
       Parameters:
         norm                          :      1.000   +/-    0.00             
@@ -1096,8 +1099,8 @@ map, omit the region argument.
 
     Component 2: FoVBackgroundModel
 
-      Name                      : KkgHnftC-bkg
-      Datasets names            : ['KkgHnftC']
+      Name                      : yTAdFQEi-bkg
+      Datasets names            : ['yTAdFQEi']
       Spectral model type       : PowerLawNormSpectralModel
       Parameters:
         norm                          :      1.000   +/-    0.00             
@@ -1106,8 +1109,8 @@ map, omit the region argument.
 
     Component 3: FoVBackgroundModel
 
-      Name                      : LHyHlidl-bkg
-      Datasets names            : ['LHyHlidl']
+      Name                      : cCe9eVwO-bkg
+      Datasets names            : ['cCe9eVwO']
       Spectral model type       : PowerLawNormSpectralModel
       Parameters:
         norm                          :      1.000   +/-    0.00             
@@ -1222,8 +1225,8 @@ Check best-fit parameters and error estimates:
 
     Component 1: FoVBackgroundModel
 
-      Name                      : XwpS-GMA-bkg
-      Datasets names            : ['XwpS-GMA']
+      Name                      : w2jzjiYX-bkg
+      Datasets names            : ['w2jzjiYX']
       Spectral model type       : PowerLawNormSpectralModel
       Parameters:
         norm                          :      1.118   +/-    0.01             
@@ -1232,8 +1235,8 @@ Check best-fit parameters and error estimates:
 
     Component 2: FoVBackgroundModel
 
-      Name                      : KkgHnftC-bkg
-      Datasets names            : ['KkgHnftC']
+      Name                      : yTAdFQEi-bkg
+      Datasets names            : ['yTAdFQEi']
       Spectral model type       : PowerLawNormSpectralModel
       Parameters:
         norm                          :      1.119   +/-    0.01             
@@ -1242,8 +1245,8 @@ Check best-fit parameters and error estimates:
 
     Component 3: FoVBackgroundModel
 
-      Name                      : LHyHlidl-bkg
-      Datasets names            : ['LHyHlidl']
+      Name                      : cCe9eVwO-bkg
+      Datasets names            : ['cCe9eVwO']
       Spectral model type       : PowerLawNormSpectralModel
       Parameters:
         norm                          :      1.111   +/-    0.01             
@@ -1372,7 +1375,7 @@ Exercises
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 18.248 seconds)
+   **Total running time of the script:** (1 minutes 43.449 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-3d_analysis_3d.py:

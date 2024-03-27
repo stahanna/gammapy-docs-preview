@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Ring background map" href="../analysis-2d/ring_background.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 Mar 2024"/>
+    <meta name="docbuild:last-update" content="27 Mar 2024"/>
   </head>
   
   
@@ -642,7 +642,7 @@ all the maps</p></li>
 
 Gammapy package:
 
-        version                : 1.2.dev2052+g4293df132.d20240326
+        version                : 1.2.dev2053+g9bd66a5b0.d20240327
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -1010,15 +1010,18 @@ CovarianceResult
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">models_stacked</span><span class="o">.</span><span class="n">to_parameters_table</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   model    type    name     value         unit        error   min max frozen is_norm link prior
------------ ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-  gc-source          index 2.4144e+00                1.523e-01 nan nan  False   False
-  gc-source      amplitude 2.6623e-12 cm-2 s-1 TeV-1 3.104e-13 nan nan  False    True
-        ...  ...       ...        ...            ...       ... ... ...    ...     ...  ...   ...
-stacked-bkg           norm 1.3481e+00                9.315e-03 nan nan  False    True
-stacked-bkg           tilt 0.0000e+00                0.000e+00 nan nan   True   False
-stacked-bkg      reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
-Length = 10 rows
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   model    type    name      value         unit        error      min        max    frozen is_norm link prior
+----------- ---- --------- ----------- -------------- --------- ---------- --------- ------ ------- ---- -----
+  gc-source          index  2.4144e+00                1.523e-01        nan       nan  False   False
+  gc-source      amplitude  2.6623e-12 cm-2 s-1 TeV-1 3.104e-13        nan       nan  False    True
+  gc-source      reference  1.0000e+00            TeV 0.000e+00        nan       nan   True   False
+  gc-source        lambda_ -1.3395e-02          TeV-1 6.840e-02        nan       nan  False   False
+  gc-source          alpha  1.0000e+00                0.000e+00        nan       nan   True   False
+  gc-source          lon_0 -4.8069e-02            deg 2.281e-03        nan       nan  False   False
+  gc-source          lat_0 -5.2610e-02            deg 2.258e-03 -9.000e+01 9.000e+01  False   False
+stacked-bkg           norm  1.3481e+00                9.315e-03        nan       nan  False    True
+stacked-bkg           tilt  0.0000e+00                0.000e+00        nan       nan   True   False
+stacked-bkg      reference  1.0000e+00            TeV 0.000e+00        nan       nan   True   False
 </pre></div>
 </div>
 <p>A quick way to inspect the model residuals is using the function
@@ -1115,21 +1118,21 @@ Datasets
 Dataset 0:
 
   Type       : MapDataset
-  Name       : XwpS-GMA
+  Name       : w2jzjiYX
   Instrument : CTA
   Models     :
 
 Dataset 1:
 
   Type       : MapDataset
-  Name       : KkgHnftC
+  Name       : yTAdFQEi
   Instrument : CTA
   Models     :
 
 Dataset 2:
 
   Type       : MapDataset
-  Name       : LHyHlidl
+  Name       : cCe9eVwO
   Instrument : CTA
   Models     :
 </pre></div>
@@ -1141,7 +1144,7 @@ Dataset 2:
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDataset
 ----------
 
-  Name                            : XwpS-GMA
+  Name                            : w2jzjiYX
 
   Total counts                    : 40481
   Total background counts         : 36014.51
@@ -1189,9 +1192,9 @@ map, omit the region argument.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  name   counts       excess            sqrt_ts           background           npred        ...    excess_rate      n_bins n_fit_bins stat_type stat_sum
                                                                                             ...       1 / s
 -------- ------ ------------------ ------------------ ------------------ ------------------ ... ------------------ ------- ---------- --------- --------
-XwpS-GMA  40481 4466.4930435940405 23.072802026431084  36014.50695640596  36014.50695640596 ... 2.5320254856461073 1085000     693940      cash      nan
-KkgHnftC  40525  4510.505523195905  23.29577828821109 36014.494476804095 36014.494476804095 ... 2.5569758704224212 1085000     693940      cash      nan
-LHyHlidl  40235  4220.480554966147  21.82496424955487  36014.51944503385  36014.51944503385 ... 2.3925626263259874 1085000     693940      cash      nan
+w2jzjiYX  40481 4466.4930435940405 23.072802026431084  36014.50695640596  36014.50695640596 ... 2.5320254856461073 1085000     693940      cash      nan
+yTAdFQEi  40525  4510.505523195905  23.29577828821109 36014.494476804095 36014.494476804095 ... 2.5569758704224212 1085000     693940      cash      nan
+cCe9eVwO  40235  4220.480554966147  21.82496424955487  36014.51944503385  36014.51944503385 ... 2.3925626263259874 1085000     693940      cash      nan
 Models
 
 Component 0: SkyModel
@@ -1212,8 +1215,8 @@ Component 0: SkyModel
 
 Component 1: FoVBackgroundModel
 
-  Name                      : XwpS-GMA-bkg
-  Datasets names            : [&#39;XwpS-GMA&#39;]
+  Name                      : w2jzjiYX-bkg
+  Datasets names            : [&#39;w2jzjiYX&#39;]
   Spectral model type       : PowerLawNormSpectralModel
   Parameters:
     norm                          :      1.000   +/-    0.00
@@ -1222,8 +1225,8 @@ Component 1: FoVBackgroundModel
 
 Component 2: FoVBackgroundModel
 
-  Name                      : KkgHnftC-bkg
-  Datasets names            : [&#39;KkgHnftC&#39;]
+  Name                      : yTAdFQEi-bkg
+  Datasets names            : [&#39;yTAdFQEi&#39;]
   Spectral model type       : PowerLawNormSpectralModel
   Parameters:
     norm                          :      1.000   +/-    0.00
@@ -1232,8 +1235,8 @@ Component 2: FoVBackgroundModel
 
 Component 3: FoVBackgroundModel
 
-  Name                      : LHyHlidl-bkg
-  Datasets names            : [&#39;LHyHlidl&#39;]
+  Name                      : cCe9eVwO-bkg
+  Datasets names            : [&#39;cCe9eVwO&#39;]
   Spectral model type       : PowerLawNormSpectralModel
   Parameters:
     norm                          :      1.000   +/-    0.00
@@ -1293,8 +1296,8 @@ Component 0: SkyModel
 
 Component 1: FoVBackgroundModel
 
-  Name                      : XwpS-GMA-bkg
-  Datasets names            : [&#39;XwpS-GMA&#39;]
+  Name                      : w2jzjiYX-bkg
+  Datasets names            : [&#39;w2jzjiYX&#39;]
   Spectral model type       : PowerLawNormSpectralModel
   Parameters:
     norm                          :      1.118   +/-    0.01
@@ -1303,8 +1306,8 @@ Component 1: FoVBackgroundModel
 
 Component 2: FoVBackgroundModel
 
-  Name                      : KkgHnftC-bkg
-  Datasets names            : [&#39;KkgHnftC&#39;]
+  Name                      : yTAdFQEi-bkg
+  Datasets names            : [&#39;yTAdFQEi&#39;]
   Spectral model type       : PowerLawNormSpectralModel
   Parameters:
     norm                          :      1.119   +/-    0.01
@@ -1313,8 +1316,8 @@ Component 2: FoVBackgroundModel
 
 Component 3: FoVBackgroundModel
 
-  Name                      : LHyHlidl-bkg
-  Datasets names            : [&#39;LHyHlidl&#39;]
+  Name                      : cCe9eVwO-bkg
+  Datasets names            : [&#39;cCe9eVwO&#39;]
   Spectral model type       : PowerLawNormSpectralModel
   Parameters:
     norm                          :      1.111   +/-    0.01
@@ -1377,7 +1380,7 @@ to the combined model.</p></li>
 <li><p>Perform modeling in more details - Add diffuse component, get flux
 points.</p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 18.248 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 43.449 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-3d-analysis-3d-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-3d/analysis_3d.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo2.svg" width="150px" /></a>

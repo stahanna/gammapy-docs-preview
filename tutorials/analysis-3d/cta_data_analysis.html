@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Multi instrument joint 3D and 1D analysis" href="analysis_mwl.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 Mar 2024"/>
+    <meta name="docbuild:last-update" content="27 Mar 2024"/>
   </head>
   
   
@@ -657,7 +657,7 @@ first data challenge in August 2017.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2052+g4293df132.d20240326
+        version                : 1.2.dev2053+g9bd66a5b0.d20240327
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -848,10 +848,13 @@ We search for 0.1 deg sigma gaussian sources in the dataset.</p>
 ------ --- --- --------- ---------
 36.125 252 197 266.42400 -29.00490
 17.969 207 202 266.85900 -28.18386
-   ... ... ...       ...       ...
+13.131 186 199 267.16303 -27.85527
+9.8673 373 205 264.79470 -30.97749
+8.3585 298 169 266.42267 -30.08192
+8.2695 308 187 265.94723 -30.06430
+ 6.323  90 209 268.07455 -26.10409
 5.1491  87 226 267.78333 -25.87897
 5.0164 239 167 267.16511 -29.09348
-Length = 9 rows
 </pre></div>
 </div>
 <p>To get the position of the sources, simply</p>
@@ -1055,14 +1058,12 @@ profile to compute the flux and flux error.</p>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
 <div><i>Table length=5</i>
-<table id="table139845663748352" class="table-striped table-bordered table-condensed">
+<table id="table140676293803600" class="table-striped table-bordered table-condensed">
 <thead><tr><th>e_ref</th><th>e_min</th><th>e_max</th><th>dnde</th><th>dnde_err</th><th>ts</th><th>sqrt_ts</th><th>npred</th><th>npred_excess</th><th>stat</th><th>stat_null</th><th>counts</th><th>success</th></tr></thead>
 <thead><tr><th>TeV</th><th>TeV</th><th>TeV</th><th>1 / (cm2 s TeV)</th><th>1 / (cm2 s TeV)</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
 <thead><tr><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64[1]</th><th>float32[1]</th><th>float64</th><th>float64</th><th>float64[1]</th><th>bool</th></tr></thead>
 <tr><td>1.375</td><td>0.946</td><td>2.000</td><td>1.447e-12</td><td>1.783e-13</td><td>152.513</td><td>12.350</td><td>105.77522448982589</td><td>83.89892</td><td>13.412</td><td>165.925</td><td>106.0</td><td>True</td></tr>
-<tr><td>2.699</td><td>2.000</td><td>3.641</td><td>3.563e-13</td><td>4.835e-14</td><td>150.654</td><td>12.274</td><td>73.02511912182847</td><td>63.13247</td><td>2.245</td><td>152.898</td><td>73.0</td><td>True</td></tr>
-<tr><td>5.295</td><td>3.641</td><td>7.700</td><td>7.332e-14</td><td>1.138e-14</td><td>121.570</td><td>11.026</td><td>53.9835920853751</td><td>47.455875</td><td>0.624</td><td>122.193</td><td>54.0</td><td>True</td></tr>
-<tr><td>11.198</td><td>7.700</td><td>16.284</td><td>6.353e-15</td><td>2.154e-15</td><td>21.789</td><td>4.668</td><td>13.188429838191043</td><td>10.660447</td><td>5.744</td><td>27.532</td><td>13.0</td><td>True</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
 <tr><td>21.971</td><td>16.284</td><td>29.645</td><td>1.109e-15</td><td>6.938e-16</td><td>6.250</td><td>2.500</td><td>4.145310538838432</td><td>3.197989</td><td>2.899</td><td>9.149</td><td>4.0</td><td>True</td></tr>
 </table></div>
 </div>
@@ -1111,7 +1112,7 @@ analysis of gamma-ray astronomy.</p></li>
 using simulated 1DC data.</p></li>
 <li><p>Let us know if you have any questions or issues!</p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 42.662 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 39.064 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-3d-cta-data-analysis-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-3d/cta_data_analysis.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo2.svg" width="150px" /></a>

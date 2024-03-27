@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3bfb4bc8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="H.E.S.S. with Gammapy" href="../data/hess.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 Mar 2024"/>
+    <meta name="docbuild:last-update" content="27 Mar 2024"/>
   </head>
   
   
@@ -648,7 +648,7 @@ determine the 1D IRFs including a containment correction.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2052+g4293df132.d20240326
+        version                : 1.2.dev2053+g9bd66a5b0.d20240327
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -782,14 +782,19 @@ the number of signal counts. This is visible in the plot below.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">sensitivity_table</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  energy    e_ref     e_min     e_max       e2dnde     excess background criterion
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  energy    e_ref     e_min     e_max       e2dnde     excess background  criterion
    TeV       TeV       TeV       TeV    erg / (cm2 s)
---------- --------- --------- --------- ------------- ------- ---------- ---------
-0.0356551 0.0356551      0.03 0.0423761    8.0756e-12 1642.38    32847.7       bkg
-0.0503641 0.0503641 0.0423761 0.0598579   4.33368e-12   825.3      16506       bkg
-      ...       ...       ...       ...           ...     ...        ...       ...
-  17.8699   17.8699   15.0356   21.2384   1.59254e-13      10   0.266192     gamma
-  25.2419   25.2419   21.2384        30   2.25162e-13      10   0.126585     gamma
+--------- --------- --------- --------- ------------- ------- ---------- ------------
+0.0356551 0.0356551      0.03 0.0423761    8.0756e-12 1642.38    32847.7          bkg
+0.0503641 0.0503641 0.0423761 0.0598579   4.33368e-12   825.3      16506          bkg
+0.0711412 0.0711412 0.0598579 0.0845515   1.70634e-12 482.297    7567.56 significance
+  0.10049   0.10049 0.0845515  0.119432   9.33055e-13 341.929    3765.63 significance
+      ...       ...       ...       ...           ...     ...        ...          ...
+  6.34047   6.34047   5.33484   7.53566    9.4579e-14 13.2274     1.8669 significance
+  8.95615   8.95615   7.53566   10.6444   1.00931e-13  10.843   0.845693 significance
+  12.6509   12.6509   10.6444   15.0356   1.33013e-13      10   0.447552        gamma
+  17.8699   17.8699   15.0356   21.2384   1.59254e-13      10   0.266192        gamma
+  25.2419   25.2419   21.2384        30   2.25162e-13      10   0.126585        gamma
 Length = 20 rows
 </pre></div>
 </div>

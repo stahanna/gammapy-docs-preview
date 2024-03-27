@@ -118,7 +118,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2052+g4293df132.d20240326 
+            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -292,15 +292,18 @@ Let’s load the phases of the selected events in a dedicated array.
 
  .. code-block:: none
 
-      PHASE   
-    ----------
-    0.81847286
-    0.45646095
-           ...
-    0.51095676
-     0.5606985
-     0.2505703
-    Length = 10 rows
+       PHASE   
+    -----------
+     0.81847286
+     0.45646095
+    0.111507416
+     0.43416595
+     0.76837444
+      0.3639946
+     0.58693695
+     0.51095676
+      0.5606985
+      0.2505703
 
 
 
@@ -895,7 +898,7 @@ between the input model and the gammapy fit.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 13.360 seconds)
+   **Total running time of the script:** (0 minutes 15.198 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-time_pulsar_analysis.py:

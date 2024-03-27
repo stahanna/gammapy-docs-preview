@@ -132,7 +132,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2052+g4293df132.d20240326 
+            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -375,11 +375,11 @@ We can see the full configuration by printing the estimator object:
     --------------------
 
       energy_edges           : [  10. 2000.] GeV
-      fit                    : <gammapy.modeling.fit.Fit object at 0x7f304031f8e0>
+      fit                    : <gammapy.modeling.fit.Fit object at 0x7ff1b2224f70>
       n_jobs                 : None
       n_sigma                : 1
       n_sigma_ul             : 2
-      norm                   : Parameter(name='norm', value=1.0, factor=1.0, scale=1.0, unit=Unit(dimensionless), min=nan, max=nan, frozen=False, prior=None, id=0x7f304031f100)
+      norm                   : Parameter(name='norm', value=1.0, factor=1.0, scale=1.0, unit=Unit(dimensionless), min=nan, max=nan, frozen=False, prior=None, id=0x7ff1b2224f10)
       null_value             : 0
       parallel_backend       : None
       reoptimize             : False
@@ -597,14 +597,19 @@ using:
 
  .. code-block:: none
 
-           x_min              x_max              x_ref           e_ref        e_min         e_max         ref_dnde    ... npred_excess  stat stat_null is_ul counts success
-            deg                deg                deg             keV          keV           keV      1 / (cm2 s TeV) ...                                                  
-    ------------------- ------------------ ------------------ ------------ ------------ ------------- --------------- ... ------------ ----- --------- ----- ------ -------
-    -0.1960784313725492 0.1960784313725492                0.0 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
-     0.1960784313725492 0.5882352941176467  0.392156862745098 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
-                    ...                ...                ...          ...          ...           ...             ... ...          ...   ...       ...   ...    ...     ...
-     19.019607843137262  19.41176470588239 19.215686274509828 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
-      19.41176470588239 19.803921568627494 19.607843137254942 70710678.119 10000000.000 500000000.000       4.428e-10 ...          0.0 0.000     0.000 False    0.0   False
+           x_min              x_max              x_ref           e_ref        e_min         e_max     ... npred_excess    stat   stat_null is_ul counts success
+            deg                deg                deg             keV          keV           keV      ...                                                      
+    ------------------- ------------------ ------------------ ------------ ------------ ------------- ... ------------ --------- --------- ----- ------ -------
+    -0.1960784313725492 0.1960784313725492                0.0 70710678.119 10000000.000 500000000.000 ...          0.0     0.000     0.000 False    0.0   False
+     0.1960784313725492 0.5882352941176467  0.392156862745098 70710678.119 10000000.000 500000000.000 ...          0.0     0.000     0.000 False    0.0   False
+     0.5882352941176467 0.9803921568627443 0.7843137254901955 70710678.119 10000000.000 500000000.000 ...    17.448364  -818.848  -816.789  True  163.0    True
+     0.9803921568627443 1.3725490196078436  1.176470588235294 70710678.119 10000000.000 500000000.000 ...    192.60901 -3013.446 -2892.855 False  448.0    True
+                    ...                ...                ...          ...          ...           ... ...          ...       ...       ...   ...    ...     ...
+     17.843137254902004 18.235294117647083 18.039215686274545 70710678.119 10000000.000 500000000.000 ...      62.1283 -2803.387 -2792.682 False  410.0    True
+     18.235294117647083  18.62745098039216  18.43137254901962 70710678.119 10000000.000 500000000.000 ...    32.074463 -2186.572 -2183.230  True  336.0    True
+      18.62745098039216 19.019607843137262  18.82352941176471 70710678.119 10000000.000 500000000.000 ...     0.995932  -877.032  -877.027  True  172.0    True
+     19.019607843137262  19.41176470588239 19.215686274509828 70710678.119 10000000.000 500000000.000 ...          0.0     0.000     0.000 False    0.0   False
+      19.41176470588239 19.803921568627494 19.607843137254942 70710678.119 10000000.000 500000000.000 ...          0.0     0.000     0.000 False    0.0   False
     Length = 51 rows
 
 
@@ -811,7 +816,7 @@ And now plot the points together with the likelihood profiles:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 38.044 seconds)
+   **Total running time of the script:** (0 minutes 40.533 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-3d_flux_profiles.py:

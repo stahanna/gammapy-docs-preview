@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**15:32.393** total execution time for 81 files **from all galleries**:
+**17:20.008** total execution time for 81 files **from all galleries**:
 
 .. container::
 
@@ -33,133 +33,133 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_tutorials_api_priors.py` (``../examples/tutorials/api/priors.py``)
-     - 02:13.109
+     - 02:35.508
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-3d_analysis_3d.py` (``../examples/tutorials/analysis-3d/analysis_3d.py``)
-     - 01:18.248
+     - 01:43.449
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-time_light_curve_flare.py` (``../examples/tutorials/analysis-time/light_curve_flare.py``)
-     - 01:09.103
+     - 01:11.610
      - 0.0
    * - :ref:`sphx_glr_tutorials_api_astro_dark_matter.py` (``../examples/tutorials/api/astro_dark_matter.py``)
-     - 00:47.584
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-3d_cta_data_analysis.py` (``../examples/tutorials/analysis-3d/cta_data_analysis.py``)
-     - 00:42.662
+     - 00:55.677
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-time_light_curve_simulation.py` (``../examples/tutorials/analysis-time/light_curve_simulation.py``)
-     - 00:38.585
+     - 00:40.677
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-3d_flux_profiles.py` (``../examples/tutorials/analysis-3d/flux_profiles.py``)
-     - 00:38.044
+     - 00:40.533
      - 0.0
    * - :ref:`sphx_glr_tutorials_api_makers.py` (``../examples/tutorials/api/makers.py``)
-     - 00:32.792
+     - 00:39.160
      - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-3d_event_sampling.py` (``../examples/tutorials/analysis-3d/event_sampling.py``)
-     - 00:32.107
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-2d_detect.py` (``../examples/tutorials/analysis-2d/detect.py``)
-     - 00:28.002
+   * - :ref:`sphx_glr_tutorials_analysis-3d_cta_data_analysis.py` (``../examples/tutorials/analysis-3d/cta_data_analysis.py``)
+     - 00:39.064
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-1d_spectral_analysis.py` (``../examples/tutorials/analysis-1d/spectral_analysis.py``)
-     - 00:27.718
+     - 00:31.771
      - 0.0
-   * - :ref:`sphx_glr_tutorials_starting_analysis_1.py` (``../examples/tutorials/starting/analysis_1.py``)
-     - 00:27.292
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-2d_ring_background.py` (``../examples/tutorials/analysis-2d/ring_background.py``)
-     - 00:25.323
+   * - :ref:`sphx_glr_tutorials_analysis-2d_detect.py` (``../examples/tutorials/analysis-2d/detect.py``)
+     - 00:30.804
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-3d_simulate_3d.py` (``../examples/tutorials/analysis-3d/simulate_3d.py``)
-     - 00:23.426
+     - 00:30.723
      - 0.0
-   * - :ref:`sphx_glr_tutorials_api_datasets.py` (``../examples/tutorials/api/datasets.py``)
-     - 00:23.269
+   * - :ref:`sphx_glr_tutorials_starting_analysis_1.py` (``../examples/tutorials/starting/analysis_1.py``)
+     - 00:29.742
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_analysis-2d_ring_background.py` (``../examples/tutorials/analysis-2d/ring_background.py``)
+     - 00:29.610
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_analysis-3d_event_sampling.py` (``../examples/tutorials/analysis-3d/event_sampling.py``)
+     - 00:27.976
      - 0.0
    * - :ref:`sphx_glr_tutorials_api_fitting.py` (``../examples/tutorials/api/fitting.py``)
-     - 00:22.483
+     - 00:26.266
      - 0.0
-   * - :ref:`sphx_glr_tutorials_api_model_management.py` (``../examples/tutorials/api/model_management.py``)
-     - 00:16.233
+   * - :ref:`sphx_glr_tutorials_api_datasets.py` (``../examples/tutorials/api/datasets.py``)
+     - 00:25.767
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-1d_spectral_analysis_hli.py` (``../examples/tutorials/analysis-1d/spectral_analysis_hli.py``)
-     - 00:14.919
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-time_light_curve.py` (``../examples/tutorials/analysis-time/light_curve.py``)
-     - 00:14.502
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_starting_analysis_2.py` (``../examples/tutorials/starting/analysis_2.py``)
-     - 00:13.919
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-1d_spectrum_simulation.py` (``../examples/tutorials/analysis-1d/spectrum_simulation.py``)
-     - 00:13.601
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-3d_analysis_mwl.py` (``../examples/tutorials/analysis-3d/analysis_mwl.py``)
-     - 00:13.511
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-time_pulsar_analysis.py` (``../examples/tutorials/analysis-time/pulsar_analysis.py``)
-     - 00:13.360
+     - 00:18.739
      - 0.0
    * - :ref:`sphx_glr_tutorials_data_hawc.py` (``../examples/tutorials/data/hawc.py``)
-     - 00:13.179
+     - 00:16.280
      - 0.0
-   * - :ref:`sphx_glr_tutorials_api_catalog.py` (``../examples/tutorials/api/catalog.py``)
-     - 00:13.088
+   * - :ref:`sphx_glr_tutorials_api_model_management.py` (``../examples/tutorials/api/model_management.py``)
+     - 00:16.134
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_analysis-1d_spectrum_simulation.py` (``../examples/tutorials/analysis-1d/spectrum_simulation.py``)
+     - 00:15.878
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_analysis-time_pulsar_analysis.py` (``../examples/tutorials/analysis-time/pulsar_analysis.py``)
+     - 00:15.198
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_analysis-3d_analysis_mwl.py` (``../examples/tutorials/analysis-3d/analysis_mwl.py``)
+     - 00:14.882
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_analysis-time_light_curve.py` (``../examples/tutorials/analysis-time/light_curve.py``)
+     - 00:14.764
      - 0.0
    * - :ref:`sphx_glr_tutorials_data_fermi_lat.py` (``../examples/tutorials/data/fermi_lat.py``)
-     - 00:12.592
+     - 00:14.553
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_api_catalog.py` (``../examples/tutorials/api/catalog.py``)
+     - 00:13.884
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-2d_modeling_2D.py` (``../examples/tutorials/analysis-2d/modeling_2D.py``)
-     - 00:11.164
+     - 00:13.878
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_starting_analysis_2.py` (``../examples/tutorials/starting/analysis_2.py``)
+     - 00:13.343
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-1d_sed_fitting.py` (``../examples/tutorials/analysis-1d/sed_fitting.py``)
-     - 00:10.689
+     - 00:11.565
      - 0.0
    * - :ref:`sphx_glr_tutorials_data_cta.py` (``../examples/tutorials/data/cta.py``)
-     - 00:10.363
+     - 00:09.783
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-1d_extended_source_spectral_analysis.py` (``../examples/tutorials/analysis-1d/extended_source_spectral_analysis.py``)
-     - 00:08.651
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_data_hess.py` (``../examples/tutorials/data/hess.py``)
-     - 00:08.272
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_api_observation_clustering.py` (``../examples/tutorials/api/observation_clustering.py``)
-     - 00:08.242
+     - 00:08.973
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-1d_spectral_analysis_rad_max.py` (``../examples/tutorials/analysis-1d/spectral_analysis_rad_max.py``)
-     - 00:07.793
+     - 00:08.949
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_api_observation_clustering.py` (``../examples/tutorials/api/observation_clustering.py``)
+     - 00:08.164
      - 0.0
    * - :ref:`sphx_glr_tutorials_api_irfs.py` (``../examples/tutorials/api/irfs.py``)
-     - 00:06.932
+     - 00:07.950
      - 0.0
-   * - :ref:`sphx_glr_tutorials_analysis-3d_event_sampling_nrg_depend_models.py` (``../examples/tutorials/analysis-3d/event_sampling_nrg_depend_models.py``)
-     - 00:06.829
-     - 0.0
-   * - :ref:`sphx_glr_tutorials_api_models.py` (``../examples/tutorials/api/models.py``)
-     - 00:05.754
+   * - :ref:`sphx_glr_tutorials_data_hess.py` (``../examples/tutorials/data/hess.py``)
+     - 00:07.324
      - 0.0
    * - :ref:`sphx_glr_tutorials_scripts_survey_map.py` (``../examples/tutorials/scripts/survey_map.py``)
-     - 00:05.198
+     - 00:06.984
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_analysis-3d_event_sampling_nrg_depend_models.py` (``../examples/tutorials/analysis-3d/event_sampling_nrg_depend_models.py``)
+     - 00:06.501
      - 0.0
    * - :ref:`sphx_glr_tutorials_api_maps.py` (``../examples/tutorials/api/maps.py``)
-     - 00:04.915
+     - 00:04.989
+     - 0.0
+   * - :ref:`sphx_glr_tutorials_api_models.py` (``../examples/tutorials/api/models.py``)
+     - 00:04.763
      - 0.0
    * - :ref:`sphx_glr_tutorials_api_mask_maps.py` (``../examples/tutorials/api/mask_maps.py``)
-     - 00:04.097
+     - 00:03.668
      - 0.0
    * - :ref:`sphx_glr_tutorials_starting_overview.py` (``../examples/tutorials/starting/overview.py``)
-     - 00:02.482
+     - 00:02.239
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-1d_cta_sensitivity.py` (``../examples/tutorials/analysis-1d/cta_sensitivity.py``)
-     - 00:01.708
+     - 00:01.651
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-time_Variability_estimation.py` (``../examples/tutorials/analysis-time/Variability_estimation.py``)
-     - 00:00.640
+     - 00:00.627
      - 0.0
    * - :ref:`sphx_glr_tutorials_analysis-3d_energy_dependent_estimation.py` (``../examples/tutorials/analysis-3d/energy_dependent_estimation.py``)
-     - 00:00.009
+     - 00:00.011
      - 0.0
    * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_constant.py` (``../examples/models/spatial/plot_constant.py``)
      - 00:00.000
