@@ -36,10 +36,9 @@ be serialised to this format.
 In `map` format, a `~gammapy.maps.RegionNDMap` is serialised, with the `reference_time`
 in the SKYMAP_BANDS HDU.
 
-.. GENERATED FROM PYTHON SOURCE LINES 20-35
+.. GENERATED FROM PYTHON SOURCE LINES 20-34
 
 .. code-block:: Python
-
 
 
     from astropy.time import Time
@@ -57,23 +56,35 @@ in the SKYMAP_BANDS HDU.
 
 
 
+.. rst-class:: sphx-glr-script-out
 
-.. image-sg:: /user-guide/model-gallery/temporal/images/sphx_glr_plot_template_temporal_001.png
-   :alt: plot template temporal
-   :srcset: /user-guide/model-gallery/temporal/images/sphx_glr_plot_template_temporal_001.png
-   :class: sphx-glr-single-img
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/models/temporal/plot_template_temporal.py", line 31, in <module>
+        light_curve_model = LightCurveTemplateTemporalModel.read(path)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/modeling/models/temporal.py", line 639, in read
+        table = Table.read(filename)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/table/connect.py", line 62, in __call__
+        out = self.registry.read(cls, *args, **kwargs)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/registry/core.py", line 203, in read
+        fileobj = ctx.__enter__()
+      File "/home/hstapel/miniforge3/envs/gammapy-dev/lib/python3.9/contextlib.py", line 119, in __enter__
+        return next(self.gen)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/utils/data.py", line 353, in get_readable_fileobj
+        fileobj = io.FileIO(name_or_obj, "r")
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: '$GAMMAPY_DATA/tests/models/light_curve/lightcrv_PKSB1222+216.fits'
 
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 36-39
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 YAML representation
 -------------------
 Here is an example YAML file using the model:
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-48
+.. GENERATED FROM PYTHON SOURCE LINES 38-47
 
 .. code-block:: Python
 
@@ -86,46 +97,6 @@ Here is an example YAML file using the model:
     models = Models([model])
 
     print(models.to_yaml())
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    components:
-    -   name: light_curve_model
-        type: SkyModel
-        spectral:
-            type: PowerLawSpectralModel
-            parameters:
-            -   name: index
-                value: 2.0
-            -   name: amplitude
-                value: 1.0e-12
-                unit: TeV-1 s-1 cm-2
-            -   name: reference
-                value: 1.0
-                unit: TeV
-        temporal:
-            type: LightCurveTemplateTemporalModel
-            parameters:
-            -   name: t_ref
-                value: 59000.49919925926
-                unit: d
-            scale: utc
-            filename: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/tests/models/light_curve/lightcrv_PKSB1222+216.fits
-            format: table
-            unit: ''
-    metadata:
-        creator: Gammapy 1.2.dev1791+g66166600d.d20240131
-        date: '2024-01-31T13:58:09.988173'
-        origin: null
-
-
-
-
 
 
 .. _sphx_glr_download_user-guide_model-gallery_temporal_plot_template_temporal.py:

@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -67,7 +67,7 @@
     <link rel="prev" title="Datasets - Reduced data, IRFs, models" href="datasets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -652,7 +652,7 @@ particular how to :</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -679,7 +679,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -717,6 +717,28 @@ the model and fit range to the resulting dataset.</p>
 <span class="n">e_min</span> <span class="o">=</span> <span class="mf">0.66</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span>
 <span class="n">e_max</span> <span class="o">=</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span>
 <span class="n">dataset_hess</span><span class="o">.</span><span class="n">mask_fit</span> <span class="o">=</span> <span class="n">dataset_hess</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">energy_mask</span><span class="p">(</span><span class="n">e_min</span><span class="p">,</span> <span class="n">e_max</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/fitting.py&quot;</span>, line <span class="m">84</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">SpectrumDatasetOnOff</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/datasets/spectrum.py&quot;</span>, line <span class="m">328</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/datasets/io.py&quot;</span>, line <span class="m">450</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_pha</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="n">checksum</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">checksum</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/datasets/io.py&quot;</span>, line <span class="m">356</span>, in <span class="n">read_pha</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">checksum</span><span class="o">=</span><span class="n">checksum</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/joint-crab/spectra/hess/pha_obs23523.fits&#39;</span>
 </pre></div>
 </div>
 </section>
@@ -789,54 +811,10 @@ Among them:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result_scipy</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : scipy
-        method     : L-BFGS-B
-        success    : True
-        message    : CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH
-        nfev       : 60
-        total stat : 30.35
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
-</pre></div>
-</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results_simplex</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : sherpa
-        method     : simplex
-        success    : True
-        message    : Optimization terminated successfully
-        nfev       : 135
-        total stat : 30.35
-</pre></div>
-</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result_minuit</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : minuit
-        method     : migrad
-        success    : True
-        message    : Optimization terminated successfully.
-        nfev       : 37
-        total stat : 30.35
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
 </pre></div>
 </div>
 <p>If the fit is performed with minuit you can print detailed information
@@ -844,53 +822,9 @@ to check the convergence</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result_minuit</span><span class="o">.</span><span class="n">minuit</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────────────┐
-│                                Migrad                                   │
-├──────────────────────────────────┬──────────────────────────────────────┤
-│ FCN = 30.35                      │              Nfcn = 37               │
-│ EDM = 3.42e-08 (Goal: 2e-06)     │            time = 0.2 sec            │
-├──────────────────────────────────┼──────────────────────────────────────┤
-│          Valid Minimum           │   Below EDM threshold (goal x 10)    │
-├──────────────────────────────────┼──────────────────────────────────────┤
-│      No parameters at limit      │           Below call limit           │
-├──────────────────────────────────┼──────────────────────────────────────┤
-│             Hesse ok             │         Covariance accurate          │
-└──────────────────────────────────┴──────────────────────────────────────┘
-┌───┬───────────────────┬───────────┬───────────┬────────────┬────────────┬─────────┬─────────┬───────┐
-│   │ Name              │   Value   │ Hesse Err │ Minos Err- │ Minos Err+ │ Limit-  │ Limit+  │ Fixed │
-├───┼───────────────────┼───────────┼───────────┼────────────┼────────────┼─────────┼─────────┼───────┤
-│ 0 │ par_000_amplitude │    3.8    │    0.4    │            │            │         │         │       │
-│ 1 │ par_001_alpha     │   2.20    │   0.26    │            │            │    1    │    3    │       │
-│ 2 │ par_002_beta      │    2.3    │    1.4    │            │            │         │         │       │
-└───┴───────────────────┴───────────┴───────────┴────────────┴────────────┴─────────┴─────────┴───────┘
-┌───────────────────┬───────────────────────────────────────────────────────┐
-│                   │ par_000_amplitude     par_001_alpha      par_002_beta │
-├───────────────────┼───────────────────────────────────────────────────────┤
-│ par_000_amplitude │             0.126              0.05             -0.12 │
-│     par_001_alpha │              0.05            0.0689             -0.33 │
-│      par_002_beta │             -0.12             -0.33              1.95 │
-└───────────────────┴───────────────────────────────────────────────────────┘
-</pre></div>
-</div>
 <p>Check the trace of the fit e.g.  in case the fit did not converge
 properly</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">result_minuit</span><span class="o">.</span><span class="n">trace</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>    total_stat     crab.spectral.amplitude crab.spectral.alpha  crab.spectral.beta
------------------- ----------------------- ------------------- -------------------
-30.349530550391602   3.812242557070182e-11  2.1957469344402147 0.22648271617458565
-30.349724605711856  3.8157940469070564e-11  2.1957469344402147 0.22648271617458565
-30.349711767330827   3.808691067233308e-11  2.1957469344402147 0.22648271617458565
-30.349539326460118  3.8129513802456945e-11  2.1957469344402147 0.22648271617458565
-  30.3495367229388  3.8115337338946694e-11  2.1957469344402147 0.22648271617458565
-               ...                     ...                 ...                 ...
- 30.34953073943991  3.8122169660679106e-11   2.195755391681058  0.2265163047852752
-30.349530793316045  3.8122169660679106e-11   2.195755391681058  0.2264613409375985
-30.349535814793757   3.812925789368485e-11  2.1959874285483485 0.22648882286143687
-30.349537158475616   3.812925789368485e-11   2.195755391681058  0.2266262324806286
-30.349559366772695  3.8122169660679106e-11  2.1959874285483485  0.2266262324806286
-Length = 37 rows
 </pre></div>
 </div>
 <p>The fitted models are copied on the <code class="xref py py-obj docutils literal notranslate"><span class="pre">FitResult</span></code> object.
@@ -898,14 +832,6 @@ They can be inspected to check that the fitted values and errors
 for all parameters are reasonable, and no fitted parameter value is “too close”
 - or even outside - its allowed min-max range</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">result_minuit</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">to_parameters_table</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>model type    name     value         unit        error      min       max    frozen is_norm link prior
------ ---- --------- ---------- -------------- --------- --------- --------- ------ ------- ---- -----
- crab      amplitude 3.8122e-11 cm-2 s-1 TeV-1 3.546e-12       nan       nan  False    True
- crab      reference 1.0000e+00            TeV 0.000e+00       nan       nan   True   False
- crab          alpha 2.1958e+00                2.626e-01 1.000e+00 3.000e+00  False   False
- crab           beta 2.2649e-01                1.397e-01       nan       nan  False   False
 </pre></div>
 </div>
 <p>Plot fit statistic profiles for all fitted parameters, using
@@ -930,7 +856,7 @@ fit statistic profile can be changed on the
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fitting_001.png" srcset="../../_images/sphx_glr_fitting_001.png" alt="crab.spectral.amplitude:  3.8e-11 +- 3.5e-12, crab.spectral.alpha:  2.2e+00 +- 2.6e-01, crab.spectral.beta:  2.3e-01 +- 1.4e-01" class = "sphx-glr-single-img"/><p>Inspect model residuals. Those can always be accessed using
+<p>Inspect model residuals. Those can always be accessed using
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">residuals()</span></code>. For more details, we refer here to the dedicated
 <a class="reference internal" href="../analysis-3d/analysis_3d.html"><span class="doc">3D detailed analysis</span></a> (for <a class="reference internal" href="../../api/gammapy.datasets.MapDataset.html#gammapy.datasets.MapDataset" title="gammapy.datasets.MapDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapDataset</span></code></a> fitting) and
 <a class="reference internal" href="../analysis-1d/spectral_analysis.html"><span class="doc">Spectral analysis</span></a> (for <code class="xref py py-obj docutils literal notranslate"><span class="pre">SpectrumDataset</span></code> fitting).</p>
@@ -941,12 +867,6 @@ fit statistic profile can be changed on the
 stored on the <code class="xref py py-obj docutils literal notranslate"><span class="pre">FitResult</span></code> object.
 You can access it directly with:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result_minuit</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">covariance</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[ 1.25743552e-23  0.00000000e+00  4.54676840e-13 -1.17016488e-13]
- [ 0.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00]
- [ 4.54676840e-13  0.00000000e+00  6.89492164e-02 -3.31139089e-02]
- [-1.17016488e-13  0.00000000e+00 -3.31139089e-02  1.95024553e-02]]
 </pre></div>
 </div>
 <p>And you can plot the total parameter correlation as well:</p>
@@ -961,9 +881,6 @@ You can access it directly with:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">crab_model</span><span class="o">.</span><span class="n">spectral_model</span><span class="o">.</span><span class="n">alpha</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fitting_002.png" srcset="../../_images/sphx_glr_fitting_002.png" alt="fitting" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.2625818280340766
-</pre></div>
-</div>
 <p>As an example, this step is needed to produce a butterfly plot showing
 the envelope of the model taking into account parameter uncertainties.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">energy_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span>
@@ -972,7 +889,7 @@ the envelope of the model taking into account parameter uncertainties.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fitting_003.png" srcset="../../_images/sphx_glr_fitting_003.png" alt="fitting" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="confidence-contours">
 <h2>Confidence contours<a class="headerlink" href="#confidence-contours" title="Link to this heading">#</a></h2>
 <p>In most studies, one wishes to estimate parameters distribution using
@@ -1086,7 +1003,7 @@ plotting nicer.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fitting_004.png" srcset="../../_images/sphx_glr_fitting_004.png" alt="fitting" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="computing-contours-using-stat-surface">
 <h3>Computing contours using <a class="reference internal" href="../../api/gammapy.modeling.Fit.html#gammapy.modeling.Fit.stat_surface" title="gammapy.modeling.Fit.stat_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_surface</span></code></a><a class="headerlink" href="#computing-contours-using-stat-surface" title="Link to this heading">#</a></h3>
 <p>This alternative method for the computation of confidence contours,
@@ -1169,7 +1086,7 @@ way will not contain 68% of the probability, but rather</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_fitting_005.png" srcset="../../_images/sphx_glr_fitting_005.png" alt="fitting" class = "sphx-glr-single-img"/><p>Note that, if computed with <code class="xref py py-obj docutils literal notranslate"><span class="pre">reoptimize=True</span></code>, this plot would be
+<p>Note that, if computed with <code class="xref py py-obj docutils literal notranslate"><span class="pre">reoptimize=True</span></code>, this plot would be
 completely consistent with the third panel of the plot produced with
 <a class="reference internal" href="../../api/gammapy.modeling.Fit.html#gammapy.modeling.Fit.stat_contour" title="gammapy.modeling.Fit.stat_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stat_contour</span></code></a> (try!).</p>
 <p>Finally, it is always remember that confidence contours are
@@ -1178,7 +1095,6 @@ close to the contours lines, it is expected that the statistical meaning
 of the contours is not well defined. That’s why we advise to always
 choose a parameter space that contains the contours you’re interested
 in.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 26.266 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-api-fitting-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/api/fitting.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo4.svg" width="150px" /></a>

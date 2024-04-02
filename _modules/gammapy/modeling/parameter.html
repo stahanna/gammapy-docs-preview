@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -1378,13 +1378,11 @@ document.write(`
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        ::</span>
-
-<span class="sd">            &gt;&gt;&gt; from gammapy.modeling.models import PowerLawSpectralModel</span>
-<span class="sd">            &gt;&gt;&gt; pwl = PowerLawSpectralModel(index=2)</span>
-<span class="sd">            &gt;&gt;&gt; with pwl.parameters.restore_status():</span>
-<span class="sd">            &gt;&gt;&gt;     pwl.parameters[&quot;index&quot;].value = 3</span>
-<span class="sd">            &gt;&gt;&gt; print(pwl.parameters[&quot;index&quot;].value)</span>
+<span class="sd">        &gt;&gt;&gt; from gammapy.modeling.models import PowerLawSpectralModel</span>
+<span class="sd">        &gt;&gt;&gt; pwl = PowerLawSpectralModel(index=2)</span>
+<span class="sd">        &gt;&gt;&gt; with pwl.parameters.restore_status():</span>
+<span class="sd">        ...     pwl.parameters[&quot;index&quot;].value = 3</span>
+<span class="sd">        &gt;&gt;&gt; print(pwl.parameters[&quot;index&quot;].value) # doctest: +SKIP</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">restore_parameters_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">restore_values</span><span class="p">)</span></div>
 </div>

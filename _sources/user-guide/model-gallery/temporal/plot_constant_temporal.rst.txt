@@ -27,15 +27,15 @@ This model parametrises a constant time model.
 
 .. math:: F(t) = k
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-18
+.. GENERATED FROM PYTHON SOURCE LINES 14-17
 
 Example plot
 ------------
 Here is an example plot of the model:
 
-.. GENERATED FROM PYTHON SOURCE LINES 18-34
+.. GENERATED FROM PYTHON SOURCE LINES 17-33
 
-.. code-block:: python3
+.. code-block:: Python
 
 
     from astropy import units as u
@@ -65,15 +65,15 @@ Here is an example plot of the model:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 35-38
+.. GENERATED FROM PYTHON SOURCE LINES 34-37
 
 YAML representation
 -------------------
 Here is an example YAML file using the model:
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-47
+.. GENERATED FROM PYTHON SOURCE LINES 37-46
 
-.. code-block:: python3
+.. code-block:: Python
 
 
     model = SkyModel(
@@ -102,7 +102,7 @@ Here is an example YAML file using the model:
                 value: 2.0
             -   name: amplitude
                 value: 1.0e-12
-                unit: TeV-1 s-1 cm-2
+                unit: cm-2 s-1 TeV-1
             -   name: reference
                 value: 1.0
                 unit: TeV
@@ -111,8 +111,8 @@ Here is an example YAML file using the model:
             parameters: []
             scale: utc
     metadata:
-        creator: Gammapy 1.2.dev1791+g66166600d.d20240131
-        date: '2024-01-31T13:38:59.993668'
+        creator: Gammapy 1.2.dev2111+g5675db08b.d20240402
+        date: '2024-04-02T14:27:58.666631'
         origin: null
 
 
@@ -126,7 +126,6 @@ Here is an example YAML file using the model:
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
-
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
@@ -134,15 +133,13 @@ Here is an example YAML file using the model:
         :alt: Launch binder
         :width: 150 px
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_constant_temporal.ipynb <plot_constant_temporal.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_constant_temporal.py <plot_constant_temporal.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_constant_temporal.ipynb <plot_constant_temporal.ipynb>`
 
 
 .. only:: html

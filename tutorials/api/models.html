@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -67,7 +67,7 @@
     <link rel="prev" title="Modelling" href="model_management.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -636,7 +636,7 @@ data.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -663,7 +663,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -1129,7 +1129,7 @@ generated:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">model_without_name</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OHqFVzyM
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>CkijurgE
 </pre></div>
 </div>
 <p>The individual components of the source model can be accessed using
@@ -1215,19 +1215,24 @@ existing FITS file:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">diffuse</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SkyModel
-
-  Name                      : 4F82vKVr
-  Datasets names            : None
-  Spectral model type       : PowerLawNormSpectralModel
-  Spatial  model type       : TemplateSpatialModel
-  Temporal model type       :
-  Parameters:
-    norm                          :      1.000   +/-    0.00
-    tilt                  (frozen):      0.000
-    reference             (frozen):      1.000       TeV
-    lon_0                 (frozen):      0.000       deg
-    lat_0                 (frozen):     -0.062       deg
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/models.py&quot;</span>, line <span class="m">465</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">diffuse_cube</span> <span class="o">=</span> <span class="n">TemplateSpatialModel</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/modeling/models/spatial.py&quot;</span>, line <span class="m">1446</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="n">m</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/maps/core.py&quot;</span>, line <span class="m">254</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/fermi-3fhl-gc/gll_iem_v06_gc.fits.gz&#39;</span>
 </pre></div>
 </div>
 <p>Note that if the spatial model is not normalized over the sky it has to
@@ -1256,20 +1261,6 @@ point), eg:</p>
 <span class="n">display</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">to_table</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>type    name     value         unit        error      min        max    frozen is_norm link prior
----- --------- ---------- -------------- --------- ---------- --------- ------ ------- ---- -----
-         index 3.0000e+00                0.000e+00  1.000e+00 5.000e+00  False   False
-     amplitude 2.7000e-12 cm-2 s-1 TeV-1 0.000e+00        nan       nan  False    True
-     reference 1.0000e+00            TeV 0.000e+00        nan       nan   True   False
-         lon_0 0.0000e+00            deg 0.000e+00        nan       nan  False   False
-         lat_0 0.0000e+00            deg 0.000e+00 -9.000e+01 9.000e+01  False   False
-         sigma 2.0000e-01            deg 0.000e+00  0.000e+00       nan  False   False
-             e 0.0000e+00                0.000e+00  0.000e+00 1.000e+00   True   False
-           phi 0.0000e+00            deg 0.000e+00        nan       nan   True   False
-         t_ref 5.9240e+04              d 0.000e+00        nan       nan  False   False
-         sigma 2.0000e+00              d 0.000e+00        nan       nan  False   False
-</pre></div>
-</div>
 <p>You can use the interactive boxes to choose model parameters by name,
 type or other attributes mentioned in the column names.</p>
 </section>
@@ -1284,73 +1275,14 @@ multiple model components, Gammapy has a <a class="reference internal" href="../
 <span class="nb">print</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Models
-
-Component 0: SkyModel
-
-  Name                      : my-source
-  Datasets names            : None
-  Spectral model type       : PowerLawSpectralModel
-  Spatial  model type       : GaussianSpatialModel
-  Temporal model type       : GaussianTemporalModel
-  Parameters:
-    index                         :      3.000   +/-    0.00
-    amplitude                     :   2.70e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-    reference             (frozen):      1.000       TeV
-    lon_0                         :      0.000   +/-    0.00 deg
-    lat_0                         :      0.000   +/-    0.00 deg
-    sigma                         :      0.200   +/-    0.00 deg
-    e                     (frozen):      0.000
-    phi                   (frozen):      0.000       deg
-    t_ref                         :  59240.000   +/-    0.00 d
-    sigma                         :      2.000   +/-    0.00 d
-
-Component 1: SkyModel
-
-  Name                      : 4F82vKVr
-  Datasets names            : None
-  Spectral model type       : PowerLawNormSpectralModel
-  Spatial  model type       : TemplateSpatialModel
-  Temporal model type       :
-  Parameters:
-    norm                          :      1.000   +/-    0.00
-    tilt                  (frozen):      0.000
-    reference             (frozen):      1.000       TeV
-    lon_0                 (frozen):      0.000       deg
-    lat_0                 (frozen):     -0.062       deg
-</pre></div>
-</div>
 <p>Individual model components in the list can be accessed by their name:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="s2">&quot;my-source&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SkyModel
-
-  Name                      : my-source
-  Datasets names            : None
-  Spectral model type       : PowerLawSpectralModel
-  Spatial  model type       : GaussianSpatialModel
-  Temporal model type       : GaussianTemporalModel
-  Parameters:
-    index                         :      3.000   +/-    0.00
-    amplitude                     :   2.70e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-    reference             (frozen):      1.000       TeV
-    lon_0                         :      0.000   +/-    0.00 deg
-    lat_0                         :      0.000   +/-    0.00 deg
-    sigma                         :      0.200   +/-    0.00 deg
-    e                     (frozen):      0.000
-    phi                   (frozen):      0.000       deg
-    t_ref                         :  59240.000   +/-    0.00 d
-    sigma                         :      2.000   +/-    0.00 d
 </pre></div>
 </div>
 <p><strong>Note:</strong> To make the access by name unambiguous, models are required to
 have a unique name, otherwise an error will be thrown.</p>
 <p>To see which models are available you can use the <code class="docutils literal notranslate"><span class="pre">.names</span></code> attribute:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;my-source&#39;, &#39;4F82vKVr&#39;]
 </pre></div>
 </div>
 <p>Note that a <a class="reference internal" href="../../api/gammapy.modeling.models.SkyModel.html#gammapy.modeling.models.SkyModel" title="gammapy.modeling.models.SkyModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SkyModel</span></code></a> object can be evaluated for a given longitude,
@@ -1369,124 +1301,6 @@ methods:</p>
 format:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">models_yaml</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">models_yaml</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>components:
--   name: my-source
-    type: SkyModel
-    spectral:
-        type: PowerLawSpectralModel
-        parameters:
-        -   name: index
-            value: 3.0
-            min: 1.0
-            max: 5.0
-        -   name: amplitude
-            value: 2.7e-12
-            unit: cm-2 s-1 TeV-1
-        -   name: reference
-            value: 1.0
-            unit: TeV
-    spatial:
-        type: GaussianSpatialModel
-        frame: galactic
-        parameters:
-        -   name: lon_0
-            value: 0.0
-            unit: deg
-        -   name: lat_0
-            value: 0.0
-            unit: deg
-        -   name: sigma
-            value: 0.2
-            unit: deg
-        -   name: e
-            value: 0.0
-        -   name: phi
-            value: 0.0
-            unit: deg
-    temporal:
-        type: GaussianTemporalModel
-        parameters:
-        -   name: t_ref
-            value: 59240.0
-            unit: d
-        -   name: sigma
-            value: 2.0
-            unit: d
-        scale: utc
--   name: 4F82vKVr
-    type: SkyModel
-    spectral:
-        type: PowerLawNormSpectralModel
-        parameters:
-        -   name: norm
-            value: 1.0
-        -   name: tilt
-            value: 0.0
-        -   name: reference
-            value: 1.0
-            unit: TeV
-    spatial:
-        type: TemplateSpatialModel
-        frame: galactic
-        parameters:
-        -   name: lon_0
-            value: 0.0
-            unit: deg
-        -   name: lat_0
-            value: -0.0625
-            unit: deg
-        filename: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/fermi-3fhl-gc/gll_iem_v06_gc.fits.gz
-        normalize: false
-        unit: 1 / (cm2 MeV s sr)
--   name: my-source-copy
-    type: SkyModel
-    spectral:
-        type: PowerLawSpectralModel
-        parameters:
-        -   name: index
-            value: 3.0
-            min: 1.0
-            max: 5.0
-        -   name: amplitude
-            value: 2.7e-12
-            unit: cm-2 s-1 TeV-1
-        -   name: reference
-            value: 1.0
-            unit: TeV
-    spatial:
-        type: GaussianSpatialModel
-        frame: galactic
-        parameters:
-        -   name: lon_0
-            value: 0.0
-            unit: deg
-        -   name: lat_0
-            value: 0.0
-            unit: deg
-        -   name: sigma
-            value: 0.2
-            unit: deg
-        -   name: e
-            value: 0.0
-        -   name: phi
-            value: 0.0
-            unit: deg
-    temporal:
-        type: GaussianTemporalModel
-        parameters:
-        -   name: t_ref
-            value: 59240.0
-            unit: d
-        -   name: sigma
-            value: 2.0
-            unit: d
-        scale: utc
-metadata:
-    creator: Gammapy 1.2.dev2053+g9bd66a5b0.d20240327
-    date: &#39;2024-03-27T14:08:25.607452&#39;
-    origin: null
 </pre></div>
 </div>
 <p>The structure of the yaml files follows the structure of the python
@@ -1524,54 +1338,11 @@ amplitudes:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">pwl2</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dimensionless), min=1.0, max=5.0, frozen=False, prior=None, id=0x7ff1baff9280)
-Parameter(name=&#39;index&#39;, value=2.3, factor=2.3, scale=1.0, unit=Unit(dimensionless), min=1.0, max=5.0, frozen=False, prior=None, id=0x7ff1baff9280)
-</pre></div>
-</div>
 <p>In the YAML files the shared parameter is flagged by the additional
 <code class="docutils literal notranslate"><span class="pre">link</span></code> entry that follows the convention <code class="docutils literal notranslate"><span class="pre">parameter.name&#64;unique_id</span></code>:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="n">Models</span><span class="p">([</span><span class="n">SkyModel</span><span class="p">(</span><span class="n">pwl</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;source1&quot;</span><span class="p">),</span> <span class="n">SkyModel</span><span class="p">(</span><span class="n">pwl2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;source2&quot;</span><span class="p">)])</span>
 <span class="n">models_yaml</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">models_yaml</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>components:
--   name: source1
-    type: SkyModel
-    spectral:
-        type: PowerLawSpectralModel
-        parameters:
-        -   name: index
-            value: 2.3
-            min: 1.0
-            max: 5.0
-            link: index@jcUUmb9q
-        -   name: amplitude
-            value: 2.7e-12
-            unit: cm-2 s-1 TeV-1
-        -   name: reference
-            value: 1.0
-            unit: TeV
--   name: source2
-    type: SkyModel
-    spectral:
-        type: PowerLawSpectralModel
-        parameters:
-        -   name: index
-            value: 2.3
-            min: 1.0
-            max: 5.0
-            link: index@jcUUmb9q
-        -   name: amplitude
-            value: 1.0e-12
-            unit: cm-2 s-1 TeV-1
-        -   name: reference
-            value: 1.0
-            unit: TeV
-metadata:
-    creator: Gammapy 1.2.dev2053+g9bd66a5b0.d20240327
-    date: &#39;2024-03-27T14:08:25.942462&#39;
-    origin: null
 </pre></div>
 </div>
 </section>
@@ -1643,18 +1414,6 @@ all <a class="reference internal" href="../../api/gammapy.modeling.models.Spectr
 
 <span class="n">my_custom_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">energy_bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<img src="../../_images/sphx_glr_models_008.png" srcset="../../_images/sphx_glr_models_008.png" alt="models" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MyCustomSpectralModel
-
-type    name     value         unit        error      min    max frozen is_norm link prior
----- --------- ---------- -------------- --------- --------- --- ------ ------- ---- -----
-     amplitude 1.0000e-12 cm-2 s-1 TeV-1 0.000e+00 0.000e+00 nan  False    True
-         index 2.0000e+00                0.000e+00 0.000e+00 nan  False   False
-     reference 1.0000e+00            TeV 0.000e+00       nan nan   True   False
-          mean 3.0000e+00            TeV 0.000e+00 0.000e+00 nan  False   False
-         width 1.0000e-01            TeV 0.000e+00 0.000e+00 nan   True   False
-1.1442739329466718e-12 1 / (cm2 s)
 </pre></div>
 </div>
 <p>As a next step we can also register the custom model in the
@@ -1755,9 +1514,6 @@ analysis. Note that this is still a <a class="reference internal" href="../../ap
 <span class="nb">print</span><span class="p">(</span><span class="n">spatial_model</span><span class="o">.</span><span class="n">evaluation_radius</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>None
-</pre></div>
-</div>
 <p>To visualise it, we evaluate it on a 3D geom.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">energy_axis</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_energy_bounds</span><span class="p">(</span>
     <span class="n">energy_min</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span><span class="p">,</span> <span class="n">energy_max</span><span class="o">=</span><span class="mf">10.0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span><span class="p">,</span> <span class="n">nbin</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;energy_true&quot;</span>
@@ -1769,7 +1525,7 @@ analysis. Note that this is still a <a class="reference internal" href="../../ap
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_models_009.png" srcset="../../_images/sphx_glr_models_009.png" alt="Energy_true 100 GeV - 464 GeV, Energy_true 464 GeV - 2.15 TeV, Energy_true 2.15 TeV - 10.00 TeV" class = "sphx-glr-single-img"/><p>For computational purposes, it is useful to specify a
+<p>For computational purposes, it is useful to specify a
 <code class="docutils literal notranslate"><span class="pre">evaluation_radius</span></code> for <code class="xref py py-obj docutils literal notranslate"><span class="pre">SpatialModels</span></code> - this gives a size on which
 to compute the model. Though optional, it is highly recommended for
 Custom Spatial Models. This can be done, for ex, by defining the

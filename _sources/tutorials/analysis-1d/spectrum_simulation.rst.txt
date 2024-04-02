@@ -63,10 +63,9 @@ We will use the following classes and functions:
 -  `~gammapy.irf.load_irf_dict_from_file`
 -  `~gammapy.modeling.models.PowerLawSpectralModel`
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-58
+.. GENERATED FROM PYTHON SOURCE LINES 48-57
 
 .. code-block:: Python
-
 
 
     import numpy as np
@@ -84,13 +83,13 @@ We will use the following classes and functions:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-62
+.. GENERATED FROM PYTHON SOURCE LINES 58-61
 
 Setup
 -----
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-71
+.. GENERATED FROM PYTHON SOURCE LINES 61-70
 
 .. code-block:: Python
 
@@ -110,12 +109,12 @@ Setup
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-74
+.. GENERATED FROM PYTHON SOURCE LINES 71-73
 
 Check setup
 -----------
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-79
+.. GENERATED FROM PYTHON SOURCE LINES 73-78
 
 .. code-block:: Python
 
@@ -143,7 +142,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
+            version                : 1.2.dev2111+g5675db08b.d20240402 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -170,13 +169,13 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-90
+.. GENERATED FROM PYTHON SOURCE LINES 79-89
 
 Simulation of a single spectrum
 -------------------------------
@@ -189,7 +188,7 @@ get the predicted number of counts. This is Poisson fluctuated using
 the `fake()` to get the simulated counts for each observation.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-127
+.. GENERATED FROM PYTHON SOURCE LINES 89-126
 
 .. code-block:: Python
 
@@ -249,12 +248,12 @@ the `fake()` to get the simulated counts for each observation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-130
+.. GENERATED FROM PYTHON SOURCE LINES 127-129
 
 Load the IRFs
 In this simulation, we use the CTA-1DC IRFs shipped with Gammapy.
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-143
+.. GENERATED FROM PYTHON SOURCE LINES 129-142
 
 .. code-block:: Python
 
@@ -273,34 +272,36 @@ In this simulation, we use the CTA-1DC IRFs shipped with Gammapy.
 
 
 
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-      warnings.warn(msg, UnitsWarning)
-    Observation
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/spectrum_simulation.py", line 129, in <module>
+        irfs = load_irf_dict_from_file(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/irf/io.py", line 197, in load_irf_dict_from_file
+        with fits.open(filename) as hdulist:
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
+        return HDUList.fromfile(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
+        return cls._readfrom(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
+        fileobj = _File(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
+        self._open_filename(fileobj, mode, overwrite)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
+        self._file = open(self.name, IO_FITS_MODES[mode])
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits'
 
-            obs id            : 0 
-            tstart            : 51544.00
-            tstop             : 51544.04
-            duration          : 3600.00 s
-            pointing (icrs)   : 266.4 deg, -28.9 deg
-
-            deadtime fraction : 0.0%
 
 
 
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 144-146
+.. GENERATED FROM PYTHON SOURCE LINES 143-145
 
 Simulate a spectra
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-163
+.. GENERATED FROM PYTHON SOURCE LINES 145-162
 
 .. code-block:: Python
 
@@ -322,62 +323,12 @@ Simulate a spectra
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    SpectrumDataset
-    ---------------
-
-      Name                            : obs-0 
-
-      Total counts                    : 298 
-      Total background counts         : 22.29
-      Total excess counts             : 275.71
-
-      Predicted counts                : 303.66
-      Predicted background counts     : 22.29
-      Predicted excess counts         : 281.37
-
-      Exposure min                    : 2.53e+08 m2 s
-      Exposure max                    : 1.77e+10 m2 s
-
-      Number of total bins            : 9 
-      Number of fit bins              : 9 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : -1811.58
-
-      Number of models                : 1 
-      Number of parameters            : 3
-      Number of free parameters       : 2
-
-      Component 0: SkyModel
-  
-        Name                      : source
-        Datasets names            : None
-        Spectral model type       : PowerLawSpectralModel
-        Spatial  model type       : 
-        Temporal model type       : 
-        Parameters:
-          index                         :      3.000   +/-    0.00             
-          amplitude                     :   2.50e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-          reference             (frozen):      1.000       TeV         
-  
-  
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 164-166
+.. GENERATED FROM PYTHON SOURCE LINES 163-165
 
 You can see that background counts are now simulated
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 169-178
+.. GENERATED FROM PYTHON SOURCE LINES 168-177
 
 On-Off analysis
 ~~~~~~~~~~~~~~~
@@ -389,7 +340,7 @@ section in the :doc:`/tutorials/analysis-1d/spectral_analysis_rad_max` tutorial,
 dealing with simulations based on observations of real off counts.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-186
+.. GENERATED FROM PYTHON SOURCE LINES 177-185
 
 .. code-block:: Python
 
@@ -402,66 +353,13 @@ dealing with simulations based on observations of real off counts.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    SpectrumDatasetOnOff
-    --------------------
-
-      Name                            : d0CE1jt1 
-
-      Total counts                    : 310 
-      Total background counts         : 22.20
-      Total excess counts             : 287.80
-
-      Predicted counts                : 303.69
-      Predicted background counts     : 22.32
-      Predicted excess counts         : 281.37
-
-      Exposure min                    : 2.53e+08 m2 s
-      Exposure max                    : 1.77e+10 m2 s
-
-      Number of total bins            : 9 
-      Number of fit bins              : 9 
-
-      Fit statistic type              : wstat
-      Fit statistic value (-2 log(L)) : 13.34
-
-      Number of models                : 1 
-      Number of parameters            : 3
-      Number of free parameters       : 2
-
-      Component 0: SkyModel
-  
-        Name                      : source
-        Datasets names            : None
-        Spectral model type       : PowerLawSpectralModel
-        Spatial  model type       : 
-        Temporal model type       : 
-        Parameters:
-          index                         :      3.000   +/-    0.00             
-          amplitude                     :   2.50e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-          reference             (frozen):      1.000       TeV         
-  
-        Total counts_off                : 111 
-      Acceptance                      : 9 
-      Acceptance off                  : 45 
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 187-190
+.. GENERATED FROM PYTHON SOURCE LINES 186-189
 
 You can see that off counts are now simulated as well. We now simulate
 several spectra using the same set of observation conditions.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-206
+.. GENERATED FROM PYTHON SOURCE LINES 191-205
 
 .. code-block:: Python
 
@@ -480,38 +378,13 @@ several spectra using the same set of observation conditions.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-     name  counts excess      sqrt_ts           background           npred       ...      stat_sum     counts_off acceptance   acceptance_off         alpha       
-                                                                                 ...                                                                              
-    ------ ------ ------ ------------------ ------------------ ----------------- ... ----------------- ---------- ---------- ----------------- -------------------
-     obs-0    317  298.6  27.08240194504323 18.400000000000002 68.16666666666667 ...  738.724590842961         92        9.0              45.0                 0.2
-     obs-1    275  253.0 23.767853654872845               22.0 64.16666666666669 ...  575.779512784738        110        9.0              45.0                 0.2
-     obs-2    293  272.4 25.171105554046544               20.6              66.0 ... 645.4993824075302        103        9.0              45.0                 0.2
-     obs-3    280  257.6 23.982951737405354               22.4 65.33333333333334 ...  585.924154698587        112        9.0 45.00000000000001 0.19999999999999998
-       ...    ...    ...                ...                ...               ... ...               ...        ...        ...               ...                 ...
-    obs-95    305  280.6 25.030731260493152 24.400000000000006 71.16666666666667 ... 643.2846879404796        122        9.0 44.99999999999999 0.20000000000000004
-    obs-96    301  277.4  24.96984596942142               23.6 69.83333333333334 ... 626.7396842428624        118        9.0              45.0                 0.2
-    obs-97    290  271.2 25.417982194454844               18.8 64.00000000000001 ... 650.9762484493857         94        9.0              45.0                 0.2
-    obs-98    301  280.6 25.687832964675007 20.400000000000002 67.16666666666667 ... 664.5620099404954        102        9.0              45.0                 0.2
-    obs-99    323  302.2  26.85707842376871               20.8 71.16666666666669 ... 733.1576598768019        104        9.0              45.0                 0.2
-    Length = 100 rows
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 207-210
+.. GENERATED FROM PYTHON SOURCE LINES 206-209
 
 Before moving on to the fit let’s have a look at the simulated
 observations.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 210-221
+.. GENERATED FROM PYTHON SOURCE LINES 209-220
 
 .. code-block:: Python
 
@@ -527,23 +400,12 @@ observations.
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectrum_simulation_001.png
-   :alt: spectrum simulation
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectrum_simulation_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 222-224
+.. GENERATED FROM PYTHON SOURCE LINES 221-223
 
 Now, we fit each simulated spectrum individually
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-241
+.. GENERATED FROM PYTHON SOURCE LINES 225-240
 
 .. code-block:: Python
 
@@ -563,19 +425,13 @@ Now, we fit each simulated spectrum individually
 
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 242-245
+.. GENERATED FROM PYTHON SOURCE LINES 241-244
 
 We take a look at the distribution of the fitted indices. This matches
 very well with the spectrum that we initially injected.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 245-255
+.. GENERATED FROM PYTHON SOURCE LINES 244-254
 
 .. code-block:: Python
 
@@ -590,24 +446,7 @@ very well with the spectrum that we initially injected.
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-1d/images/sphx_glr_spectrum_simulation_002.png
-   :alt: spectrum simulation
-   :srcset: /tutorials/analysis-1d/images/sphx_glr_spectrum_simulation_002.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    index: 3.0036925550401095 += 0.08081469527291649
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 256-266
+.. GENERATED FROM PYTHON SOURCE LINES 255-265
 
 Exercises
 ---------
@@ -619,11 +458,6 @@ Exercises
 -  Simulate spectra with the spectral model we just defined. How much
    observation duration do you need to get back the injected parameters?
 
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 15.878 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-1d_spectrum_simulation.py:

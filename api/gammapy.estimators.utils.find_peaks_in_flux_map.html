@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -62,11 +62,11 @@
     <link rel="icon" href="../_static/gammapy_logo.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="get_rebinned_axis" href="gammapy.estimators.utils.get_rebinned_axis.html" />
-    <link rel="prev" title="compute_lightcurve_doublingtime" href="gammapy.estimators.utils.compute_lightcurve_doublingtime.html" />
+    <link rel="next" title="resample_energy_edges" href="gammapy.estimators.utils.resample_energy_edges.html" />
+    <link rel="prev" title="find_peaks" href="gammapy.estimators.utils.find_peaks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -674,12 +674,12 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.ESTIMATOR_REGISTRY.html">ESTIMATOR_REGISTRY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.estimate_exposure_reco_energy.html">estimate_exposure_reco_energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.find_peaks.html">find_peaks</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">find_peaks_in_flux_map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.resample_energy_edges.html">resample_energy_edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.get_rebinned_axis.html">get_rebinned_axis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_fvar.html">compute_lightcurve_fvar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_fpp.html">compute_lightcurve_fpp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_doublingtime.html">compute_lightcurve_doublingtime</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">find_peaks_in_flux_map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.get_rebinned_axis.html">get_rebinned_axis</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api-reference/analysis.html">analysis - High level interface</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -916,11 +916,11 @@ document.write(`
 <dt class="sig sig-object py" id="gammapy.estimators.utils.find_peaks_in_flux_map">
 <span class="sig-prename descclassname"><span class="pre">gammapy.estimators.utils.</span></span><span class="sig-name descname"><span class="pre">find_peaks_in_flux_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gammapy/estimators/utils.html#find_peaks_in_flux_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gammapy.estimators.utils.find_peaks_in_flux_map" title="Link to this definition">#</a></dt>
 <dd><p>Find local test statistic peaks for a given Map.</p>
-<p>Utilises the find_peaks function to find various parameters from FluxMaps.</p>
+<p>Utilises the <a class="reference internal" href="gammapy.estimators.utils.find_peaks.html#gammapy.estimators.utils.find_peaks" title="gammapy.estimators.utils.find_peaks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_peaks</span></code></a> function to find various parameters from FluxMaps.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>maps</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxMaps</span></code></span></dt><dd><p>Input flux map object.</p>
+<dt><strong>maps</strong><span class="classifier"><a class="reference internal" href="gammapy.estimators.FluxMaps.html#gammapy.estimators.FluxMaps" title="gammapy.estimators.FluxMaps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluxMaps</span></code></a></span></dt><dd><p>Input flux map object.</p>
 </dd>
 <dt><strong>threshold</strong><span class="classifier">float or array-like</span></dt><dd><p>The test statistic data value or pixel-wise test statistic data values to be used for the
 detection threshold.  A 2D <code class="docutils literal notranslate"><span class="pre">threshold</span></code> must have the same.
@@ -938,6 +938,29 @@ as pixels. Default is 1.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gammapy.datasets</span> <span class="kn">import</span> <span class="n">MapDataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gammapy.estimators</span> <span class="kn">import</span> <span class="n">ExcessMapEstimator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gammapy.estimators.utils</span> <span class="kn">import</span> <span class="n">find_peaks_in_flux_map</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">MapDataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/cta-1dc-gc/cta-1dc-gc.fits.gz&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">ExcessMapEstimator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">correlation_radius</span><span class="o">=</span><span class="s2">&quot;0.1 deg&quot;</span><span class="p">,</span> <span class="n">energy_edges</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">TeV</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maps</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Find the peaks which are above 5 sigma</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sources</span> <span class="o">=</span> <span class="n">find_peaks_in_flux_map</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_distance</span><span class="o">=</span><span class="mf">0.1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sources</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+<span class="go"> x   y      ra       dec    ...   norm  norm_err     flux      flux_err</span>
+<span class="go">           deg       deg    ...                  1 / (s cm2) 1 / (s cm2)</span>
+<span class="go">--- --- --------- --------- ... ------- -------- ----------- -----------</span>
+<span class="go">158 135 266.05019 -28.70181 ... 0.28551  0.06450   2.827e-12   6.385e-13</span>
+<span class="go"> 92 133 267.07022 -27.31834 ... 0.37058  0.08342   3.669e-12   8.259e-13</span>
+<span class="go">176 134 265.80492 -29.09805 ... 0.30561  0.06549   3.025e-12   6.484e-13</span>
+<span class="go">282 150 263.78083 -31.12704 ... 0.55027  0.12611   5.448e-12   1.249e-12</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

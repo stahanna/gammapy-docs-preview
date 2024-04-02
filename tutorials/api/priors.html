@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -67,7 +67,7 @@
     <link rel="prev" title="Observational clustering" href="observation_clustering.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -673,7 +673,7 @@ amplitude, this can be avoided.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -700,7 +700,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -733,6 +733,28 @@ the model predictions.</p>
 <span class="n">dataset1</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">dataset1</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
 <span class="n">dataset1</span><span class="o">.</span><span class="n">counts</span> <span class="o">=</span> <span class="n">dataset1</span><span class="o">.</span><span class="n">npred</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/priors.py&quot;</span>, line <span class="m">108</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">SpectrumDatasetOnOff</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/datasets/spectrum.py&quot;</span>, line <span class="m">328</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/datasets/io.py&quot;</span>, line <span class="m">450</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_pha</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="n">checksum</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">checksum</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/datasets/io.py&quot;</span>, line <span class="m">356</span>, in <span class="n">read_pha</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">checksum</span><span class="o">=</span><span class="n">checksum</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/joint-crab/spectra/hess/pha_obs23523.fits&#39;</span>
 </pre></div>
 </div>
 </section>
@@ -784,7 +806,7 @@ favoured in the fit. If the value of the index deviates from the mean of
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_priors_001.png" srcset="../../_images/sphx_glr_priors_001.png" alt="priors" class = "sphx-glr-single-img"/><section id="fitting-a-dataset-with-and-without-the-prior">
+<section id="fitting-a-dataset-with-and-without-the-prior">
 <h3>Fitting a Dataset with and without the Prior<a class="headerlink" href="#fitting-a-dataset-with-and-without-the-prior" title="Link to this heading">#</a></h3>
 <p>Now, we copy the dataset consisting of the power-law source and assign
 the model with the Gaussian prior set on its index to it. Both of the
@@ -872,7 +894,7 @@ the Likelihood profiles and corresponding minima will change.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_priors_002.png" srcset="../../_images/sphx_glr_priors_002.png" alt="priors" class = "sphx-glr-single-img"/><p>This example shows a critical note on using priors: we were able to
+<p>This example shows a critical note on using priors: we were able to
 manipulate the best-fit index. This can have multiple advantages if one
 wants to include additional information. But it should always be used
 carefully to not falsify or bias any results!</p>
@@ -931,7 +953,7 @@ amplitude value is below zero.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_priors_003.png" srcset="../../_images/sphx_glr_priors_003.png" alt="priors" class = "sphx-glr-single-img"/><section id="fitting-multiple-datasets-with-and-without-the-prior">
+<section id="fitting-multiple-datasets-with-and-without-the-prior">
 <h3>Fitting Multiple Datasets with and without the Prior<a class="headerlink" href="#fitting-multiple-datasets-with-and-without-the-prior" title="Link to this heading">#</a></h3>
 <p>To showcase how the uniform prior affects the fit results, <span class="math notranslate nohighlight">\(100\)</span>
 datasets are created and fitted without and with the prior</p>
@@ -978,7 +1000,7 @@ datasets are created and fitted without and with the prior</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_priors_004.png" srcset="../../_images/sphx_glr_priors_004.png" alt="priors" class = "sphx-glr-single-img"/><p>The distribution of the best-fit amplitudes shows how less best-fit
+<p>The distribution of the best-fit amplitudes shows how less best-fit
 amplitudes have negative values. This also has an effect on the
 distribution of the best-fit indices. How exactly the distribution
 changes depends on the weight assigned to the uniform prior. The
@@ -1053,12 +1075,6 @@ The only parameter is <code class="docutils literal notranslate"><span class="pr
 <span class="n">model_read</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">prior</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;spectral&#39;: {&#39;type&#39;: &#39;PowerLawSpectralModel&#39;, &#39;parameters&#39;: [{&#39;name&#39;: &#39;index&#39;, &#39;value&#39;: 2.0, &#39;prior&#39;: {&#39;type&#39;: &#39;MyCustomPrior&#39;, &#39;parameters&#39;: [{&#39;name&#39;: &#39;sigma&#39;, &#39;value&#39;: 0.5, &#39;unit&#39;: &#39;&#39;}], &#39;weight&#39;: 1}}, {&#39;name&#39;: &#39;amplitude&#39;, &#39;value&#39;: 1e-12, &#39;unit&#39;: &#39;cm-2 s-1 TeV-1&#39;}, {&#39;name&#39;: &#39;reference&#39;, &#39;value&#39;: 1.0, &#39;unit&#39;: &#39;TeV&#39;}]}}
-
-[&lt;__main__.MyCustomPrior object at 0x7ff1bbbe6670&gt;, None, None]
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 35.508 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-api-priors-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/api/priors.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo4.svg" width="150px" /></a>

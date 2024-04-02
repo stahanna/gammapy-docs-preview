@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Maker" href="gammapy.makers.Maker.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -674,12 +674,12 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.ESTIMATOR_REGISTRY.html">ESTIMATOR_REGISTRY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.estimate_exposure_reco_energy.html">estimate_exposure_reco_energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.find_peaks.html">find_peaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.find_peaks_in_flux_map.html">find_peaks_in_flux_map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.resample_energy_edges.html">resample_energy_edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.get_rebinned_axis.html">get_rebinned_axis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_fvar.html">compute_lightcurve_fvar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_fpp.html">compute_lightcurve_fpp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_doublingtime.html">compute_lightcurve_doublingtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.find_peaks_in_flux_map.html">find_peaks_in_flux_map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.get_rebinned_axis.html">get_rebinned_axis</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api-reference/analysis.html">analysis - High level interface</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -944,25 +944,25 @@ Default is True.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gammapy.makers</span> <span class="kn">import</span> <span class="n">MapDatasetMaker</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="c1">#load an observation</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load an observation</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/hess-dl3-dr1&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">obs</span> <span class="o">=</span> <span class="n">data_store</span><span class="o">.</span><span class="n">obs</span><span class="p">(</span><span class="mi">23523</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#prepare the geom</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Prepare the geometry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">energy_axis</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_energy_bounds</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;TeV&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">energy_axis_true</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_energy_bounds</span><span class="p">(</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;TeV&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;energy_true&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geom</span> <span class="o">=</span> <span class="n">WcsGeom</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-<span class="go">        skydir=(83.633, 22.014),</span>
-<span class="go">        binsz=0.02,</span>
-<span class="go">        width=(2, 2),</span>
-<span class="go">        frame=&quot;icrs&quot;,</span>
-<span class="go">        proj=&quot;CAR&quot;,</span>
-<span class="go">        axes=[energy_axis],</span>
-<span class="go">    )</span>
+<span class="gp">... </span>       <span class="n">skydir</span><span class="o">=</span><span class="p">(</span><span class="mf">83.633</span><span class="p">,</span> <span class="mf">22.014</span><span class="p">),</span>
+<span class="gp">... </span>       <span class="n">binsz</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="n">width</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<span class="gp">... </span>       <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="n">proj</span><span class="o">=</span><span class="s2">&quot;CAR&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="n">energy_axis</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">#Run the maker</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Run the maker</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">empty</span> <span class="o">=</span> <span class="n">MapDataset</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="n">energy_axis_true</span><span class="o">=</span><span class="n">energy_axis_true</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;empty&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">maker</span> <span class="o">=</span> <span class="n">MapDatasetMaker</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">maker</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span> <span class="n">obs</span><span class="p">)</span>

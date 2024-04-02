@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Sine temporal model" href="plot_sine_temporal.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -624,7 +624,20 @@ to download the full example code or to run this example in your browser via Bin
 <span class="n">phase_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_range</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../../_images/sphx_glr_plot_template_phase_temporal_001.png" srcset="../../../_images/sphx_glr_plot_template_phase_temporal_001.png" alt="plot template phase temporal" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Time [iso]&#39;, ylabel=&#39;Norm / A.U.&#39;&gt;
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/models/temporal/plot_template_phase_temporal.py&quot;</span>, line <span class="m">24</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">phase_model</span> <span class="o">=</span> <span class="n">TemplatePhaseCurveTemporalModel</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">t_ref</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">f0</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/modeling/models/temporal.py&quot;</span>, line <span class="m">1013</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/table/connect.py&quot;</span>, line <span class="m">62</span>, in <span class="n">__call__</span>
+<span class="w">    </span><span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/registry/core.py&quot;</span>, line <span class="m">203</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/miniforge3/envs/gammapy-dev/lib/python3.9/contextlib.py&quot;</span>, line <span class="m">119</span>, in <span class="n">__enter__</span>
+<span class="w">    </span><span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/utils/data.py&quot;</span>, line <span class="m">353</span>, in <span class="n">get_readable_fileobj</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;$GAMMAPY_DATA/tests/phasecurve_LSI_DC.fits&#39;</span>
 </pre></div>
 </div>
 <section id="yaml-representation">
@@ -638,45 +651,6 @@ to download the full example code or to run this example in your browser via Bin
 <span class="n">models</span> <span class="o">=</span> <span class="n">Models</span><span class="p">([</span><span class="n">model</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>components:
--   name: phase_curve_model
-    type: SkyModel
-    spectral:
-        type: PowerLawSpectralModel
-        parameters:
-        -   name: index
-            value: 2.0
-        -   name: amplitude
-            value: 1.0e-12
-            unit: TeV-1 s-1 cm-2
-        -   name: reference
-            value: 1.0
-            unit: TeV
-    temporal:
-        type: TemplatePhaseCurveTemporalModel
-        parameters:
-        -   name: t_ref
-            value: 43366.275
-            unit: d
-        -   name: phi_ref
-            value: 0.0
-        -   name: f0
-            value: 0.03745318352059925
-            unit: d-1
-        -   name: f1
-            value: 0.0
-            unit: s-2
-        -   name: f2
-            value: 0.0
-            unit: s-3
-        scale: utc
-        filename: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/tests/phasecurve_LSI_DC.fits
-metadata:
-    creator: Gammapy 1.2.dev1791+g66166600d.d20240131
-    date: &#39;2024-01-31T13:58:09.618827&#39;
-    origin: null
 </pre></div>
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-user-guide-model-gallery-temporal-plot-template-phase-temporal-py">

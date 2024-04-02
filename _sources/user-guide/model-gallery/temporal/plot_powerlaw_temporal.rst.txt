@@ -27,15 +27,15 @@ This model parametrises a power-law time model.
 
 .. math:: F(t) = \left( \frac{t - t_{\rm{ref}}}{t_0} \right)^\alpha
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-18
+.. GENERATED FROM PYTHON SOURCE LINES 14-17
 
 Example plot
 ------------
 Here is an example plot of the model:
 
-.. GENERATED FROM PYTHON SOURCE LINES 18-35
+.. GENERATED FROM PYTHON SOURCE LINES 17-34
 
-.. code-block:: python3
+.. code-block:: Python
 
 
     from astropy import units as u
@@ -66,15 +66,15 @@ Here is an example plot of the model:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-39
+.. GENERATED FROM PYTHON SOURCE LINES 35-38
 
 YAML representation
 -------------------
 Here is an example YAML file using the model:
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-48
+.. GENERATED FROM PYTHON SOURCE LINES 38-47
 
-.. code-block:: python3
+.. code-block:: Python
 
 
     model = SkyModel(
@@ -103,7 +103,7 @@ Here is an example YAML file using the model:
                 value: 2.0
             -   name: amplitude
                 value: 1.0e-12
-                unit: TeV-1 s-1 cm-2
+                unit: cm-2 s-1 TeV-1
             -   name: reference
                 value: 1.0
                 unit: TeV
@@ -113,15 +113,15 @@ Here is an example YAML file using the model:
             -   name: alpha
                 value: -2.0
             -   name: t_ref
-                value: 60340.46876901979
+                value: 60402.502780316
                 unit: d
             -   name: t0
                 value: 1.0
                 unit: d
             scale: utc
     metadata:
-        creator: Gammapy 1.2.dev1791+g66166600d.d20240131
-        date: '2024-01-31T13:39:01.947650'
+        creator: Gammapy 1.2.dev2111+g5675db08b.d20240402
+        date: '2024-04-02T14:28:00.559671'
         origin: null
 
 
@@ -135,7 +135,6 @@ Here is an example YAML file using the model:
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
-
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
@@ -143,15 +142,13 @@ Here is an example YAML file using the model:
         :alt: Launch binder
         :width: 150 px
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_powerlaw_temporal.ipynb <plot_powerlaw_temporal.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_powerlaw_temporal.py <plot_powerlaw_temporal.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_powerlaw_temporal.ipynb <plot_powerlaw_temporal.ipynb>`
 
 
 .. only:: html

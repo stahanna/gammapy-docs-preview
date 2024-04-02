@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Installation" href="install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -540,10 +540,26 @@ control over additional packages that you may use in your analysis. This will al
 reproducibility within the user community.</p>
 <section id="conda-environments">
 <h2>Conda Environments<a class="headerlink" href="#conda-environments" title="Link to this heading">#</a></h2>
-<p>For convenience we also provide, for each stable release of Gammapy,
-a YAML file that allows you to easily create a specific conda execution environment.
-See  <a class="reference internal" href="quickstart.html#quickstart-setup"><span class="std std-ref">start installation quick instructions</span></a> section. To create a new custom
-environment for your analysis with conda you can use:</p>
+<p>For convenience we provide, for each stable release of Gammapy,
+a pre-defined conda environment file, so you can
+get additional useful packages together with Gammapy in a virtual isolated
+environment. First install <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>
+and then just execute the following commands in the terminal:</p>
+<div class="code bash highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gammapy</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">gammapy</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span><span class="o">-</span><span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
+<span class="err">$</span> <span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">gammapy</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span><span class="o">-</span><span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Windows, you have to open up the conda environment file and delete the
+lines with <code class="docutils literal notranslate"><span class="pre">sherpa</span></code> and <code class="docutils literal notranslate"><span class="pre">healpy</span></code>. Those are optional dependencies that
+currently aren’t available on Windows.</p>
+</div>
+<p>Once the environment has been created you can activate it using:</p>
+<div class="code bash highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">gammapy</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>
+</pre></div>
+</div>
+<p>To create a new custom environment for your analysis with conda you can use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>my-gammapy-analysis
 </pre></div>
 </div>

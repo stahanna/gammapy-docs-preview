@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Fitting" href="fitting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -629,14 +629,22 @@ IRF classes internally supported, see
 <span class="nb">print</span><span class="p">(</span><span class="n">aeff</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EffectiveAreaTable2D
---------------------
-
-  axes  : [&#39;energy_true&#39;, &#39;offset&#39;]
-  shape : (42, 6)
-  ndim  : 2
-  unit  : m2
-  dtype : &gt;f4
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/irfs.py&quot;</span>, line <span class="m">43</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">aeff</span> <span class="o">=</span> <span class="n">EffectiveAreaTable2D</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">irf_filename</span><span class="p">,</span> <span class="n">hdu</span><span class="o">=</span><span class="s2">&quot;EFFECTIVE AREA&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/irf/core.py&quot;</span>, line <span class="m">445</span>, in <span class="n">read</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">make_path</span><span class="p">(</span><span class="n">filename</span><span class="p">)),</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits&#39;</span>
 </pre></div>
 </div>
 <p>We can see that the Effective Area Table is defined in terms of
@@ -655,119 +663,12 @@ IRF classes internally supported, see
 <span class="n">aeff</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_irfs_001.png" srcset="../../_images/sphx_glr_irfs_001.png" alt="irfs" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapAxis
-
-        name       : offset
-        unit       : &#39;deg&#39;
-        nbins      : 6
-        node type  : edges
-        edges min  : 0.0e+00 deg
-        edges max  : 6.0e+00 deg
-        interp     : lin
-
-[[3.9391360e+02 2.6772235e+02 1.1955810e+01 0.0000000e+00 0.0000000e+00
-  0.0000000e+00]
- [2.1976572e+03 1.3710784e+03 6.6018166e+01 0.0000000e+00 0.0000000e+00
-  0.0000000e+00]
- [7.2827988e+03 4.4933657e+03 1.9277492e+02 0.0000000e+00 0.0000000e+00
-  0.0000000e+00]
- [1.6318811e+04 9.2217412e+03 3.9053906e+02 0.0000000e+00 0.0000000e+00
-  0.0000000e+00]
- [2.7097381e+04 1.5188338e+04 7.1269263e+02 0.0000000e+00 0.0000000e+00
-  0.0000000e+00]
- [3.5835918e+04 2.0376213e+04 1.4120719e+03 6.4971704e+00 0.0000000e+00
-  0.0000000e+00]
- [4.8613613e+04 2.7351418e+04 4.6046689e+03 8.7537086e+01 0.0000000e+00
-  0.0000000e+00]
- [6.8954039e+04 4.6218742e+04 1.8455480e+04 7.0139252e+02 0.0000000e+00
-  0.0000000e+00]
- [1.0631757e+05 8.4360750e+04 5.2121164e+04 3.4875723e+03 0.0000000e+00
-  0.0000000e+00]
- [1.4225631e+05 1.2825456e+05 9.6194453e+04 1.0149044e+04 0.0000000e+00
-  0.0000000e+00]
- [1.8893600e+05 1.7755386e+05 1.4428634e+05 2.2362506e+04 6.2068682e+00
-  0.0000000e+00]
- [2.3058422e+05 2.1899070e+05 1.8349780e+05 3.8943121e+04 1.1567629e+01
-  0.0000000e+00]
- [2.8908866e+05 2.7990194e+05 2.3380311e+05 6.3812160e+04 1.5692809e+02
-  0.0000000e+00]
- [3.7190994e+05 3.4834488e+05 2.9489822e+05 9.9163195e+04 8.5162628e+02
-  5.3302565e+00]
- [4.1554106e+05 3.9529719e+05 3.3659253e+05 1.4420073e+05 3.4303606e+03
-  0.0000000e+00]
- [4.9977859e+05 4.9269494e+05 4.0322775e+05 1.9834338e+05 1.1456479e+04
-  0.0000000e+00]
- [5.9969731e+05 5.8570719e+05 4.8037638e+05 2.6652219e+05 2.7997221e+04
-  3.0902437e+01]
- [6.7681656e+05 6.6181862e+05 5.3499075e+05 3.2443672e+05 5.7385727e+04
-  1.8062607e+02]
- [8.1099306e+05 7.7395744e+05 6.1618850e+05 3.8555500e+05 1.0076540e+05
-  9.7876233e+02]
- [9.5867488e+05 8.9280475e+05 7.2040469e+05 4.5892966e+05 1.5842497e+05
-  4.7765957e+03]
- [1.2162670e+06 1.1264500e+06 9.0183519e+05 5.3590188e+05 2.2699878e+05
-  1.5607778e+04]
- [1.5719922e+06 1.4968236e+06 1.2062580e+06 6.4819444e+05 2.9215375e+05
-  5.0505949e+04]
- [2.0122385e+06 1.8475576e+06 1.5297030e+06 7.8799800e+05 3.7284447e+05
-  1.0520119e+05]
- [2.4420222e+06 2.3037632e+06 1.9053655e+06 9.5194769e+05 4.5951631e+05
-  1.8031431e+05]
- [2.7887840e+06 2.6253652e+06 2.2635108e+06 1.2041222e+06 5.3117988e+05
-  2.5779092e+05]
- [3.0016288e+06 2.9912648e+06 2.5768262e+06 1.5230376e+06 5.9205875e+05
-  3.4480056e+05]
- [3.3368855e+06 3.1926520e+06 2.8515948e+06 1.8699165e+06 6.9847406e+05
-  4.2104353e+05]
- [3.4212028e+06 3.4642048e+06 3.0395135e+06 2.1510240e+06 9.4647544e+05
-  5.1629219e+05]
- [3.6419578e+06 3.5427520e+06 3.3886270e+06 2.4904078e+06 1.1061971e+06
-  5.8834862e+05]
- [3.8369650e+06 3.7596682e+06 3.4080942e+06 2.6554088e+06 1.3962942e+06
-  6.9074812e+05]
- [3.6556248e+06 3.9023670e+06 3.7240965e+06 2.9912712e+06 1.7479085e+06
-  8.0375512e+05]
- [4.0462798e+06 4.1072542e+06 3.8377268e+06 3.0739282e+06 1.9910796e+06
-  9.9608912e+05]
- [4.7580410e+06 4.2058705e+06 3.5561760e+06 3.2560538e+06 2.3279955e+06
-  1.1768896e+06]
- [3.5545130e+06 4.4198250e+06 3.8441040e+06 3.3812120e+06 2.5538942e+06
-  1.6402822e+06]
- [4.7350380e+06 4.7123895e+06 4.2164425e+06 3.5192420e+06 2.7652512e+06
-  1.9816452e+06]
- [4.8769240e+06 4.7692170e+06 4.2880470e+06 3.5438860e+06 3.0800792e+06
-  2.2079930e+06]
- [4.5754970e+06 4.8475650e+06 4.2628525e+06 3.8222980e+06 3.0025508e+06
-  2.4225498e+06]
- [4.9606540e+06 4.5763635e+06 4.6471115e+06 3.7471700e+06 3.1438465e+06
-  2.7804888e+06]
- [3.6909290e+06 5.0354700e+06 4.0028272e+06 3.3364130e+06 3.3689322e+06
-  3.1486415e+06]
- [4.0064830e+06 5.0474750e+06 4.1556008e+06 3.8290458e+06 3.0894640e+06
-  2.9776920e+06]
- [4.2465055e+06 4.5345275e+06 4.1062535e+06 3.8885138e+06 3.2021345e+06
-  3.0907128e+06]
- [4.6105760e+06 5.3715810e+06 4.0482342e+06 3.6259962e+06 3.3739292e+06
-  2.9499210e+06]]
-[ 900269.83242471 3398360.62514628] m2
-</pre></div>
-</div>
 <p>Similarly, we can access other IRFs as well</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">psf</span> <span class="o">=</span> <span class="n">EnergyDependentMultiGaussPSF</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">irf_filename</span><span class="p">,</span> <span class="n">hdu</span><span class="o">=</span><span class="s2">&quot;Point Spread Function&quot;</span><span class="p">)</span>
 <span class="n">bkg</span> <span class="o">=</span> <span class="n">Background3D</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">irf_filename</span><span class="p">,</span> <span class="n">hdu</span><span class="o">=</span><span class="s2">&quot;BACKGROUND&quot;</span><span class="p">)</span>
 <span class="n">edisp</span> <span class="o">=</span> <span class="n">EnergyDispersion2D</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">irf_filename</span><span class="p">,</span> <span class="n">hdu</span><span class="o">=</span><span class="s2">&quot;ENERGY DISPERSION&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">bkg</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Background3D
-------------
-
-  axes  : [&#39;energy&#39;, &#39;fov_lon&#39;, &#39;fov_lat&#39;]
-  shape : (21, 36, 36)
-  ndim  : 3
-  unit  : 1 / (MeV s sr)
-  dtype : &gt;f4
 </pre></div>
 </div>
 <p>Note that the background is given in FoV coordiantes with <code class="xref py py-obj docutils literal notranslate"><span class="pre">fov_lon</span></code>
@@ -777,9 +678,6 @@ alignments are supported: alignment with the horizontal coordinate
 system (ALTAZ) and alignment with the equatorial coordinate system
 (RADEC).</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bkg</span><span class="o">.</span><span class="n">fov_alignment</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>FoVAlignment.RADEC
 </pre></div>
 </div>
 <p>To evaluate the IRFs, pass the values for each axis. To know the default
@@ -799,20 +697,6 @@ interpolation scheme for the data</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;bounds_error&#39;: False, &#39;fill_value&#39;: 0.0, &#39;values_scale&#39;: &#39;log&#39;}
-[[[1.27093776e-04 1.12423250e-04]
-  [1.12423250e-04 9.85188496e-05]]
-
- [[7.67759236e-07 9.01235137e-07]
-  [9.01235137e-07 1.05901956e-06]]
-
- [[5.74465974e-09 5.24685677e-09]
-  [5.24685677e-09 4.65357608e-09]]
-
- [[0.00000000e+00 0.00000000e+00]
-  [0.00000000e+00 0.00000000e+00]]] 1 / (MeV s sr)
-</pre></div>
-</div>
 <p>We can customise the interpolation scheme. Here, we adapt to fill
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code> instead of <code class="xref py py-obj docutils literal notranslate"><span class="pre">0</span></code> for extrapolated values</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">bkg</span><span class="o">.</span><span class="n">interp_kwargs</span><span class="p">[</span><span class="s2">&quot;fill_value&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
@@ -823,19 +707,6 @@ interpolation scheme for the data</p>
     <span class="n">fov_lon</span><span class="o">=</span><span class="n">fov_lon</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ev2</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[[1.27093776e-04 1.12423250e-04]
-  [1.12423250e-04 9.85188496e-05]]
-
- [[7.67759236e-07 9.01235137e-07]
-  [9.01235137e-07 1.05901956e-06]]
-
- [[5.74465974e-09 5.24685677e-09]
-  [5.24685677e-09 4.65357608e-09]]
-
- [[           nan            nan]
-  [           nan            nan]]] 1 / (MeV s sr)
 </pre></div>
 </div>
 <p>The interpolation scheme along each axis is taken from the <code class="xref py py-obj docutils literal notranslate"><span class="pre">MapAxis</span></code>
@@ -854,17 +725,6 @@ specification. eg</p>
 <span class="n">edisp</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">psf</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../../_images/sphx_glr_irfs_002.png" srcset="../../_images/sphx_glr_irfs_002.png" alt="irfs" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Interpolation scheme for energy axis is:  log and for the fov_lon axis is:  lin
-[189.80982039  54.28382603]
-EnergyDependentMultiGaussPSF
-----------------------------
-
-  axes      : [&#39;energy_true&#39;, &#39;offset&#39;]
-  shape     : (25, 6)
-  ndim      : 2
-  parameters: [&#39;sigma_1&#39;, &#39;sigma_2&#39;, &#39;sigma_3&#39;, &#39;scale&#39;, &#39;ampl_2&#39;, &#39;ampl_3&#39;]
 </pre></div>
 </div>
 <p>The PointSpreadFunction for the CTA DC1 is stored as a combination of 3
@@ -886,11 +746,6 @@ common base <code class="xref py py-obj docutils literal notranslate"><span clas
         <span class="n">rad</span><span class="o">=</span><span class="mf">0.05</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">energy_true</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span>
     <span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;energy_true&#39;, &#39;offset&#39;]
-[0.05075 0.08075] deg
-[0.66984341 0.35569283]
 </pre></div>
 </div>
 </section>
@@ -950,25 +805,8 @@ mentioned in the class definition.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Asymmetric effective area&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_irfs_003.png" srcset="../../_images/sphx_glr_irfs_003.png" alt="Asymmetric effective area" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EffectiveArea3D
----------------
-
-  axes  : [&#39;energy_true&#39;, &#39;fov_lon&#39;, &#39;fov_lat&#39;]
-  shape : (4, 3, 3)
-  ndim  : 3
-  unit  : m2
-  dtype : float64
-
-[ 1.12493874 10.80683246] m2
-
-Text(0.5, 1.0, &#39;Asymmetric effective area&#39;)
-</pre></div>
-</div>
 <p>Unless specified, it is assumed these IRFs are in the RADEC frame</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">aeff_3d</span><span class="o">.</span><span class="n">fov_alignment</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;FoVAlignment.RADEC: &#39;RADEC&#39;&gt;
 </pre></div>
 </div>
 </section>
@@ -993,16 +831,6 @@ Text(0.5, 1.0, &#39;Asymmetric effective area&#39;)
 <span class="nb">print</span><span class="p">(</span><span class="n">aeff_new</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EffectiveArea3D
----------------
-
-  axes  : [&#39;energy_true&#39;, &#39;fov_lon&#39;, &#39;fov_lat&#39;]
-  shape : (4, 3, 3)
-  ndim  : 3
-  unit  : m2
-  dtype : &gt;f8
-</pre></div>
-</div>
 </section>
 <section id="create-exposure-map">
 <h3>Create exposure map<a class="headerlink" href="#create-exposure-map" title="Link to this heading">#</a></h3>
@@ -1019,18 +847,6 @@ Text(0.5, 1.0, &#39;Asymmetric effective area&#39;)
 
 <span class="n">exposure_map</span><span class="o">.</span><span class="n">plot_grid</span><span class="p">(</span><span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<img src="../../_images/sphx_glr_irfs_004.png" srcset="../../_images/sphx_glr_irfs_004.png" alt="Energy_true 100 GeV - 215 GeV, Energy_true 215 GeV - 464 GeV, Energy_true 464 GeV - 1.00 TeV, Energy_true 1.00 TeV - 2.15 TeV, Energy_true 2.15 TeV - 4.64 TeV, Energy_true 4.64 TeV - 10.00 TeV" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsGeom
-
-        axes       : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy_true&#39;]
-        shape      : (4, 3, 6)
-        ndim       : 3
-        frame      : icrs
-        projection : CAR
-        center     : 2.0 deg, 1.0 deg
-        width      : 8.0 deg x 6.0 deg
-        wcs ref    : 2.0 deg, 1.0 deg
 </pre></div>
 </div>
 </section>
@@ -1117,25 +933,6 @@ easily generalised to higher dimensions.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">edisp_eval</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EnergyDispersion3D
-------------------
-
-  axes  : [&#39;energy_true&#39;, &#39;migra&#39;, &#39;fov_lon&#39;, &#39;fov_lat&#39;]
-  shape : (3, 2, 3, 3)
-  ndim  : 4
-  unit  :
-  dtype : float64
-
-[[[0.61489  0.620398]
-  [0.60075  0.597774]]
-
- [[0.617835 0.623397]
-  [0.603625 0.600661]]
-
- [[0.69735  0.70437 ]
-  [0.68125  0.67861 ]]]
-</pre></div>
-</div>
 <section id="id1">
 <h3>Serialisation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">IRF_DL3_HDU_SPECIFICATION</span><span class="p">[</span><span class="s2">&quot;edisp_3d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
@@ -1155,19 +952,7 @@ easily generalised to higher dimensions.</p>
 <span class="n">edisp_new</span>
 </pre></div>
 </div>
-<div class="output_subarea output_html rendered_html output_result">
-<pre>EnergyDispersion3D
-------------------
-
-  axes  : [&#x27;energy_true&#x27;, &#x27;migra&#x27;, &#x27;fov_lon&#x27;, &#x27;fov_lat&#x27;]
-  shape : (3, 2, 3, 3)
-  ndim  : 4
-  unit  :
-  dtype : &gt;f8
-</pre>
-</div>
-<br />
-<br /></section>
+</section>
 <section id="create-edisp-kernel-map">
 <h3>Create edisp kernel map<a class="headerlink" href="#create-edisp-kernel-map" title="Link to this heading">#</a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">migra</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_edges</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;migra&quot;</span><span class="p">)</span>
@@ -1182,10 +967,6 @@ easily generalised to higher dimensions.</p>
 
 <span class="c1">#</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">edispmap</span><span class="o">.</span><span class="n">edisp_map</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
-</pre></div>
-</div>
-<img src="../../_images/sphx_glr_irfs_005.png" srcset="../../_images/sphx_glr_irfs_005.png" alt="irfs" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[0.         0.         0.20097159 0.2009851  0.20099855 0.20072608
- 0.20009124 0.19932878 0.         0.        ]
 </pre></div>
 </div>
 </section>
@@ -1238,36 +1019,6 @@ directly generalised to the 3D case for use within Gammapy.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PSF_assym
----------
-
-  axes  : [&#39;energy_true&#39;, &#39;fov_lon&#39;, &#39;fov_lat&#39;, &#39;rad&#39;]
-  shape : (4, 3, 3, 2)
-  ndim  : 4
-  unit  :
-  dtype : float64
-
-
-&lt;Quantity [[[[0.18921591, 0.18921591],
-             [0.18921591, 0.18921591]],
-
-            [[0.18921591, 0.18921591],
-             [0.18921591, 0.18921591]],
-
-            [[0.18921591, 0.18921591],
-             [0.18921591, 0.18921591]]],
-
-
-           [[[0.23905561, 0.23905561],
-             [0.23905561, 0.23905561]],
-
-            [[0.23905561, 0.23905561],
-             [0.23905561, 0.23905561]],
-
-            [[0.23905561, 0.23905561],
-             [0.23905561, 0.23905561]]]]&gt;
-</pre></div>
-</div>
 <section id="id2">
 <h3>Serialisation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">IRF_DL3_HDU_SPECIFICATION</span><span class="p">[</span><span class="s2">&quot;psf_assym&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
@@ -1288,9 +1039,6 @@ directly generalised to the 3D case for use within Gammapy.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">psf_new</span> <span class="o">==</span> <span class="n">psf_assym</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
 </section>
 <section id="create-dl4-product-psfmap">
 <h3>Create DL4 product - <code class="xref py py-obj docutils literal notranslate"><span class="pre">PSFMap</span></code><a class="headerlink" href="#create-dl4-product-psfmap" title="Link to this heading">#</a></h3>
@@ -1304,7 +1052,7 @@ directly generalised to the 3D case for use within Gammapy.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_irfs_006.png" srcset="../../_images/sphx_glr_irfs_006.png" alt="Exposure, Containment radius at 1 TeV, Containment radius at center of map, PSF at center of map" class = "sphx-glr-single-img"/><p>Containers for asymmetric analytic PSFs are not supported at present.</p>
+<p>Containers for asymmetric analytic PSFs are not supported at present.</p>
 <p><strong>NOTE</strong>: Support for asymmetric IRFs is preliminary at the moment, and
 will evolve depending on feedback.</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-api-irfs-py">

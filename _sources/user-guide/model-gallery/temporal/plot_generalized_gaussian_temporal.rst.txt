@@ -30,15 +30,15 @@ This model parametrises a generalized Gaussian time model.
 
         F(t) = \exp \left( - 0.5 \cdot \left( \frac{|t - t_{\rm{ref}}|}{t_{\rm{decay}}} \right) ^ {1 / \eta} \right) \text{ for } t > t_{\rm{ref}}
 
-.. GENERATED FROM PYTHON SOURCE LINES 18-21
+.. GENERATED FROM PYTHON SOURCE LINES 17-20
 
 Example plot
 ------------
 Here is an example plot of the model:
 
-.. GENERATED FROM PYTHON SOURCE LINES 21-44
+.. GENERATED FROM PYTHON SOURCE LINES 20-43
 
-.. code-block:: python3
+.. code-block:: Python
 
 
     from astropy import units as u
@@ -75,15 +75,15 @@ Here is an example plot of the model:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-48
+.. GENERATED FROM PYTHON SOURCE LINES 44-47
 
 YAML representation
 -------------------
 Here is an example YAML file using the model:
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-57
+.. GENERATED FROM PYTHON SOURCE LINES 47-56
 
-.. code-block:: python3
+.. code-block:: Python
 
 
     model = SkyModel(
@@ -112,7 +112,7 @@ Here is an example YAML file using the model:
                 value: 2.0
             -   name: amplitude
                 value: 1.0e-12
-                unit: TeV-1 s-1 cm-2
+                unit: cm-2 s-1 TeV-1
             -   name: reference
                 value: 1.0
                 unit: TeV
@@ -132,8 +132,8 @@ Here is an example YAML file using the model:
                 value: 0.6666666666666666
             scale: utc
     metadata:
-        creator: Gammapy 1.2.dev1791+g66166600d.d20240131
-        date: '2024-01-31T13:39:01.096532'
+        creator: Gammapy 1.2.dev2111+g5675db08b.d20240402
+        date: '2024-04-02T14:27:59.716922'
         origin: null
 
 
@@ -147,7 +147,6 @@ Here is an example YAML file using the model:
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
-
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
@@ -155,15 +154,13 @@ Here is an example YAML file using the model:
         :alt: Launch binder
         :width: 150 px
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_generalized_gaussian_temporal.ipynb <plot_generalized_gaussian_temporal.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_generalized_gaussian_temporal.py <plot_generalized_gaussian_temporal.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: plot_generalized_gaussian_temporal.ipynb <plot_generalized_gaussian_temporal.ipynb>`
 
 
 .. only:: html

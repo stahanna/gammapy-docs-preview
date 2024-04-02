@@ -111,7 +111,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
+            version                : 1.2.dev2111+g5675db08b.d20240402 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -138,7 +138,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -204,7 +204,24 @@ Load the tables
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/data/hawc.py", line 92, in <module>
+        obs_table = ObservationTable.read(data_path + obs_filename)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/data/obs_table.py", line 32, in read
+        return super().read(make_path(filename), **kwargs)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/table/connect.py", line 62, in __call__
+        out = self.registry.read(cls, *args, **kwargs)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/registry/core.py", line 203, in read
+        fileobj = ctx.__enter__()
+      File "/home/hstapel/miniforge3/envs/gammapy-dev/lib/python3.9/contextlib.py", line 119, in __enter__
+        return next(self.gen)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/utils/data.py", line 353, in get_readable_fileobj
+        fileobj = io.FileIO(name_or_obj, "r")
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/hawc/crab_events_pass4/obs-index-table-NN-Crab.fits.gz'
 
 
 
@@ -224,30 +241,6 @@ From the tables, we can create a Datastore
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Data store:
-    HDU index table:
-    BASE_DIR: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hawc/crab_events_pass4
-    Rows: 6
-    OBS_ID: 103000133 -- 103000133
-    HDU_TYPE: ['aeff', 'bkg', 'edisp', 'events', 'gti', 'psf']
-    HDU_CLASS: ['edisp_kernel_map', 'events', 'gti', 'map', 'psf_map_reco']
-
-
-    Observation table:
-    Observatory name: 'N/A'
-    Number of observations: 1
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 108-109
 
 There is only one observation
@@ -258,12 +251,6 @@ There is only one observation
 
 
     obs = data_store.get_observations()[0]
-
-
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 113-114
@@ -280,17 +267,6 @@ Select and peek events
 
 
 
-
-
-.. image-sg:: /tutorials/data/images/sphx_glr_hawc_001.png
-   :alt: hawc
-   :srcset: /tutorials/data/images/sphx_glr_hawc_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 120-121
 
 Peek the energy dispersion
@@ -304,17 +280,6 @@ Peek the energy dispersion
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/data/images/sphx_glr_hawc_002.png
-   :alt: hawc
-   :srcset: /tutorials/data/images/sphx_glr_hawc_002.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 126-127
 
 Peek the psf
@@ -325,17 +290,6 @@ Peek the psf
 
     obs.psf.peek()
     plt.show()
-
-
-
-
-.. image-sg:: /tutorials/data/images/sphx_glr_hawc_003.png
-   :alt: Exposure, Containment radius at 1 TeV, Containment radius at center of map, PSF at center of map
-   :srcset: /tutorials/data/images/sphx_glr_hawc_003.png
-   :class: sphx-glr-single-img
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 131-132
@@ -351,17 +305,6 @@ Peek the background for one transit
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/data/images/sphx_glr_hawc_004.png
-   :alt: hawc
-   :srcset: /tutorials/data/images/sphx_glr_hawc_004.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 137-138
 
 Peek the effective exposure for one transit
@@ -373,17 +316,6 @@ Peek the effective exposure for one transit
     plt.figure()
     obs.aeff.reduce_over_axes().plot(add_cbar=True)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/data/images/sphx_glr_hawc_005.png
-   :alt: hawc
-   :srcset: /tutorials/data/images/sphx_glr_hawc_005.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -432,12 +364,6 @@ First we define the geometry and axes
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 182-183
 
 Define the makers we will use
@@ -449,12 +375,6 @@ Define the makers we will use
 
     maker = MapDatasetMaker(selection=["counts", "background", "exposure", "edisp", "psf"])
     safemask_maker = SafeMaskMaker(methods=["aeff-max"], aeff_percent=10)
-
-
-
-
-
-
 
 
 
@@ -485,12 +405,6 @@ derived in reconstructed energy.
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 209-214
 
 Now we have a dataset that has background and exposure quantities for
@@ -510,12 +424,6 @@ included this quantity as a map
     # Correct the quantities
     dataset.background.data *= transit_number
     dataset.exposure.data *= transit_number
-
-
-
-
-
-
 
 
 
@@ -539,17 +447,6 @@ We can use the .peek() method to quickly get a glimpse of the contents
 
 
 
-
-
-.. image-sg:: /tutorials/data/images/sphx_glr_hawc_006.png
-   :alt: Counts, Excess counts, Exposure, Background
-   :srcset: /tutorials/data/images/sphx_glr_hawc_006.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 237-238
 
 And make significance maps to check that the Crab is visible
@@ -570,17 +467,6 @@ And make significance maps to check that the Crab is visible
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/data/images/sphx_glr_hawc_007.png
-   :alt: Energy 1.00 TeV - 1.78 TeV, Energy 1.78 TeV - 3.16 TeV, Energy 3.16 TeV - 5.62 TeV, Energy 5.62 TeV - 10.00 TeV, Energy 10.00 TeV - 17.8 TeV, Energy 17.8 TeV - 31.6 TeV, Energy 31.6 TeV - 56.2 TeV, Energy 56.2 TeV - 100.0 TeV, Energy 100.0 TeV - 177 TeV, Energy 177 TeV - 316 TeV
-   :srcset: /tutorials/data/images/sphx_glr_hawc_007.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 250-251
 
 Combining all energies
@@ -596,17 +482,6 @@ Combining all energies
 
     excess_integrated["sqrt_ts"].plot(add_cbar=True)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/data/images/sphx_glr_hawc_008.png
-   :alt: hawc
-   :srcset: /tutorials/data/images/sphx_glr_hawc_008.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -629,11 +504,6 @@ Now you know how to access and work with HAWC data. All other
 tutorials and documentation concerning 3D analysis and MapDatasets
 can be used from this step.
 
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 16.280 seconds)
 
 
 .. _sphx_glr_download_tutorials_data_hawc.py:

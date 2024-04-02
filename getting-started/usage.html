@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Virtual Environments" href="environments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -536,7 +536,7 @@ document.write(`
   <section id="using-gammapy">
 <span id="id1"></span><h1>Using Gammapy<a class="headerlink" href="#using-gammapy" title="Link to this heading">#</a></h1>
 <p>To use Gammapy you need a basic knowledge of Python, Numpy, Astropy, as well as
-matplotlib for plotting. Many standard gamma-ray analyses can be done with few
+matplotlib for plotting. Many standard gamma-ray analyses can be done with a few
 lines of configuration and code, so you can get pretty far by copy and pasting
 and adapting the working examples from the Gammapy documentation. But
 eventually, if you want to script more complex analyses, or inspect analysis
@@ -545,7 +545,8 @@ intermediate Python skill level.</p>
 <section id="jupyter-notebooks">
 <h2>Jupyter notebooks<a class="headerlink" href="#jupyter-notebooks" title="Link to this heading">#</a></h2>
 <p>To learn more about Gammapy, and also for interactive data analysis in general,
-we recommend you use Jupyter notebooks. Assuming you have followed the steps above to install Gammapy and activate the conda environment, you can start
+we recommend you use Jupyter notebooks. Assuming you have followed the steps above to install
+Gammapy and activate the conda environment, you can start
 <a class="reference external" href="https://jupyterlab.readthedocs.io/">JupyterLab</a> like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>jupyter<span class="w"> </span>lab
 </pre></div>
@@ -590,7 +591,7 @@ method</strong> from IPython:</p>
 </pre></div>
 </div>
 <p>Of course, you can also use the Gammapy online docs if you prefer, clicking in links
-(i.e. <a class="reference internal" href="../api/gammapy.stats.CashCountsStatistic.html#gammapy.stats.CashCountsStatistic" title="gammapy.stats.CashCountsStatistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gammapy.stats.CashCountsStatistic</span></code></a>) or using <em>search docs</em> field in the upper left.</p>
+(i.e. <a class="reference internal" href="../api/gammapy.stats.CashCountsStatistic.html#gammapy.stats.CashCountsStatistic" title="gammapy.stats.CashCountsStatistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gammapy.stats.CashCountsStatistic</span></code></a>) or using <em>Search the docs</em> field in the upper left.</p>
 <p>As an example, here’s how you can create <a class="reference internal" href="../api/gammapy.data.DataStore.html#gammapy.data.DataStore" title="gammapy.data.DataStore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gammapy.data.DataStore</span></code></a> and
 <a class="reference internal" href="../api/gammapy.data.EventList.html#gammapy.data.EventList" title="gammapy.data.EventList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gammapy.data.EventList</span></code></a> objects and start exploring H.E.S.S. data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gammapy.data</span> <span class="kn">import</span> <span class="n">DataStore</span>
@@ -629,7 +630,7 @@ method</strong> from IPython:</p>
 <section id="python-scripts">
 <h2>Python scripts<a class="headerlink" href="#python-scripts" title="Link to this heading">#</a></h2>
 <p>Another common way to use Gammapy is to write a Python script.
-Try it and put the following code into a file called <code class="docutils literal notranslate"><span class="pre">example.py</span></code>:</p>
+Try it by putting the following code into a file called <code class="docutils literal notranslate"><span class="pre">example.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Example Python script using Gammapy&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">gammapy.data</span> <span class="kn">import</span> <span class="n">DataStore</span>
 <span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s1">&#39;$GAMMAPY_DATA/hess-dl3-dr1/&#39;</span><span class="p">)</span>

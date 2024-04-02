@@ -74,10 +74,9 @@ Setup
 
 As usual, we’ll start with some general imports…
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-74
+.. GENERATED FROM PYTHON SOURCE LINES 59-73
 
 .. code-block:: Python
-
 
 
     import logging
@@ -100,12 +99,12 @@ As usual, we’ll start with some general imports…
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-77
+.. GENERATED FROM PYTHON SOURCE LINES 74-76
 
 And some gammapy specific imports
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-96
+.. GENERATED FROM PYTHON SOURCE LINES 76-95
 
 .. code-block:: Python
 
@@ -135,12 +134,12 @@ And some gammapy specific imports
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-99
+.. GENERATED FROM PYTHON SOURCE LINES 96-98
 
 Check setup
 -----------
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-104
+.. GENERATED FROM PYTHON SOURCE LINES 98-103
 
 .. code-block:: Python
 
@@ -168,7 +167,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
+            version                : 1.2.dev2111+g5675db08b.d20240402 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -195,18 +194,18 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-107
+.. GENERATED FROM PYTHON SOURCE LINES 104-106
 
 We first define our preferred time format:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-111
+.. GENERATED FROM PYTHON SOURCE LINES 106-110
 
 .. code-block:: Python
 
@@ -221,7 +220,7 @@ We first define our preferred time format:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-121
+.. GENERATED FROM PYTHON SOURCE LINES 111-120
 
 Simulating a light curve
 ------------------------
@@ -233,7 +232,7 @@ thing to note here is how to attach a different `GTI` to each dataset.
 Since we use spectrum datasets here, we will use a `~gammapy.maps.RegionGeom`.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-143
+.. GENERATED FROM PYTHON SOURCE LINES 120-142
 
 .. code-block:: Python
 
@@ -261,26 +260,38 @@ Since we use spectrum datasets here, we will use a `~gammapy.maps.RegionGeom`.
 
 
 
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: '1/s/MeV/sr' did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-      warnings.warn(msg, UnitsWarning)
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/light_curve_simulation.py", line 122, in <module>
+        irfs = load_irf_dict_from_file(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/irf/io.py", line 197, in load_irf_dict_from_file
+        with fits.open(filename) as hdulist:
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
+        return HDUList.fromfile(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
+        return cls._readfrom(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
+        fileobj = _File(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
+        self._open_filename(fileobj, mode, overwrite)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
+        self._file = open(self.name, IO_FITS_MODES[mode])
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits'
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 144-148
+.. GENERATED FROM PYTHON SOURCE LINES 143-147
 
 Note that observations are usually conducted in Wobble mode, in which
 the source is not in the center of the camera. This allows to have a
 symmetrical sky position from which background can be estimated.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-167
+.. GENERATED FROM PYTHON SOURCE LINES 147-166
 
 .. code-block:: Python
 
@@ -304,31 +315,13 @@ symmetrical sky position from which background can be estimated.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    type    name     value         unit        error   min max frozen is_norm link prior
-    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-             index 3.0000e+00                0.000e+00 nan nan  False   False           
-         amplitude 1.0000e-11 cm-2 s-1 TeV-1 0.000e+00 nan nan  False    True           
-         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
-                t0 6.0000e+00              h 0.000e+00 nan nan  False   False           
-             t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False           
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 168-171
+.. GENERATED FROM PYTHON SOURCE LINES 167-170
 
 Now, define the start and observation livetime wrt to the reference
 time, ``gti_t0``
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 171-178
+.. GENERATED FROM PYTHON SOURCE LINES 170-177
 
 .. code-block:: Python
 
@@ -340,18 +333,12 @@ time, ``gti_t0``
 
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 179-181
+.. GENERATED FROM PYTHON SOURCE LINES 178-180
 
 Now perform the simulations
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-208
+.. GENERATED FROM PYTHON SOURCE LINES 180-207
 
 .. code-block:: Python
 
@@ -383,19 +370,13 @@ Now perform the simulations
 
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 209-212
+.. GENERATED FROM PYTHON SOURCE LINES 208-211
 
 The reduced datasets have been successfully simulated. Let’s take a
 quick look into our datasets.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 212-216
+.. GENERATED FROM PYTHON SOURCE LINES 211-215
 
 .. code-block:: Python
 
@@ -404,31 +385,7 @@ quick look into our datasets.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-       name   counts       excess            sqrt_ts           background           npred        ...      excess_rate      n_bins n_fit_bins stat_type       stat_sum     
-                                                                                                 ...         1 / s                                                        
-    --------- ------ ------------------ ------------------ ------------------ ------------------ ... --------------------- ------ ---------- --------- -------------------
-    dataset-0    872  851.6812310184489  69.66175238101202  20.31876898155109  825.9404270586008 ...   0.25808522152074226      9          9      cash -7091.2634617267895
-    dataset-1    321 311.76419591747674  40.67572395624176  9.235804082523256 332.14961268131975 ...   0.20784279727831723      9          9      cash -2018.6488476287552
-    dataset-2    296  286.3947637541758  38.16564818471353  9.605236245824184   293.489602451411 ...   0.18358638702190708      9          9      cash -1820.9705580485547
-    dataset-3    322  307.2227134679628  37.01371321486803 14.777286532037174  321.7838592156534 ...   0.12800946394498447      9          9      cash -2021.7524545697743
-    dataset-4    234 219.22271346796282 29.228036588897748 14.777286532037174 200.98618559794522 ...    0.0913427972783178      9          9      cash -1314.0539595228265
-    dataset-5    167 148.52839183495354  20.93634893240878 18.471608165046455 182.99944247799246 ...  0.049509463944984525      9          9      cash   -796.783475926459
-    dataset-6     28 13.222713467962826  3.056944941938641 14.777286532037174  39.97792062829974 ...  0.005509463944984509      9          9      cash  -34.69809213428674
-    dataset-7     30  10.78952750835169  2.272763411922787  19.21047249164831 42.304828552401254 ...  0.003458181893702466      9          9      cash   -57.0086665418334
-    dataset-8     26 10.114416978060044 2.3218017993737154 15.885583021939956  32.24990028797198 ...  0.003920316658162807      9          9      cash -28.014213567854036
-    dataset-9     28 10.636688324856333 2.3422097256382495 17.363311675143667 32.421834962476595 ... 0.0037718752925022464      9          9      cash  -31.57606403041717
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 217-226
+.. GENERATED FROM PYTHON SOURCE LINES 216-225
 
 Extract the lightcurve
 ----------------------
@@ -440,7 +397,7 @@ bin, the temporal model need not be accounted for at this stage. We
 extract the lightcurve in 3 energy bins.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-236
+.. GENERATED FROM PYTHON SOURCE LINES 225-235
 
 .. code-block:: Python
 
@@ -455,13 +412,7 @@ extract the lightcurve in 3 energy bins.
     datasets.models = model_fit
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 237-252
+.. GENERATED FROM PYTHON SOURCE LINES 236-251
 
 .. code-block:: Python
 
@@ -481,18 +432,7 @@ extract the lightcurve in 3 energy bins.
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_simulation_001.png
-   :alt: light curve simulation
-   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_simulation_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 253-264
+.. GENERATED FROM PYTHON SOURCE LINES 252-263
 
 Fitting temporal models
 -----------------------
@@ -506,7 +446,7 @@ model parameters as well. The temporal models can be applied
 -  on the simulated datasets
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 267-272
+.. GENERATED FROM PYTHON SOURCE LINES 266-271
 
 Fitting the obtained light curve
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -514,7 +454,7 @@ Fitting the obtained light curve
 We will first convert the obtained light curve to a `~gammapy.datasets.FluxPointsDataset`
 and fit it with a spectral and temporal model
 
-.. GENERATED FROM PYTHON SOURCE LINES 272-277
+.. GENERATED FROM PYTHON SOURCE LINES 271-276
 
 .. code-block:: Python
 
@@ -524,20 +464,14 @@ and fit it with a spectral and temporal model
 
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 278-282
+.. GENERATED FROM PYTHON SOURCE LINES 277-281
 
 We will fit the amplitude, spectral index and the decay time scale. Note
 that ``t_ref`` should be fixed by default for the
 `~gammapy.modeling.models.ExpDecayTemporalModel`.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 282-300
+.. GENERATED FROM PYTHON SOURCE LINES 281-299
 
 .. code-block:: Python
 
@@ -560,52 +494,11 @@ that ``t_ref`` should be fixed by default for the
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    FluxPointsDataset
-    -----------------
-
-      Name                            : dataset_lc 
-
-      Number of total flux points     : 30 
-      Number of fit bins              : 21 
-
-      Fit statistic type              : chi2
-      Fit statistic value (-2 log(L)) : 1538.39
-
-      Number of models                : 1 
-      Number of parameters            : 5
-      Number of free parameters       : 3
-
-      Component 0: SkyModel
-  
-        Name                      : model-test
-        Datasets names            : None
-        Spectral model type       : PowerLawSpectralModel
-        Spatial  model type       : 
-        Temporal model type       : ExpDecayTemporalModel
-        Parameters:
-          index                         :      2.000   +/-    0.00             
-          amplitude                     :   1.00e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-          reference             (frozen):      1.000       TeV         
-          t0                            :     10.000   +/-    0.00 h           
-          t_ref                 (frozen):  58909.000       d           
-  
-  
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 301-302
+.. GENERATED FROM PYTHON SOURCE LINES 300-301
 
 Fit the dataset
 
-.. GENERATED FROM PYTHON SOURCE LINES 302-307
+.. GENERATED FROM PYTHON SOURCE LINES 301-306
 
 .. code-block:: Python
 
@@ -615,31 +508,13 @@ Fit the dataset
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    type    name     value         unit        error   min max frozen is_norm link prior
-    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-             index 3.0245e+00                2.789e-02 nan nan  False   False           
-         amplitude 1.0430e-11 cm-2 s-1 TeV-1 3.524e-13 nan nan  False    True           
-         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
-                t0 5.7097e+00              h 2.190e-01 nan nan  False   False           
-             t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False           
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 308-311
+.. GENERATED FROM PYTHON SOURCE LINES 307-310
 
 Now let’s plot model and data. We plot only the normalisation of the
 temporal model in relative units for one particular energy range
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 311-314
+.. GENERATED FROM PYTHON SOURCE LINES 310-313
 
 .. code-block:: Python
 
@@ -647,24 +522,7 @@ temporal model in relative units for one particular energy range
     dataset_fp.plot_spectrum(axis_name="time")
 
 
-
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_light_curve_simulation_002.png
-   :alt: light curve simulation
-   :srcset: /tutorials/analysis-time/images/sphx_glr_light_curve_simulation_002.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-    <Axes: xlabel='Time [iso]', ylabel='Norm / A.U.'>
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 315-325
+.. GENERATED FROM PYTHON SOURCE LINES 314-324
 
 Fit the datasets
 ~~~~~~~~~~~~~~~~
@@ -677,7 +535,7 @@ in a given group of dataset will be tied. For more details on joint
 fitting in Gammapy, see the :doc:`/tutorials/analysis-3d/analysis_3d`.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 325-342
+.. GENERATED FROM PYTHON SOURCE LINES 324-341
 
 .. code-block:: Python
 
@@ -699,29 +557,11 @@ fitting in Gammapy, see the :doc:`/tutorials/analysis-3d/analysis_3d`.
     datasets.models = model2
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    type    name     value         unit        error   min max frozen is_norm link prior
-    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-             index 2.0000e+00                0.000e+00 nan nan  False   False           
-         amplitude 1.0000e-12 cm-2 s-1 TeV-1 0.000e+00 nan nan  False    True           
-         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
-                t0 1.0000e+01              h 0.000e+00 nan nan  False   False           
-             t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False           
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 343-344
+.. GENERATED FROM PYTHON SOURCE LINES 342-343
 
 Perform a joint fit
 
-.. GENERATED FROM PYTHON SOURCE LINES 344-349
+.. GENERATED FROM PYTHON SOURCE LINES 343-348
 
 .. code-block:: Python
 
@@ -731,31 +571,13 @@ Perform a joint fit
     display(result.parameters.to_table())
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    type    name     value         unit        error   min max frozen is_norm link prior
-    ---- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-             index 3.0373e+00                3.208e-02 nan nan  False   False           
-         amplitude 1.0556e-11 cm-2 s-1 TeV-1 3.673e-13 nan nan  False    True           
-         reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False           
-                t0 5.5546e+00              h 1.857e-01 nan nan  False   False           
-             t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False           
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 350-353
+.. GENERATED FROM PYTHON SOURCE LINES 349-352
 
 We see that the fitted parameters are consistent between fitting flux
 points and datasets, and match well with the simulated ones
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 356-365
+.. GENERATED FROM PYTHON SOURCE LINES 355-364
 
 Exercises
 ---------
@@ -766,11 +588,6 @@ Exercises
    Use a combination of a Gaussian and Exponential flare profiles.
 3. Do a joint fitting of the datasets.
 
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 40.677 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-time_light_curve_simulation.py:

@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -67,7 +67,7 @@
     <link rel="prev" title="Background" href="bkg.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -613,6 +613,7 @@ document.write(`
 <p>Its format specifications are available in <a class="reference external" href="https://gamma-astro-data-formats.readthedocs.io/en/latest/irfs/full_enclosure/edisp/index.html#edisp-2d" title="(in Data formats for gamma-ray astronomy v0.3)"><span>EDISP_2D</span></a></p>
 <p>This is the format in which IACT DL3 energy dispersions are usually provided, as an example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Plot an energy dispersion from the HESS DL3 data release 1.&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">gammapy.irf</span> <span class="kn">import</span> <span class="n">EnergyDispersion2D</span>
 
@@ -622,10 +623,6 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../../_downloads/8fe7bcee462a0fb631ce7cc15da7ef18/plot_edisp.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/2ccb4c92be646fc13b94441ef0c1e408/plot_edisp.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/d47b4b3bccd5fc1699bbc9406a3c4035/plot_edisp.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
-<figure class="align-default">
-<img alt="../../_images/plot_edisp.png" class="plot-directive" src="../../_images/plot_edisp.png" />
-</figure>
 </section>
 <section id="as-a-function-of-true-energy-gadf-ogip-rmf">
 <h2>as a function of true energy (<a class="reference external" href="https://gamma-astro-data-formats.readthedocs.io/en/latest/spectra/ogip/index.html#ogip-rmf" title="(in Data formats for gamma-ray astronomy v0.3)"><span>RMF</span></a>)<a class="headerlink" href="#as-a-function-of-true-energy-gadf-ogip-rmf" title="Link to this heading">#</a></h2>
@@ -641,6 +638,7 @@ counts in reconstructed energy.</p>
 <li><p>selecting the value of an <a class="reference internal" href="../../api/gammapy.irf.EnergyDispersion2D.html#gammapy.irf.EnergyDispersion2D" title="gammapy.irf.EnergyDispersion2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EnergyDispersion2D</span></code></a> at a given offset (using <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.coordinates.Angle.html#astropy.coordinates.Angle" title="(in Astropy v6.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Angle</span></code></a>)</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Plot the energy dispersion at a given offset.&quot;&quot;&quot;</span>
+
 <span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="kn">import</span> <span class="n">Angle</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">gammapy.irf</span> <span class="kn">import</span> <span class="n">EnergyDispersion2D</span>
@@ -654,14 +652,11 @@ counts in reconstructed energy.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../../_downloads/bb85725a40c0ab717acf9181e85b6ae5/plot_edisp_kernel.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/cf415fe1386ef14aff48a6a2deb8b4e6/plot_edisp_kernel.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/f5a9665c6b3d034a7c33a9ef624a6185/plot_edisp_kernel.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
-<figure class="align-default">
-<img alt="../../_images/plot_edisp_kernel.png" class="plot-directive" src="../../_images/plot_edisp_kernel.png" />
-</figure>
 <ul class="simple">
 <li><p>or starting from a parameterisation:</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Plot an energy dispersion using a gaussian parametrisation&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">gammapy.irf</span> <span class="kn">import</span> <span class="n">EDispKernel</span>
 <span class="kn">from</span> <span class="nn">gammapy.maps</span> <span class="kn">import</span> <span class="n">MapAxis</span>

@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Light curves" href="light_curve.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -687,7 +687,7 @@ duration. The tutorial is implemented with the intermediate level API.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -714,7 +714,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -722,6 +722,14 @@ Gammapy environment variables:
 <h2>Select the data<a class="headerlink" href="#select-the-data" title="Link to this heading">#</a></h2>
 <p>We first set the datastore.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/hess-dl3-dr1/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/light_curve_flare.py&quot;</span>, line <span class="m">105</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/hess-dl3-dr1/&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/data/data_store.py&quot;</span>, line <span class="m">173</span>, in <span class="n">from_dir</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">hdu_table_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">OSError</span>: <span class="n">File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz</span>
 </pre></div>
 </div>
 <p>Now we select observations within 2 degrees of PKS 2155-304.</p>
@@ -738,9 +746,6 @@ Gammapy environment variables:
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of selected observations : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Number of selected observations : 21
-</pre></div>
-</div>
 </section>
 <section id="define-time-intervals">
 <h2>Define time intervals<a class="headerlink" href="#define-time-intervals" title="Link to this heading">#</a></h2>
@@ -752,9 +757,6 @@ Gammapy environment variables:
 <span class="n">times</span> <span class="o">=</span> <span class="n">t0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_time_bins</span><span class="p">)</span> <span class="o">*</span> <span class="n">duration</span>
 <span class="n">time_intervals</span> <span class="o">=</span> <span class="p">[</span><span class="n">Time</span><span class="p">([</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tstop</span><span class="p">])</span> <span class="k">for</span> <span class="n">tstart</span><span class="p">,</span> <span class="n">tstop</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">times</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">times</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time_intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mjd</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[53945.85416667 53945.86111111]
 </pre></div>
 </div>
 </section>
@@ -769,17 +771,6 @@ intersection of the GTIs and time interval.</p>
 <span class="c1"># check that observations have been filtered</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of observations after time filtering: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">short_observations</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">short_observations</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">gti</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Number of observations after time filtering: 44
-
-GTI info:
-- Number of GTIs: 1
-- Duration: 599.9999999999978 s
-- Start: 207520865.18400002 s MET
-- Start: 2006-07-29T20:40:00.000 (time standard: UTC)
-- Stop: 207521465.184 s MET
-- Stop: 2006-07-29T20:50:00.000 (time standard: UTC)
 </pre></div>
 </div>
 <p>As we can see, we have now observations of duration equal to the chosen
@@ -895,7 +886,7 @@ we select the 0.7-20 TeV range.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_light_curve_flare_001.png" srcset="../../_images/sphx_glr_light_curve_flare_001.png" alt="light curve flare" class = "sphx-glr-single-img"/><p>Light curves once obtained can be rebinned.
+<p>Light curves once obtained can be rebinned.
 Here, we rebin 4 adjacent bins together, to get 30 min bins</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">axis_new</span> <span class="o">=</span> <span class="n">get_rebinned_axis</span><span class="p">(</span><span class="n">lc_1d</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fixed-bins&quot;</span><span class="p">,</span> <span class="n">group_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">axis_name</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">axis_new</span><span class="p">)</span>
@@ -908,19 +899,6 @@ Here, we rebin 4 adjacent bins together, to get 30 min bins</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_light_curve_flare_002.png" srcset="../../_images/sphx_glr_light_curve_flare_002.png" alt="light curve flare" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>TimeMapAxis
------------
-
-  name           : time
-  nbins          : 12
-  reference time : 2006-07-29 20:31:05.184
-  scale          : tt
-  time min.      : 2006-07-29 20:31:05.184
-  time max.      : 2006-07-30 02:11:05.184
-  total time     : 5.6666666666583865 h
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 11.610 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-time-light-curve-flare-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-time/light_curve_flare.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo3.svg" width="150px" /></a>

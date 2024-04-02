@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="2D map fitting" href="modeling_2D.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -663,7 +663,7 @@ modelling and fitting.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -690,7 +690,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -745,7 +745,7 @@ MSH 1552</p>
         datasets_file: null
         models_file: null
     observations:
-        datastore: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hess-dl3-dr1
+        datastore: gammapy-data/hess-dl3-dr1
         obs_ids: []
         obs_file: null
         obs_cone: {frame: icrs, lon: 228.32 deg, lat: -59.08 deg, radius: 2.5 deg}
@@ -810,59 +810,14 @@ then be used for a ring extraction</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>AnalysisConfig
-
-    general:
-        log: {level: INFO, filename: null, filemode: null, format: null, datefmt: null}
-        outdir: .
-        n_jobs: 1
-        datasets_file: null
-        models_file: null
-    observations:
-        datastore: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/hess-dl3-dr1
-        obs_ids: []
-        obs_file: null
-        obs_cone: {frame: icrs, lon: 228.32 deg, lat: -59.08 deg, radius: 2.5 deg}
-        obs_time: {start: null, stop: null}
-        required_irf: [aeff, edisp, psf, bkg]
-    datasets:
-        type: 3d
-        stack: false
-        geom:
-            wcs:
-                skydir: {frame: icrs, lon: 228.32 deg, lat: -59.08 deg}
-                binsize: 0.02 deg
-                width: {width: 3.0 deg, height: 3.0 deg}
-                binsize_irf: 0.2 deg
-            selection: {offset_max: 3.5 deg}
-            axes:
-                energy: {min: 0.5 TeV, max: 5.0 TeV, nbins: 10}
-                energy_true: {min: 0.5 TeV, max: 5.0 TeV, nbins: 10}
-        map_selection: [counts, exposure, background, psf, edisp]
-        background:
-            method: null
-            exclusion: null
-            parameters: {}
-        safe_mask:
-            methods: [aeff-default]
-            parameters: {}
-        on_region: {frame: null, lon: null, lat: null, radius: null}
-        containment_correction: true
-    fit:
-        fit_range: {min: null, max: null}
-    flux_points:
-        energy: {min: null, max: null, nbins: null}
-        source: source
-        parameters: {selection_optional: all}
-    excess_map:
-        correlation_radius: 0.1 deg
-        parameters: {}
-        energy_edges: {min: null, max: null, nbins: null}
-    light_curve:
-        time_intervals: {start: null, stop: null}
-        energy_edges: {min: null, max: null, nbins: null}
-        source: source
-        parameters: {selection_optional: all}
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-2d/ring_background.py&quot;</span>, line <span class="m">140</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">analysis</span><span class="o">.</span><span class="n">get_observations</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/analysis/core.py&quot;</span>, line <span class="m">141</span>, in <span class="n">get_observations</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_set_data_store</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/analysis/core.py&quot;</span>, line <span class="m">100</span>, in <span class="n">_set_data_store</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datastore not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">Datastore not found: gammapy-data/hess-dl3-dr1</span>
 </pre></div>
 </div>
 <p>Data extraction</p>
@@ -892,7 +847,7 @@ present in our field of view.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_ring_background_001.png" srcset="../../_images/sphx_glr_ring_background_001.png" alt="ring background" class = "sphx-glr-single-img"/><p>For the present analysis, we use a ring with an inner radius of 0.5 deg
+<p>For the present analysis, we use a ring with an inner radius of 0.5 deg
 and width of 0.3 deg.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ring_maker</span> <span class="o">=</span> <span class="n">RingBackgroundMaker</span><span class="p">(</span>
     <span class="n">r_in</span><span class="o">=</span><span class="s2">&quot;0.5 deg&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;0.3 deg&quot;</span><span class="p">,</span> <span class="n">exclusion_mask</span><span class="o">=</span><span class="n">exclusion_mask</span>
@@ -920,37 +875,6 @@ maps which we will use in all further analysis. The <code class="xref py py-obj 
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">acceptance_off</span></code> maps are the system acceptance of gamma-ray like
 events in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">on</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">off</span></code> regions respectively.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stacked_on_off</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>MapDatasetOnOff
----------------
-
-  Name                            : stacked
-
-  Total counts                    : 39183
-  Total background counts         : 38320.57
-  Total excess counts             : 862.43
-
-  Predicted counts                : 38320.92
-  Predicted background counts     : 38320.92
-  Predicted excess counts         : nan
-
-  Exposure min                    : 1.11e+09 m2 s
-  Exposure max                    : 1.30e+10 m2 s
-
-  Number of total bins            : 22500
-  Number of fit bins              : 22500
-
-  Fit statistic type              : wstat
-  Fit statistic value (-2 log(L)) : 26399.35
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
-
-  Total counts_off                : 86301192
-  Acceptance                      : 22500
-  Acceptance off                  : 49478076
 </pre></div>
 </div>
 </section>
@@ -983,7 +907,7 @@ our required size in degrees to int depending on our pixel size.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_ring_background_002.png" srcset="../../_images/sphx_glr_ring_background_002.png" alt="Significance map, Excess map" class = "sphx-glr-single-img"/><p>It is often important to look at the significance distribution outside
+<p>It is often important to look at the significance distribution outside
 the exclusion region to check that the background estimation is not
 contaminated by gamma-ray events. This can be the case when exclusion
 regions are not large enough. Typically, we expect the off distribution
@@ -1024,7 +948,6 @@ to be a standard normal distribution.</p>
 <span class="c1"># sphinx_gallery_thumbnail_number = 2</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_ring_background_003.png" srcset="../../_images/sphx_glr_ring_background_003.png" alt="ring background" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 29.610 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-2d-ring-background-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-2d/ring_background.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo1.svg" width="150px" /></a>

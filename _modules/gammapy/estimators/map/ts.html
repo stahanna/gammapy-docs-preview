@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -644,8 +644,8 @@ document.write(`
 <span class="sd">    &gt;&gt;&gt; model = SkyModel(spatial_model=spatial_model, spectral_model=spectral_model)</span>
 <span class="sd">    &gt;&gt;&gt; dataset = MapDataset.read(&quot;$GAMMAPY_DATA/fermi-3fhl-gc/fermi-3fhl-gc.fits.gz&quot;)</span>
 <span class="sd">    &gt;&gt;&gt; estimator = TSMapEstimator(</span>
-<span class="sd">                model, kernel_width=&quot;1 deg&quot;,energy_edges=[10, 100] * u.GeV, downsampling_factor=4</span>
-<span class="sd">            )</span>
+<span class="sd">    ...            model, kernel_width=&quot;1 deg&quot;, energy_edges=[10, 100] * u.GeV, downsampling_factor=4</span>
+<span class="sd">    ...        )</span>
 <span class="sd">    &gt;&gt;&gt; maps = estimator.run(dataset)</span>
 <span class="sd">    &gt;&gt;&gt; print(maps)</span>
 <span class="sd">    FluxMaps</span>
@@ -654,7 +654,7 @@ document.write(`
 <span class="sd">      geom                   : WcsGeom</span>
 <span class="sd">      axes                   : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;]</span>
 <span class="sd">      shape                  : (400, 200, 1)</span>
-<span class="sd">      quantities             : [&#39;ts&#39;, &#39;norm&#39;, &#39;niter&#39;, &#39;norm_err&#39;, &#39;npred&#39;, &#39;npred_excess&#39;, &#39;stat&#39;, &#39;stat_null&#39;, &#39;success&#39;]  # noqa: E501</span>
+<span class="sd">      quantities             : [&#39;ts&#39;, &#39;norm&#39;, &#39;niter&#39;, &#39;norm_err&#39;, &#39;npred&#39;, &#39;npred_excess&#39;, &#39;stat&#39;, &#39;stat_null&#39;, &#39;success&#39;]</span>
 <span class="sd">      ref. model             : pl</span>
 <span class="sd">      n_sigma                : 1</span>
 <span class="sd">      n_sigma_ul             : 2</span>
@@ -666,6 +666,7 @@ document.write(`
 <span class="sd">    ----------</span>
 <span class="sd">    [Stewart2009]_</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;TSMapEstimator&quot;</span>
     <span class="n">_available_selection_optional</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;errn-errp&quot;</span><span class="p">,</span> <span class="s2">&quot;ul&quot;</span><span class="p">]</span>
 

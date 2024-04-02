@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Gammapy" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -536,6 +536,8 @@ document.write(`
 </div>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>There are various ways for users to install Gammapy. <strong>We recommend setting up a virtual
+environment using either conda or mamba.</strong> Here are two methods to quickly install Gammapy.</p>
 <div class="sphinx-bs container pb-4 docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-3 docutils">
@@ -544,7 +546,7 @@ document.write(`
 <p class="card-text">Working with conda?</p>
 </div>
 <div class="card-body docutils">
-<p class="card-text">Gammapy can be installed with <a class="reference external" href="https://docs.continuum.io/anaconda/">Anaconda</a> or Miniconda:</p>
+<p class="card-text">Gammapy can be installed with <a class="reference external" href="https://docs.continuum.io/anaconda/">Anaconda</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>gammapy
 </pre></div>
 </div>
@@ -579,13 +581,10 @@ installation page.</p>
 </div>
 </div>
 </section>
-<section id="quickstart-setup">
-<span id="id2"></span><h2>Quickstart Setup<a class="headerlink" href="#quickstart-setup" title="Link to this heading">#</a></h2>
-<p>The best way to get started and learn Gammapy are the <a class="reference internal" href="../tutorials/index.html#tutorials"><span class="std std-ref">Tutorials</span></a>. For
-convenience we provide a pre-defined conda environment file, so you can
-get additional useful packages together with Gammapy in a virtual isolated
-environment. First install <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>
-and then just execute the following commands in the terminal:</p>
+<section id="recommended-setup">
+<span id="quickstart-setup"></span><h2>Recommended Setup<a class="headerlink" href="#recommended-setup" title="Link to this heading">#</a></h2>
+<p>We recommend using <a class="reference internal" href="environments.html#virtual-envs"><span class="std std-ref">virtual environments</span></a>, to do so
+execute the following commands in the terminal:</p>
 <div class="code bash highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gammapy</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">gammapy</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span><span class="o">-</span><span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
 <span class="err">$</span> <span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">gammapy</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span><span class="o">-</span><span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
@@ -598,19 +597,18 @@ currently aren’t available on Windows.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For Apple silicon M1 (<code class="xref py py-obj docutils literal notranslate"><span class="pre">arm64</span></code>) architectures you also have to open the
-environment file and delete the <code class="xref py py-obj docutils literal notranslate"><span class="pre">sherpa</span></code> entry, as currently there are
-no conda packages available. However you can later install <code class="xref py py-obj docutils literal notranslate"><span class="pre">sherpa</span></code>
+<p>For gammapy versions <strong>prior to v1.2</strong>, if you’re using
+Apple silicon M1 (<code class="xref py py-obj docutils literal notranslate"><span class="pre">arm64</span></code>) architectures you have to open the
+environment file and delete the <code class="xref py py-obj docutils literal notranslate"><span class="pre">sherpa</span></code> entry. Currently there are
+no conda packages available. You can then install <code class="xref py py-obj docutils literal notranslate"><span class="pre">sherpa</span></code>
 in the environment using <code class="xref py py-obj docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sherpa</span></code>.</p>
 </div>
-<p>Once the environment has been created you can activate it using:</p>
-<div class="code bash highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">gammapy</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>
-</pre></div>
-</div>
-<p>You can now proceed to download the Gammapy tutorial notebooks and the example
+<p>The best way to get started and learn Gammapy are the <a class="reference internal" href="../tutorials/index.html#tutorials"><span class="std std-ref">Tutorials</span></a>.
+You can download the Gammapy tutorial notebooks and the example
 datasets. The total size to download is ~180 MB. Select the location where you
 want to install the datasets and proceed with the following commands:</p>
-<div class="code bash highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">gammapy</span> <span class="n">download</span> <span class="n">notebooks</span>
+<div class="code bash highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">gammapy</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>
+<span class="err">$</span> <span class="n">gammapy</span> <span class="n">download</span> <span class="n">notebooks</span>
 <span class="err">$</span> <span class="n">gammapy</span> <span class="n">download</span> <span class="n">datasets</span>
 <span class="err">$</span> <span class="n">conda</span> <span class="n">env</span> <span class="n">config</span> <span class="nb">vars</span> <span class="nb">set</span> <span class="n">GAMMAPY_DATA</span><span class="o">=</span><span class="err">$</span><span class="n">PWD</span><span class="o">/</span><span class="n">gammapy</span><span class="o">-</span><span class="n">datasets</span><span class="o">/</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>
 <span class="err">$</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">gammapy</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>
@@ -629,15 +627,15 @@ might be different, e.g. in some shells the command to use is <code class="docut
 else instead of <code class="docutils literal notranslate"><span class="pre">export</span></code>, and also the profile setup file will be different.
 On Windows, you should set the <code class="docutils literal notranslate"><span class="pre">GAMMAPY_DATA</span></code> environment variable in the
 “Environment Variables” settings dialog, as explained e.g.
-<a class="reference external" href="https://docs.python.org/3/using/windows.html#excursus-setting-environment-variables">here</a></p>
+<a class="reference external" href="https://docs.python.org/3/using/windows.html#excursus-setting-environment-variables">here</a>.</p>
 </div>
 <p>Finally start a notebook server by executing:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>notebooks
 $<span class="w"> </span>jupyter<span class="w"> </span>notebook
 </pre></div>
 </div>
-<p>If you are new to conda, Python and Jupyter, maybe also read the <a class="reference internal" href="usage.html#using-gammapy"><span class="std std-ref">Using Gammapy</span></a> guide.
-If you encountered any issues you can check the <a class="reference internal" href="troubleshooting.html#troubleshoot"><span class="std std-ref">Troubleshooting</span></a> guide.</p>
+<p>If you are new to conda, Python and Jupyter, it is recommended to also read the <a class="reference internal" href="usage.html#using-gammapy"><span class="std std-ref">Using Gammapy</span></a> guide.
+If you encounter any issues you can check the <a class="reference internal" href="troubleshooting.html#troubleshoot"><span class="std std-ref">Troubleshooting</span></a> guide.</p>
 </section>
 <section id="tutorials-overview">
 <h2>Tutorials Overview<a class="headerlink" href="#tutorials-overview" title="Link to this heading">#</a></h2>
@@ -875,7 +873,7 @@ at the same time and can also include e.g. flux points in a combined likelihood 
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickstart-setup">Quickstart Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-setup">Recommended Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-overview">Tutorials Overview</a></li>
 </ul>
   </nav></div>

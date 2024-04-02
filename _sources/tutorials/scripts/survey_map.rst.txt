@@ -27,15 +27,31 @@ We create an all-sky map in AIT projection for the
 `H.E.S.S. DL3 DR1 <https://www.mpi-hd.mpg.de/hfm/HESS/pages/dl3-dr1/>`__
 dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-34
+.. GENERATED FROM PYTHON SOURCE LINES 11-35
+
+
+.. rst-class:: sphx-glr-script-out
+
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/scripts/survey_map.py", line 34, in <module>
+        main()
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/scripts/survey_map.py", line 20, in main
+        data_store = DataStore.from_dir("$GAMMAPY_DATA/hess-dl3-dr1")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
+        raise OSError(f"File not found: {hdu_table_filename}")
+    OSError: File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz
 
 
 
 
 
 
+|
 
 .. code-block:: Python
+
 
     import logging
     from gammapy.data import DataStore

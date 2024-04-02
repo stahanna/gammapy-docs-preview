@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Datasets" href="gammapy.datasets.Datasets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -674,12 +674,12 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.ESTIMATOR_REGISTRY.html">ESTIMATOR_REGISTRY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.estimate_exposure_reco_energy.html">estimate_exposure_reco_energy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.find_peaks.html">find_peaks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.find_peaks_in_flux_map.html">find_peaks_in_flux_map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.resample_energy_edges.html">resample_energy_edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.get_rebinned_axis.html">get_rebinned_axis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_fvar.html">compute_lightcurve_fvar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_fpp.html">compute_lightcurve_fpp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.compute_lightcurve_doublingtime.html">compute_lightcurve_doublingtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.find_peaks_in_flux_map.html">find_peaks_in_flux_map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gammapy.estimators.utils.get_rebinned_axis.html">get_rebinned_axis</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api-reference/analysis.html">analysis - High level interface</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -970,11 +970,11 @@ One line per observation for stacked datasets.</p>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">to_table</span><span class="p">())</span>
-<span class="go">  type      name     value         unit      ... max frozen is_norm link</span>
-<span class="go">-------- --------- ---------- -------------- ... --- ------ ------- ----</span>
-<span class="go">spectral     index 2.2159e+00                ... nan  False   False</span>
-<span class="go">spectral amplitude 2.1619e-13 cm-2 s-1 TeV-1 ... nan  False    True</span>
-<span class="go">spectral reference 1.0000e+00            TeV ... nan   True   False</span>
+<span class="go">type    name     value         unit      ... frozen is_norm link prior</span>
+<span class="go">---- --------- ---------- -------------- ... ------ ------- ---- -----</span>
+<span class="go">         index 2.2159e+00                ...  False   False</span>
+<span class="go">     amplitude 2.1619e-13 TeV-1 s-1 cm-2 ...  False    True</span>
+<span class="go">     reference 1.0000e+00            TeV ...   True   False</span>
 </pre></div>
 </div>
 <p>Note: In order to reproduce the example, you need the tests datasets folder.
@@ -1166,7 +1166,7 @@ You may download it with the command:
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">SkyModel</span><span class="p">(</span><span class="n">spectral_model</span><span class="o">=</span><span class="n">PowerLawSpectralModel</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">FluxPointsDataset</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">flux_points</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">#configuring optional parameters</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs_spectrum</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kwargs_model&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span><span class="s2">&quot;--&quot;</span><span class="p">},</span> <span class="s2">&quot;kwargs_fp&quot;</span><span class="p">:{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;marker&quot;</span><span class="p">:</span><span class="s2">&quot;o&quot;</span><span class="p">}}</span>  <span class="c1"># noqa: E501</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs_spectrum</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;kwargs_model&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span><span class="s2">&quot;--&quot;</span><span class="p">},</span> <span class="s2">&quot;kwargs_fp&quot;</span><span class="p">:{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;marker&quot;</span><span class="p">:</span><span class="s2">&quot;o&quot;</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs_residuals</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;markersize&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;marker&quot;</span><span class="p">:</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">(</span><span class="n">kwargs_residuals</span><span class="o">=</span><span class="n">kwargs_residuals</span><span class="p">,</span> <span class="n">kwargs_spectrum</span><span class="o">=</span><span class="n">kwargs_spectrum</span><span class="p">)</span> 
 </pre></div>

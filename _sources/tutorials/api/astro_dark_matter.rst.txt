@@ -36,7 +36,7 @@ explained. So this is aimed at people who already know what the want to
 do. A good introduction to indirect dark matter searches is given for
 example in https://arxiv.org/pdf/1012.4515.pdf (Chapter 1 and 5)
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-29
+.. GENERATED FROM PYTHON SOURCE LINES 23-28
 
 Setup
 -----
@@ -44,7 +44,7 @@ Setup
 As always, we start with some setup for the notebook, and with imports.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-47
+.. GENERATED FROM PYTHON SOURCE LINES 28-46
 
 .. code-block:: Python
 
@@ -73,12 +73,12 @@ As always, we start with some setup for the notebook, and with imports.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-50
+.. GENERATED FROM PYTHON SOURCE LINES 47-49
 
 Check setup
 -----------
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-55
+.. GENERATED FROM PYTHON SOURCE LINES 49-54
 
 .. code-block:: Python
 
@@ -106,7 +106,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
+            version                : 1.2.dev2111+g5675db08b.d20240402 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -133,13 +133,13 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-64
+.. GENERATED FROM PYTHON SOURCE LINES 55-63
 
 Profiles
 --------
@@ -150,7 +150,7 @@ are controlled by `~gammapy.astro.darkmatter.profiles.DMProfile.LOCAL_DENSITY` a
 `~gammapy.astro.darkmatter.profiles.DMProfile.DISTANCE_GC`
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-82
+.. GENERATED FROM PYTHON SOURCE LINES 63-81
 
 .. code-block:: Python
 
@@ -191,7 +191,7 @@ are controlled by `~gammapy.astro.darkmatter.profiles.DMProfile.LOCAL_DENSITY` a
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-90
+.. GENERATED FROM PYTHON SOURCE LINES 82-89
 
 J Factors
 ---------
@@ -201,7 +201,7 @@ to compute J-Factors for certain regions. In the following we compute a
 J-Factor annihilation map for the Galactic Centre region
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-136
+.. GENERATED FROM PYTHON SOURCE LINES 89-135
 
 .. code-block:: Python
 
@@ -269,11 +269,11 @@ J-Factor annihilation map for the Galactic Centre region
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-138
+.. GENERATED FROM PYTHON SOURCE LINES 136-137
 
 The J-Factor can also be computed for dark matter decay
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-176
+.. GENERATED FROM PYTHON SOURCE LINES 137-175
 
 .. code-block:: Python
 
@@ -333,7 +333,7 @@ The J-Factor can also be computed for dark matter decay
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-184
+.. GENERATED FROM PYTHON SOURCE LINES 176-183
 
 Gamma-ray spectra at production
 -------------------------------
@@ -343,7 +343,7 @@ dark matter analysis. The following annihilation channels are supported.
 For more info see https://arxiv.org/pdf/1012.4515.pdf
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-212
+.. GENERATED FROM PYTHON SOURCE LINES 183-211
 
 .. code-block:: Python
 
@@ -377,23 +377,25 @@ For more info see https://arxiv.org/pdf/1012.4515.pdf
 
 
 
-
-.. image-sg:: /tutorials/api/images/sphx_glr_astro_dark_matter_004.png
-   :alt: m$_{\mathrm{DM}}$ = 0.01 TeV, m$_{\mathrm{DM}}$ = 0.1 TeV, m$_{\mathrm{DM}}$ = 1.0 TeV, m$_{\mathrm{DM}}$ = 10.0 TeV
-   :srcset: /tutorials/api/images/sphx_glr_astro_dark_matter_004.png
-   :class: sphx-glr-single-img
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    ['eL', 'eR', 'e', 'muL', 'muR', 'mu', 'tauL', 'tauR', 'tau', 'q', 'c', 'b', 't', 'WL', 'WT', 'W', 'ZL', 'ZT', 'Z', 'g', 'gamma', 'h', 'nu_e', 'nu_mu', 'nu_tau', 'V->e', 'V->mu', 'V->tau']
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/astro_dark_matter.py", line 184, in <module>
+        fluxes = PrimaryFlux(mDM="1 TeV", channel="eL")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/astro/darkmatter/spectra.py", line 80, in __init__
+        raise FileNotFoundError(
+    FileNotFoundError: 
+
+    File not found: $GAMMAPY_DATA/dark_matter_spectra/AtProduction_gammas.dat
+    You may download the dataset needed with the following command:
+    gammapy download datasets --src dark_matter_spectra
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 213-218
+.. GENERATED FROM PYTHON SOURCE LINES 212-217
 
 Flux maps for annihilation
 --------------------------
@@ -401,7 +403,7 @@ Flux maps for annihilation
 Finally flux maps can be produced like this:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-236
+.. GENERATED FROM PYTHON SOURCE LINES 217-235
 
 .. code-block:: Python
 
@@ -424,18 +426,7 @@ Finally flux maps can be produced like this:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_astro_dark_matter_005.png
-   :alt: Flux [1 / (cm2 s)]  m$_{DM}$=10.0 TeV, channel=Z
-   :srcset: /tutorials/api/images/sphx_glr_astro_dark_matter_005.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 237-242
+.. GENERATED FROM PYTHON SOURCE LINES 236-241
 
 Flux maps for decay
 -------------------
@@ -443,7 +434,7 @@ Flux maps for decay
 Finally flux maps for decay can be produced like this:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 242-258
+.. GENERATED FROM PYTHON SOURCE LINES 241-257
 
 .. code-block:: Python
 
@@ -465,20 +456,9 @@ Finally flux maps for decay can be produced like this:
     plt.show()
 
 
-
-.. image-sg:: /tutorials/api/images/sphx_glr_astro_dark_matter_006.png
-   :alt: Flux [1 / (cm2 s)]  m$_{DM}$=10.0 TeV, channel=Z
-   :srcset: /tutorials/api/images/sphx_glr_astro_dark_matter_006.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 55.677 seconds)
+   **Total running time of the script:** (0 minutes 50.908 seconds)
 
 
 .. _sphx_glr_download_tutorials_api_astro_dark_matter.py:

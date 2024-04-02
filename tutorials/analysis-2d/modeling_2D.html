@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Source detection and significance maps" href="detect.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -652,7 +652,7 @@ an integrated power law.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -679,7 +679,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -732,7 +732,7 @@ analysis as <em>3D</em>, and define the geometry of the analysis.</p>
         datasets_file: null
         models_file: null
     observations:
-        datastore: /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/cta-1dc/index/gps
+        datastore: gammapy-data/cta-1dc/index/gps
         obs_ids: [110380, 111140, 111159]
         obs_file: null
         obs_cone: {frame: null, lon: null, lat: null, radius: null}
@@ -790,37 +790,14 @@ analysis as <em>3D</em>, and define the geometry of the analysis.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="s2">&quot;stacked&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
-/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
-/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
-MapDataset
-----------
-
-  Name                            : stacked
-
-  Total counts                    : 85625
-  Total background counts         : 85624.99
-  Total excess counts             : 0.01
-
-  Predicted counts                : 85625.00
-  Predicted background counts     : 85624.99
-  Predicted excess counts         : nan
-
-  Exposure min                    : 8.46e+08 m2 s
-  Exposure max                    : 2.14e+10 m2 s
-
-  Number of total bins            : 120000
-  Number of fit bins              : 96602
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : nan
-
-  Number of models                : 0
-  Number of parameters            : 0
-  Number of free parameters       : 0
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-2d/modeling_2D.py&quot;</span>, line <span class="m">121</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">analysis</span><span class="o">.</span><span class="n">get_observations</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/analysis/core.py&quot;</span>, line <span class="m">141</span>, in <span class="n">get_observations</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_set_data_store</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/analysis/core.py&quot;</span>, line <span class="m">100</span>, in <span class="n">_set_data_store</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datastore not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">Datastore not found: gammapy-data/cta-1dc/index/gps</span>
 </pre></div>
 </div>
 <p>The counts and background maps have only one bin in reconstructed
@@ -834,40 +811,12 @@ about them presently.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="s2">&quot;stacked&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">exposure</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>WcsNDMap
-
-        geom  : WcsGeom
-        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;]
-        shape : (400, 300, 1)
-        ndim  : 3
-        unit  :
-        dtype : float32
-
-WcsNDMap
-
-        geom  : WcsGeom
-        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy&#39;]
-        shape : (400, 300, 1)
-        ndim  : 3
-        unit  :
-        dtype : float32
-
-WcsNDMap
-
-        geom  : WcsGeom
-        axes  : [&#39;lon&#39;, &#39;lat&#39;, &#39;energy_true&#39;]
-        shape : (400, 300, 16)
-        ndim  : 3
-        unit  : m2 s
-        dtype : float32
-</pre></div>
-</div>
 <p>We can have a quick look of these maps in the following way:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">analysis</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="s2">&quot;stacked&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">reduce_over_axes</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_modeling_2D_001.png" srcset="../../_images/sphx_glr_modeling_2D_001.png" alt="modeling 2D" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="modelling">
 <h2>Modelling<a class="headerlink" href="#modelling" title="Link to this heading">#</a></h2>
 <p>Now, we define a model to be fitted to the dataset. <strong>The important
@@ -921,20 +870,6 @@ it:</p>
 <span class="n">display</span><span class="p">(</span><span class="n">analysis</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">to_parameters_table</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   model    type    name      value      unit     error      min        max    frozen is_norm link prior
------------ ---- --------- ----------- -------- --------- ---------- --------- ------ ------- ---- -----
-       GC-1      amplitude  4.1496e-11 cm-2 s-1 2.223e-12        nan       nan  False    True
-       GC-1          index  2.0000e+00          0.000e+00        nan       nan   True   False
-       GC-1           emin  1.0000e-01      TeV 0.000e+00        nan       nan   True   False
-       GC-1           emax  1.0000e+01      TeV 0.000e+00        nan       nan   True   False
-       GC-1          lon_0 -4.7613e-02      deg 1.997e-03        nan       nan  False   False
-       GC-1          lat_0 -5.3570e-02      deg 1.984e-03 -9.000e+01 9.000e+01  False   False
-stacked-bkg           norm  9.9445e-01          3.411e-03        nan       nan  False    True
-stacked-bkg           tilt  0.0000e+00          0.000e+00        nan       nan   True   False
-stacked-bkg      reference  1.0000e+00      TeV 0.000e+00        nan       nan   True   False
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.878 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-2d-modeling-2d-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-2d/modeling_2D.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo1.svg" width="150px" /></a>

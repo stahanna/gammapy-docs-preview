@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Simulating and fitting a time varying source" href="light_curve_simulation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -655,7 +655,7 @@ in the CTA 1DC dataset shipped with Gammapy.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -682,37 +682,25 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 <p>Load the data store (which is a subset of CTA-DC1 data):</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/cta-1dc/index/gps&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/pulsar_analysis.py&quot;</span>, line <span class="m">70</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">data_store</span> <span class="o">=</span> <span class="n">DataStore</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;$GAMMAPY_DATA/cta-1dc/index/gps&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/data/data_store.py&quot;</span>, line <span class="m">173</span>, in <span class="n">from_dir</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File not found: </span><span class="si">{</span><span class="n">hdu_table_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">OSError</span>: <span class="n">File not found: gammapy-data/cta-1dc/index/gps/hdu-index.fits.gz</span>
+</pre></div>
+</div>
 <p>Define observation ID and print events:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">id_obs_vela</span> <span class="o">=</span> <span class="p">[</span><span class="mi">111630</span><span class="p">]</span>
 <span class="n">obs_list_vela</span> <span class="o">=</span> <span class="n">data_store</span><span class="o">.</span><span class="n">get_observations</span><span class="p">(</span><span class="n">id_obs_vela</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">obs_list_vela</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EventList
----------
-
-  Instrument       : None
-  Telescope        : CTA
-  Obs. ID          : 111630
-
-  Number of events : 101430
-  Event rate       : 56.350 1 / s
-
-  Time start       : 59300.833333333336
-  Time stop        : 59300.854166666664
-
-  Min. energy      : 3.00e-02 TeV
-  Max. energy      : 1.52e+02 TeV
-  Median energy    : 1.00e-01 TeV
-
-  Max. offset      : 5.0 deg
 </pre></div>
 </div>
 <p>Now that we have our observation, let’s select the events in 0.2° radius
@@ -726,45 +714,11 @@ around the pulsar position.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">events_vela</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EventList
----------
-
-  Instrument       : None
-  Telescope        : CTA
-  Obs. ID          : 111630
-
-  Number of events : 843
-  Event rate       : 0.468 1 / s
-
-  Time start       : 59300.833333333336
-  Time stop        : 59300.854166666664
-
-  Min. energy      : 3.00e-02 TeV
-  Max. energy      : 4.33e+01 TeV
-  Median energy    : 1.07e-01 TeV
-
-  Max. offset      : 1.7 deg
-</pre></div>
-</div>
 <p>Let’s load the phases of the selected events in a dedicated array.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">phases</span> <span class="o">=</span> <span class="n">events_vela</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;PHASE&quot;</span><span class="p">]</span>
 
 <span class="c1"># Let&#39;s take a look at the first 10 phases</span>
 <span class="n">display</span><span class="p">(</span><span class="n">phases</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   PHASE
------------
- 0.81847286
- 0.45646095
-0.111507416
- 0.43416595
- 0.76837444
-  0.3639946
- 0.58693695
- 0.51095676
-  0.5606985
-  0.2505703
 </pre></div>
 </div>
 </section>
@@ -804,7 +758,7 @@ bin, etc).</p>
 <span class="n">off_phase_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_pulsar_analysis_001.png" srcset="../../_images/sphx_glr_pulsar_analysis_001.png" alt="Phasogram with angular cut of 0.2 deg" class = "sphx-glr-single-img"/><p>Now let’s add some fancy additions to our phasogram: a patch on the ON-
+<p>Now let’s add some fancy additions to our phasogram: a patch on the ON-
 and OFF-phase regions and one for the background level.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate background level</span>
 <span class="n">mask_off</span> <span class="o">=</span> <span class="p">(</span><span class="n">off_phase_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">phases</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">phases</span> <span class="o">&lt;</span> <span class="n">off_phase_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -817,9 +771,6 @@ and OFF-phase regions and one for the background level.</p>
 
 <span class="c1"># error on the background estimation</span>
 <span class="n">bkg_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">count_bkg</span><span class="p">)</span> <span class="o">/</span> <span class="n">nbins</span> <span class="o">/</span> <span class="p">(</span><span class="n">off_phase_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">off_phase_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Number of Off events: 234
 </pre></div>
 </div>
 <p>Let’s redo the same plot for the basis</p>
@@ -870,7 +821,7 @@ and OFF-phase regions and one for the background level.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_pulsar_analysis_002.png" srcset="../../_images/sphx_glr_pulsar_analysis_002.png" alt="Phasogram with angular cut of 0.2 deg" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="make-a-li-ma-test-over-the-events">
 <h2>Make a Li&amp;Ma test over the events<a class="headerlink" href="#make-a-li-ma-test-over-the-events" title="Link to this heading">#</a></h2>
 <p>Another thing that we want to do is to compute a Li&amp;Ma test between the on-phase and the off-phase.</p>
@@ -894,11 +845,6 @@ and OFF-phase regions and one for the background level.</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of excess counts: </span><span class="si">{</span><span class="n">pulse_stat</span><span class="o">.</span><span class="n">n_sig</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TS: </span><span class="si">{</span><span class="n">pulse_stat</span><span class="o">.</span><span class="n">ts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Significance: </span><span class="si">{</span><span class="n">pulse_stat</span><span class="o">.</span><span class="n">sqrt_ts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Number of excess counts: 44.00000000000003
-TS: 15.211770556359625
-Significance: 3.900226987799508
 </pre></div>
 </div>
 </section>
@@ -963,7 +909,7 @@ If one wants to plot the counts-OFF instead, <code class="xref py py-obj docutil
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_pulsar_analysis_003.png" srcset="../../_images/sphx_glr_pulsar_analysis_003.png" alt="Counts, Background" class = "sphx-glr-single-img"/><p>Finally, we can run an <a class="reference internal" href="../../api/gammapy.estimators.ExcessMapEstimator.html#gammapy.estimators.ExcessMapEstimator" title="gammapy.estimators.ExcessMapEstimator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExcessMapEstimator</span></code></a> to compute the excess and significance maps.</p>
+<p>Finally, we can run an <a class="reference internal" href="../../api/gammapy.estimators.ExcessMapEstimator.html#gammapy.estimators.ExcessMapEstimator" title="gammapy.estimators.ExcessMapEstimator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExcessMapEstimator</span></code></a> to compute the excess and significance maps.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">excess_map_estimator</span> <span class="o">=</span> <span class="n">ExcessMapEstimator</span><span class="p">(</span>
     <span class="n">correlation_radius</span><span class="o">=</span><span class="s2">&quot;0.2 deg&quot;</span><span class="p">,</span> <span class="n">energy_edges</span><span class="o">=</span><span class="p">[</span><span class="mi">50</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">GeV</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">TeV</span><span class="p">]</span>
 <span class="p">)</span>
@@ -985,7 +931,7 @@ If one wants to plot the counts-OFF instead, <code class="xref py py-obj docutil
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_pulsar_analysis_004.png" srcset="../../_images/sphx_glr_pulsar_analysis_004.png" alt="Excess counts, Significance" class = "sphx-glr-single-img"/><p>Note that here we are lacking statistic because we only use one run of CTA.</p>
+<p>Note that here we are lacking statistic because we only use one run of CTA.</p>
 </section>
 <section id="phase-resolved-spectrum">
 <h2>Phase-resolved spectrum<a class="headerlink" href="#phase-resolved-spectrum" title="Link to this heading">#</a></h2>
@@ -1027,7 +973,7 @@ has been created as shown above.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_pulsar_analysis_005.png" srcset="../../_images/sphx_glr_pulsar_analysis_005.png" alt="Counts, Exposure, Energy Dispersion" class = "sphx-glr-single-img"/><p>Now we’ll fit a model to the spectrum with the <a class="reference internal" href="../../api/gammapy.modeling.Fit.html#gammapy.modeling.Fit" title="gammapy.modeling.Fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Fit</span></code></a> class. First we
+<p>Now we’ll fit a model to the spectrum with the <a class="reference internal" href="../../api/gammapy.modeling.Fit.html#gammapy.modeling.Fit" title="gammapy.modeling.Fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Fit</span></code></a> class. First we
 load a power law model with an initial value for the index and the
 amplitude and then wo do a likelihood fit. The fit results are printed
 below.</p>
@@ -1047,23 +993,6 @@ below.</p>
 <span class="n">joint_result</span> <span class="o">=</span> <span class="n">joint_fit</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">datasets</span><span class="o">=</span><span class="n">spectrum_datasets</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">joint_result</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>OptimizeResult
-
-        backend    : minuit
-        method     : migrad
-        success    : True
-        message    : Optimization terminated successfully.
-        nfev       : 101
-        total stat : 7.07
-
-CovarianceResult
-
-        backend    : minuit
-        method     : hesse
-        success    : True
-        message    : Hesse terminated successfully.
 </pre></div>
 </div>
 <p>Now you might want to do the stacking here even if in our case there is
@@ -1110,11 +1039,10 @@ points by fitting the norm of the global model in energy bands.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_pulsar_analysis_006.png" srcset="../../_images/sphx_glr_pulsar_analysis_006.png" alt="pulsar analysis" class = "sphx-glr-single-img"/><p>This tutorial suffers a bit from the lack of statistics: there were 9
+<p>This tutorial suffers a bit from the lack of statistics: there were 9
 Vela observations in the CTA DC1 while there is only one here. When done
 on the 9 observations, the spectral analysis is much better agreement
 between the input model and the gammapy fit.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.198 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-time-pulsar-analysis-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-time/pulsar_analysis.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo3.svg" width="150px" /></a>

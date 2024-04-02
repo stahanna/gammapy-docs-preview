@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -617,15 +617,15 @@ document.write(`
         <span class="k">try</span><span class="p">:</span>
             <span class="n">ss</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{:&lt;16s}</span><span class="s2"> : </span><span class="si">{:.3f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;ASSOC_PROB_BAY&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;ASSOC_PROB_BAY&quot;</span><span class="p">])</span>
             <span class="n">ss</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{:&lt;16s}</span><span class="s2"> : </span><span class="si">{:.3f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;ASSOC_PROB_LR&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;ASSOC_PROB_LR&quot;</span><span class="p">])</span>
-        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">ss</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{:&lt;16s}</span><span class="s2"> : </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Class1&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;CLASS1&quot;</span><span class="p">])</span>
-        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="n">ss</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{:&lt;16s}</span><span class="s2"> : </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;CLASS&quot;</span><span class="p">])</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">ss</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{:&lt;16s}</span><span class="s2"> : </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Class2&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;CLASS2&quot;</span><span class="p">])</span>
-        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="n">ss</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{:&lt;16s}</span><span class="s2"> : </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;TeVCat flag&quot;</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TEVCAT_FLAG&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">ss</span>
@@ -897,9 +897,13 @@ document.write(`
                 <span class="k">if</span> <span class="n">de</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">:</span>
                     <span class="n">path_extended</span> <span class="o">=</span> <span class="s2">&quot;$GAMMAPY_DATA/catalogs/fermi/LAT_extended_sources_8years/Templates/&quot;</span>
                 <span class="k">elif</span> <span class="n">de</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">:</span>
-                    <span class="n">path_extended</span> <span class="o">=</span> <span class="s2">&quot;$GAMMAPY_DATA/catalogs/fermi/LAT_extended_sources_12years/Templates/&quot;</span>
+                    <span class="n">path_extended</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="s2">&quot;$GAMMAPY_DATA/catalogs/fermi/Extended_12years/Templates/&quot;</span>
+                    <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">path_extended</span> <span class="o">=</span> <span class="s2">&quot;$GAMMAPY_DATA/catalogs/fermi/LAT_extended_sources_14years/Templates/&quot;</span>
+                    <span class="n">path_extended</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="s2">&quot;$GAMMAPY_DATA/catalogs/fermi/Extended_14years/Templates/&quot;</span>
+                    <span class="p">)</span>
                 <span class="n">path</span> <span class="o">=</span> <span class="n">make_path</span><span class="p">(</span><span class="n">path_extended</span><span class="p">)</span>
                 <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>  <span class="c1"># ignore FITS units warnings</span>
                     <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">FITSFixedWarning</span><span class="p">)</span>

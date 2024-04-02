@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -1036,9 +1036,9 @@ document.write(`
         <span class="k">elif</span> <span class="n">datasets_settings</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;1d&quot;</span><span class="p">:</span>
             <span class="n">maker_config</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="k">if</span> <span class="n">datasets_settings</span><span class="o">.</span><span class="n">containment_correction</span><span class="p">:</span>
-                <span class="n">maker_config</span><span class="p">[</span>
-                    <span class="s2">&quot;containment_correction&quot;</span>
-                <span class="p">]</span> <span class="o">=</span> <span class="n">datasets_settings</span><span class="o">.</span><span class="n">containment_correction</span>
+                <span class="n">maker_config</span><span class="p">[</span><span class="s2">&quot;containment_correction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">datasets_settings</span><span class="o">.</span><span class="n">containment_correction</span>
+                <span class="p">)</span>
 
             <span class="n">maker_config</span><span class="p">[</span><span class="s2">&quot;selection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">,</span> <span class="s2">&quot;exposure&quot;</span><span class="p">,</span> <span class="s2">&quot;edisp&quot;</span><span class="p">]</span>
 

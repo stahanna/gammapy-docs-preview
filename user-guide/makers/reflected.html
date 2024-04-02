@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="FoV background" href="fov.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -667,6 +667,7 @@ complex region such as a <a class="reference external" href="https://astropy-reg
 <a class="reference external" href="https://astropy-regions.readthedocs.io/en/latest/api/regions.EllipseSkyRegion.html#regions.EllipseSkyRegion" title="(in regions v0.9.dev15+g6a895d4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EllipseSkyRegion</span></code></a>, a <a class="reference external" href="https://astropy-regions.readthedocs.io/en/latest/api/regions.RectangleSkyRegion.html#regions.RectangleSkyRegion" title="(in regions v0.9.dev15+g6a895d4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RectangleSkyRegion</span></code></a> etc.</p>
 <p>The following example shows how to create such regions:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Example how to compute and plot reflected regions.&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
 <span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="kn">import</span> <span class="n">SkyCoord</span>
 <span class="kn">from</span> <span class="nn">regions</span> <span class="kn">import</span> <span class="n">CircleSkyRegion</span><span class="p">,</span> <span class="n">EllipseAnnulusSkyRegion</span><span class="p">,</span> <span class="n">RectangleSkyRegion</span>
@@ -813,6 +814,7 @@ as the maximum number of reflected regions.</p>
 and OFF events for an <a class="reference internal" href="../../api/gammapy.data.Observations.html#gammapy.data.Observations" title="gammapy.data.Observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Observations</span></code></a> object. The last example
 shows how to run it on a few observations with a rectangular region.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Example how to compute and plot reflected regions.&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
 <span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="kn">import</span> <span class="n">SkyCoord</span>
 <span class="kn">from</span> <span class="nn">regions</span> <span class="kn">import</span> <span class="n">RectangleSkyRegion</span>
@@ -860,10 +862,6 @@ shows how to run it on a few observations with a rectangular region.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../../_downloads/63c5c521b24e55b2fa054df4deb83321/make_rectangular_reflected_background.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/df35eed161ed63eb56b2447c998572de/make_rectangular_reflected_background.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/73e7de11148f573eeb51f279652f7b9b/make_rectangular_reflected_background.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
-<figure class="align-default">
-<img alt="../../_images/make_rectangular_reflected_background.png" class="plot-directive" src="../../_images/make_rectangular_reflected_background.png" />
-</figure>
 <section id="examples-using-gammapy-makers-reflectedregionsbackgroundmaker">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">gammapy.makers.ReflectedRegionsBackgroundMaker</span></code><a class="headerlink" href="#examples-using-gammapy-makers-reflectedregionsbackgroundmaker" title="Link to this heading">#</a></h3>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Perform a spectral analysis of an extended source."><img alt="" src="../../_images/sphx_glr_extended_source_spectral_analysis_thumb.png" />

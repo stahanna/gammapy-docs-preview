@@ -103,7 +103,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
+            version                : 1.2.dev2111+g5675db08b.d20240402 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -130,7 +130,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -297,7 +297,7 @@ To see the geometry of each map, we can use:
 
  .. code-block:: none
 
-    {'geom': <gammapy.maps.wcs.geom.WcsGeom object at 0x7ff1c16dafd0>, 'geom_exposure': <gammapy.maps.wcs.geom.WcsGeom object at 0x7ff1c0529f40>, 'geom_psf': <gammapy.maps.wcs.geom.WcsGeom object at 0x7ff1c0529be0>, 'geom_edisp': <gammapy.maps.wcs.geom.WcsGeom object at 0x7ff1c09884c0>}
+    {'geom': <gammapy.maps.wcs.geom.WcsGeom object at 0x7fa5d7c03fa0>, 'geom_exposure': <gammapy.maps.wcs.geom.WcsGeom object at 0x7fa5d7dbb160>, 'geom_psf': <gammapy.maps.wcs.geom.WcsGeom object at 0x7fa5d7d901f0>, 'geom_edisp': <gammapy.maps.wcs.geom.WcsGeom object at 0x7fa5d7d90e80>}
 
 
 
@@ -322,39 +322,26 @@ from a FITS file:
 
 
 
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    MapDataset
-    ----------
-
-      Name                            : dataset-cta 
-
-      Total counts                    : 104317 
-      Total background counts         : 91507.70
-      Total excess counts             : 12809.30
-
-      Predicted counts                : 91507.69
-      Predicted background counts     : 91507.70
-      Predicted excess counts         : nan
-
-      Exposure min                    : 6.28e+07 m2 s
-      Exposure max                    : 1.90e+10 m2 s
-
-      Number of total bins            : 768000 
-      Number of fit bins              : 691680 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/datasets.py", line 133, in <module>
+        dataset_cta = MapDataset.read(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/datasets/map.py", line 1556, in read
+        with fits.open(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 214, in fitsopen
+        return HDUList.fromfile(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 482, in fromfile
+        return cls._readfrom(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py", line 1170, in _readfrom
+        fileobj = _File(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py", line 218, in __init__
+        self._open_filename(fileobj, mode, overwrite)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
+        self._file = open(self.name, IO_FITS_MODES[mode])
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/cta-1dc-gc/cta-1dc-gc.fits.gz'
 
 
 
@@ -384,18 +371,6 @@ For a quick info, use
     print(dataset_cta.info_dict())
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    {'name': 'dataset-cta', 'counts': 104317, 'excess': 12809.3046875, 'sqrt_ts': 41.41009347393684, 'background': 91507.6953125, 'npred': 91507.68628538586, 'npred_background': 91507.6953125, 'npred_signal': nan, 'exposure_min': <Quantity 62842028. m2 s>, 'exposure_max': <Quantity 1.90242058e+10 m2 s>, 'livetime': <Quantity 5292.00010298 s>, 'ontime': <Quantity 5400. s>, 'counts_rate': <Quantity 19.71220672 1 / s>, 'background_rate': <Quantity 17.29170324 1 / s>, 'excess_rate': <Quantity 2.42050348 1 / s>, 'n_bins': 768000, 'n_fit_bins': 691680, 'stat_type': 'cash', 'stat_sum': nan}
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 158-160
 
 For a quick view, use
@@ -408,17 +383,6 @@ For a quick view, use
 
     dataset_cta.peek()
     plt.show()
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_001.png
-   :alt: Counts, Excess counts, Exposure, Background
-   :srcset: /tutorials/api/images/sphx_glr_datasets_001.png
-   :class: sphx-glr-single-img
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 165-167
@@ -437,17 +401,6 @@ And access individual maps like:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_002.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_002.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 174-177
 
 Of course you can also access IRF related maps, e.g. the psf as
@@ -460,26 +413,6 @@ Of course you can also access IRF related maps, e.g. the psf as
 
 
     print(dataset_cta.psf)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    WcsNDMap
-
-            geom  : WcsGeom 
-            axes  : ['lon', 'lat', 'rad', 'energy_true']
-            shape : (16, 12, 66, 14)
-            ndim  : 4
-            unit  : 1 / sr
-            dtype : >f4
-
-
 
 
 
@@ -496,18 +429,6 @@ And use any method on the `~gammapy.irf.PSFMap` object:
     print(radius)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    [0.08675] deg
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 188-194
 
 .. code-block:: Python
@@ -516,17 +437,6 @@ And use any method on the `~gammapy.irf.PSFMap` object:
     edisp_kernel = dataset_cta.edisp.get_edisp_kernel()
     edisp_kernel.plot_matrix()
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_003.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_003.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -543,26 +453,6 @@ map:
 
 
     print(dataset_cta.background)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    WcsNDMap
-
-            geom  : WcsGeom 
-            axes  : ['lon', 'lat', 'energy']
-            shape : (320, 240, 10)
-            ndim  : 3
-            unit  : 
-            dtype : >f4
-
-
 
 
 
@@ -585,12 +475,6 @@ As a next step we define a minimal model on the dataset using the
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 216-219
 
 Assigning models to datasets is covered in more detail in :doc:`/tutorials/api/model_management`.
@@ -603,68 +487,6 @@ Printing the dataset will now show the model components:
 
 
     print(dataset_cta)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    MapDataset
-    ----------
-
-      Name                            : dataset-cta 
-
-      Total counts                    : 104317 
-      Total background counts         : 91507.70
-      Total excess counts             : 12809.31
-
-      Predicted counts                : 91719.65
-      Predicted background counts     : 91507.69
-      Predicted excess counts         : 211.96
-
-      Exposure min                    : 6.28e+07 m2 s
-      Exposure max                    : 1.90e+10 m2 s
-
-      Number of total bins            : 768000 
-      Number of fit bins              : 691680 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : 424649.33
-
-      Number of models                : 2 
-      Number of parameters            : 8
-      Number of free parameters       : 5
-
-      Component 0: SkyModel
-  
-        Name                      : gc
-        Datasets names            : None
-        Spectral model type       : PowerLawSpectralModel
-        Spatial  model type       : PointSpatialModel
-        Temporal model type       : 
-        Parameters:
-          index                         :      2.000   +/-    0.00             
-          amplitude                     :   1.00e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-          reference             (frozen):      1.000       TeV         
-          lon_0                         :      4.650   +/-    0.00 rad         
-          lat_0                         :     -0.505   +/-    0.00 rad         
-  
-      Component 1: FoVBackgroundModel
-  
-        Name                      : dataset-cta-bkg
-        Datasets names            : ['dataset-cta']
-        Spectral model type       : PowerLawNormSpectralModel
-        Parameters:
-          norm                          :      1.000   +/-    0.00             
-          tilt                  (frozen):      0.000                   
-          reference             (frozen):      1.000       TeV         
-  
-  
-
 
 
 
@@ -685,17 +507,6 @@ of the model:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_004.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_004.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 234-237
 
 To get the predicted counts from an individual model component we can
@@ -710,17 +521,6 @@ use:
     npred_source = dataset_cta.npred_signal(model_names=["gc"])
     npred_source.sum_over_axes().plot()
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_005.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_005.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -740,17 +540,6 @@ corrected background, one can use `~gammapy.datasets.MapDataset.npred_background
     npred_background = dataset_cta.npred_background()
     npred_background.sum_over_axes().plot()
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_006.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_006.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -788,17 +577,6 @@ have the same `~gammapy.maps.Map.geom` as the `~gammapy.datasets.MapDataset.coun
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_007.png
-   :alt: Energy 100 GeV - 158 GeV, Energy 158 GeV - 251 GeV, Energy 251 GeV - 398 GeV, Energy 398 GeV - 631 GeV, Energy 631 GeV - 1.00 TeV, Energy 1.00 TeV - 1.58 TeV, Energy 1.58 TeV - 2.51 TeV, Energy 2.51 TeV - 3.98 TeV, Energy 3.98 TeV - 6.31 TeV, Energy 6.31 TeV - 10.00 TeV
-   :srcset: /tutorials/api/images/sphx_glr_datasets_007.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 283-285
 
 In addition it is possible to define a custom `~gammapy.datasets.MapDataset.mask_fit`:
@@ -820,17 +598,6 @@ In addition it is possible to define a custom `~gammapy.datasets.MapDataset.mask
     dataset_cta.mask_fit = mask_space & mask_energy
     dataset_cta.mask_fit.plot_grid(vmin=0, vmax=1, add_cbar=True)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_008.png
-   :alt: Energy 100 GeV - 158 GeV, Energy 158 GeV - 251 GeV, Energy 251 GeV - 398 GeV, Energy 398 GeV - 631 GeV, Energy 631 GeV - 1.00 TeV, Energy 1.00 TeV - 1.58 TeV, Energy 1.58 TeV - 2.51 TeV, Energy 2.51 TeV - 3.98 TeV, Energy 3.98 TeV - 6.31 TeV, Energy 6.31 TeV - 10.00 TeV
-   :srcset: /tutorials/api/images/sphx_glr_datasets_008.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -859,17 +626,6 @@ values at each spatial pixel
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_009.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_009.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 318-319
 
 To see the high energy threshold at each point
@@ -881,17 +637,6 @@ To see the high energy threshold at each point
 
     e_max.plot(add_cbar=True)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_010.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_010.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -918,17 +663,6 @@ parallel.Optionally one can provide a new name to the resulting dataset:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_011.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_011.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 341-343
 
 It is also possible to slice a `~gammapy.datasets.MapDataset` in energy:
@@ -947,17 +681,6 @@ It is also possible to slice a `~gammapy.datasets.MapDataset` in energy:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_012.png
-   :alt: Energy 1.00 TeV - 1.58 TeV, Energy 1.58 TeV - 2.51 TeV, Energy 2.51 TeV - 3.98 TeV
-   :srcset: /tutorials/api/images/sphx_glr_datasets_012.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 352-355
 
 The same operation will be applied to all other maps contained in the
@@ -971,17 +694,6 @@ datasets such as `~gammapy.datasets.MapDataset.mask_fit`:
 
     sliced.mask_fit.plot_grid()
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_013.png
-   :alt: Energy 1.00 TeV - 1.58 TeV, Energy 1.58 TeV - 2.51 TeV, Energy 2.51 TeV - 3.98 TeV
-   :srcset: /tutorials/api/images/sphx_glr_datasets_013.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -1007,17 +719,6 @@ axes:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_014.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_014.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 376-378
 
 And the same down-sampling process is possible along the energy axis:
@@ -1036,17 +737,6 @@ And the same down-sampling process is possible along the energy axis:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_015.png
-   :alt: Energy 100 GeV - 1.00 TeV, Energy 1.00 TeV - 10.00 TeV
-   :srcset: /tutorials/api/images/sphx_glr_datasets_015.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 387-390
 
 In the printout one can see that the actual number of counts is
@@ -1059,94 +749,6 @@ preserved during the down-sampling:
 
 
     print(downsampled_energy, dataset_cta)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    MapDataset
-    ----------
-
-      Name                            : downsampled-energy 
-
-      Total counts                    : 104317 
-      Total background counts         : 91507.69
-      Total excess counts             : 12809.31
-
-      Predicted counts                : 91507.69
-      Predicted background counts     : 91507.69
-      Predicted excess counts         : nan
-
-      Exposure min                    : 6.28e+07 m2 s
-      Exposure max                    : 1.90e+10 m2 s
-
-      Number of total bins            : 153600 
-      Number of fit bins              : 22608 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-     MapDataset
-    ----------
-
-      Name                            : dataset-cta 
-
-      Total counts                    : 104317 
-      Total background counts         : 91507.70
-      Total excess counts             : 12809.31
-
-      Predicted counts                : 91719.65
-      Predicted background counts     : 91507.69
-      Predicted excess counts         : 211.96
-
-      Exposure min                    : 6.28e+07 m2 s
-      Exposure max                    : 1.90e+10 m2 s
-
-      Number of total bins            : 768000 
-      Number of fit bins              : 67824 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : 44318.32
-
-      Number of models                : 2 
-      Number of parameters            : 8
-      Number of free parameters       : 5
-
-      Component 0: SkyModel
-  
-        Name                      : gc
-        Datasets names            : None
-        Spectral model type       : PowerLawSpectralModel
-        Spatial  model type       : PointSpatialModel
-        Temporal model type       : 
-        Parameters:
-          index                         :      2.000   +/-    0.00             
-          amplitude                     :   1.00e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-          reference             (frozen):      1.000       TeV         
-          lon_0                         :      4.650   +/-    0.00 rad         
-          lat_0                         :     -0.505   +/-    0.00 rad         
-  
-      Component 1: FoVBackgroundModel
-  
-        Name                      : dataset-cta-bkg
-        Datasets names            : ['dataset-cta']
-        Spectral model type       : PowerLawNormSpectralModel
-        Parameters:
-          norm                          :      1.000   +/-    0.00             
-          tilt                  (frozen):      0.000                   
-          reference             (frozen):      1.000       TeV         
-  
-  
-
 
 
 
@@ -1168,17 +770,6 @@ energy binning using:
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_016.png
-   :alt: Energy 100 GeV - 251 GeV, Energy 251 GeV - 1.00 TeV, Energy 1.00 TeV - 2.51 TeV, Energy 2.51 TeV - 10.00 TeV
-   :srcset: /tutorials/api/images/sphx_glr_datasets_016.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 406-409
 
 To squash the whole dataset into a single energy bin there is the
@@ -1193,17 +784,6 @@ To squash the whole dataset into a single energy bin there is the
     dataset_image = dataset_cta.to_image()
     dataset_image.counts.plot()
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_017.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_017.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -1237,17 +817,6 @@ correction is feasible only for circular regions.
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_018.png
-   :alt: Counts, Exposure, Energy Dispersion
-   :srcset: /tutorials/api/images/sphx_glr_datasets_018.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 439-444
 
 A `~gammapy.datasets.MapDataset` can also be integrated over the `on_region` to create
@@ -1263,44 +832,6 @@ required.
 
     reg_dataset = dataset_cta.to_region_map_dataset(region, name="region-map-dataset")
     print(reg_dataset)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    MapDataset
-    ----------
-
-      Name                            : region-map-dataset 
-
-      Total counts                    : 5644 
-      Total background counts         : 3323.66
-      Total excess counts             : 2320.34
-
-      Predicted counts                : 3323.66
-      Predicted background counts     : 3323.66
-      Predicted excess counts         : nan
-
-      Exposure min                    : 4.66e+08 m2 s
-      Exposure max                    : 1.89e+10 m2 s
-
-      Number of total bins            : 10 
-      Number of fit bins              : 6 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-
-
 
 
 
@@ -1329,17 +860,6 @@ points, which can be then used in fitting.
 
 
 
-
-
-.. image-sg:: /tutorials/api/images/sphx_glr_datasets_019.png
-   :alt: datasets
-   :srcset: /tutorials/api/images/sphx_glr_datasets_019.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 468-473
 
 The masks on `~gammapy.datasets.FluxPointsDataset` are `~numpy.ndarray` objects
@@ -1356,64 +876,6 @@ by default, masks the upper limit points.
     print(fp_dataset.mask_safe)  # Note: the mask here is simply a numpy array
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    [[[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[ True]]
-
-     [[False]]
-
-     [[ True]]
-
-     [[False]]
-
-     [[False]]
-
-     [[ True]]
-
-     [[False]]
-
-     [[False]]]
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 477-480
 
 .. code-block:: Python
@@ -1422,48 +884,12 @@ by default, masks the upper limit points.
     print(fp_dataset.data)  # is a `FluxPoints` object
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    FluxPoints
-    ----------
-
-      geom                   : RegionGeom
-      axes                   : ['lon', 'lat', 'energy']
-      shape                  : (1, 1, 24)
-      quantities             : ['norm', 'norm_err', 'norm_ul']
-      ref. model             : pl
-      n_sigma                : 1
-      n_sigma_ul             : 2.0
-      sqrt_ts_threshold_ul   : 2
-      sed type init          : dnde
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 481-485
 
 .. code-block:: Python
 
 
     print(fp_dataset.data_shape())  # number of data points
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    (24,)
-
 
 
 
@@ -1506,35 +932,6 @@ To create a `~gammapy.datasets.Datasets` object, pass a list of `~gammapy.datase
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Datasets
-    --------
-
-    Dataset 0: 
-
-      Type       : MapDataset
-      Name       : dataset-empty
-      Instrument : 
-      Models     : 
-
-    Dataset 1: 
-
-      Type       : MapDataset
-      Name       : dataset-cta
-      Instrument : 
-      Models     : ['gc', 'dataset-cta-bkg']
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 519-523
 
 If all the datasets have the same type we can also print an info table,
@@ -1553,23 +950,6 @@ collecting all the information from the individual calls to
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-         name     counts       excess            sqrt_ts        background        npred       ...    excess_rate    n_bins n_fit_bins stat_type      stat_sum     
-                                                                                              ...       1 / s                                                     
-    ------------- ------ ------------------ ----------------- ------------- ----------------- ... ----------------- ------ ---------- --------- ------------------
-    dataset-empty      0                0.0               0.0           0.0               0.0 ...               nan 110000          0      cash                nan
-      dataset-cta 104317 12809.313714614138 41.41012398874433 91507.6953125 91719.64812407878 ... 2.420505189976446 768000      67824      cash 44318.324424288934
-    ['dataset-empty', 'dataset-cta']
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 530-532
 
 We can access individual datasets in `Datasets` object by name:
@@ -1584,44 +964,6 @@ We can access individual datasets in `Datasets` object by name:
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    MapDataset
-    ----------
-
-      Name                            : dataset-empty 
-
-      Total counts                    : 0 
-      Total background counts         : 0.00
-      Total excess counts             : 0.00
-
-      Predicted counts                : 0.00
-      Predicted background counts     : 0.00
-      Predicted excess counts         : nan
-
-      Exposure min                    : 0.00e+00 m2 s
-      Exposure max                    : 0.00e+00 m2 s
-
-      Number of total bins            : 110000 
-      Number of fit bins              : 0 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 537-539
 
 Or by index:
@@ -1633,44 +975,6 @@ Or by index:
 
 
     print(datasets[0])
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    MapDataset
-    ----------
-
-      Name                            : dataset-empty 
-
-      Total counts                    : 0 
-      Total background counts         : 0.00
-      Total excess counts             : 0.00
-
-      Predicted counts                : 0.00
-      Predicted background counts     : 0.00
-      Predicted excess counts         : nan
-
-      Exposure min                    : 0.00e+00 m2 s
-      Exposure max                    : 0.00e+00 m2 s
-
-      Number of total bins            : 110000 
-      Number of fit bins              : 0 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-
-
 
 
 
@@ -1690,18 +994,6 @@ Other list type operations work as well such as:
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    ['dataset-cta']
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 553-555
 
 Or
@@ -1714,18 +1006,6 @@ Or
 
     datasets.append(spectrum_dataset)
     print(datasets.names)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    ['dataset-cta', 'spectrum-dataset']
-
 
 
 
@@ -1752,49 +1032,6 @@ functionality:
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Datasets
-    --------
-
-    Dataset 0: 
-
-      Type       : SpectrumDatasetOnOff
-      Name       : 23523
-      Instrument : 
-      Models     : 
-
-    Dataset 1: 
-
-      Type       : SpectrumDatasetOnOff
-      Name       : 23526
-      Instrument : 
-      Models     : 
-
-    Dataset 2: 
-
-      Type       : SpectrumDatasetOnOff
-      Name       : 23559
-      Instrument : 
-      Models     : 
-
-    Dataset 3: 
-
-      Type       : SpectrumDatasetOnOff
-      Name       : 23592
-      Instrument : 
-      Models     : 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 577-579
 
 Now we can stack all datasets using `~gammapy.datasets.Datasets.stack_reduce()`:
@@ -1807,47 +1044,6 @@ Now we can stack all datasets using `~gammapy.datasets.Datasets.stack_reduce()`:
 
     stacked = datasets.stack_reduce(name="stacked")
     print(stacked)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    SpectrumDatasetOnOff
-    --------------------
-
-      Name                            : stacked 
-
-      Total counts                    : 459 
-      Total background counts         : 27.50
-      Total excess counts             : 431.50
-
-      Predicted counts                : 45.27
-      Predicted background counts     : 45.27
-      Predicted excess counts         : nan
-
-      Exposure min                    : 2.13e+06 m2 s
-      Exposure max                    : 2.63e+09 m2 s
-
-      Number of total bins            : 80 
-      Number of fit bins              : 43 
-
-      Fit statistic type              : wstat
-      Fit statistic value (-2 log(L)) : 1530.36
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-      Total counts_off                : 645 
-      Acceptance                      : 43 
-      Acceptance off                  : 1149 
-
-
 
 
 
@@ -1866,23 +1062,6 @@ Or slice all datasets by a given energy range:
 
     print(datasets_sliced.energy_ranges)
 
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    (<Quantity [1.e+09, 1.e+09, 1.e+09, 1.e+09] keV>, <Quantity [1.e+10, 1.e+10, 1.e+10, 1.e+10] keV>)
-
-
-
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 25.767 seconds)
 
 
 .. _sphx_glr_download_tutorials_api_datasets.py:

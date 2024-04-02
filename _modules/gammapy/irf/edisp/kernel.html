@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -553,11 +553,9 @@ document.write(`
 
 <span class="sd">    &gt;&gt;&gt; from gammapy.maps import MapAxis</span>
 <span class="sd">    &gt;&gt;&gt; from gammapy.irf import EDispKernel</span>
-<span class="sd">    &gt;&gt;&gt; energy = MapAxis.from_energy_bounds(0.1,10,10, unit=&#39;TeV&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; energy_true = MapAxis.from_energy_bounds(0.1,10,10, unit=&#39;TeV&#39;, name=&#39;energy_true&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; edisp = EDispKernel.from_gauss(</span>
-<span class="sd">    &gt;&gt;&gt;     energy_axis_true=energy_true, energy_axis=energy, sigma=0.1, bias=0</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    &gt;&gt;&gt; energy = MapAxis.from_energy_bounds(0.1, 10, 10, unit=&#39;TeV&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; energy_true = MapAxis.from_energy_bounds(0.1, 10, 10, unit=&#39;TeV&#39;, name=&#39;energy_true&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; edisp = EDispKernel.from_gauss(energy_axis_true=energy_true, energy_axis=energy, sigma=0.1, bias=0)</span>
 
 <span class="sd">    Have a quick look:</span>
 
@@ -697,32 +695,33 @@ document.write(`
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        energy_axis_true : `MapAxis`</span>
+<span class="sd">        energy_axis_true : `~gammapy.maps.MapAxis`</span>
 <span class="sd">            True energy axis.</span>
-<span class="sd">        energy_axis : `MapAxis`, optional</span>
+<span class="sd">        energy_axis : `~gammapy.maps.MapAxis`, optional</span>
 <span class="sd">            Reconstructed energy axis. Default is None.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        If ``energy_true`` equals ``energy``, you get a diagonal matrix::</span>
+<span class="sd">        If ``energy_true`` equals ``energy``, you get a diagonal matrix:</span>
 
-<span class="sd">            from gammapy.irf import EDispKernel</span>
-<span class="sd">            from gammapy.maps import MapAxis</span>
+<span class="sd">        &gt;&gt;&gt; from gammapy.irf import EDispKernel</span>
+<span class="sd">        &gt;&gt;&gt; from gammapy.maps import MapAxis</span>
+<span class="sd">        &gt;&gt;&gt; import astropy.units as u</span>
 
-<span class="sd">            energy_true_axis = MapAxis.from_energy_edges(</span>
-<span class="sd">                    [0.5, 1, 2, 4, 6] * u.TeV, name=&quot;energy_true&quot;</span>
-<span class="sd">                )</span>
-<span class="sd">            edisp = EDispKernel.from_diagonal_response(energy_true_axis)</span>
-<span class="sd">            edisp.plot_matrix()</span>
+<span class="sd">        &gt;&gt;&gt; energy_true_axis = MapAxis.from_energy_edges(</span>
+<span class="sd">        ...            [0.5, 1, 2, 4, 6] * u.TeV, name=&quot;energy_true&quot;</span>
+<span class="sd">        ...        )</span>
+<span class="sd">        &gt;&gt;&gt; edisp = EDispKernel.from_diagonal_response(energy_true_axis)</span>
+<span class="sd">        &gt;&gt;&gt; edisp.plot_matrix() # doctest: +SKIP</span>
 
-<span class="sd">        Example with different energy binnings::</span>
+<span class="sd">        Example with different energy binnings:</span>
 
-<span class="sd">            energy_true_axis = MapAxis.from_energy_edges(</span>
-<span class="sd">                    [0.5, 1, 2, 4, 6] * u.TeV, name=&quot;energy_true&quot;</span>
-<span class="sd">                )</span>
-<span class="sd">            energy_axis = MapAxis.from_energy_edges([2, 4, 6] * u.TeV)</span>
-<span class="sd">            edisp = EDispKernel.from_diagonal_response(energy_true_axis, energy_axis)</span>
-<span class="sd">            edisp.plot_matrix()</span>
+<span class="sd">        &gt;&gt;&gt; energy_true_axis = MapAxis.from_energy_edges(</span>
+<span class="sd">        ...     [0.5, 1, 2, 4, 6] * u.TeV, name=&quot;energy_true&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; energy_axis = MapAxis.from_energy_edges([2, 4, 6] * u.TeV)</span>
+<span class="sd">        &gt;&gt;&gt; edisp = EDispKernel.from_diagonal_response(energy_true_axis, energy_axis)</span>
+<span class="sd">        &gt;&gt;&gt; edisp.plot_matrix() # doctest: +SKIP</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.map</span> <span class="kn">import</span> <span class="n">get_overlap_fraction</span>
 

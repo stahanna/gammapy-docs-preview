@@ -45,10 +45,9 @@ Opening the data
 Let’s first do the imports and load the only observation containing Vela
 in the CTA 1DC dataset shipped with Gammapy.
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-59
+.. GENERATED FROM PYTHON SOURCE LINES 30-58
 
 .. code-block:: Python
-
 
 
     # Remove warnings
@@ -85,12 +84,12 @@ in the CTA 1DC dataset shipped with Gammapy.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-62
+.. GENERATED FROM PYTHON SOURCE LINES 59-61
 
 Check setup
 -----------
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-67
+.. GENERATED FROM PYTHON SOURCE LINES 61-66
 
 .. code-block:: Python
 
@@ -118,7 +117,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
+            version                : 1.2.dev2111+g5675db08b.d20240402 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -145,17 +144,17 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-69
+.. GENERATED FROM PYTHON SOURCE LINES 67-68
 
 Load the data store (which is a subset of CTA-DC1 data):
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-74
+.. GENERATED FROM PYTHON SOURCE LINES 68-73
 
 .. code-block:: Python
 
@@ -166,16 +165,25 @@ Load the data store (which is a subset of CTA-DC1 data):
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/pulsar_analysis.py", line 70, in <module>
+        data_store = DataStore.from_dir("$GAMMAPY_DATA/cta-1dc/index/gps")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
+        raise OSError(f"File not found: {hdu_table_filename}")
+    OSError: File not found: gammapy-data/cta-1dc/index/gps/hdu-index.fits.gz
 
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 75-76
+.. GENERATED FROM PYTHON SOURCE LINES 74-75
 
 Define observation ID and print events:
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-83
+.. GENERATED FROM PYTHON SOURCE LINES 75-82
 
 .. code-block:: Python
 
@@ -187,42 +195,12 @@ Define observation ID and print events:
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    EventList
-    ---------
-
-      Instrument       : None
-      Telescope        : CTA
-      Obs. ID          : 111630
-
-      Number of events : 101430
-      Event rate       : 56.350 1 / s
-
-      Time start       : 59300.833333333336
-      Time stop        : 59300.854166666664
-
-      Min. energy      : 3.00e-02 TeV
-      Max. energy      : 1.52e+02 TeV
-      Median energy    : 1.00e-01 TeV
-
-      Max. offset      : 5.0 deg
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 84-86
+.. GENERATED FROM PYTHON SOURCE LINES 83-85
 
 Now that we have our observation, let’s select the events in 0.2° radius
 around the pulsar position.
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-97
+.. GENERATED FROM PYTHON SOURCE LINES 85-96
 
 .. code-block:: Python
 
@@ -238,41 +216,11 @@ around the pulsar position.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    EventList
-    ---------
-
-      Instrument       : None
-      Telescope        : CTA
-      Obs. ID          : 111630
-
-      Number of events : 843
-      Event rate       : 0.468 1 / s
-
-      Time start       : 59300.833333333336
-      Time stop        : 59300.854166666664
-
-      Min. energy      : 3.00e-02 TeV
-      Max. energy      : 4.33e+01 TeV
-      Median energy    : 1.07e-01 TeV
-
-      Max. offset      : 1.7 deg
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 98-99
+.. GENERATED FROM PYTHON SOURCE LINES 97-98
 
 Let’s load the phases of the selected events in a dedicated array.
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-107
+.. GENERATED FROM PYTHON SOURCE LINES 98-106
 
 .. code-block:: Python
 
@@ -285,30 +233,7 @@ Let’s load the phases of the selected events in a dedicated array.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-       PHASE   
-    -----------
-     0.81847286
-     0.45646095
-    0.111507416
-     0.43416595
-     0.76837444
-      0.3639946
-     0.58693695
-     0.51095676
-      0.5606985
-      0.2505703
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 108-115
+.. GENERATED FROM PYTHON SOURCE LINES 107-114
 
 Phasogram
 ---------
@@ -318,7 +243,7 @@ histogram of phases. It works exactly like any other histogram (you
 can set the binning, evaluate the errors based on the counts in each
 bin, etc).
 
-.. GENERATED FROM PYTHON SOURCE LINES 115-146
+.. GENERATED FROM PYTHON SOURCE LINES 114-145
 
 .. code-block:: Python
 
@@ -354,23 +279,12 @@ bin, etc).
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_001.png
-   :alt: Phasogram with angular cut of 0.2 deg
-   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 147-149
+.. GENERATED FROM PYTHON SOURCE LINES 146-148
 
 Now let’s add some fancy additions to our phasogram: a patch on the ON-
 and OFF-phase regions and one for the background level.
 
-.. GENERATED FROM PYTHON SOURCE LINES 149-162
+.. GENERATED FROM PYTHON SOURCE LINES 148-161
 
 .. code-block:: Python
 
@@ -388,23 +302,11 @@ and OFF-phase regions and one for the background level.
     bkg_err = np.sqrt(count_bkg) / nbins / (off_phase_range[1] - off_phase_range[0])
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Number of Off events: 234
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 163-164
+.. GENERATED FROM PYTHON SOURCE LINES 162-163
 
 Let's redo the same plot for the basis
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-212
+.. GENERATED FROM PYTHON SOURCE LINES 163-211
 
 .. code-block:: Python
 
@@ -457,25 +359,14 @@ Let's redo the same plot for the basis
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_002.png
-   :alt: Phasogram with angular cut of 0.2 deg
-   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_002.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 213-217
+.. GENERATED FROM PYTHON SOURCE LINES 212-216
 
 Make a Li&Ma test over the events
 ---------------------------------
 
 Another thing that we want to do is to compute a Li&Ma test between the on-phase and the off-phase.
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-240
+.. GENERATED FROM PYTHON SOURCE LINES 216-239
 
 .. code-block:: Python
 
@@ -503,33 +394,19 @@ Another thing that we want to do is to compute a Li&Ma test between the on-phase
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Number of excess counts: 44.00000000000003
-    TS: 15.211770556359625
-    Significance: 3.900226987799508
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 241-243
+.. GENERATED FROM PYTHON SOURCE LINES 240-242
 
 Phase-resolved map
 ------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 246-250
+.. GENERATED FROM PYTHON SOURCE LINES 245-249
 
 Now that we have an overview of the phasogram of the pulsar, we can do a phase-resolved sky map
 : a map of the ON-phase events minus alpha times the OFF-phase events.
 Alpha is the ratio between the size of the ON-phase zone (here 0.1) and
 the OFF-phase zone (0.3).
 
-.. GENERATED FROM PYTHON SOURCE LINES 250-263
+.. GENERATED FROM PYTHON SOURCE LINES 249-262
 
 .. code-block:: Python
 
@@ -547,17 +424,11 @@ the OFF-phase zone (0.3).
 
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 264-265
+.. GENERATED FROM PYTHON SOURCE LINES 263-264
 
 Let’s create an ON-map and an OFF-map:
 
-.. GENERATED FROM PYTHON SOURCE LINES 265-285
+.. GENERATED FROM PYTHON SOURCE LINES 264-284
 
 .. code-block:: Python
 
@@ -582,19 +453,13 @@ Let’s create an ON-map and an OFF-map:
 
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 286-289
+.. GENERATED FROM PYTHON SOURCE LINES 285-288
 
 Once the data reduction is done, we can plot the map of the counts-ON (i.e. in the ON-phase)
 and the map of the background (i.e. the counts-OFF, selected in the OFF-phase, multiplied by alpha).
 If one wants to plot the counts-OFF instead, `~background` should be replaced by `~counts_off` in the following cell.
 
-.. GENERATED FROM PYTHON SOURCE LINES 289-310
+.. GENERATED FROM PYTHON SOURCE LINES 288-309
 
 .. code-block:: Python
 
@@ -620,22 +485,11 @@ If one wants to plot the counts-OFF instead, `~background` should be replaced by
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_003.png
-   :alt: Counts, Background
-   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_003.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 311-312
+.. GENERATED FROM PYTHON SOURCE LINES 310-311
 
 Finally, we can run an `~gammapy.estimators.ExcessMapEstimator` to compute the excess and significance maps.
 
-.. GENERATED FROM PYTHON SOURCE LINES 312-334
+.. GENERATED FROM PYTHON SOURCE LINES 311-333
 
 .. code-block:: Python
 
@@ -662,18 +516,7 @@ Finally, we can run an `~gammapy.estimators.ExcessMapEstimator` to compute the e
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_004.png
-   :alt: Excess counts, Significance
-   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_004.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 335-349
+.. GENERATED FROM PYTHON SOURCE LINES 334-348
 
 Note that here we are lacking statistic because we only use one run of CTA.
 
@@ -690,7 +533,7 @@ However, note that one can use the `~gammapy.datasets.MapDatasetOnOff.to_spectru
 (with the `containment_correction` parameter set to True) if such a `~gammapy.datasets.MapDatasetOnOff`
 has been created as shown above.
 
-.. GENERATED FROM PYTHON SOURCE LINES 349-375
+.. GENERATED FROM PYTHON SOURCE LINES 348-374
 
 .. code-block:: Python
 
@@ -721,17 +564,11 @@ has been created as shown above.
 
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 376-377
+.. GENERATED FROM PYTHON SOURCE LINES 375-376
 
 Now let’s take a look at the datasets we just created:
 
-.. GENERATED FROM PYTHON SOURCE LINES 377-382
+.. GENERATED FROM PYTHON SOURCE LINES 376-381
 
 .. code-block:: Python
 
@@ -741,25 +578,14 @@ Now let’s take a look at the datasets we just created:
 
 
 
-
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_005.png
-   :alt: Counts, Exposure, Energy Dispersion
-   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_005.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 383-387
+.. GENERATED FROM PYTHON SOURCE LINES 382-386
 
 Now we’ll fit a model to the spectrum with the `~gammapy.modeling.Fit` class. First we
 load a power law model with an initial value for the index and the
 amplitude and then wo do a likelihood fit. The fit results are printed
 below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 387-406
+.. GENERATED FROM PYTHON SOURCE LINES 386-405
 
 .. code-block:: Python
 
@@ -783,40 +609,13 @@ below.
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    OptimizeResult
-
-            backend    : minuit
-            method     : migrad
-            success    : True
-            message    : Optimization terminated successfully.
-            nfev       : 101
-            total stat : 7.07
-
-    CovarianceResult
-
-            backend    : minuit
-            method     : hesse
-            success    : True
-            message    : Hesse terminated successfully.
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 407-410
+.. GENERATED FROM PYTHON SOURCE LINES 406-409
 
 Now you might want to do the stacking here even if in our case there is
 only one observation which makes it superfluous. We can compute flux
 points by fitting the norm of the global model in energy bands.
 
-.. GENERATED FROM PYTHON SOURCE LINES 410-432
+.. GENERATED FROM PYTHON SOURCE LINES 409-431
 
 .. code-block:: Python
 
@@ -843,17 +642,11 @@ points by fitting the norm of the global model in energy bands.
 
 
 
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 433-434
+.. GENERATED FROM PYTHON SOURCE LINES 432-433
 
 Now we can plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 434-453
+.. GENERATED FROM PYTHON SOURCE LINES 433-452
 
 .. code-block:: Python
 
@@ -877,28 +670,12 @@ Now we can plot.
     plt.show()
 
 
-
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_006.png
-   :alt: pulsar analysis
-   :srcset: /tutorials/analysis-time/images/sphx_glr_pulsar_analysis_006.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 454-458
+.. GENERATED FROM PYTHON SOURCE LINES 453-457
 
 This tutorial suffers a bit from the lack of statistics: there were 9
 Vela observations in the CTA DC1 while there is only one here. When done
 on the 9 observations, the spectral analysis is much better agreement
 between the input model and the gammapy fit.
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 15.198 seconds)
 
 
 .. _sphx_glr_download_tutorials_analysis-time_pulsar_analysis.py:

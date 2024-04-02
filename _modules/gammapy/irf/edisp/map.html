@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -622,7 +622,7 @@ document.write(`
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        energy_axis : `MapAxis`</span>
+<span class="sd">        energy_axis : `~gammapy.maps.MapAxis`</span>
 <span class="sd">            Reconstructed energy axis.</span>
 <span class="sd">        position : `~astropy.coordinates.SkyCoord`</span>
 <span class="sd">            The target position. Should be a single coordinates.</span>
@@ -972,7 +972,7 @@ document.write(`
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        edisp : `~gammapy.irfs.EDispKernel`</span>
+<span class="sd">        edisp : `~gammapy.irf.EDispKernel`</span>
 <span class="sd">            The input 1D kernel.</span>
 <span class="sd">        geom : `~gammapy.maps.Geom`, optional</span>
 <span class="sd">            The (2D) geometry object to use. If None, an all sky geometry with 2 bins is created.</span>
@@ -1064,7 +1064,7 @@ document.write(`
 <div class="viewcode-block" id="EDispKernelMap.resample_energy_axis">
 <a class="viewcode-back" href="../../../../api/gammapy.irf.EDispKernelMap.html#gammapy.irf.EDispKernelMap.resample_energy_axis">[docs]</a>
     <span class="k">def</span> <span class="nf">resample_energy_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">energy_axis</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a resampled EdispKernelMap.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a resampled `EDispKernelMap`.</span>
 
 <span class="sd">        Bins are grouped according to the edges of the reconstructed energy axis provided.</span>
 <span class="sd">        The true energy is left unchanged.</span>

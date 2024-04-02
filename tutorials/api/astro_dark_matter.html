@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Pulsar analysis" href="../analysis-time/pulsar_analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -644,7 +644,7 @@ example in <a class="reference external" href="https://arxiv.org/pdf/1012.4515.p
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -671,7 +671,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -833,7 +833,16 @@ For more info see <a class="reference external" href="https://arxiv.org/pdf/1012
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_astro_dark_matter_004.png" srcset="../../_images/sphx_glr_astro_dark_matter_004.png" alt="m$_{\mathrm{DM}}$ = 0.01 TeV, m$_{\mathrm{DM}}$ = 0.1 TeV, m$_{\mathrm{DM}}$ = 1.0 TeV, m$_{\mathrm{DM}}$ = 10.0 TeV" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;eL&#39;, &#39;eR&#39;, &#39;e&#39;, &#39;muL&#39;, &#39;muR&#39;, &#39;mu&#39;, &#39;tauL&#39;, &#39;tauR&#39;, &#39;tau&#39;, &#39;q&#39;, &#39;c&#39;, &#39;b&#39;, &#39;t&#39;, &#39;WL&#39;, &#39;WT&#39;, &#39;W&#39;, &#39;ZL&#39;, &#39;ZT&#39;, &#39;Z&#39;, &#39;g&#39;, &#39;gamma&#39;, &#39;h&#39;, &#39;nu_e&#39;, &#39;nu_mu&#39;, &#39;nu_tau&#39;, &#39;V-&gt;e&#39;, &#39;V-&gt;mu&#39;, &#39;V-&gt;tau&#39;]
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/api/astro_dark_matter.py&quot;</span>, line <span class="m">184</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">fluxes</span> <span class="o">=</span> <span class="n">PrimaryFlux</span><span class="p">(</span><span class="n">mDM</span><span class="o">=</span><span class="s2">&quot;1 TeV&quot;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="s2">&quot;eL&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/astro/darkmatter/spectra.py&quot;</span>, line <span class="m">80</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+<span class="gr">FileNotFoundError</span><span class="w">:</span>
+
+<span class="x">File not found: $GAMMAPY_DATA/dark_matter_spectra/AtProduction_gammas.dat</span>
+<span class="x">You may download the dataset needed with the following command:</span>
+<span class="x">gammapy download datasets --src dark_matter_spectra</span>
 </pre></div>
 </div>
 </section>
@@ -857,7 +866,7 @@ For more info see <a class="reference external" href="https://arxiv.org/pdf/1012
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_astro_dark_matter_005.png" srcset="../../_images/sphx_glr_astro_dark_matter_005.png" alt="Flux [1 / (cm2 s)]  m$_{DM}$=10.0 TeV, channel=Z" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="flux-maps-for-decay">
 <h2>Flux maps for decay<a class="headerlink" href="#flux-maps-for-decay" title="Link to this heading">#</a></h2>
 <p>Finally flux maps for decay can be produced like this:</p>
@@ -878,7 +887,7 @@ For more info see <a class="reference external" href="https://arxiv.org/pdf/1012
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_astro_dark_matter_006.png" srcset="../../_images/sphx_glr_astro_dark_matter_006.png" alt="Flux [1 / (cm2 s)]  m$_{DM}$=10.0 TeV, channel=Z" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 55.677 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 50.908 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-api-astro-dark-matter-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/api/astro_dark_matter.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo4.svg" width="150px" /></a>

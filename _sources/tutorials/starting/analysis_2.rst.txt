@@ -155,7 +155,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
+            version                : 1.2.dev2111+g5675db08b.d20240402 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -182,7 +182,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -207,7 +207,16 @@ observations we want to analyse. Here the H.E.S.S. DL3 DR1.
 
 
 
+.. rst-class:: sphx-glr-script-out
 
+.. code-block:: pytb
+
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/starting/analysis_2.py", line 112, in <module>
+        data_store = DataStore.from_dir("$GAMMAPY_DATA/hess-dl3-dr1")
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/data/data_store.py", line 173, in from_dir
+        raise OSError(f"File not found: {hdu_table_filename}")
+    OSError: File not found: gammapy-data/hess-dl3-dr1/hdu-index.fits.gz
 
 
 
@@ -238,12 +247,6 @@ We then filter the `ObservationTable` with
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 135-139
 
 We can now retrieve the relevant observations by passing their
@@ -257,12 +260,6 @@ method.
 
 
     observations = data_store.get_observations(selected_obs_table["OBS_ID"])
-
-
-
-
-
-
 
 
 
@@ -299,12 +296,6 @@ axis:
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 170-172
 
 Now we can define the target dataset with this geometry.
@@ -318,12 +309,6 @@ Now we can define the target dataset with this geometry.
     stacked = MapDataset.create(
         geom=geom, energy_axis_true=energy_axis_true, name="crab-stacked"
     )
-
-
-
-
-
-
 
 
 
@@ -354,12 +339,6 @@ selection.
     circle = CircleSkyRegion(center=SkyCoord("83.63 deg", "22.14 deg"), radius=0.2 * u.deg)
     exclusion_mask = ~geom.region_mask(regions=[circle])
     maker_fov = FoVBackgroundMaker(method="fit", exclusion_mask=exclusion_mask)
-
-
-
-
-
-
 
 
 
@@ -395,48 +374,6 @@ Perform the data reduction loop
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Background norm obs 23523: 0.99
-    Background norm obs 23526: 1.08
-    Background norm obs 23559: 0.99
-    Background norm obs 23592: 1.10
-    MapDataset
-    ----------
-
-      Name                            : crab-stacked 
-
-      Total counts                    : 2479 
-      Total background counts         : 2112.97
-      Total excess counts             : 366.03
-
-      Predicted counts                : 2112.97
-      Predicted background counts     : 2112.97
-      Predicted excess counts         : nan
-
-      Exposure min                    : 3.75e+08 m2 s
-      Exposure max                    : 3.48e+09 m2 s
-
-      Number of total bins            : 40000 
-      Number of fit bins              : 40000 
-
-      Fit statistic type              : cash
-      Fit statistic value (-2 log(L)) : nan
-
-      Number of models                : 0 
-      Number of parameters            : 0
-      Number of free parameters       : 0
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 229-232
 
 Inspect the reduced dataset
@@ -450,17 +387,6 @@ Inspect the reduced dataset
 
     stacked.counts.sum_over_axes().smooth(0.05 * u.deg).plot(stretch="sqrt", add_cbar=True)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/starting/images/sphx_glr_analysis_2_001.png
-   :alt: analysis 2
-   :srcset: /tutorials/starting/images/sphx_glr_analysis_2_001.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -484,12 +410,6 @@ slow if you have a lot of data. We first create a folder:
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 251-254
 
 And then write the maps and IRFs to disk by calling the dedicated
@@ -503,12 +423,6 @@ And then write the maps and IRFs to disk by calling the dedicated
 
     filename = path / "crab-stacked-dataset.fits.gz"
     stacked.write(filename, overwrite=True)
-
-
-
-
-
-
 
 
 
@@ -545,12 +459,6 @@ source `~gammapy.modeling.models.SpatialModel` with a powerlaw `~gammapy.modelin
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 286-288
 
 Now we assign this model to our reduced dataset:
@@ -562,12 +470,6 @@ Now we assign this model to our reduced dataset:
 
 
     stacked.models = [sky_model, bkg_model]
-
-
-
-
-
-
 
 
 
@@ -592,12 +494,6 @@ Its constructor takes a list of dataset as argument.
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 309-312
 
 The `~gammapy.modeling.FitResult` contains information about the optimization and
@@ -610,33 +506,6 @@ parameter error calculation.
 
 
     print(result)
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    OptimizeResult
-
-            backend    : minuit
-            method     : migrad
-            success    : True
-            message    : Optimization terminated successfully.
-            nfev       : 152
-            total stat : 16240.87
-
-    CovarianceResult
-
-            backend    : minuit
-            method     : hesse
-            success    : True
-            message    : Hesse terminated successfully.
-
-
 
 
 
@@ -655,27 +524,6 @@ The fitted parameters are visible from the
 
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-         model       type    name     value         unit        error      min        max    frozen is_norm link prior
-    ---------------- ---- --------- ---------- -------------- --------- ---------- --------- ------ ------- ---- -----
-                crab          index 2.6002e+00                1.004e-01        nan       nan  False   False           
-                crab      amplitude 4.5914e-11 cm-2 s-1 TeV-1 3.705e-12        nan       nan  False    True           
-                crab      reference 1.0000e+00            TeV 0.000e+00        nan       nan   True   False           
-                crab          lon_0 8.3619e+01            deg 3.094e-03        nan       nan  False   False           
-                crab          lat_0 2.2024e+01            deg 2.945e-03 -9.000e+01 9.000e+01  False   False           
-    crab-stacked-bkg           norm 9.3484e-01                2.192e-02        nan       nan  False    True           
-    crab-stacked-bkg           tilt 0.0000e+00                0.000e+00        nan       nan   True   False           
-    crab-stacked-bkg      reference 1.0000e+00            TeV 0.000e+00        nan       nan   True   False           
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 325-329
 
 Here we can plot the number of predicted counts for each model and
@@ -690,17 +538,6 @@ the `~gammapy.visualization.plot_npred_signal` function.
 
     plot_npred_signal(stacked)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/starting/images/sphx_glr_analysis_2_002.png
-   :alt: analysis 2
-   :srcset: /tutorials/starting/images/sphx_glr_analysis_2_002.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -725,17 +562,6 @@ energies:
 
 
 
-
-
-.. image-sg:: /tutorials/starting/images/sphx_glr_analysis_2_003.png
-   :alt: analysis 2
-   :srcset: /tutorials/starting/images/sphx_glr_analysis_2_003.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 349-352
 
 In addition, we can also specify a region in the map to show the
@@ -757,17 +583,6 @@ spectral residuals:
 
 
 
-
-
-.. image-sg:: /tutorials/starting/images/sphx_glr_analysis_2_004.png
-   :alt: analysis 2
-   :srcset: /tutorials/starting/images/sphx_glr_analysis_2_004.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 363-366
 
 We can also directly access the ``.residuals()`` to get a map, that we
@@ -784,23 +599,6 @@ can plot interactively:
         cmap="coolwarm", vmin=-0.2, vmax=0.2, stretch="linear", add_cbar=True
     )
     plt.show()
-
-
-
-
-.. image-sg:: /tutorials/starting/images/sphx_glr_analysis_2_005.png
-   :alt: analysis 2
-   :srcset: /tutorials/starting/images/sphx_glr_analysis_2_005.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-            interactive(children=(SelectionSlider(continuous_update=False, description='Select energy:', layout=Layout(width='50%'), options=('1.00 TeV - 1.78 TeV', '1.78 TeV - 3.16 TeV', '3.16 TeV - 5.62 TeV', '5.62 TeV - 10.00 TeV'), style=SliderStyle(description_width='initial'), value='1.00 TeV - 1.78 TeV'), RadioButtons(description='Select stretch:', options=('linear', 'sqrt', 'log'), style=DescriptionStyle(description_width='initial'), value='linear'), Output()), _dom_classes=('widget-interact',))
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 374-377
@@ -828,12 +626,6 @@ parameter uncertainties:
 
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 392-394
 
 Now we can actually do the plot using the ``plot_error`` method:
@@ -848,17 +640,6 @@ Now we can actually do the plot using the ``plot_error`` method:
     spec.plot(energy_bounds=energy_bounds, energy_power=2)
     ax = spec.plot_error(energy_bounds=energy_bounds, energy_power=2)
     plt.show()
-
-
-
-
-
-.. image-sg:: /tutorials/starting/images/sphx_glr_analysis_2_006.png
-   :alt: analysis 2
-   :srcset: /tutorials/starting/images/sphx_glr_analysis_2_006.png
-   :class: sphx-glr-single-img
-
-
 
 
 
@@ -884,12 +665,6 @@ name.
     fpe = FluxPointsEstimator(energy_edges=energy_edges, source="crab")
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 417-422
 
 .. code-block:: Python
@@ -899,22 +674,6 @@ name.
     ax = spec.plot_error(energy_bounds=energy_bounds, energy_power=2)
     flux_points.plot(ax=ax, energy_power=2)
     plt.show()
-
-
-
-.. image-sg:: /tutorials/starting/images/sphx_glr_analysis_2_007.png
-   :alt: analysis 2
-   :srcset: /tutorials/starting/images/sphx_glr_analysis_2_007.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 13.343 seconds)
 
 
 .. _sphx_glr_download_tutorials_starting_analysis_2.py:

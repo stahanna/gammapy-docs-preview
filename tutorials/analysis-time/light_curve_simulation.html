@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Light curves for flares" href="light_curve_flare.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -691,7 +691,7 @@ source model</p></li>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -718,7 +718,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 <p>We first define our preferred time format:</p>
@@ -754,8 +754,22 @@ Since we use spectrum datasets here, we will use a <a class="reference internal"
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/light_curve_simulation.py&quot;</span>, line <span class="m">122</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">irfs</span> <span class="o">=</span> <span class="n">load_irf_dict_from_file</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/irf/io.py&quot;</span>, line <span class="m">197</span>, in <span class="n">load_irf_dict_from_file</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits&#39;</span>
 </pre></div>
 </div>
 <p>Note that observations are usually conducted in Wobble mode, in which
@@ -777,15 +791,6 @@ symmetrical sky position from which background can be estimated.</p>
 
 <span class="c1"># Look at the model</span>
 <span class="n">display</span><span class="p">(</span><span class="n">model_simu</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">to_table</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>type    name     value         unit        error   min max frozen is_norm link prior
----- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-         index 3.0000e+00                0.000e+00 nan nan  False   False
-     amplitude 1.0000e-11 cm-2 s-1 TeV-1 0.000e+00 nan nan  False    True
-     reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
-            t0 6.0000e+00              h 0.000e+00 nan nan  False   False
-         t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False
 </pre></div>
 </div>
 <p>Now, define the start and observation livetime wrt to the reference
@@ -828,21 +833,6 @@ quick look into our datasets.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">datasets</span><span class="o">.</span><span class="n">info_table</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   name   counts       excess            sqrt_ts           background           npred        ...      excess_rate      n_bins n_fit_bins stat_type       stat_sum
-                                                                                             ...         1 / s
---------- ------ ------------------ ------------------ ------------------ ------------------ ... --------------------- ------ ---------- --------- -------------------
-dataset-0    872  851.6812310184489  69.66175238101202  20.31876898155109  825.9404270586008 ...   0.25808522152074226      9          9      cash -7091.2634617267895
-dataset-1    321 311.76419591747674  40.67572395624176  9.235804082523256 332.14961268131975 ...   0.20784279727831723      9          9      cash -2018.6488476287552
-dataset-2    296  286.3947637541758  38.16564818471353  9.605236245824184   293.489602451411 ...   0.18358638702190708      9          9      cash -1820.9705580485547
-dataset-3    322  307.2227134679628  37.01371321486803 14.777286532037174  321.7838592156534 ...   0.12800946394498447      9          9      cash -2021.7524545697743
-dataset-4    234 219.22271346796282 29.228036588897748 14.777286532037174 200.98618559794522 ...    0.0913427972783178      9          9      cash -1314.0539595228265
-dataset-5    167 148.52839183495354  20.93634893240878 18.471608165046455 182.99944247799246 ...  0.049509463944984525      9          9      cash   -796.783475926459
-dataset-6     28 13.222713467962826  3.056944941938641 14.777286532037174  39.97792062829974 ...  0.005509463944984509      9          9      cash  -34.69809213428674
-dataset-7     30  10.78952750835169  2.272763411922787  19.21047249164831 42.304828552401254 ...  0.003458181893702466      9          9      cash   -57.0086665418334
-dataset-8     26 10.114416978060044 2.3218017993737154 15.885583021939956  32.24990028797198 ...  0.003920316658162807      9          9      cash -28.014213567854036
-dataset-9     28 10.636688324856333 2.3422097256382495 17.363311675143667 32.421834962476595 ... 0.0037718752925022464      9          9      cash  -31.57606403041717
-</pre></div>
-</div>
 </section>
 <section id="extract-the-lightcurve">
 <h2>Extract the lightcurve<a class="headerlink" href="#extract-the-lightcurve" title="Link to this heading">#</a></h2>
@@ -876,7 +866,7 @@ extract the lightcurve in 3 energy bins.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_light_curve_simulation_001.png" srcset="../../_images/sphx_glr_light_curve_simulation_001.png" alt="light curve simulation" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="fitting-temporal-models">
 <h2>Fitting temporal models<a class="headerlink" href="#fitting-temporal-models" title="Link to this heading">#</a></h2>
 <p>We have the reconstructed lightcurve at this point. Now we want to fit a
@@ -915,57 +905,15 @@ that <code class="docutils literal notranslate"><span class="pre">t_ref</span></
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset_fp</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>FluxPointsDataset
------------------
-
-  Name                            : dataset_lc
-
-  Number of total flux points     : 30
-  Number of fit bins              : 21
-
-  Fit statistic type              : chi2
-  Fit statistic value (-2 log(L)) : 1538.39
-
-  Number of models                : 1
-  Number of parameters            : 5
-  Number of free parameters       : 3
-
-  Component 0: SkyModel
-
-    Name                      : model-test
-    Datasets names            : None
-    Spectral model type       : PowerLawSpectralModel
-    Spatial  model type       :
-    Temporal model type       : ExpDecayTemporalModel
-    Parameters:
-      index                         :      2.000   +/-    0.00
-      amplitude                     :   1.00e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-      reference             (frozen):      1.000       TeV
-      t0                            :     10.000   +/-    0.00 h
-      t_ref                 (frozen):  58909.000       d
-</pre></div>
-</div>
 <p>Fit the dataset</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">Fit</span><span class="p">()</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">dataset_fp</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">to_table</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>type    name     value         unit        error   min max frozen is_norm link prior
----- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-         index 3.0245e+00                2.789e-02 nan nan  False   False
-     amplitude 1.0430e-11 cm-2 s-1 TeV-1 3.524e-13 nan nan  False    True
-     reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
-            t0 5.7097e+00              h 2.190e-01 nan nan  False   False
-         t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False
-</pre></div>
-</div>
 <p>Now let’s plot model and data. We plot only the normalisation of the
 temporal model in relative units for one particular energy range</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_fp</span><span class="o">.</span><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">axis_name</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<img src="../../_images/sphx_glr_light_curve_simulation_002.png" srcset="../../_images/sphx_glr_light_curve_simulation_002.png" alt="light curve simulation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Time [iso]&#39;, ylabel=&#39;Norm / A.U.&#39;&gt;
 </pre></div>
 </div>
 </section>
@@ -993,29 +941,11 @@ fitting in Gammapy, see the <a class="reference internal" href="../analysis-3d/a
 <span class="n">datasets</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="n">model2</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>type    name     value         unit        error   min max frozen is_norm link prior
----- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-         index 2.0000e+00                0.000e+00 nan nan  False   False
-     amplitude 1.0000e-12 cm-2 s-1 TeV-1 0.000e+00 nan nan  False    True
-     reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
-            t0 1.0000e+01              h 0.000e+00 nan nan  False   False
-         t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False
-</pre></div>
-</div>
 <p>Perform a joint fit</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">Fit</span><span class="p">()</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">datasets</span><span class="o">=</span><span class="n">datasets</span><span class="p">)</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">to_table</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>type    name     value         unit        error   min max frozen is_norm link prior
----- --------- ---------- -------------- --------- --- --- ------ ------- ---- -----
-         index 3.0373e+00                3.208e-02 nan nan  False   False
-     amplitude 1.0556e-11 cm-2 s-1 TeV-1 3.673e-13 nan nan  False    True
-     reference 1.0000e+00            TeV 0.000e+00 nan nan   True   False
-            t0 5.5546e+00              h 1.857e-01 nan nan  False   False
-         t_ref 5.8909e+04              d 0.000e+00 nan nan   True   False
 </pre></div>
 </div>
 <p>We see that the fitted parameters are consistent between fitting flux
@@ -1031,7 +961,6 @@ the <a class="reference internal" href="light_curve_flare.html"><span class="doc
 Use a combination of a Gaussian and Exponential flare profiles.</p></li>
 <li><p>Do a joint fitting of the datasets.</p></li>
 </ol>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 40.677 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-time-light-curve-simulation-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-time/light_curve_simulation.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo3.svg" width="150px" /></a>

@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -889,14 +889,11 @@ document.write(`
 
 <span class="sd">    Access source spectral data and plot it:</span>
 
-<span class="sd">    &gt;&gt;&gt; ax= plt.subplot()</span>
+<span class="sd">    &gt;&gt;&gt; ax = plt.subplot()</span>
 <span class="sd">    &gt;&gt;&gt; energy_range = [1, 10] * u.TeV</span>
-<span class="sd">    &gt;&gt;&gt; source.spectral_model().plot(energy_range, ax=ax) #doctest:+ELLIPSIS</span>
-<span class="sd">    &lt;AxesSubplot:...xlabel=&#39;Energy [TeV]&#39;, ylabel=&#39;dnde [1 / (cm2 s TeV)]&#39;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; source.spectral_model().plot_error(energy_range, ax=ax) #doctest:+ELLIPSIS</span>
-<span class="sd">    &lt;AxesSubplot:...xlabel=&#39;Energy [TeV]&#39;, ylabel=&#39;dnde [1 / (cm2 s TeV)]&#39;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; source.flux_points.plot(ax=ax) #doctest:+ELLIPSIS</span>
-<span class="sd">    &lt;AxesSubplot:...xlabel=&#39;Energy [TeV]&#39;, ylabel=&#39;dnde [1 / (cm2 s TeV)]&#39;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; source.spectral_model().plot(energy_range, ax=ax) # doctest: +SKIP</span>
+<span class="sd">    &gt;&gt;&gt; source.spectral_model().plot_error(energy_range, ax=ax) # doctest: +SKIP</span>
+<span class="sd">    &gt;&gt;&gt; source.flux_points.plot(ax=ax) # doctest: +SKIP</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;gamma-cat&quot;</span>

@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -577,34 +577,36 @@ document.write(`
 
 <span class="sd">        from astropy.coordinates import SkyCoord</span>
 <span class="sd">        from gammapy.maps import WcsGeom, MapAxis</span>
-<span class="sd">        from gammapy.data import Observation</span>
+<span class="sd">        from gammapy.data import Observation, FixedPointingInfo</span>
 <span class="sd">        from gammapy.irf import load_irf_dict_from_file</span>
 <span class="sd">        from gammapy.makers import MapDatasetMaker</span>
 
 <span class="sd">        # Define observation</span>
-<span class="sd">        pointing = SkyCoord(&quot;0d&quot;, &quot;0d&quot;)</span>
+<span class="sd">        pointing_position = SkyCoord(0, 0, unit=&quot;deg&quot;, frame=&quot;galactic&quot;)</span>
+<span class="sd">        pointing = FixedPointingInfo(</span>
+<span class="sd">            fixed_icrs=pointing_position.icrs,</span>
+<span class="sd">        )</span>
 <span class="sd">        filename = &quot;$GAMMAPY_DATA/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits&quot;</span>
 <span class="sd">        irfs = load_irf_dict_from_file(filename)</span>
 <span class="sd">        obs = Observation.create(pointing=pointing, irfs=irfs, livetime=&quot;1h&quot;)</span>
 
-<span class="sd">        # Create WcsGeom</span>
 <span class="sd">        # Define energy axis. Note that the name is fixed.</span>
 <span class="sd">        energy_axis = MapAxis.from_energy_bounds(&quot;0.1 TeV&quot;, &quot;10 TeV&quot;, nbin=3, name=&quot;energy_true&quot;)</span>
 
 <span class="sd">        # Define rad axis. Again note the axis name</span>
 <span class="sd">        rad_axis = MapAxis.from_bounds(0, 0.5, nbin=100, name=&quot;rad&quot;, unit=&quot;deg&quot;)</span>
 
+<span class="sd">        # Create WcsGeom</span>
 <span class="sd">        geom = WcsGeom.create(</span>
-<span class="sd">            binsz=0.25, width=&quot;5 deg&quot;, skydir=pointing, axes=[rad_axis, energy_axis]</span>
+<span class="sd">            binsz=0.25, width=&quot;5 deg&quot;, skydir=pointing_position, axes=[rad_axis, energy_axis]</span>
 <span class="sd">        )</span>
 
 <span class="sd">        maker = MapDatasetMaker()</span>
-
 <span class="sd">        psf = maker.make_psf(geom=geom, observation=obs)</span>
 
 <span class="sd">        # Get a PSF kernel at the center of the image</span>
-<span class="sd">        geom=exposure_geom.upsample(factor=10).drop(&quot;rad&quot;)</span>
-<span class="sd">        psf_kernel = psf_map.get_psf_kernel(geom=geom)</span>
+<span class="sd">        upsample_geom = geom.upsample(factor=10).drop(&quot;rad&quot;)</span>
+<span class="sd">        psf_kernel = psf.get_psf_kernel(geom=upsample_geom)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;psf_map&quot;</span>

@@ -32,7 +32,7 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_template.py` (``plot_template.py``)
+   * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_point.py` (``plot_point.py``)
      - 00:00.599
      - 0.0
    * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_constant.py` (``plot_constant.py``)
@@ -50,12 +50,12 @@ Computation times
    * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_piecewise_norm_spatial.py` (``plot_piecewise_norm_spatial.py``)
      - 00:00.000
      - 0.0
-   * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_point.py` (``plot_point.py``)
-     - 00:00.000
-     - 0.0
    * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_shell.py` (``plot_shell.py``)
      - 00:00.000
      - 0.0
    * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_shell2.py` (``plot_shell2.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_user-guide_model-gallery_spatial_plot_template.py` (``plot_template.py``)
      - 00:00.000
      - 0.0

@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Estimation of time variability in a lightcurve" href="Variability_estimation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -667,7 +667,7 @@ extract a light curve independently of the dataset type.</p>
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -694,7 +694,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -748,6 +748,16 @@ is performed as follows.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">analysis_3d</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span><span class="n">conf_3d</span><span class="p">)</span>
 <span class="n">analysis_3d</span><span class="o">.</span><span class="n">get_observations</span><span class="p">()</span>
 <span class="n">analysis_3d</span><span class="o">.</span><span class="n">get_datasets</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/light_curve.py&quot;</span>, line <span class="m">143</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">analysis_3d</span><span class="o">.</span><span class="n">get_observations</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/analysis/core.py&quot;</span>, line <span class="m">141</span>, in <span class="n">get_observations</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_set_data_store</span><span class="p">()</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/analysis/core.py&quot;</span>, line <span class="m">100</span>, in <span class="n">_set_data_store</span>
+<span class="w">    </span><span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datastore not found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">Datastore not found: gammapy-data/hess-dl3-dr1</span>
 </pre></div>
 </div>
 </section>
@@ -815,15 +825,6 @@ Here one dataset equals to one observing run.</p>
 
 <span class="n">table</span> <span class="o">=</span> <span class="n">lc_3d</span><span class="o">.</span><span class="n">to_table</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;lightcurve&quot;</span><span class="p">,</span> <span class="n">sed_type</span><span class="o">=</span><span class="s2">&quot;flux&quot;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;time_max&quot;</span><span class="p">,</span> <span class="s2">&quot;e_min&quot;</span><span class="p">,</span> <span class="s2">&quot;e_max&quot;</span><span class="p">,</span> <span class="s2">&quot;flux&quot;</span><span class="p">,</span> <span class="s2">&quot;flux_err&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-<img src="../../_images/sphx_glr_light_curve_001.png" srcset="../../_images/sphx_glr_light_curve_001.png" alt="light curve" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>     time_min           time_max           e_min              e_max                flux                 flux_err
-                                            TeV                TeV             1 / (cm2 s)            1 / (cm2 s)
------------------- ----------------- ------------------ ----------------- ---------------------- ----------------------
- 53343.92234009259 53343.94186555556 1.1914571614494367 9.999999999999998 2.0351680826001858e-11  2.119377722423651e-12
- 53343.95421509259 53343.97369425926 1.1914571614494367 9.999999999999998 2.0610287368316848e-11 2.1407799553923287e-12
- 53345.96198129629 53345.98149518518 1.1914571614494367 9.999999999999998 2.1762888545418004e-11  2.787223475724869e-12
-53347.913196574074 53347.93271046296 1.1914571614494367 9.999999999999998 2.5058049616535325e-11 2.9128688198989787e-12
 </pre></div>
 </div>
 </section>
@@ -908,16 +909,6 @@ we use predefined values instead.</p>
 <span class="n">display</span><span class="p">(</span><span class="n">lc_1d</span><span class="o">.</span><span class="n">to_table</span><span class="p">(</span><span class="n">sed_type</span><span class="o">=</span><span class="s2">&quot;flux&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;lightcurve&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;energy&#39;, &#39;time&#39;]
-     time_min           time_max           e_ref              e_min              e_max       ...         stat            stat_null        counts   success
-                                            TeV                TeV                TeV        ...
------------------- ----------------- ------------------ ------------------ ----------------- ... ------------------- ----------------- ----------- -------
- 53343.92234009259 53343.94186555556 3.4517490659800814 1.1914571614494367 9.999999999999998 ...  -344.4671903802652 9325.469623460165 nan .. 81.0    True
- 53343.95421509259 53343.97369425926 3.4517490659800814 1.1914571614494367 9.999999999999998 ...  -290.3078440324916 8174.177077353973 71.0 .. nan    True
- 53345.96198129629 53345.98149518518 3.4517490659800814 1.1914571614494367 9.999999999999998 ... -194.37024721988715 5871.591985141586  nan .. nan    True
-53347.913196574074 53347.93271046296 3.4517490659800814 1.1914571614494367 9.999999999999998 ... -226.71637961887058  6792.62602202654  nan .. nan    True
-</pre></div>
-</div>
 </section>
 <section id="compare-results">
 <h3>Compare results<a class="headerlink" href="#compare-results" title="Link to this heading">#</a></h3>
@@ -933,7 +924,7 @@ figure:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_light_curve_002.png" srcset="../../_images/sphx_glr_light_curve_002.png" alt="light curve" class = "sphx-glr-single-img"/></section>
+</section>
 </section>
 <section id="night-wise-lc-estimation">
 <h2>Night-wise LC estimation<a class="headerlink" href="#night-wise-lc-estimation" title="Link to this heading">#</a></h2>
@@ -971,7 +962,7 @@ is performed for each group.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_light_curve_003.png" srcset="../../_images/sphx_glr_light_curve_003.png" alt="light curve" class = "sphx-glr-single-img"/></section>
+</section>
 <section id="what-next">
 <h2>What next?<a class="headerlink" href="#what-next" title="Link to this heading">#</a></h2>
 <p>When sources are bright enough to look for variability at small time
@@ -979,7 +970,6 @@ scales, the per-observation time binning is no longer relevant. One can
 easily extend the light curve estimation approach presented above to any
 time binning. This is demonstrated in the <a class="reference internal" href="light_curve_flare.html"><span class="doc">Light curves for flares</span></a>
 tutorial. which shows the extraction of the lightcurve of an AGN flare.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.764 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-time-light-curve-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-time/light_curve.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo3.svg" width="150px" /></a>

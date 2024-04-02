@@ -100,19 +100,28 @@ Load the light curve for the PKS 2155-304 flare directly from `$GAMMAPY_DATA/est
 
 
 
-
-.. image-sg:: /tutorials/analysis-time/images/sphx_glr_Variability_estimation_001.png
-   :alt: Variability estimation
-   :srcset: /tutorials/analysis-time/images/sphx_glr_Variability_estimation_001.png
-   :class: sphx-glr-single-img
-
-
 .. rst-class:: sphx-glr-script-out
 
- .. code-block:: none
+.. code-block:: pytb
 
-    /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/erfa/core.py:154: ErfaWarning: ERFA function "utctai" yielded 1 of "dubious year (Note 3)"
-      warnings.warn('ERFA function "{}" yielded {}'.format(func_name, wmsg),
+    Traceback (most recent call last):
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/Variability_estimation.py", line 57, in <module>
+        lc_1d = FluxPoints.read(
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/estimators/points/core.py", line 210, in read
+        table = Table.read(filename, **kwargs)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/table/connect.py", line 62, in __call__
+        out = self.registry.read(cls, *args, **kwargs)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/registry/core.py", line 219, in read
+        data = reader(*args, **kwargs)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/ascii/connect.py", line 19, in io_read
+        return read(filename, **kwargs)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/ascii/ui.py", line 426, in read
+        dat = reader.read(table)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/ascii/core.py", line 1414, in read
+        self.lines = self.inputter.get_lines(table, newline=newline)
+      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/ascii/core.py", line 357, in get_lines
+        raise TypeError(
+    TypeError: Input "table" must be a string (filename or data) or an iterable
 
 
 
@@ -159,18 +168,6 @@ This estimator requires fully Gaussian errors.
     print(amplitude_maximum_significance)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    [[[12.41584318]]]
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 101-104
 
 There are other methods based on the peak-to-trough difference to assess the variability in a lightcurve.
@@ -195,18 +192,6 @@ Here we present as example the relative variability amplitude as presented in
     )
 
     print(relative_variability_significance)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    [[[19.6131198]]]
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 120-121
@@ -240,18 +225,6 @@ The variability amplitude as presented in `Heidt & Wagner, 1996 <https://ui.adsa
     print(variability_amplitude_significance)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    [[[6.12524759]]]
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 144-151
 
 Fractional excess variance, point-to-point fractional variance and doubling/halving time
@@ -271,21 +244,6 @@ The excess variance computation is implemented in `~gammapy.estimators.utils`.
     print(fvar_table)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-        min_energy         max_energy           fvar             fvar_err         significance  
-           TeV                TeV                                                               
-    ------------------ ----------------- ----------------- ------------------- -----------------
-    0.5915030546513256 6.184989894219833 0.562641723647666 0.01700709888238013 33.08275723795432
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 156-161
 
 A similar estimator is the point-to-point fractional variance, as defined by
@@ -303,21 +261,6 @@ of the presence of very short timescale variability.
     print(fpp_table)
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-        min_energy         max_energy            fpp               fpp_err          significance   
-           TeV                TeV                                                                  
-    ------------------ ----------------- ------------------- ------------------- ------------------
-    0.5915030546513256 6.184989894219833 0.26686926334170474 0.01744292342018872 15.299572033482987
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 166-169
 
 The characteristic doubling and halving time of the light curve, as introduced by
@@ -331,21 +274,6 @@ This provides information on the shape of the variability feature, in particular
 
     dtime_table = compute_lightcurve_doublingtime(lc_1d, flux_quantity="flux")
     print(dtime_table)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-        min_energy         max_energy       doublingtime      doubling_err      doubling_coord     halvingtime       halving_err      halving_coord  
-           TeV                TeV                s                 s                                    s                 s                          
-    ------------------ ----------------- ----------------- ------------------ ----------------- ----------------- ----------------- -----------------
-    0.5915030546513256 6.184989894219833 716.8519094661347 30.047617174704822 53945.99690027777 776.3378886513015 20.93582792770181 53946.00384472222
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 174-185
@@ -374,12 +302,6 @@ defined by the bayesian blocks algorithm.
     )
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 193-195
 
 The result giving a significance estimation for variability in the lightcurve is the number of *change points*,
@@ -392,18 +314,6 @@ i.e. the number of internal bin edges: if at least one change point is identifie
 
     ncp = len(bayesian_edges) - 2
     print(ncp)
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    7
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 200-203
@@ -431,21 +341,6 @@ with the original light curve start and end points.
     ax = lc_1d.plot(label="original")
     resample.plot(ax=ax, marker="s", label="rebinned")
     plt.legend()
-
-
-.. rst-class:: sphx-glr-script-out
-
-.. code-block:: pytb
-
-    Traceback (most recent call last):
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-time/Variability_estimation.py", line 212, in <module>
-        resample = lc_1d.resample_axis(axis_new)
-      File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/estimators/points/core.py", line 843, in resample_axis
-        raise ValueError("Stat profiles not present, rebinning is not possible")
-    ValueError: Stat profiles not present, rebinning is not possible
-
-
-
 
 
 .. _sphx_glr_download_tutorials_analysis-time_Variability_estimation.py:

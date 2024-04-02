@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Event sampling" href="event_sampling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -662,7 +662,7 @@ and define a Dataset object. Finally, we describe how to sample events from the 
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -689,7 +689,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -871,6 +871,24 @@ is passed to the dataset.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-3d/event_sampling_nrg_depend_models.py&quot;</span>, line <span class="m">269</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">irfs</span> <span class="o">=</span> <span class="n">load_irf_dict_from_file</span><span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="n">irf_filename</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/irf/io.py&quot;</span>, line <span class="m">197</span>, in <span class="n">load_irf_dict_from_file</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/cta-caldb/Prod5-South-20deg-AverageAz-14MSTs37SSTs.180000s-v0.1.fits.gz&#39;</span>
+</pre></div>
+</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">energy_axis</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_energy_bounds</span><span class="p">(</span><span class="s2">&quot;0.2 TeV&quot;</span><span class="p">,</span> <span class="s2">&quot;100 TeV&quot;</span><span class="p">,</span> <span class="n">nbin</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">per_decade</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">energy_axis_true</span> <span class="o">=</span> <span class="n">MapAxis</span><span class="o">.</span><span class="n">from_energy_bounds</span><span class="p">(</span>
     <span class="s2">&quot;0.05 TeV&quot;</span><span class="p">,</span> <span class="s2">&quot;150 TeV&quot;</span><span class="p">,</span> <span class="n">nbin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">per_decade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;energy_true&quot;</span>
@@ -900,32 +918,6 @@ is passed to the dataset.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>DatasetModels
-
-Component 0: SkyModel
-
-  Name                      : test-source
-  Datasets names            : None
-  Spectral model type       : ConstantSpectralModel
-  Spatial  model type       : PointSpatialModel
-  Temporal model type       : LightCurveTemplateTemporalModel
-  Parameters:
-    const                         :      1.000   +/-    0.00 1 / (cm2 s TeV)
-    lon_0                         :    100.000   +/-    0.00 deg
-    lat_0                         :     30.000   +/-    0.00 deg
-    t_ref                 (frozen):  51544.000       d
-
-Component 1: FoVBackgroundModel
-
-  Name                      : my-dataset-bkg
-  Datasets names            : [&#39;my-dataset&#39;]
-  Spectral model type       : PowerLawNormSpectralModel
-  Parameters:
-    norm                          :      1.000   +/-    0.00
-    tilt                  (frozen):      0.000
-    reference             (frozen):      1.000       TeV
-</pre></div>
-</div>
 </section>
 <section id="let-s-simulate-the-model">
 <h3>Let’s simulate the model<a class="headerlink" href="#let-s-simulate-the-model" title="Link to this heading">#</a></h3>
@@ -950,7 +942,7 @@ time. Here we adopt an <code class="xref py py-obj docutils literal notranslate"
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_event_sampling_nrg_depend_models_003.png" srcset="../../_images/sphx_glr_event_sampling_nrg_depend_models_003.png" alt="event sampling nrg depend models" class = "sphx-glr-single-img"/><p>Let’s inspect the simulated events as a function of time:</p>
+<p>Let’s inspect the simulated events as a function of time:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">time_interval</span> <span class="o">=</span> <span class="n">temporal_model</span><span class="o">.</span><span class="n">reference_time</span> <span class="o">+</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">700</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
 <span class="n">src_events</span><span class="o">.</span><span class="n">select_time</span><span class="p">(</span><span class="n">time_interval</span><span class="p">)</span><span class="o">.</span><span class="n">plot_energy</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;500 s&quot;</span><span class="p">)</span>
 
@@ -961,7 +953,7 @@ time. Here we adopt an <code class="xref py py-obj docutils literal notranslate"
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_event_sampling_nrg_depend_models_004.png" srcset="../../_images/sphx_glr_event_sampling_nrg_depend_models_004.png" alt="event sampling nrg depend models" class = "sphx-glr-single-img"/></section>
+</section>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>

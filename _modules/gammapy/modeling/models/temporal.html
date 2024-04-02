@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -63,7 +63,7 @@
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -1083,28 +1083,29 @@ document.write(`
 
 <span class="sd">    &gt;&gt;&gt; print(light_curve)</span>
 <span class="sd">    LightCurveTemplateTemporalModel model summary:</span>
-<span class="sd">    Reference time: 59000.5 MJD</span>
-<span class="sd">    Start time: 59000.5 MJD</span>
-<span class="sd">    End time: 61862.5 MJD</span>
-<span class="sd">    Norm min: 0.01551196351647377</span>
+<span class="sd">     Reference time: 59000.49919925926 MJD</span>
+<span class="sd">     Start time: 58999.99919925926 MJD</span>
+<span class="sd">     End time: 61862.99919925926 MJD</span>
+<span class="sd">     Norm min: 0.01551196351647377</span>
 <span class="sd">    Norm max: 1.0</span>
+
 <span class="sd">    &lt;BLANKLINE&gt;</span>
 
 <span class="sd">    Compute ``norm`` at a given time:</span>
 
+<span class="sd">    &gt;&gt;&gt; from astropy.time import Time</span>
 <span class="sd">    &gt;&gt;&gt; t = Time(59001.195, format=&quot;mjd&quot;)</span>
 <span class="sd">    &gt;&gt;&gt; light_curve.evaluate(t)</span>
-<span class="sd">    array(0.02287888)</span>
+<span class="sd">    &lt;Quantity [0.02288737]&gt;</span>
 
 <span class="sd">    Compute mean ``norm`` in a given time interval:</span>
 
-<span class="sd">    &gt;&gt;&gt; from astropy.time import Time</span>
 <span class="sd">    &gt;&gt;&gt; import astropy.units as u</span>
 <span class="sd">    &gt;&gt;&gt; t_r = Time(59000.5, format=&#39;mjd&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; t_min = t_r + [1, 4, 8] * u.d</span>
 <span class="sd">    &gt;&gt;&gt; t_max = t_r + [1.5, 6, 9] * u.d</span>
 <span class="sd">    &gt;&gt;&gt; light_curve.integral(t_min, t_max)</span>
-<span class="sd">    array([0.0074388942, 0.0071144081, 0.0068115544])</span>
+<span class="sd">    &lt;Quantity [0.00375698, 0.0143724 , 0.00688029]&gt;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">tag</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LightCurveTemplateTemporalModel&quot;</span><span class="p">,</span> <span class="s2">&quot;template&quot;</span><span class="p">]</span>

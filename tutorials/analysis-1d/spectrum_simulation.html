@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css?v=995e94df" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css?v=21c0b90a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=02c55522" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bf3cbe73" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -66,7 +66,7 @@
     <link rel="prev" title="Spectral analysis with energy-dependent directional cuts" href="spectral_analysis_rad_max.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="27 Mar 2024"/>
+    <meta name="docbuild:last-update" content="02 Apr 2024"/>
   </head>
   
   
@@ -670,7 +670,7 @@ distribution of fitted parameters is consistent with the input values.</strong><
 
 Gammapy package:
 
-        version                : 1.2.dev2053+g9bd66a5b0.d20240327
+        version                : 1.2.dev2111+g5675db08b.d20240402
         path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy
 
 
@@ -697,7 +697,7 @@ Other packages:
 
 Gammapy environment variables:
 
-        GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev
+        GAMMAPY_DATA           : ./gammapy-data
 </pre></div>
 </div>
 </section>
@@ -771,17 +771,22 @@ In this simulation, we use the CTA-1DC IRFs shipped with Gammapy.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/units/core.py:2097: UnitsWarning: &#39;1/s/MeV/sr&#39; did not parse as fits unit: Numeric factor not supported by FITS If this is meant to be a custom unit, define it with &#39;u.def_unit&#39;. To have it recognized inside a file reader or other code, enable it with &#39;u.add_enabled_units&#39;. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html
-  warnings.warn(msg, UnitsWarning)
-Observation
-
-        obs id            : 0
-        tstart            : 51544.00
-        tstop             : 51544.04
-        duration          : 3600.00 s
-        pointing (icrs)   : 266.4 deg, -28.9 deg
-
-        deadtime fraction : 0.0%
+<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/examples/tutorials/analysis-1d/spectrum_simulation.py&quot;</span>, line <span class="m">129</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">irfs</span> <span class="o">=</span> <span class="n">load_irf_dict_from_file</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy/irf/io.py&quot;</span>, line <span class="m">197</span>, in <span class="n">load_irf_dict_from_file</span>
+<span class="w">    </span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">214</span>, in <span class="n">fitsopen</span>
+<span class="w">    </span><span class="k">return</span> <span class="n">HDUList</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">482</span>, in <span class="n">fromfile</span>
+<span class="w">    </span><span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_readfrom</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/hdu/hdulist.py&quot;</span>, line <span class="m">1170</span>, in <span class="n">_readfrom</span>
+<span class="w">    </span><span class="n">fileobj</span> <span class="o">=</span> <span class="n">_File</span><span class="p">(</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">218</span>, in <span class="n">__init__</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_open_filename</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py&quot;</span>, line <span class="m">636</span>, in <span class="n">_open_filename</span>
+<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">IO_FITS_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+<span class="gr">FileNotFoundError</span>: <span class="n">[Errno 2] Aucun fichier ou dossier de ce type: &#39;gammapy-data/cta-1dc/caldb/data/cta/1dc/bcf/South_z20_50h/irf_file.fits&#39;</span>
 </pre></div>
 </div>
 <p>Simulate a spectra</p>
@@ -801,45 +806,6 @@ Observation
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SpectrumDataset
----------------
-
-  Name                            : obs-0
-
-  Total counts                    : 298
-  Total background counts         : 22.29
-  Total excess counts             : 275.71
-
-  Predicted counts                : 303.66
-  Predicted background counts     : 22.29
-  Predicted excess counts         : 281.37
-
-  Exposure min                    : 2.53e+08 m2 s
-  Exposure max                    : 1.77e+10 m2 s
-
-  Number of total bins            : 9
-  Number of fit bins              : 9
-
-  Fit statistic type              : cash
-  Fit statistic value (-2 log(L)) : -1811.58
-
-  Number of models                : 1
-  Number of parameters            : 3
-  Number of free parameters       : 2
-
-  Component 0: SkyModel
-
-    Name                      : source
-    Datasets names            : None
-    Spectral model type       : PowerLawSpectralModel
-    Spatial  model type       :
-    Temporal model type       :
-    Parameters:
-      index                         :      3.000   +/-    0.00
-      amplitude                     :   2.50e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-      reference             (frozen):      1.000       TeV
-</pre></div>
-</div>
 <p>You can see that background counts are now simulated</p>
 <section id="on-off-analysis">
 <h3>On-Off analysis<a class="headerlink" href="#on-off-analysis" title="Link to this heading">#</a></h3>
@@ -853,49 +819,6 @@ dealing with simulations based on observations of real off counts.</p>
 <span class="p">)</span>
 <span class="n">dataset_on_off</span><span class="o">.</span><span class="n">fake</span><span class="p">(</span><span class="n">npred_background</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">npred_background</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset_on_off</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SpectrumDatasetOnOff
---------------------
-
-  Name                            : d0CE1jt1
-
-  Total counts                    : 310
-  Total background counts         : 22.20
-  Total excess counts             : 287.80
-
-  Predicted counts                : 303.69
-  Predicted background counts     : 22.32
-  Predicted excess counts         : 281.37
-
-  Exposure min                    : 2.53e+08 m2 s
-  Exposure max                    : 1.77e+10 m2 s
-
-  Number of total bins            : 9
-  Number of fit bins              : 9
-
-  Fit statistic type              : wstat
-  Fit statistic value (-2 log(L)) : 13.34
-
-  Number of models                : 1
-  Number of parameters            : 3
-  Number of free parameters       : 2
-
-  Component 0: SkyModel
-
-    Name                      : source
-    Datasets names            : None
-    Spectral model type       : PowerLawSpectralModel
-    Spatial  model type       :
-    Temporal model type       :
-    Parameters:
-      index                         :      3.000   +/-    0.00
-      amplitude                     :   2.50e-12   +/- 0.0e+00 1 / (cm2 s TeV)
-      reference             (frozen):      1.000       TeV
-
-    Total counts_off                : 111
-  Acceptance                      : 9
-  Acceptance off                  : 45
 </pre></div>
 </div>
 <p>You can see that off counts are now simulated as well. We now simulate
@@ -913,22 +836,6 @@ several spectra using the same set of observation conditions.</p>
 <span class="n">display</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span> name  counts excess      sqrt_ts           background           npred       ...      stat_sum     counts_off acceptance   acceptance_off         alpha
-                                                                             ...
------- ------ ------ ------------------ ------------------ ----------------- ... ----------------- ---------- ---------- ----------------- -------------------
- obs-0    317  298.6  27.08240194504323 18.400000000000002 68.16666666666667 ...  738.724590842961         92        9.0              45.0                 0.2
- obs-1    275  253.0 23.767853654872845               22.0 64.16666666666669 ...  575.779512784738        110        9.0              45.0                 0.2
- obs-2    293  272.4 25.171105554046544               20.6              66.0 ... 645.4993824075302        103        9.0              45.0                 0.2
- obs-3    280  257.6 23.982951737405354               22.4 65.33333333333334 ...  585.924154698587        112        9.0 45.00000000000001 0.19999999999999998
-   ...    ...    ...                ...                ...               ... ...               ...        ...        ...               ...                 ...
-obs-95    305  280.6 25.030731260493152 24.400000000000006 71.16666666666667 ... 643.2846879404796        122        9.0 44.99999999999999 0.20000000000000004
-obs-96    301  277.4  24.96984596942142               23.6 69.83333333333334 ... 626.7396842428624        118        9.0              45.0                 0.2
-obs-97    290  271.2 25.417982194454844               18.8 64.00000000000001 ... 650.9762484493857         94        9.0              45.0                 0.2
-obs-98    301  280.6 25.687832964675007 20.400000000000002 67.16666666666667 ... 664.5620099404954        102        9.0              45.0                 0.2
-obs-99    323  302.2  26.85707842376871               20.8 71.16666666666669 ... 733.1576598768019        104        9.0              45.0                 0.2
-Length = 100 rows
-</pre></div>
-</div>
 <p>Before moving on to the fit let’s have a look at the simulated
 observations.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fix</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -941,7 +848,7 @@ observations.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectrum_simulation_001.png" srcset="../../_images/sphx_glr_spectrum_simulation_001.png" alt="spectrum simulation" class = "sphx-glr-single-img"/><p>Now, we fit each simulated spectrum individually</p>
+<p>Now, we fit each simulated spectrum individually</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">fit</span> <span class="o">=</span> <span class="n">Fit</span><span class="p">()</span>
@@ -968,9 +875,6 @@ very well with the spectrum that we initially injected.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spectrum_simulation_002.png" srcset="../../_images/sphx_glr_spectrum_simulation_002.png" alt="spectrum simulation" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>index: 3.0036925550401095 += 0.08081469527291649
-</pre></div>
-</div>
 </section>
 </section>
 <section id="exercises">
@@ -983,7 +887,6 @@ steep-spectrum source with spectral index of 4.0</p></li>
 <li><p>Simulate spectra with the spectral model we just defined. How much
 observation duration do you need to get back the injected parameters?</p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.878 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-analysis-1d-spectrum-simulation-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/gammapy/gammapy-webpage/master?urlpath=lab/tree/notebooks/dev/tutorials/analysis-1d/spectrum_simulation.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.svg" width="150px" /></a>

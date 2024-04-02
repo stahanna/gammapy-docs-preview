@@ -126,7 +126,7 @@ Check setup
 
     Gammapy package:
 
-            version                : 1.2.dev2053+g9bd66a5b0.d20240327 
+            version                : 1.2.dev2111+g5675db08b.d20240402 
             path                   : /home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/gammapy 
 
 
@@ -153,7 +153,7 @@ Check setup
 
     Gammapy environment variables:
 
-            GAMMAPY_DATA           : /home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev 
+            GAMMAPY_DATA           : ./gammapy-data 
 
 
 
@@ -205,7 +205,7 @@ to your local directory.
         self._open_filename(fileobj, mode, overwrite)
       File "/home/hstapel/PycharmProjects/projekt_gammapy/gammapy/.tox/build_docs/lib/python3.9/site-packages/astropy/io/fits/file.py", line 636, in _open_filename
         self._file = open(self.name, IO_FITS_MODES[mode])
-    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: '/home/hstapel/PycharmProjects/projekt_gammapy/GAMMAPY_DATA/dev/estimators/mock_DL4/dataset_energy_dependent.fits.gz'
+    FileNotFoundError: [Errno 2] Aucun fichier ou dossier de ce type: 'gammapy-data/estimators/mock_DL4/dataset_energy_dependent.fits.gz'
 
 
 
